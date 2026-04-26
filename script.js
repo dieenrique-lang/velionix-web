@@ -1,3 +1,4 @@
+// velionix-landing/script.js
 const revealElements = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver(
