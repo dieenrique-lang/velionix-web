@@ -277,3 +277,14 @@ h1 {
     flex-direction: column;
   }
 }
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
