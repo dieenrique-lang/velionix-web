@@ -55,8 +55,17 @@ a {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
   font-weight: 800;
   letter-spacing: 0.4px;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .nav ul {
@@ -306,4 +315,15 @@ h1 {
   .footer-content {
     flex-direction: column;
   }
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
