@@ -327,3 +327,17 @@ h1 {
   display: block;
   object-fit: contain;
 }
+.site-header .logo img {
+  max-height: 42px !important;
+  height: 42px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+}
+
+.hero-brand img {
+  width: 100% !important;
+  max-width: 360px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
