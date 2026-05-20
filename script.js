@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimations();
   initSmoothScroll();
   initYear();
+  initDemoModal();
 });
 
 /**
@@ -248,5 +249,63 @@ if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
   window.addEventListener('load', () => {
     const perfData = performance.getEntriesByType('navigation')[0];
     console.log('Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+  });
+}
+
+/**
+ * Demo Modal functionality
+ */
+function initDemoModal() {
+  const modal = document.getElementById('demo-modal');
+  const modalTitle = document.getElementById('demo-modal-title');
+  const iframe = document.getElementById('demo-iframe');
+  const closeBtn = document.querySelector('.demo-modal-close');
+  const backdrop = document.querySelector('.demo-modal-backdrop');
+
+  if (!modal) return;
+
+  const demos = {
+    'petshop-huellitas': {
+      title: 'PetShop Huellitas',
+      url: 'demos/petshop-huellitas/index.html'
+    }
+  };
+
+  document.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const demoKey = card.getAttribute('data-demo');
+      const demo = demos[demoKey];
+
+      if (demo) {
+        modalTitle.textContent = demo.title;
+        iframe.src = demo.url;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      iframe.src = '';
+    }, 300);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
   });
 }

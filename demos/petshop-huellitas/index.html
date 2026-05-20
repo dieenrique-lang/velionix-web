@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PetShop Huellitas - Todo el amor para tu mejor amigo. Alimentos, accesorios y servicios para mascotas en Santiago, Chile.">
+  <meta name="keywords" content="petshop, alimentos para mascotas, perros, gatos, aves, accesorios para mascotas, Santiago, Chile">
+  <meta name="author" content="Velionix">
+  <title>PetShop Huellitas | Todo el amor para tu mejor amigo</title>
+
+  <!-- Favicon con patita -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ============================
+       CSS VARIABLES & RESET
+    ============================ */
+    :root {
+      --primary: #ff6b35;
+      --primary-light: #ff8c5a;
+      --primary-dark: #e55a2b;
+      --secondary: #2d8a4e;
+      --secondary-light: #3da863;
+      --secondary-dark: #1e6b3a;
+      --accent: #f7c948;
+      --accent-light: #fad86a;
+      --text: #2c3e50;
+      --text-light: #5a6c7d;
+      --text-muted: #8899a6;
+      --bg: #fffbf5;
+      --bg-soft: #fef7f0;
+      --bg-card: #ffffff;
+      --surface: #f8f4ef;
+      --line: rgba(44, 62, 80, 0.1);
+      --white: #ffffff;
+      --shadow-sm: 0 2px 12px rgba(44, 62, 80, 0.08);
+      --shadow-md: 0 8px 30px rgba(44, 62, 80, 0.12);
+      --shadow-lg: 0 16px 50px rgba(44, 62, 80, 0.18);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 999px;
+      --transition-fast: 0.2s ease;
+      --transition-base: 0.3s ease;
+      --transition-slow: 0.5s ease;
+      --font-heading: 'Nunito', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ============================
+       UTILITY CLASSES
+    ============================ */
+    .container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    /* ============================
+       DEMO BANNER
+    ============================ */
+    .demo-banner {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .demo-banner a {
+      color: var(--accent-light);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .demo-banner a:hover {
+      color: var(--white);
+    }
+
+    /* ============================
+       HEADER & NAV
+    ============================ */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+
+    .demo-banner + .site-header {
+      top: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+    }
+
+    .main-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 10px 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(255, 107, 53, 0.08);
+    }
+
+    .nav-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: var(--white);
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+      transition: all var(--transition-base);
+    }
+
+    .nav-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      background: var(--surface);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .main-nav.mobile-active {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+    }
+
+    .main-nav.mobile-active ul {
+      flex-direction: column;
+    }
+
+    .main-nav.mobile-active .nav-link {
+      width: 100%;
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    .main-nav.mobile-active .nav-whatsapp {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    /* ============================
+       HERO SECTION
+    ============================ */
+    .hero {
+      position: relative;
+      padding: 140px 0 80px;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.15), transparent 60%);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(45, 138, 78, 0.12), transparent 60%);
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255, 107, 53, 0.1);
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      border-radius: var(--radius-full);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 53, 0.45);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      color: var(--white);
+      box-shadow: 0 8px 25px rgba(45, 138, 78, 0.35);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(45, 138, 78, 0.45);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: var(--white);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.45);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--text);
+      border: 2px solid var(--line);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-pets {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .pet-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-base);
+    }
+
+    .pet-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pet-card:nth-child(2),
+    .pet-card:nth-child(4) {
+      transform: translateY(30px);
+    }
+
+    .pet-card:nth-child(2):hover,
+    .pet-card:nth-child(4):hover {
+      transform: translateY(22px);
+    }
+
+    .pet-emoji {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+    }
+
+    .pet-card h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .pet-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================
+       CATEGORIES SECTION
+    ============================ */
+    .categories {
+      background: var(--white);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-base);
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .category-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .category-card h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .category-card .btn-text {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .category-card:hover .btn-text {
+      color: var(--primary-dark);
+    }
+
+    /* ============================
+       PRODUCTS SECTION
+    ============================ */
+    .products {
+      background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-image {
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, var(--surface) 0%, var(--bg-soft) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image .product-emoji {
+      font-size: 5rem;
+      opacity: 0.8;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+
+    .badge-offer {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .badge-new {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .product-content {
+      padding: 20px;
+    }
+
+    .product-brand {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .product-rating .stars {
+      color: var(--accent);
+    }
+
+    .product-rating .rating-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .price-old {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+
+    .product-card .btn {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+    }
+
+    /* ============================
+       SERVICES SECTION
+    ============================ */
+    .services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 28px;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      transition: all var(--transition-base);
+    }
+
+    .service-card:hover {
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      border-radius: var(--radius-md);
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ============================
+       BRANDS SECTION
+    ============================ */
+    .brands {
+      background: var(--bg-soft);
+      padding: 50px 0;
+    }
+
+    .brands-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .brand-item {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      opacity: 0.6;
+      transition: all var(--transition-base);
+      cursor: default;
+    }
+
+    .brand-item:hover {
+      opacity: 1;
+      color: var(--text);
+    }
+
+    /* ============================
+       WHY US SECTION
+    ============================ */
+    .why-us {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+
+    .why-us .section-title {
+      color: var(--white);
+    }
+
+    .why-us .section-subtitle {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 32px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all var(--transition-base);
+    }
+
+    .why-card:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-6px);
+    }
+
+    .why-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .why-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ============================
+       TESTIMONIALS SECTION
+    ============================ */
+    .testimonials {
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      padding: 28px;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      transition: all var(--transition-base);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-avatar {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+
+    .testimonial-info h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .testimonial-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .testimonial-stars {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ============================
+       WHATSAPP CTA SECTION
+    ============================ */
+    .whatsapp-cta {
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .whatsapp-cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .whatsapp-cta p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .whatsapp-cta .btn {
+      background: var(--white);
+      color: #128c7e;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .whatsapp-cta .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .whatsapp-cta .phone {
+      display: block;
+      margin-top: 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    /* ============================
+       FAQ SECTION
+    ============================ */
+    .faq {
+      background: var(--bg-soft);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform var(--transition-base);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-base), padding var(--transition-base);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer-content {
+      padding: 0 24px 20px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CONTACT SECTION
+    ============================ */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-form-container {
+      background: var(--bg);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      border: 1px solid var(--line);
+    }
+
+    .contact-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      color: var(--text);
+      transition: all var(--transition-fast);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .contact-details {
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-item i {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      font-size: 1.1rem;
+    }
+
+    .contact-item-text h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-text p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .contact-item-text a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .contact-item-text a:hover {
+      color: var(--primary-dark);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      font-size: 1.3rem;
+      color: var(--text);
+      transition: all var(--transition-base);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-4px);
+    }
+
+    .map-container {
+      margin-top: 32px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 200px;
+      background: var(--surface);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .site-footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .footer-brand .logo {
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .footer-nav h4,
+    .footer-categories h4 {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .footer-nav ul li,
+    .footer-categories ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-nav a,
+    .footer-categories a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-nav a:hover,
+    .footer-categories a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      color: var(--white);
+      transition: all var(--transition-base);
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-payments {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .footer-payments span {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-payments i {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    /* ============================
+       WHATSAPP FLOATING BUTTON
+    ============================ */
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+      transition: all var(--transition-base);
+      animation: whatsappPulse 3s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+      animation: none;
+    }
+
+    @keyframes whatsappPulse {
+      0%, 100% { box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 8px 45px rgba(37, 211, 102, 0.6); }
+    }
+
+    /* ============================
+       ANIMATIONS
+    ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products-grid,
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .main-nav.mobile-active {
+        display: block;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-pets {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .pet-card {
+        padding: 12px;
+      }
+
+      .pet-emoji {
+        font-size: 2rem;
+      }
+
+      .pet-card h3 {
+        font-size: 0.75rem;
+      }
+
+      .pet-card p {
+        display: none;
+      }
+
+      .categories-grid,
+      .products-grid,
+      .services-grid,
+      .testimonials-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .whatsapp-float span {
+        display: none;
+      }
+
+      .whatsapp-float {
+        padding: 16px;
+        border-radius: 50%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .contact-form-container {
+        padding: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    🌐 Demo creada por <a href="https://velionix.cl" target="_blank" rel="noopener noreferrer">velionix.cl</a> — ¿Quieres una página así? <a href="https://velionix.cl" target="_blank" rel="noopener noreferrer">Contáctanos</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        <span class="logo-icon">🐾</span>
+        <span>Huellitas</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#productos" class="nav-link">Productos</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+          <li>
+            <a href="https://wa.me/56912345678" class="nav-whatsapp" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-whatsapp"></i>
+              WhatsApp
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <span class="hero-badge">
+            🐾 Desde 2020 cuidando a tus mascotas
+          </span>
+          <h1>Todo el amor para tu <span>mejor amigo</span></h1>
+          <p class="hero-text">
+            Alimentos premium, accesorios y servicios de calidad para perros, gatos y más.
+            Encuentra todo lo que tu mascota necesita con delivery rápido en Santiago.
+          </p>
+          <div class="hero-actions">
+            <a href="#productos" class="btn btn-primary">
+              <i class="fas fa-shopping-bag"></i>
+              Ver Productos
+            </a>
+            <a href="https://wa.me/56912345678" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-whatsapp"></i>
+              Contactar por WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-pets">
+            <div class="pet-card reveal">
+              <span class="pet-emoji">🐶</span>
+              <h3>Perros</h3>
+              <p>Alimentos y accesorios</p>
+            </div>
+            <div class="pet-card reveal">
+              <span class="pet-emoji">🐱</span>
+              <h3>Gatos</h3>
+              <p>Todo para tu felino</p>
+            </div>
+            <div class="pet-card reveal">
+              <span class="pet-emoji">🐦</span>
+              <h3>Aves</h3>
+              <p>Alimentos especializados</p>
+            </div>
+            <div class="pet-card reveal">
+              <span class="pet-emoji">🐹</span>
+              <h3>Roedores</h3>
+              <p>Cuidado completo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories section" id="categorias">
+      <div class="container">
+        <h2 class="section-title reveal">Categorías</h2>
+        <p class="section-subtitle reveal">Encuentra todo lo que necesitas para tu mascota</p>
+
+        <div class="categories-grid">
+          <div class="category-card reveal">
+            <span class="category-icon">🦴</span>
+            <h3>Alimentos para Perros</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🐟</span>
+            <h3>Alimentos para Gatos</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🌾</span>
+            <h3>Aves y Roedores</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🦴</span>
+            <h3>Snacks y Premios</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🎾</span>
+            <h3>Juguetes</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🛁</span>
+            <h3>Higiene y Cuidado</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🏠</span>
+            <h3>Camas y Casas</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+          <div class="category-card reveal">
+            <span class="category-icon">🔗</span>
+            <h3>Correas y Collares</h3>
+            <span class="btn-text">Ver más →</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products section" id="productos">
+      <div class="container">
+        <h2 class="section-title reveal">Productos Destacados</h2>
+        <p class="section-subtitle reveal">Los favoritos de nuestros clientes</p>
+
+        <div class="products-grid">
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-badge badge-offer">Oferta</span>
+              <span class="product-emoji">🦴</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Royal Canin</span>
+              <h3 class="product-name">Alimento Adulto Perro Mediano 15kg</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="rating-count">(128)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$32.990</span>
+                <span class="price-old">$38.900</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20el%20Alimento%20Royal%20Canin%20Adulto%20Perro%20Mediano" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-badge badge-new">Nuevo</span>
+              <span class="product-emoji">🐟</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Purina ONE</span>
+              <h3 class="product-name">Alimento Gato Adulto Salmón 7kg</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="rating-count">(89)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$24.500</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20el%20Alimento%20Purina%20ONE%20Gato%20Salmón" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-emoji">🎾</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Kong</span>
+              <h3 class="product-name">Juguete Interactivo para Perros</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐</span>
+                <span class="rating-count">(56)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$12.900</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20el%20Juguete%20Kong%20Interactivo" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-badge badge-offer">Oferta</span>
+              <span class="product-emoji">🦴</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Pedigree</span>
+              <h3 class="product-name">Palitos Masticables Perro 12 und</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐</span>
+                <span class="rating-count">(203)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$6.990</span>
+                <span class="price-old">$8.500</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20los%20Palitos%20Pedigree" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-emoji">🛁</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Petysan</span>
+              <h3 class="product-name">Shampoo Antiparasitario 500ml</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="rating-count">(78)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$9.900</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20el%20Shampoo%20Petysan" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card reveal">
+            <div class="product-image">
+              <span class="product-badge badge-new">Nuevo</span>
+              <span class="product-emoji">🐱</span>
+            </div>
+            <div class="product-content">
+              <span class="product-brand">Whiskas</span>
+              <h3 class="product-name">Arena para Gato 10kg Premium</h3>
+              <div class="product-rating">
+                <span class="stars">⭐⭐⭐⭐</span>
+                <span class="rating-count">(156)</span>
+              </div>
+              <div class="product-price">
+                <span class="price">$15.900</span>
+              </div>
+              <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20consultar%20por%20la%20Arena%20Whiskas" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="servicios">
+      <div class="container">
+        <h2 class="section-title reveal">Servicios Adicionales</h2>
+        <p class="section-subtitle reveal">Más que una tienda, un equipo que cuida de tu mascota</p>
+
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-icon">🚚</div>
+            <div>
+              <h3>Delivery a Domicilio</h3>
+              <p>Recibe tus productos en la puerta de tu casa. Envío express en Santiago.</p>
+            </div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">📋</div>
+            <div>
+              <h3>Asesoría Nutricional</h3>
+              <p>Te ayudamos a elegir la mejor alimentación según la raza, edad y necesidades de tu mascota.</p>
+            </div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">✂️</div>
+            <div>
+              <h3>Baño y Peluquería</h3>
+              <p>Coordinamos servicios de grooming profesional para que tu peludo quede impecable.</p>
+            </div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">🎁</div>
+            <div>
+              <h3>Programa de Fidelidad</h3>
+              <p>Acumula puntos con cada compra y canjéalos por productos y descuentos exclusivos.</p>
+            </div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">💳</div>
+            <div>
+              <h3>Múltiples Formas de Pago</h3>
+              <p>Aceptamos tarjetas de crédito, débito y transferencias bancarias.</p>
+            </div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">💬</div>
+            <div>
+              <h3>Atención por WhatsApp</h3>
+              <p>Resolvemos tus dudas rápidamente por WhatsApp. ¡Escribenos hoy!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands">
+      <div class="container">
+        <div class="brands-container">
+          <span class="brand-item">Royal Canin</span>
+          <span class="brand-item">Purina</span>
+          <span class="brand-item">Pedigree</span>
+          <span class="brand-item">Whiskas</span>
+          <span class="brand-item">Kong</span>
+          <span class="brand-item">Eukanuba</span>
+          <span class="brand-item">Pro Plan</span>
+          <span class="brand-item">Brit Care</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us section" id="nosotros">
+      <div class="container">
+        <h2 class="section-title reveal">¿Por qué elegirnos?</h2>
+        <p class="section-subtitle reveal">Más de 500 familias confían en nosotros</p>
+
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <span class="why-icon">✅</span>
+            <h3>Productos 100% Originales</h3>
+            <p>Solo trabajamos con productos auténticos de marcas reconocidas.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">💰</span>
+            <h3>Precios Competitivos</h3>
+            <p>Ofrecemos los mejores precios del mercado con promociones semanales.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">🚀</span>
+            <h3>Delivery Rápido</h3>
+            <p>Enviamos tu pedido el mismo día o al día siguiente en Santiago.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">💚</span>
+            <h3>Atención Personalizada</h3>
+            <p>Te conocemos y conocemos a tu mascota. Asesoría genuina y cercana.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">👨‍👩‍👧‍👦</span>
+            <h3>+500 Clientes Satisfechos</h3>
+            <p>Miles de familias nos eligen mes a mes para cuidar a sus mejores amigos.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">🏆</span>
+            <h3>5 Años de Experiencia</h3>
+            <p>Media década dedicados a la alimentación y bienestar de mascotas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+      <div class="container">
+        <h2 class="section-title reveal">Lo que dicen nuestros clientes</h2>
+        <p class="section-subtitle reveal">Historias reales de familias que nos prefieren</p>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">👩</div>
+              <div class="testimonial-info">
+                <h4>María Fernández</h4>
+                <p>Dueña de Luna 🐕</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "Encontré todo lo que necesito para mi perrita Golden. La asesoría nutricional fue increíble,
+              me ayudaron a elegir el mejor alimento para su edad. ¡Delivery super rápido!"
+            </p>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">👨</div>
+              <div class="testimonial-info">
+                <h4>Diego Ramírez</h4>
+                <p>Papá de Michi 🐱</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "Mi gato es muy exigente y solo acepta el alimento que encuentran acá. El stock siempre está
+              disponible y los precios son muy buenos. 100% recomendado."
+            </p>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">👩</div>
+              <div class="testimonial-info">
+                <h4>Carolina Soto</h4>
+                <p>Dueña de Rocky y Luna 🐕🐕</p>
+              </div>
+            </div>
+            <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">
+              "Tengo dos golden retrievers y el consumo de alimento es alto. Acá siempre tienen stock y me
+              hacen descuento por ser clienta frecuente. ¡El mejor petshop!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp CTA Section -->
+    <section class="whatsapp-cta">
+      <div class="container">
+        <h2>¿Necesitas ayuda para elegir?</h2>
+        <p>Escribenos por WhatsApp y te asesoramos en minutos</p>
+        <a href="https://wa.me/56912345678" class="btn" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i>
+          Escribir por WhatsApp
+        </a>
+        <span class="phone">+56 9 1234 5678</span>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section">
+      <div class="container">
+        <h2 class="section-title reveal">Preguntas Frecuentes</h2>
+        <p class="section-subtitle reveal">¿Tienes dudas? Aquí las resolvemos</p>
+
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              ¿Hacen delivery?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                ¡Sí! Realizamos deliveries a toda Santiago. El envío estándar llega en 24-48 horas hábiles.
+                También ofrecemos envío express el mismo día para pedidos realizados antes de las 12:00 pm
+                en zonas seleccionadas.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              ¿Cuánto demora el envío?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Los envíos dentro de Santiago tardan entre 24 y 48 horas hábiles. Para zonas más alejadas,
+                el tiempo puede ser de 2 a 5 días hábiles. Recibirás un seguimiento de tu pedido por WhatsApp.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              ¿Aceptan tarjetas?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express), transferencias
+                bancarias y pagos en efectivo contra entrega en Santiago. Para pedidos online, el pago se
+                realiza mediante transferencia o transferencia con tarjeta.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              ¿Los productos son originales?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Absolutamente. Todos nuestros productos son 100% originales y adquiridos a través de
+                distribuidores autorizados. Contamos con certificación de las principales marcas y garantizamos
+                la calidad y frescura de cada producto.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              ¿Tienen programa de puntos?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                ¡Sí! Tenemos un programa de fidelización donde acumulas puntos con cada compra. Por cada
+                $1.000 gastado, obtienes 10 puntos que puedes canjear por descuentos en tu próxima compra.
+                ¡Pregúntanos cómo unirte!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contacto">
+      <div class="container">
+        <h2 class="section-title reveal">Contáctanos</h2>
+        <p class="section-subtitle reveal">Estamos aquí para ayudarte y a tu mascota</p>
+
+        <div class="contact-layout">
+          <div class="contact-form-container reveal">
+            <form class="contact-form" id="contact-form">
+              <h3>Envíanos un mensaje</h3>
+              <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" placeholder="+56 9 1234 5678">
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" placeholder="¿En qué podemos ayudarte?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-info reveal">
+            <h3>Información de contacto</h3>
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-item-text">
+                  <h4>Dirección</h4>
+                  <p>Av. Principal 123, Santiago, Chile</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div class="contact-item-text">
+                  <h4>Teléfono</h4>
+                  <p><a href="tel:+56912345678">+56 9 1234 5678</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div class="contact-item-text">
+                  <h4>Email</h4>
+                  <p><a href="mailto:contacto@huellitas.cl">contacto@huellitas.cl</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <div class="contact-item-text">
+                  <h4>Horario</h4>
+                  <p>Lunes a Viernes: 9:00 - 20:00</p>
+                  <p>Sábado: 10:00 - 18:00</p>
+                </div>
+              </div>
+            </div>
+
+            <h4 style="margin-bottom: 16px;">Síguenos en redes sociales</h4>
+            <div class="social-links">
+              <a href="https://instagram.com/huellitas" class="social-link" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://facebook.com/huellitas" class="social-link" target="_blank" rel="noopener noreferrer" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://tiktok.com/@huellitas" class="social-link" target="_blank" rel="noopener noreferrer" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://wa.me/56912345678" class="social-link" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53277.2763389355!2d-70.65052125!3d-33.4377968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5033a1b05bd%3A0x4d5234b21589eb41!2sAv.%20Libertador%20General%20Bernardo%20O&#39;Higgins%2C%20Santiago%2C%20Chile!5e0!3m2!1ses!2sus!4v1699999999999!5m2!1ses!2sus"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#inicio" class="logo">
+            <span class="logo-icon">🐾</span>
+            <span>Huellitas</span>
+          </a>
+          <p>Todo el amor para tu mejor amigo. Alimentos premium, accesorios y servicios de calidad para mascotas.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/huellitas" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/huellitas" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@huellitas" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <div class="footer-payments">
+            <span>Métodos de pago:</span>
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+        </div>
+
+        <nav class="footer-nav">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-categories">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#categorias">Alimentos para Perros</a></li>
+            <li><a href="#categorias">Alimentos para Gatos</a></li>
+            <li><a href="#categorias">Aves y Roedores</a></li>
+            <li><a href="#categorias">Juguetes y Accesorios</a></li>
+            <li><a href="#categorias">Higiene y Cuidado</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-categories">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+56912345678">+56 9 1234 5678</a></li>
+            <li><a href="mailto:contacto@huellitas.cl">contacto@huellitas.cl</a></li>
+            <li>Av. Principal 123, Santiago</li>
+            <li>Lun-Vie: 9:00 - 20:00</li>
+            <li>Sáb: 10:00 - 18:00</li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> PetShop Huellitas. Todos los derechos reservados.</p>
+        <p>🌐 Demo creada por <a href="https://velionix.cl" target="_blank" rel="noopener noreferrer" style="color: var(--primary-light);">velionix.cl</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      mainNav.classList.toggle('mobile-active');
+    });
+
+    // Close mobile menu when clicking a link
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('mobile-active');
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains('active');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    // Initial check
+    revealOnScroll();
+
+    // Check on scroll
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Contact form handling
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const name = formData.get('name');
+      const message = formData.get('message');
+
+      // Redirect to WhatsApp with the message
+      const whatsappMessage = encodeURIComponent(`Hola! Me llamo ${name}. ${message}`);
+      window.open(`https://wa.me/56912345678?text=${whatsappMessage}`, '_blank');
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.style.boxShadow = 'var(--shadow-md)';
+      } else {
+        header.style.boxShadow = 'var(--shadow-sm)';
+      }
+    });
+  </script>
+</body>
+</html>
