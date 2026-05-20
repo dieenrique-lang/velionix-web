@@ -3,107 +3,201 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Velionix digitaliza procesos para empresas, pymes y comunidades con automatización de Excel, páginas web profesionales, aplicaciones web y sistemas de gestión a medida."
-    />
-    <title>Velionix | Digitalización de procesos y software a medida</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Primary -->
+    <title>Velionix | Digitalización de Procesos y Software a Medida en Chile</title>
+    <meta name="description" content="Velionix digitaliza procesos para empresas, pymes y comunidades con automatización de Excel, páginas web profesionales, aplicaciones web y sistemas de gestión a medida en Chile." />
+    <meta name="keywords" content="digitalización procesos, automatización Excel, páginas web Chile, software a medida, sistemas gestión, desarrollo web, aplicaciones web, Velionix" />
+    <meta name="author" content="Velionix" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="geo.region" content="CL" />
+    <meta name="geo.placename" content="Chile" />
+    <link rel="canonical" href="https://velionix.cl/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://velionix.cl/" />
+    <meta property="og:title" content="Velionix | Digitalización de Procesos y Software a Medida" />
+    <meta property="og:description" content="Automatización de Excel, páginas web profesionales, aplicaciones web y sistemas de gestión a medida para empresas, pymes y comunidades." />
+    <meta property="og:image" content="https://velionix.cl/og-image.png" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Velionix" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://velionix.cl/" />
+    <meta name="twitter:title" content="Velionix | Digitalización de Procesos y Software a Medida" />
+    <meta name="twitter:description" content="Automatización de Excel, páginas web profesionales, aplicaciones web y sistemas de gestión a medida." />
+    <meta name="twitter:image" content="https://velionix.cl/og-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="apple-touch-icon" href="logo.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Velionix",
+      "description": "Digitalización de procesos y software a medida para empresas, pymes y comunidades.",
+      "url": "https://velionix.cl",
+      "telephone": "+56-9-2058-4589",
+      "email": "contacto@velionix.cl",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL"
+      },
+      "areaServed": "Chile",
+      "serviceType": ["Automatización Excel", "Desarrollo Web", "Aplicaciones Web", "Sistemas de Gestión"],
+      "sameAs": []
+    }
+    </script>
   </head>
   <body>
-    <header class="site-header fade-in">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="site-header" id="header">
       <div class="container nav">
-        <a href="#inicio" class="logo" aria-label="Velionix inicio"><img src="logo.png" alt="Velionix" /></a>
-        <nav aria-label="Navegación principal">
+        <a href="#inicio" class="logo" aria-label="Velionix - Inicio">
+          <img src="logo.png" alt="Velionix - Logo" width="160" height="44" loading="eager" />
+        </a>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
           <ul>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#solucion">Solución</a></li>
-            <li><a href="#beneficios">Beneficios</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#solucion" class="nav-link">Solución</a></li>
+            <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+            <li><a href="#proceso" class="nav-link">Proceso</a></li>
+            <li><a href="#contacto" class="nav-link nav-link-cta">Contacto</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero section fade-in" id="inicio">
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero section" id="inicio">
+        <div class="hero-bg-effects" aria-hidden="true">
+          <div class="hero-orb hero-orb-1"></div>
+          <div class="hero-orb hero-orb-2"></div>
+          <div class="hero-orb hero-orb-3"></div>
+        </div>
         <div class="container hero-layout">
           <div class="hero-content">
-            <p class="eyebrow">Software, automatización y desarrollo web</p>
-            <h1>Digitalizamos procesos para que tu negocio trabaje mejor</h1>
-            <p class="hero-text">
+            <span class="eyebrow animate-item">Software, automatización y desarrollo web</span>
+            <h1 class="animate-item animate-delay-1">
+              Digitalizamos procesos para que tu negocio <span class="gradient-text">trabaje mejor</span>
+            </h1>
+            <p class="hero-text animate-item animate-delay-2">
               Creamos soluciones digitales a medida: automatización de Excel, páginas web profesionales, aplicaciones internas y sistemas de gestión para empresas, pymes y comunidades.
             </p>
-            <div class="hero-actions" aria-label="Acciones principales">
-              <a
-                class="btn btn-primary"
-                href="https://wa.me/56920584589"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <div class="hero-actions animate-item animate-delay-3" aria-label="Acciones principales">
+              <a class="btn btn-primary" href="https://wa.me/56920584589" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
                 Solicitar cotización por WhatsApp
               </a>
-              <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+              <a class="btn btn-ghost" href="#servicios">
+                Ver servicios
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
             </div>
-            <div class="trust-row" aria-label="Áreas de trabajo">
-              <span>Procesos internos</span>
-              <span>Excel inteligente</span>
-              <span>Webs comerciales</span>
+            <div class="trust-row animate-item animate-delay-4" aria-label="Áreas de trabajo">
+              <span class="trust-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Procesos internos
+              </span>
+              <span class="trust-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Excel inteligente
+              </span>
+              <span class="trust-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Webs comerciales
+              </span>
             </div>
           </div>
 
-          <div class="hero-visual" aria-label="Mockup de dashboard de procesos digitales">
+          <div class="hero-visual animate-item animate-delay-2" aria-label="Mockup de dashboard de procesos digitales">
             <div class="dashboard-mockup">
               <div class="mockup-header">
                 <div>
                   <span>Panel operativo</span>
                   <strong>Procesos digitales</strong>
                 </div>
-                <span class="status-pill">En control</span>
+                <span class="status-pill">
+                  <span class="status-dot"></span>
+                  En control
+                </span>
               </div>
 
               <div class="mockup-metrics">
-                <article>
+                <article class="metric-card">
                   <span>Ahorro mensual</span>
-                  <strong>38h</strong>
+                  <strong class="counter" data-target="38">0</strong>
+                  <span class="metric-unit">horas</span>
                 </article>
-                <article>
+                <article class="metric-card">
                   <span>Errores reducidos</span>
-                  <strong>72%</strong>
+                  <strong class="counter" data-target="72">0</strong>
+                  <span class="metric-unit">%</span>
                 </article>
-                <article>
+                <article class="metric-card">
                   <span>Reportes listos</span>
                   <strong>24/7</strong>
+                  <span class="metric-unit">disponibles</span>
                 </article>
               </div>
 
               <div class="mockup-main">
                 <div class="automation-flow" aria-label="Flujo de automatización">
-                  <span>Excel</span>
-                  <i></i>
-                  <span>Automatización</span>
-                  <i></i>
-                  <span>Dashboard</span>
+                  <div class="flow-item">
+                    <span>Excel</span>
+                    <svg class="flow-arrow" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+                  </div>
+                  <div class="flow-item">
+                    <span>Automatización</span>
+                    <svg class="flow-arrow" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+                  </div>
+                  <div class="flow-item">
+                    <span>Dashboard</span>
+                  </div>
                 </div>
                 <div class="report-card" aria-hidden="true">
-                  <div class="chart-bars">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                  <div class="chart-container">
+                    <div class="chart-bars">
+                      <span class="bar" style="--height: 46%"></span>
+                      <span class="bar" style="--height: 68%"></span>
+                      <span class="bar" style="--height: 54%"></span>
+                      <span class="bar" style="--height: 86%"></span>
+                      <span class="bar" style="--height: 74%"></span>
+                    </div>
                   </div>
                   <div class="report-lines">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span style="width: 84%"></span>
+                    <span style="width: 62%"></span>
+                    <span style="width: 72%"></span>
                   </div>
                 </div>
               </div>
@@ -117,95 +211,170 @@
         </div>
       </section>
 
+      <!-- Services Section -->
       <section class="section services" id="servicios">
+        <div class="section-bg-effect" aria-hidden="true"></div>
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Servicios</p>
-            <h2 class="section-title">Soluciones digitales para ordenar, vender y operar mejor</h2>
-            <p>
+            <span class="eyebrow">Servicios</span>
+            <h2 class="section-title reveal">Soluciones digitales para ordenar, vender y operar mejor</h2>
+            <p class="reveal">
               Construimos herramientas prácticas, bien diseñadas y pensadas para el día a día de tu equipo.
             </p>
           </div>
 
           <div class="grid service-grid">
-            <article class="card service-card reveal">
-              <span class="icon-box">01</span>
+            <article class="card service-card reveal" data-service="1">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M3 9h18M9 21V9"/>
+                </svg>
+              </div>
+              <span class="card-number">01</span>
               <h3>Automatización de Excel</h3>
               <p>Planillas inteligentes, reportes, macros, formularios y flujos que reducen trabajo repetitivo.</p>
+              <div class="card-hover-effect" aria-hidden="true"></div>
             </article>
-            <article class="card service-card reveal">
-              <span class="icon-box">02</span>
+            <article class="card service-card reveal" data-service="2">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                </svg>
+              </div>
+              <span class="card-number">02</span>
               <h3>Páginas web profesionales</h3>
               <p>Sitios modernos, responsive y comerciales para mejorar presencia, confianza y captación de clientes.</p>
+              <div class="card-hover-effect" aria-hidden="true"></div>
             </article>
-            <article class="card service-card reveal">
-              <span class="icon-box">03</span>
+            <article class="card service-card reveal" data-service="3">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <span class="card-number">03</span>
               <h3>Aplicaciones web a medida</h3>
               <p>Plataformas internas, portales, paneles y herramientas conectadas al proceso real de tu negocio.</p>
+              <div class="card-hover-effect" aria-hidden="true"></div>
             </article>
-            <article class="card service-card reveal">
-              <span class="icon-box">04</span>
+            <article class="card service-card reveal" data-service="4">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="card-number">04</span>
               <h3>Sistemas de gestión internos</h3>
               <p>Control de solicitudes, inventario, mantenciones, usuarios, tareas, reportes y seguimiento operacional.</p>
+              <div class="card-hover-effect" aria-hidden="true"></div>
             </article>
           </div>
         </div>
       </section>
 
+      <!-- Solution Section -->
       <section class="section solution" id="solucion">
+        <div class="solution-bg-glow" aria-hidden="true"></div>
         <div class="container solution-layout">
-          <div class="reveal">
-            <p class="eyebrow">Problema y solución</p>
-            <h2 class="section-title">De procesos manuales a herramientas simples y medibles</h2>
-            <p>
+          <div class="solution-content reveal">
+            <span class="eyebrow">Problema y solución</span>
+            <h2 class="section-title reveal">De procesos manuales a herramientas simples y medibles</h2>
+            <p class="reveal">
               Muchas empresas pierden horas coordinando tareas en planillas, WhatsApp, papel y correos dispersos. Esa forma de operar funciona por un tiempo, pero termina generando errores, duplicidad de datos y poca visibilidad.
             </p>
-            <p>
+            <p class="reveal">
               Velionix toma esos procesos y los convierte en soluciones digitales claras: automatizaciones, paneles, formularios, sitios web y sistemas internos que ayudan a trabajar con más orden y menos fricción.
             </p>
           </div>
           <aside class="process-panel reveal" aria-label="Transformación digital">
-            <div class="process-item">
-              <span>Antes</span>
+            <div class="process-item process-item-before">
+              <span class="process-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                Antes
+              </span>
               <strong>Planillas, mensajes y controles manuales</strong>
             </div>
-            <div class="process-arrow" aria-hidden="true"></div>
-            <div class="process-item process-item-active">
-              <span>Después</span>
+            <div class="process-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+            </div>
+            <div class="process-item process-item-after">
+              <span class="process-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                Después
+              </span>
               <strong>Herramientas digitales simples, conectadas y a medida</strong>
             </div>
           </aside>
         </div>
       </section>
 
+      <!-- Benefits Section -->
       <section class="section benefits" id="beneficios">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Beneficios</p>
-            <h2 class="section-title">Resultados concretos para equipos que necesitan avanzar</h2>
+            <span class="eyebrow">Beneficios</span>
+            <h2 class="section-title reveal">Resultados concretos para equipos que necesitan avanzar</h2>
           </div>
           <div class="benefit-grid">
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="1">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
               <h3>Ahorro de tiempo</h3>
               <p>Automatiza tareas repetitivas y libera horas operativas.</p>
             </article>
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="2">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
               <h3>Menos errores</h3>
               <p>Reduce digitación manual y datos duplicados.</p>
             </article>
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="3">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
               <h3>Más control</h3>
               <p>Visualiza estados, responsables e indicadores clave.</p>
             </article>
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="4">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                </svg>
+              </div>
               <h3>Información ordenada</h3>
               <p>Centraliza datos para consultar y decidir mejor.</p>
             </article>
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="5">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
               <h3>Imagen profesional</h3>
               <p>Presenta tu empresa con una experiencia web confiable.</p>
             </article>
-            <article class="benefit reveal">
+            <article class="benefit reveal" data-benefit="6">
+              <div class="benefit-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
               <h3>Soluciones a medida</h3>
               <p>Desarrollos adaptados al proceso, no al revés.</p>
             </article>
@@ -213,37 +382,42 @@
         </div>
       </section>
 
+      <!-- Workflow Section -->
       <section class="section workflow" id="proceso">
+        <div class="workflow-bg-pattern" aria-hidden="true"></div>
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Cómo trabajamos</p>
-            <h2 class="section-title">Un proceso claro desde la idea hasta la entrega</h2>
+            <span class="eyebrow">Cómo trabajamos</span>
+            <h2 class="section-title reveal">Un proceso claro desde la idea hasta la entrega</h2>
           </div>
           <div class="workflow-list">
-            <article class="workflow-step reveal">
-              <span>01</span>
-              <div>
+            <article class="workflow-step reveal" data-step="1">
+              <div class="step-number">01</div>
+              <div class="step-content">
                 <h3>Analizamos tu proceso</h3>
                 <p>Entendemos cómo trabajas hoy, dónde se pierde tiempo y qué resultado necesitas lograr.</p>
               </div>
+              <div class="step-connector" aria-hidden="true"></div>
             </article>
-            <article class="workflow-step reveal">
-              <span>02</span>
-              <div>
+            <article class="workflow-step reveal" data-step="2">
+              <div class="step-number">02</div>
+              <div class="step-content">
                 <h3>Diseñamos la solución</h3>
                 <p>Definimos funcionalidades, estructura, pantallas, flujos y prioridades para construir con foco.</p>
               </div>
+              <div class="step-connector" aria-hidden="true"></div>
             </article>
-            <article class="workflow-step reveal">
-              <span>03</span>
-              <div>
+            <article class="workflow-step reveal" data-step="3">
+              <div class="step-number">03</div>
+              <div class="step-content">
                 <h3>Desarrollamos y probamos</h3>
                 <p>Construimos la herramienta, validamos casos reales y ajustamos la experiencia antes de entregar.</p>
               </div>
+              <div class="step-connector" aria-hidden="true"></div>
             </article>
-            <article class="workflow-step reveal">
-              <span>04</span>
-              <div>
+            <article class="workflow-step reveal" data-step="4">
+              <div class="step-number">04</div>
+              <div class="step-content">
                 <h3>Entregamos y acompañamos</h3>
                 <p>Dejamos la solución funcionando y acompañamos la adopción para que el equipo la use con confianza.</p>
               </div>
@@ -252,23 +426,31 @@
         </div>
       </section>
 
+      <!-- CTA Section -->
       <section class="section cta" id="contacto">
-        <div class="container cta-box reveal">
-          <p class="eyebrow">Contacto</p>
-          <h2>¿Quieres mejorar un proceso de tu negocio?</h2>
-          <p>
-            Hablemos por WhatsApp o correo y revisemos una solución simple, profesional y ajustada a lo que necesitas.
-          </p>
-          <div class="hero-actions cta-actions">
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/56920584589"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Solicitar cotización por WhatsApp
-            </a>
-            <a class="btn btn-ghost" href="mailto:contacto@velionix.cl">contacto@velionix.cl</a>
+        <div class="cta-glow-effect" aria-hidden="true"></div>
+        <div class="container">
+          <div class="cta-box reveal">
+            <span class="eyebrow">Contacto</span>
+            <h2>¿Quieres mejorar un proceso de tu negocio?</h2>
+            <p>
+              Hablemos por WhatsApp o correo y revisemos una solución simple, profesional y ajustada a lo que necesitas.
+            </p>
+            <div class="cta-actions">
+              <a class="btn btn-primary btn-large" href="https://wa.me/56920584589" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Solicitar cotización por WhatsApp
+              </a>
+              <a class="btn btn-ghost btn-large" href="mailto:contacto@velionix.cl">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                contacto@velionix.cl
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -276,20 +458,41 @@
 
     <footer class="site-footer">
       <div class="container footer-content">
-        <p>© <span id="year"></span> Velionix. Todos los derechos reservados.</p>
-        <p><a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></p>
-        <p><a href="tel:+56920584589">+56 9 2058 4589</a></p>
+        <div class="footer-brand">
+          <img src="logo.png" alt="Velionix" width="120" height="33" />
+          <p>Soluciones digitales a medida para empresas, pymes y comunidades.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-nav">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#solucion">Solución</a></li>
+              <li><a href="#beneficios">Beneficios</a></li>
+              <li><a href="#proceso">Proceso</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contacto</h4>
+            <ul>
+              <li><a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></li>
+              <li><a href="tel:+56920584589">+56 9 2058 4589</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="year"></span> Velionix. Todos los derechos reservados.</p>
+          <p>Hecho con <span aria-label="amor">❤️</span> en Chile</p>
+        </div>
       </div>
     </footer>
 
-    <a
-      class="whatsapp-btn"
-      href="https://wa.me/56920584589"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
-    >
-      WhatsApp
+    <!-- WhatsApp Floating Button -->
+    <a class="whatsapp-btn" href="https://wa.me/56920584589" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" id="whatsapp-float">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span>WhatsApp</span>
     </a>
 
     <script src="script.js"></script>
