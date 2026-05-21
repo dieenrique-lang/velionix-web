@@ -1523,7 +1523,8 @@ a {
   .hero-text,
   .section-heading p,
   .solution-content p,
-  .cta-box p {
+  .cta-box p,
+  .built-cta-text {
     font-size: 0.95rem;
   }
 
@@ -1552,6 +1553,19 @@ a {
 
   .footer-bottom {
     font-size: 0.8rem;
+  }
+
+  .built-cta {
+    padding: 24px 16px;
+  }
+
+  .built-cta-title {
+    font-size: 1.4rem;
+  }
+
+  .built-whatsapp-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1591,6 +1605,217 @@ a {
   body {
     background: white;
     color: black;
+  }
+}
+
+/* ========================================
+   BUILT SECTION (Lo Que Construimos)
+   ======================================== */
+
+.built-section {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.built-bg-effect {
+  position: absolute;
+  top: 10%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.built-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.built-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  transition: all var(--transition-base);
+}
+
+.built-card:hover {
+  border-color: var(--line-hover);
+  background: var(--surface);
+}
+
+.built-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 211, 238, 0.15));
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 999px;
+  color: #4ade80;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.built-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.built-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.built-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.built-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.built-tag:hover {
+  border-color: var(--line-hover);
+  color: var(--accent);
+}
+
+.built-video-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.built-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+}
+
+.built-video-container:hover {
+  border-color: var(--line-hover);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(59, 130, 246, 0.15);
+}
+
+.built-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.built-cta {
+  text-align: center;
+  padding: 48px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.built-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+.built-cta-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.built-cta-text {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  position: relative;
+  z-index: 2;
+}
+
+.built-whatsapp-btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================
+   RESPONSIVE FOR BUILT SECTION
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .built-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .built-video-wrapper {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .built-cta {
+    padding: 32px 24px;
+  }
+
+  .built-card {
+    padding: 24px;
+  }
+
+  .built-title {
+    font-size: 1.2rem;
+  }
+
+  .built-description {
+    font-size: 0.9rem;
+  }
+
+  .built-tags {
+    gap: 8px;
+  }
+
+  .built-tag {
+    font-size: 0.75rem;
+    padding: 5px 12px;
   }
 }
 
