@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbershop Elegance – Barbería, salón y peluquería infantil</title>
+  <style>
+    :root {
+      --bg-dark: #111;
+      --bg-darker: #0a0a0a;
+      --accent-gold: #d4af37;
+      --text-light: #f5f5f5;
+      --text-muted: #ccc;
+      --transition: 0.3s ease;
+      --font-serif: "Georgia", serif;
+      --font-sans: "Helvetica Neue", Arial, sans-serif;
+    }
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:var(--font-sans);background:var(--bg-dark);color:var(--text-light);line-height:1.6;}
+    a {color:var(--accent-gold);text-decoration:none;}
+    .container {max-width:1200px;margin:auto;padding:20px;}
+    header {display:flex;justify-content:space-between;align-items:center;padding:20px 0;}
+    .logo {font-size:1.5rem;font-weight:bold;display:flex;align-items:center;gap:8px;}
+    .logo i {font-size:1.8rem;}
+    nav ul {display:flex;gap:20px;list-style:none;}
+    nav a {font-weight:500;}
+    .btn {background:var(--accent-gold);color:#000;padding:12px 24px;border:none;border-radius:4px;cursor:pointer;transition:var(--transition);font-weight:bold;}
+    .btn:hover {opacity:0.9;}
+    .hero {position:relative;background:url('https://via.placeholder.com/1500x800?text=Barbershop+Background') center/cover no-repeat;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px;}
+    .hero::after {content:"";position:absolute;inset:0;background:rgba(0,0,0,0.6);}
+    .hero * {position:relative;z-index:1;}
+    h1 {font-family:var(--font-serif);font-size:3rem;color:var(--accent-gold);margin-bottom:10px;}
+    h2 {font-size:1.5rem;color:var(--text-muted);margin-bottom:20px;}
+    .services {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .service-card {background:var(--bg-darker);padding:20px;border-radius:8px;transition:var(--transition);}
+    .service-card:hover {transform:translateY(-5px);background:rgba(255,255,255,0.05);}
+    .service-card i {font-size:2rem;color:var(--accent-gold);margin-bottom:10px;}
+    .gallery {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+    .gallery img {width:100%;height:auto;display:block;transition:transform 0.4s;}
+    .gallery img:hover {transform:scale(1.05);}
+    .team {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+    .member {text-align:center;background:var(--bg-darker);padding:20px;border-radius:8px;}
+    .member img {width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px;}
+    .reservation form {display:grid;gap:15px;max-width:600px;margin:auto;}
+    .reservation input, .reservation select {padding:10px;border:none;border-radius:4px;width:100%;}
+    .reservation button {width:auto;align-self:start;}
+    .testimonials {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .testimonial {background:var(--bg-darker);padding:20px;border-radius:8px;}
+    .why {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+    .faq .question {cursor:pointer;padding:15px;background:var(--bg-darker);margin-bottom:5px;border-radius:4px;}
+    .faq .answer {max-height:0;overflow:hidden;transition:max-height var(--transition);padding:0 15px;}
+    .faq .question.active + .answer {max-height:200px;padding:15px;}
+    footer {background:var(--bg-darker);padding:30px 0;}
+    .whatsapp-float {position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:12px 16px;border-radius:50px;display:flex;align-items:center;gap:8px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+    .whatsapp-float:hover {background:#128c7e;}
+    @media (max-width:768px){nav ul{display:none;} .mobile-menu{display:block;}}
+  </style>
+  <script>
+    // Mobile menu toggle
+    function toggleMenu(){
+      const nav=document.querySelector('nav ul');
+      nav.style.display=nav.style.display==='flex'?'none':'flex';
+    }
+    // FAQ accordion
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.faq .question').forEach(q=>{
+        q.addEventListener('click',()=>{
+          q.classList.toggle('active');
+          const ans=q.nextElementSibling;
+          if(q.classList.contains('active')){ans.style.maxHeight=ans.scrollHeight+'px';}
+          else{ans.style.maxHeight='0';}
+        });
+      });
+    });
+    // WhatsApp reservation
+    function submitReservation(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value;
+      const phone=document.getElementById('phone').value;
+      const service=document.getElementById('service').value;
+      const stylist=document.getElementById('stylist').value;
+      const date=document.getElementById('date').value;
+      const time=document.getElementById('time').value;
+      const text=`Hola%20Barbershop%20Elegance,%20quiero%20reservar%20una%20cita:%0A*Nombre:*%20${encodeURIComponent(name)}%0A*Teléfono:*%20${encodeURIComponent(phone)}%0A*Servicio:*%20${encodeURIComponent(service)}%0A*Estilista:*%20${encodeURIComponent(stylist)}%0A*Fecha:*%20${encodeURIComponent(date)}%0A*Hora:*%20${encodeURIComponent(time)}`;
+      window.open(`https://wa.me/56987654321?text=${text}`,'_blank');
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header class="container">
+    <div class="logo"><i class="fas fa-cut"></i>Barbershop Elegance</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="btn" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Reservar Hora</button>
+      <button class="mobile-menu" onclick="toggleMenu()" style="background:none;border:none;font-size:1.5rem;color:var(--accent-gold);">☰</button>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Estilo para toda la familia</h1>
+    <h2>Transformamos tu look con elegancia y precisión.</h2>
+    <div>
+      <button class="btn" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Reservar Hora</button>
+      <button class="btn" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});">Ver Servicios</button>
+    </div>
+  </section>
+
+  <section class="container" id="servicios">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Nuestros Servicios</h2>
+    <div class="services">
+      <div class="service-card"><i class="fas fa-scissors"></i><h3>Corte caballero</h3><p>Corte clásico y moderno.</p><p><strong>$8.990</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-female"></i><h3>Corte dama</h3><p>Estilo a la moda.</p><p><strong>$12.990</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-child"></i><h3>Peluquería infantil</h3><p>Para niños de 0 a 10 años.</p><p><strong>$6.990</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-beard"></i><h3>Barba perfilada</h3><p>Definición y estilo.</p><p><strong>$5.990</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-wind"></i><h3>Keratina</h3><p>Alisado profesional.</p><p><strong>$35.000</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-paintbrush"></i><h3>Tinte completo</h3><p>Coloración duradera.</p><p><strong>$25.000</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-sun"></i><h3>Mechas</h3><p>Diseño de luces.</p><p><strong>$30.000</strong></p><button class="btn">Reservar</button></div>
+      <div class="service-card"><i class="fas fa-spa"></i><h3>Tratamiento capilar</h3><p>Nutrición profunda.</p><p><strong>$15.000</strong></p><button class="btn">Reservar</button></div>
+    </div>
+  </section>
+
+  <section class="container" id="galeria">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Galería de trabajos</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/400x300?text=Antes+1" alt="Antes 1" />
+      <img src="https://via.placeholder.com/400x300?text=Después+1" alt="Después 1" />
+      <img src="https://via.placeholder.com/400x300?text=Antes+2" alt="Antes 2" />
+      <img src="https://via.placeholder.com/400x300?text=Después+2" alt="Después 2" />
+      <img src="https://via.placeholder.com/400x300?text=Antes+3" alt="Antes 3" />
+      <img src="https://via.placeholder.com/400x300?text=Después+3" alt="Después 3" />
+    </div>
+  </section>
+
+  <section class="container" id="equipo">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Nuestro Equipo</h2>
+    <div class="team">
+      <div class="member"><img src="https://via.placeholder.com/120" alt="" /><h3>Alex Gómez</h3><p>Especialista en cortes clásicos – 5 años</p><a href="#"><i class="fab fa-instagram"></i></a></div>
+      <div class="member"><img src="https://via.placeholder.com/120" alt="" /><h3>María Pérez</h3><p>Colorista certificada – 4 años</p><a href="#"><i class="fab fa-instagram"></i></a></div>
+      <div class="member"><img src="https://via.placeholder.com/120" alt="" /><h3>Lucas Rojas</h3><p>Barbero de niños – 3 años</p><a href="#"><i class="fab fa-instagram"></i></a></div>
+    </div>
+  </section>
+
+  <section class="container reservation" id="reservas">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Reserva tu hora</h2>
+    <form onsubmit="submitReservation(event)">
+      <input type="text" id="name" placeholder="Nombre completo" required />
+      <input type="tel" id="phone" placeholder="Teléfono" required />
+      <select id="service" required>
+        <option value="" disabled selected>Servicio</option>
+        <option>Corte caballero</option>
+        <option>Corte dama</option>
+        <option>Peluquería infantil</option>
+        <option>Barba perfilada</option>
+        <option>Keratina</option>
+        <option>Tinte completo</option>
+        <option>Mechas</option>
+        <option>Tratamiento capilar</option>
+      </select>
+      <select id="stylist" required>
+        <option value="" disabled selected>Estilista</option>
+        <option>Alex Gómez</option>
+        <option>María Pérez</option>
+        <option>Lucas Rojas</option>
+      </select>
+      <input type="date" id="date" required />
+      <input type="time" id="time" required />
+      <button type="submit" class="btn">Confirmar Reserva por WhatsApp</button>
+    </form>
+  </section>
+
+  <section class="container" id="testimonios">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Testimonios</h2>
+    <div class="testimonials">
+      <div class="testimonial"><p>“Excelente servicio, me encantó mi nuevo look.”</p><p>- Carlos M.</p></div>
+      <div class="testimonial"><p>“Mi hija salió feliz con su corte.”</p><p>- Ana L.</p></div>
+      <div class="testimonial"><p>“Profesionales y ambiente agradable.”</p><p>- Jorge S.</p></div>
+      <div class="testimonial"><p>“Recomendado al 100%, atención puntual.”</p><p>- Sofía T.</p></div>
+    </div>
+  </section>
+
+  <section class="container" id="por-que">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">¿Por qué elegirnos?</h2>
+    <div class="why">
+      <ul><li>Ambiente familiar y acogedor</li><li>Estilistas certificados</li><li>Productos profesionales</li></ul>
+      <ul><li>Atención puntual sin esperas</li><li>Más de 500 clientes felices</li><li>Precio justo garantizado</li></ul>
+    </div>
+  </section>
+
+  <section class="container faq" id="faq">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Preguntas frecuentes</h2>
+    <div class="question">¿Necesito reservar con anticipación?</div>
+    <div class="answer"><p>Sí, recomendamos reservar al menos 24h antes.</p></div>
+    <div class="question">¿Atienden niños pequeños?</div>
+    <div class="answer"><p>¡Claro! Tenemos zona y personal especializado.</p></div>
+    <div class="question">¿Qué productos usan?</div>
+    <div class="answer"><p>Solo marcas premium y libres de parabenos.</p></div>
+    <div class="question">¿Tienen estacionamiento?</div>
+    <div class="answer"><p>Hay estacionamiento público cercano.</p></div>
+    <div class="question">¿Aceptan tarjetas?</div>
+    <div class="answer"><p>Sí, todas las principales.</p></div>
+  </section>
+
+  <section class="container" id="contacto">
+    <h2 style="color:var(--accent-gold);margin-bottom:20px;">Ubicación y contacto</h2>
+    <p>Av. Las Condes 456, Santiago</p>
+    <p>Tel: +56 9 8765 4321 | <a href="https://wa.me/56987654321" target="_blank">WhatsApp</a></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.123456789!2d-70.639100!3d-33.417000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5c0e5b2e5eb%3A0x123456789abcde!2sAv.%20Las%20Condes%20456%2C%20Santiago!5e0!3m2!1sen!2scl!4v1600000000000!5m2!1sen!2scl" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <footer class="container">
+    <div><i class="fas fa-cut"></i> Barbershop Elegance - "Estilo para toda la familia"</div>
+    <div><a href="#servicios">Servicios</a> | <a href="#galeria">Galería</a> | <a href="#contacto">Contacto</a></div>
+    <div>Horarios: Martes a Sábado 10:00‑20:00, Domingo 10:00‑14:00</div>
+    <div>© 2026 Barbershop Elegance</div>
+  </footer>
+
+  <a href="https://wa.me/56987654321" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i>Reserva</a>
+
+  <div style="background:#222;color:#bbb;padding:8px;text-align:center;font-size:0.9rem;">
+    🌐 Demo creada por <a href="https://velionix.cl" target="_blank" style="color:#d4af37;">velionix.cl</a> — ¿Quieres una página así? Contáctanos
+  </div>
+</body>
+</html>
