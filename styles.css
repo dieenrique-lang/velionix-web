@@ -169,28 +169,29 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.logo img {
+.logo-img {
   display: block;
   width: auto;
-  height: 55px;
-  min-height: 55px;
+  height: 48px;
+  min-height: 48px;
   object-fit: contain;
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 6px #3b82f6);
   transition: filter var(--transition-base);
 }
 
-.logo:hover img {
-  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
+.logo:hover .logo-img {
+  filter: drop-shadow(0 0 10px #3b82f6);
 }
 
-.logo-name {
-  font-size: 1.2rem;
-  font-weight: 800;
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.01em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 /* Navigation */
