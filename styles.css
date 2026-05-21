@@ -151,23 +151,46 @@ a {
   height: 80px;
 }
 
+/* Hero Logo */
+.hero-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.hero-logo img {
+  height: 70px;
+  width: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+
 /* Logo */
 .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .logo img {
   display: block;
   width: auto;
-  height: 44px;
+  height: 55px;
+  min-height: 55px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 24px rgba(59, 130, 246, 0.2));
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
   transition: filter var(--transition-base);
 }
 
 .logo:hover img {
-  filter: drop-shadow(0 12px 32px rgba(59, 130, 246, 0.35));
+  filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
+}
+
+.logo-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
 /* Navigation */
@@ -1169,9 +1192,9 @@ a {
 }
 
 .footer-brand img {
-  height: 36px;
+  height: 44px;
   margin-bottom: 16px;
-  filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.15));
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
 .footer-brand p {
