@@ -801,6 +801,7 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  align-items: stretch;
 }
 
 .card {
@@ -812,6 +813,9 @@ a {
   border-radius: var(--radius-lg);
   transition: all var(--transition-base);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -870,6 +874,7 @@ a {
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  flex: 1;
 }
 
 /* ========================================
@@ -1923,6 +1928,7 @@ a {
 .portfolio-btn {
   width: 100%;
   padding: 12px 20px;
+  margin-top: auto;
   font-size: 0.9rem;
 }
 
