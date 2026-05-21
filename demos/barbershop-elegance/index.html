@@ -26,11 +26,40 @@
     nav a {font-weight:500;}
     .btn {background:var(--accent-gold);color:#000;padding:12px 24px;border:none;border-radius:4px;cursor:pointer;transition:var(--transition);font-weight:bold;}
     .btn:hover {opacity:0.9;}
-    .hero {position:relative;background:url('https://via.placeholder.com/1500x800?text=Barbershop+Background') center/cover no-repeat;min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px;}
-    .hero::after {content:"";position:absolute;inset:0;background:rgba(0,0,0,0.6);}
+    .hero {
+  position: relative;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0') center/cover no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+    .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+}
     .hero * {position:relative;z-index:1;}
-    h1 {font-family:var(--font-serif);font-size:3rem;color:var(--accent-gold);margin-bottom:10px;}
-    h2 {font-size:1.5rem;color:var(--text-muted);margin-bottom:20px;}
+    h1 {
+  font-family:var(--font-serif);
+  font-size:3rem;
+  color:var(--accent-gold);
+  margin-bottom:10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+    h2 {
+  font-size:1.5rem;
+  color:var(--text-muted);
+  margin-bottom:20px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
     .services {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
     .service-card {background:var(--bg-darker);padding:20px;border-radius:8px;transition:var(--transition);}
     .service-card:hover {transform:translateY(-5px);background:rgba(255,255,255,0.05);}
