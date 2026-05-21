@@ -74,7 +74,10 @@
     .reservation input, .reservation select {padding:10px;border:none;border-radius:4px;width:100%;}
     .reservation button {width:auto;align-self:start;}
     .testimonials {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-    .testimonial {background:var(--bg-darker);padding:20px;border-radius:8px;}
+    .testimonial {background:var(--bg-darker);padding:20px;border-radius:8px;transition:var(--transition);}
+.testimonial:hover {transform:translateY(-5px);box-shadow:0 4px 12px rgba(255,215,0,0.3);}
+.rating {margin:8px 0;display:flex;justify-content:center;}
+.rating i {color:#FFD700;font-size:20px;margin-right:2px;}
     .why {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
     .faq .question {cursor:pointer;padding:15px;background:var(--bg-darker);margin-bottom:5px;border-radius:4px;}
     .faq .answer {max-height:0;overflow:hidden;transition:max-height var(--transition);padding:0 15px;}
@@ -207,10 +210,10 @@
   <section class="container" id="testimonios">
     <h2 style="color:var(--accent-gold);margin-bottom:20px;">Testimonios</h2>
     <div class="testimonials">
-      <div class="testimonial"><p>“Excelente servicio, me encantó mi nuevo look.”</p><p>- Carlos M.</p></div>
-      <div class="testimonial"><p>“Mi hija salió feliz con su corte.”</p><p>- Ana L.</p></div>
-      <div class="testimonial"><p>“Profesionales y ambiente agradable.”</p><p>- Jorge S.</p></div>
-      <div class="testimonial"><p>“Recomendado al 100%, atención puntual.”</p><p>- Sofía T.</p></div>
+      <div class="testimonial"><p>“Excelente servicio, me encantó mi nuevo look.”</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>- Carlos M.</p></div>
+      <div class="testimonial"><p>“Mi hija salió feliz con su corte.”</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>- Ana L.</p></div>
+      <div class="testimonial"><p>“Profesionales y ambiente agradable.”</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>- Jorge S.</p></div>
+      <div class="testimonial"><p>“Recomendado al 100%, atención puntual.”</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>- Sofía T.</p></div>
     </div>
   </section>
 
