@@ -268,11 +268,28 @@ function initDemoModal() {
     'petshop-huellitas': {
       title: 'PetShop Huellitas',
       url: 'demos/petshop-huellitas/index.html'
+    },
+    'barbershop-elegance': {
+      title: 'Barbershop Elegance',
+      url: 'demos/barbershop-elegance/index.html'
+    },
+    'clinica-dental': {
+      title: 'DentalCare Centro Odontológico',
+      url: 'demos/clinica-dental/index.html'
+    },
+    'servicios-hogar': {
+      title: 'VelioHome Servicios del Hogar',
+      url: 'demos/servicios-hogar/index.html'
     }
   };
 
   document.querySelectorAll('.portfolio-card').forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // Prevent opening the modal preview if the click was on the "Ver Demo" button
+      if (e.target.closest('.portfolio-btn')) {
+        return;
+      }
+
       const demoKey = card.getAttribute('data-demo');
       const demo = demos[demoKey];
 
