@@ -1657,19 +1657,28 @@
       z-index: 1001;
       text-decoration: none;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     .whatsapp-float:hover {
       background-color: #20ba5a;
       transform: scale(1.1);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(37, 211, 102, 0.4);
+      color: #fff;
     }
 
-    .whatsapp-float svg {
-      width: 32px;
-      height: 32px;
-      fill: #fff;
-      transition: var(--transition-fast);
+    .whatsapp-float i {
+      font-size: 34px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
     }
 
     .whatsapp-float::after {
@@ -1729,9 +1738,8 @@
         bottom: 90px;
         right: 20px;
       }
-      .whatsapp-float svg {
-        width: 26px;
-        height: 26px;
+      .whatsapp-float i {
+        font-size: 28px;
       }
       .map-container {
         height: 300px;
@@ -2438,9 +2446,7 @@
 
   <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/56920584589?text=Hola,%20solicito%20cotizacion%20para%20un%20servicio%20para%20mi%20hogar." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.968C16.388 1.97 13.916.945 11.29.945c-5.437 0-9.857 4.37-9.86 9.8.001 1.714.452 3.39 1.31 4.887L1.69 22.223l6.757-1.772.2.119zm12.357-7.986c-.332-.165-1.951-.951-2.253-1.061-.303-.11-.522-.165-.742.165-.219.329-.848 1.061-1.04 1.281-.19.22-.382.247-.714.082-.331-.165-1.401-.508-2.67-1.628-1.004-.882-1.68-1.97-1.879-2.3-.198-.33-.021-.508.144-.671.148-.147.332-.382.497-.574.166-.193.22-.33.33-.55.109-.22.055-.412-.028-.577-.082-.165-.742-1.76-.1.171-.971.219-.971.55 0 .287.109.522.613.961 1.042.348 2.052 1.761 3.519 3.037 4.102 1.267.892 2.378 1.758 3.237 2.585.86.826 1.58 1.442 2.164 1.24.584-.202 1.951-.817 2.227-1.61.277-.792.277-1.469.193-1.61-.083-.14-.303-.223-.634-.388z"/>
-    </svg>
+    <i class="fa-brands fa-whatsapp"></i>
   </a>
 </body>
 </html>
