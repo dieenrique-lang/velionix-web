@@ -1,0 +1,28 @@
+/* CSS personalizado para Mordiscos SpA */
+
+/* Scroll suave global */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Transición personalizada para el Toast */
+/* Aunque Tailwind cubre duration y ease, especificamos properties para mayor control */
+#toast {
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Animación 'pulse' más suave para el botón flotante de WhatsApp */
+@keyframes softPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.whatsapp-float:hover {
+    animation: softPulse 1s ease-in-out infinite;
+}
