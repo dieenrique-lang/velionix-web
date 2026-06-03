@@ -92,7 +92,7 @@
             <!-- Background Image Placeholder (Unsplash) -->
             <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1600" alt="Mascota feliz" class="w-full h-full object-cover opacity-40">
         </div>
-        <div class="relative max-w-7xl mx-auto px-4 py-24 sm:py-32 flex flex-col items-start">
+        <div class="relative max-w-7xl mx-auto px-4 py-24 sm:py-32 flex flex-col items-start min-h-[60vh] justify-center">
             <h1 class="text-4xl sm:text-6xl font-bold mb-4 drop-shadow-md">El rincón favorito<br>de tu mascota</h1>
             <p class="text-lg sm:text-xl mb-8 max-w-xl drop-shadow-md">Ofrecemos alimentos premium, accesorios de alta calidad y todo lo necesario para la felicidad y bienestar de tus mejores amigos.</p>
             <button onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})" class="bg-brand-orange hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105">
@@ -107,28 +107,28 @@
             <h2 class="text-3xl font-bold text-center mb-10 text-brand-dark">Categorías Destacadas</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <!-- Cat 1 -->
-                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all aspect-square block">
+                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-32 sm:h-40 block">
                     <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&q=80&w=500" alt="Alimento Perros" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
                         <h3 class="text-white font-bold text-lg sm:text-xl">Alimento para Perros</h3>
                     </div>
                 </a>
                 <!-- Cat 2 -->
-                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all aspect-square block">
+                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-32 sm:h-40 block">
                     <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=500" alt="Alimento Gatos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
                         <h3 class="text-white font-bold text-lg sm:text-xl">Alimento para Gatos</h3>
                     </div>
                 </a>
                 <!-- Cat 3 -->
-                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all aspect-square block">
+                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-32 sm:h-40 block">
                     <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=600&h=400" alt="Snacks y Premios" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
                         <h3 class="text-white font-bold text-lg sm:text-xl">Snacks y Premios</h3>
                     </div>
                 </a>
                 <!-- Cat 4 -->
-                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all aspect-square block">
+                <a href="#" class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-32 sm:h-40 block">
                     <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=500" alt="Accesorios" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4">
                         <h3 class="text-white font-bold text-lg sm:text-xl">Accesorios y Juguetes</h3>
@@ -146,7 +146,7 @@
                 <!-- Product 1 -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
                     <div class="relative w-full mb-4">
-                        <img src="imagenes productos destacados/32990 Master Dog 15 kilos.png" alt="Master Dog 15 kilos" class="w-full h-48 object-cover rounded-t-lg">
+                        <img src="imagenes productos destacados/32990 Master Dog 15 kilos.png" alt="Master Dog 15 kilos" class="w-full aspect-square object-contain p-4 bg-gray-50 rounded-t-lg">
                         <span class="absolute top-2 left-2 bg-brand-orange text-white text-xs font-bold px-2 py-1 rounded shadow">PREMIUM</span>
                     </div>
                     <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Alimento Perros</span>
@@ -170,7 +170,7 @@
                 <!-- Product 2 -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
                     <div class="relative w-full mb-4">
-                        <img src="imagenes productos destacados/25990 Purina Cat chow 8 kilos.png" alt="Purina Cat chow 8 kilos" class="w-full h-48 object-cover rounded-t-lg">
+                        <img src="imagenes productos destacados/25990 Purina Cat chow 8 kilos.png" alt="Purina Cat chow 8 kilos" class="w-full aspect-square object-contain p-4 bg-gray-50 rounded-t-lg">
                     </div>
                     <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Alimento Gatos</span>
                     <h3 class="font-bold text-lg leading-tight mb-2 flex-grow">Purina Cat chow 8 kilos</h3>
@@ -193,7 +193,7 @@
                 <!-- Product 3 -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
                     <div class="relative w-full mb-4">
-                        <img src="imagenes productos destacados/16900 Arena Sanitaria Easy Clean 20 kilos.png" alt="Arena Sanitaria Easy Clean 20 kilos" class="w-full h-48 object-cover rounded-t-lg">
+                        <img src="imagenes productos destacados/16900 Arena Sanitaria Easy Clean 20 kilos.png" alt="Arena Sanitaria Easy Clean 20 kilos" class="w-full aspect-square object-contain p-4 bg-gray-50 rounded-t-lg">
                         <span class="absolute top-2 left-2 bg-brand-green text-white text-xs font-bold px-2 py-1 rounded shadow">NUEVO</span>
                     </div>
                     <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Higiene Gatos</span>
@@ -217,7 +217,7 @@
                 <!-- Product 4 -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
                     <div class="relative w-full mb-4">
-                        <img src="imagenes productos destacados/38900 Fit formula 20 kilos.png" alt="Fit formula 20 kilos" class="w-full h-48 object-cover rounded-t-lg">
+                        <img src="imagenes productos destacados/38900 Fit formula 20 kilos.png" alt="Fit formula 20 kilos" class="w-full aspect-square object-contain p-4 bg-gray-50 rounded-t-lg">
                     </div>
                     <span class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Alimento Perros</span>
                     <h3 class="font-bold text-lg leading-tight mb-2 flex-grow">Fit formula 20 kilos</h3>
