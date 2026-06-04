@@ -92,14 +92,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
             html += `
-                <div class="flex justify-between items-start text-sm border-b border-gray-50 pb-2">
-                    <div class="flex-1 pr-2">
-                        <span class="font-bold text-gray-800">${item.quantity}x</span> 
-                        <span class="text-gray-600">${item.title}</span>
-                        <div class="text-xs text-gray-400">Formato: ${item.variant}</div>
+                <div class="flex flex-col text-sm border-b border-gray-100 pb-3">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex-1 pr-2">
+                            <span class="font-bold text-gray-800">${item.title}</span>
+                            <div class="text-xs text-gray-400">Formato: ${item.variant}</div>
+                        </div>
+                        <div class="font-semibold text-brand-dark whitespace-nowrap">
+                            $${itemTotal.toLocaleString('es-CL')}
+                        </div>
                     </div>
-                    <div class="font-semibold text-brand-dark whitespace-nowrap">
-                        $${itemTotal.toLocaleString('es-CL')}
+                    <div class="flex justify-between items-center bg-gray-50 rounded-lg p-1">
+                        <div class="flex items-center gap-3">
+                            <button class="cart-btn-minus text-gray-500 hover:text-brand-orange px-2 py-1 bg-white rounded shadow-sm transition-colors border border-gray-200" data-index="${index}">-</button>
+                            <span class="font-bold w-4 text-center">${item.quantity}</span>
+                            <button class="cart-btn-plus text-gray-500 hover:text-brand-green px-2 py-1 bg-white rounded shadow-sm transition-colors border border-gray-200" data-index="${index}">+</button>
+                        </div>
+                        <button class="cart-btn-remove text-gray-400 hover:text-red-500 p-1 transition-colors" data-index="${index}" title="Eliminar">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             `;
@@ -107,6 +120,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartItemsContainer.innerHTML = html;
         cartTotalEl.textContent = `$${total.toLocaleString('es-CL')}`;
+    }
+
+    // ==========================================
+    // 3.b Lógica Interactiva del Carrito
+    // ==========================================
+    if (cartItemsContainer) {
+        cartItemsContainer.addEventListener('click', (e) => {
+            const btnMinus = e.target.closest('.cart-btn-minus');
+            const btnPlus = e.target.closest('.cart-btn-plus');
+            const btnRemove = e.target.closest('.cart-btn-remove');
+
+            if (btnMinus) {
+                const index = parseInt(btnMinus.getAttribute('data-index'));
+                cart[index].quantity -= 1;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                renderCart();
+            }
+
+            if (btnPlus) {
+                const index = parseInt(btnPlus.getAttribute('data-index'));
+                cart[index].quantity += 1;
+                renderCart();
+            }
+
+            if (btnRemove) {
+                const index = parseInt(btnRemove.getAttribute('data-index'));
+                cart.splice(index, 1);
+                renderCart();
+            }
+        });
     }
 
     // ==========================================
