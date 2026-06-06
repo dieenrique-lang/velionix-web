@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad — Velionix</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #6366f1;
+      --accent-dim: rgba(99,102,241,0.12);
+      --text: #e8e8f0;
+      --text-muted: #6b6b80;
+      --text-dim: #9494a8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* Main */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 56px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .hero-meta span strong {
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 .num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 12px 0 14px;
+    }
+
+    ul li {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(30,30,46,0.5);
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-dim);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      color: var(--text-dim);
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-top: 16px;
+    }
+
+    .contact-card p {
+      margin-bottom: 8px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88rem;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">veli<span>onix</span></a>
+    <span class="badge">Política de Privacidad</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-label">Documento legal</div>
+    <h1>Política de Privacidad</h1>
+    <div class="hero-meta">
+      <span><strong>Empresa:</strong> Velionix</span>
+      <span><strong>Última actualización:</strong> Junio 2025</span>
+      <span><strong>Jurisdicción:</strong> Chile</span>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span> Introducción</h2>
+    <p>Velionix ("nosotros", "nuestro" o "la plataforma") opera como un servicio SaaS que permite a negocios automatizar su atención al cliente a través de WhatsApp Business API. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos la información personal de nuestros usuarios y clientes.</p>
+    <p>Al usar nuestros servicios, aceptas las prácticas descritas en este documento. Si no estás de acuerdo, te pedimos que no uses nuestra plataforma.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Información que recopilamos</h2>
+    <p>Recopilamos la siguiente información cuando te registras o usas Velionix:</p>
+    <ul>
+      <li>Nombre del negocio, rubro e industria</li>
+      <li>Correo electrónico y contraseña (almacenada de forma encriptada)</li>
+      <li>Número de teléfono de contacto</li>
+      <li>Credenciales de WhatsApp Business API (Phone Number ID y Token de acceso)</li>
+      <li>Conversaciones y mensajes procesados a través de la plataforma</li>
+      <li>Datos de uso y logs de actividad del sistema</li>
+    </ul>
+    <div class="highlight">
+      <p>Los tokens de acceso de WhatsApp Business API se almacenan cifrados con estándar AES-256 (Fernet). Nunca se exponen en texto plano ni se comparten con terceros.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Uso de la información</h2>
+    <p>Utilizamos tu información exclusivamente para:</p>
+    <ul>
+      <li>Proveer y operar los servicios de automatización de WhatsApp</li>
+      <li>Autenticar tu acceso al panel de control</li>
+      <li>Procesar y enrutar mensajes de WhatsApp Business</li>
+      <li>Enviarte notificaciones importantes sobre tu cuenta</li>
+      <li>Mejorar la plataforma y corregir errores técnicos</li>
+      <li>Cumplir obligaciones legales aplicables en Chile</li>
+    </ul>
+    <p>No utilizamos tu información para publicidad de terceros ni la vendemos bajo ninguna circunstancia.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Almacenamiento y seguridad</h2>
+    <p>Tus datos se almacenan en servidores seguros provistos por Supabase (infraestructura PostgreSQL con cifrado en reposo). El acceso está protegido mediante:</p>
+    <ul>
+      <li>Autenticación JWT con cookies HttpOnly y atributo Secure</li>
+      <li>Row-Level Security (RLS) que aísla los datos de cada negocio</li>
+      <li>Contraseñas hasheadas con bcrypt</li>
+      <li>Tokens de WhatsApp encriptados con Fernet (AES-256)</li>
+      <li>Validación HMAC-SHA256 en todos los webhooks entrantes</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Compartición de datos con terceros</h2>
+    <p>Para operar el servicio trabajamos con los siguientes proveedores de confianza:</p>
+    <ul>
+      <li><strong style="color: var(--text-dim)">Meta (Facebook)</strong> — para la entrega de mensajes vía WhatsApp Business API</li>
+      <li><strong style="color: var(--text-dim)">Supabase</strong> — para el almacenamiento seguro de datos</li>
+      <li><strong style="color: var(--text-dim)">Render</strong> — para el hospedaje del servidor</li>
+      <li><strong style="color: var(--text-dim)">Anthropic</strong> — para el procesamiento de lenguaje natural (IA)</li>
+    </ul>
+    <p>Cada proveedor tiene sus propias políticas de privacidad y cumple con estándares internacionales de seguridad.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Retención de datos</h2>
+    <p>Conservamos tu información mientras tu cuenta esté activa. Si decides cancelar tu cuenta, eliminaremos tus datos personales dentro de los 30 días siguientes a la solicitud, excepto aquellos que debamos conservar por obligación legal.</p>
+    <p>Los registros de conversaciones de WhatsApp se eliminan automáticamente según el límite de historial configurado en tu cuenta.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> Tus derechos</h2>
+    <p>De acuerdo con la Ley N° 19.628 sobre Protección de la Vida Privada de Chile, tienes derecho a:</p>
+    <ul>
+      <li>Acceder a los datos personales que tenemos sobre ti</li>
+      <li>Rectificar información incorrecta o desactualizada</li>
+      <li>Solicitar la eliminación de tus datos</li>
+      <li>Oponerte al tratamiento de tus datos en ciertos casos</li>
+      <li>Solicitar la portabilidad de tu información</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, contáctanos al correo indicado en la sección de contacto.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Cookies</h2>
+    <p>Velionix utiliza únicamente cookies técnicas necesarias para el funcionamiento del servicio:</p>
+    <ul>
+      <li><strong style="color: var(--text-dim)">velionix_token</strong> — cookie de sesión HttpOnly para autenticación segura. Expira en 8 horas.</li>
+    </ul>
+    <p>No utilizamos cookies de rastreo, analytics de terceros ni publicidad comportamental.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span> Cambios a esta política</h2>
+    <p>Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos por correo electrónico o mediante un aviso en la plataforma. El uso continuado del servicio después de los cambios implica tu aceptación.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span> Contacto</h2>
+    <p>Para consultas sobre privacidad, solicitudes de datos o cualquier inquietud:</p>
+    <div class="contact-card">
+      <p><strong style="color: var(--text)">Velionix</strong></p>
+      <p>Chile</p>
+      <p>Email: <a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Velionix · Chile · <a href="mailto:contacto@velionix.cl" style="color: var(--text-muted); text-decoration: none;">contacto@velionix.cl</a></p>
+</footer>
+
+</body>
+</html>
