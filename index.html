@@ -125,7 +125,7 @@
 
   /* ============ CAPABILITIES ============ */
   .caps{padding:100px 0}
-  .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
   .cap{background:linear-gradient(180deg,var(--midnight-2),rgba(27,20,64,0.4));border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:border-color .2s ease,transform .2s ease}
   .cap:hover{border-color:rgba(245,181,68,0.4);transform:translateY(-4px)}
   .cap .icn{width:42px;height:42px;border-radius:11px;background:rgba(245,181,68,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px}
@@ -224,7 +224,7 @@
 
   /* ============ RESPONSIVE ============ */
   @media(max-width:1020px){
-    .cap-grid{grid-template-columns:repeat(2,1fr)}
+    .cap-grid{grid-template-columns:repeat(3,1fr)}
     .dental-points{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:900px){
@@ -370,6 +370,11 @@
         <h3>Da la info de siempre</h3>
         <p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p>
       </div>
+      <div class="cap">
+        <div class="icn">📆</div>
+        <h3>Sincroniza con Google Calendar</h3>
+        <p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -449,7 +454,7 @@
       <div class="dp"><b>Una agenda por profesional</b>Cada dentista, kinesiólogo o especialista con su propio calendario y horarios.</div>
       <div class="dp"><b>Solo horas reales</b>El bot ofrece únicamente los cupos libres. Imposible la doble reserva.</div>
       <div class="dp"><b>Cancela y reagenda</b>Si el paciente no puede asistir, el bot verifica su cita y la cancela con confirmación.</div>
-      <div class="dp"><b>Tu recepción respira</b>Las horas se toman solas, tu equipo se dedica a atender, no a coordinar.</div>
+      <div class="dp"><b>Sincroniza con Google Calendar</b>Cada cita agendada por WhatsApp aparece al instante en tu calendario. Cero doble agenda, cero trabajo manual.</div>
     </div>
   </div>
 </section>
@@ -580,6 +585,7 @@
         <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Panel de administración completo</li>
         <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Notificaciones de citas y leads</li>
         <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Número WhatsApp Business incluido</li>
+        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Sincronización con Google Calendar</li>
         <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Soporte por WhatsApp</li>
       </ul>
       <a href="https://velionix-agent.onrender.com/static/register.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Empezar prueba gratis →</a>
