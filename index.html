@@ -159,7 +159,7 @@
         }
         .navbar .container{display:flex;align-items:center;justify-content:space-between}
         .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-        .brand img{height:30px;width:auto}
+        .brand img{height:52px;width:auto}
         .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
         .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
         .nav-links a:hover{color:var(--cyan)}
@@ -404,11 +404,17 @@
             .metrics{flex-direction:column}
             .sec{padding:60px 0}
         }
-        .ycloud-badge{display:flex;align-items:center;gap:14px;margin-top:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;max-width:420px}
+        .ycloud-badge{display:flex;align-items:center;gap:14px;margin-top:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;max-width:420px;flex-wrap:wrap}
+        @media(max-width:560px){.ycloud-badge{flex-direction:column;align-items:flex-start;gap:10px}.meta-badge-img{height:36px}.step{padding:18px 16px;gap:14px}.step .num{font-size:26px;min-width:40px}}
         .meta-badge-img{height:48px;width:auto;border-radius:6px;flex-shrink:0}
         .ycloud-text{display:flex;flex-direction:column;gap:3px}
         .ycloud-name{font-size:13px;font-weight:600;color:var(--ink)}
         .ycloud-desc{font-size:12px;color:var(--faint)}
+        .typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:rgba(255,255,255,0.06);border-radius:16px;border-bottom-left-radius:4px;width:fit-content;margin-bottom:10px}
+        .typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:typingDot 1.2s infinite}
+        .typing span:nth-child(2){animation-delay:.2s}
+        .typing span:nth-child(3){animation-delay:.4s}
+        @keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
     </style>
 </head>
 <body>
@@ -457,13 +463,9 @@
         <div class="phone">
             <div class="chat-head">
                 <div class="chat-avatar">A</div>
-                <div><div class="chat-name">Tienda Aurora</div><div class="chat-status">en línea</div></div>
+                <div><div class="chat-name">Tienda Aurora</div><div class="chat-status" id="auroraStatus">en línea</div></div>
             </div>
-            <div class="bubble in">Hola! tienen el polerón oversize en talla M? 🙌<span class="time">03:38</span></div>
-            <div class="bubble out">¡Hola! Sí, tenemos disponible 👇<span class="price">Polerón Oversize Beige · $24.990 · Talla M</span><span class="time">03:38 ✓✓</span></div>
-            <div class="bubble in">Perfecto, lo quiero. Hacen envío a Valdivia?<span class="time">03:39</span></div>
-            <div class="bubble out">Sí, despachamos a todo Chile 🚚 Te dejo agendado el envío. ¿Para qué día?<span class="time">03:39 ✓✓</span></div>
-            <div class="bubble in">Mañana porfa 🙏<span class="time">03:40</span></div>
+            <div id="auroraChat" style="min-height:200px"></div>
         </div>
     </header>
 
@@ -560,6 +562,7 @@
                 <div class="step"><div class="num">01</div><div>
                     <h4>Te registras</h4>
                     <p>Creas tu cuenta en Velionix y conectas tu número de WhatsApp Business a través de <a href="https://ycloud.com" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">YCloud.com</a> — partner oficial de Meta. Nosotros te guiamos en cada paso, no necesitas saber nada técnico.</p>
+                    <p style="font-size:12px;color:var(--faint);margin-top:8px">⚠️ El uso de la API oficial de Meta requiere cumplir las políticas de WhatsApp Business. Velionix opera dentro de estas normas para mantener tu número protegido.</p>
                     <div class="ycloud-badge">
                         <img src="https://velionix.cl/meta-business-partner.png" alt="Meta Business Partner" class="meta-badge-img">
                         <div class="ycloud-text">
@@ -569,7 +572,7 @@
                     </div>
                 </div></div>
                 <div class="step"><div class="num">02</div><div><h4>Configuras tu negocio</h4><p>Subes tu catálogo desde Excel, defines tus horarios y, si trabajas con citas, creas la agenda de cada profesional.</p></div></div>
-                <div class="step"><div class="num">03</div><div><h4>Tu WhatsApp empieza a trabajar</h4><p>Activas el bot y desde ese momento responde, vende y agenda solo. Tú recibes el aviso cuando hay una venta o una cita lista.</p></div></div>
+                <div class="step"><div class="num">03</div><div><h4>Tu WhatsApp empieza a trabajar</h4><p>Una vez que tu número está conectado, un miembro de nuestro equipo se pondrá en contacto contigo para solicitar los datos de tu negocio y activar el bot. Desde ese momento responde, vende y agenda solo — y tú recibes el aviso cuando hay una venta o una cita lista.</p></div></div>
             </div>
             <div style="text-align:center;margin-top:34px">
                 <a href="https://app.velionix.cl/register" class="btn btn-primary">Crear mi cuenta gratis →</a>
@@ -644,7 +647,7 @@
                     <li>Catálogo de productos desde Excel</li>
                     <li>Panel de administración completo</li>
                     <li>Notificaciones de citas y leads</li>
-                    <li>Número WhatsApp Business incluido</li>
+
                     <li>Sincronización con Google Calendar</li>
                     <li>Soporte por WhatsApp</li>
                 </ul>
@@ -959,6 +962,45 @@
             draw();
         }
 
+        // ===== Chat Aurora animado =====
+        (function(){
+            var container=document.getElementById('auroraChat');
+            var status=document.getElementById('auroraStatus');
+            if(!container)return;
+            var msgs=[
+                {dir:'in', text:'Hola! tienen el polerón oversize en talla M? 🙌', time:'03:38'},
+                {dir:'out', text:'¡Hola! Sí, tenemos disponible 👇', price:'Polerón Oversize Beige · $24.990 · Talla M', time:'03:38 ✓✓'},
+                {dir:'in', text:'Perfecto, lo quiero. Hacen envío a Valdivia?', time:'03:39'},
+                {dir:'out', text:'Sí, despachamos a todo Chile 🚚 ¿Para qué día quieres el envío?', time:'03:39 ✓✓'},
+                {dir:'in', text:'Mañana porfa 🙏', time:'03:40'}
+            ];
+            var delays=[0, 1400, 2800, 4200, 5600];
+            var LOOP=9000;
+            function showTyping(cb){
+                var t=document.createElement('div');t.className='typing';
+                t.innerHTML='<span></span><span></span><span></span>';
+                container.appendChild(t);container.scrollTop=container.scrollHeight;
+                setTimeout(function(){t.remove();cb()},700);
+            }
+            function addBubble(msg){
+                var d=document.createElement('div');d.className='bubble '+msg.dir;
+                d.innerHTML=msg.text+(msg.price?'<span class="price">'+msg.price+'</span>':'')+'<span class="time">'+msg.time+'</span>';
+                d.style.opacity='0';d.style.transform='translateY(8px)';d.style.transition='opacity .3s,transform .3s';
+                container.appendChild(d);container.scrollTop=container.scrollHeight;
+                requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='translateY(0)'});
+            }
+            function runSequence(){
+                container.innerHTML='';status.textContent='en línea';
+                msgs.forEach(function(msg,i){
+                    setTimeout(function(){
+                        if(msg.dir==='out'){status.textContent='escribiendo...';showTyping(function(){status.textContent='en línea';addBubble(msg)})}
+                        else{addBubble(msg)}
+                    },delays[i]);
+                });
+            }
+            runSequence();
+            setInterval(runSequence,LOOP);
+        })();
     })();
     </script>
 </body>
