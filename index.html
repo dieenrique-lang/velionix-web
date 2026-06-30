@@ -425,6 +425,21 @@
         .phone-input-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);margin-top:8px;}
         .phone-input-fake{flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--line);border-radius:24px;padding:9px 14px;font-size:13px;color:var(--faint);}
         .phone-input-mic{font-size:18px;opacity:0.5;flex-shrink:0;}
+        /* Catálogo interactivo */
+        #inv-initial,#inv-loading{text-align:center;padding:20px 0 10px}
+        .inv-file-icon{font-size:48px;margin-bottom:8px}
+        .inv-file-name{font-size:14px;font-weight:600;color:var(--cyan);font-family:monospace}
+        .inv-file-sub{font-size:12px;color:var(--faint);margin-top:4px}
+        .inv-progress-label{font-size:13px;color:var(--muted);margin:16px 0 8px}
+        .inv-progress-track{width:100%;max-width:340px;margin:0 auto;height:6px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden}
+        .inv-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#00c8ff,#a855f7);border-radius:6px;transition:width .25s ease}
+        .inv-success-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+        .inv-success-icon{font-size:22px;flex-shrink:0}
+        .inv-success-msg{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+        .inv-reset-btn{margin-left:auto;background:none;border:1px solid var(--line);color:var(--muted);font-family:inherit;font-size:12px;padding:6px 12px;border-radius:20px;cursor:pointer;transition:.2s;white-space:nowrap}
+        .inv-reset-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+        #inv-table tbody tr{opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
+        #inv-table tbody tr.visible{opacity:1;transform:translateX(0)}
     </style>
 </head>
 <body>
@@ -603,22 +618,40 @@
                 <p>No tienes que escribir productos uno por uno ni aprender un sistema nuevo. Cargas la planilla que ya usas y Velionix la convierte en el catálogo que tu WhatsApp consulta para vender.</p>
             </div>
             <div class="inv">
-                <span class="file">📄 catalogo_tienda.xlsx</span>
-                <table>
-                    <thead><tr><th>Producto</th><th>Precio</th><th>Stock</th></tr></thead>
-                    <tbody>
-                        <tr><td>Polerón Oversize Beige</td><td>$24.990</td><td>12</td></tr>
-                        <tr><td>Jeans Mom Tiro Alto</td><td>$29.990</td><td>8</td></tr>
-                        <tr><td>Cartera Cuero Negra</td><td>$34.990</td><td>5</td></tr>
-                        <tr><td>Zapatillas Urbanas</td><td>$39.990</td><td>21</td></tr>
-                        <tr><td>Aros Plata 925</td><td>$12.990</td><td>40</td></tr>
-                    </tbody>
-                </table>
-                <div class="inv-benefits">
-                    <div>Importas tu planilla de productos en segundos</div>
-                    <div>El bot responde con precios y stock reales, no inventados</div>
-                    <div>Actualizas tu catálogo cuando quieras desde el panel</div>
-                    <div>Funciona para ropa, accesorios y cualquier producto</div>
+                <!-- Estado inicial: botón -->
+                <div id="inv-initial">
+                    <div class="inv-file-icon">📊</div>
+                    <p class="inv-file-name">catalogo_tienda.xlsx</p>
+                    <p class="inv-file-sub">5 productos · 18 KB</p>
+                    <button class="btn btn-primary" id="inv-upload-btn" style="margin-top:20px">⬆ Importar catálogo</button>
+                </div>
+                <!-- Estado cargando: barra de progreso -->
+                <div id="inv-loading" style="display:none">
+                    <div class="inv-file-icon">📊</div>
+                    <p class="inv-file-name">catalogo_tienda.xlsx</p>
+                    <p class="inv-progress-label" id="inv-progress-label">Leyendo archivo...</p>
+                    <div class="inv-progress-track"><div class="inv-progress-bar" id="inv-progress-bar"></div></div>
+                </div>
+                <!-- Estado resultado: tabla + beneficios -->
+                <div id="inv-result" style="display:none">
+                    <div class="inv-success-head">
+                        <span class="inv-success-icon">✅</span>
+                        <div>
+                            <span class="inv-file-name">catalogo_tienda.xlsx</span>
+                            <span class="inv-success-msg">5 productos importados correctamente</span>
+                        </div>
+                        <button class="inv-reset-btn" id="inv-reset">↩ Reimportar</button>
+                    </div>
+                    <table id="inv-table">
+                        <thead><tr><th>Producto</th><th>Precio</th><th>Stock</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="inv-benefits" id="inv-benefits" style="opacity:0">
+                        <div>Importas tu planilla de productos en segundos</div>
+                        <div>El bot responde con precios y stock reales, no inventados</div>
+                        <div>Actualizas tu catálogo cuando quieras desde el panel</div>
+                        <div>Funciona para ropa, accesorios y cualquier producto</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1081,6 +1114,72 @@
                 entries[0].isIntersecting ? start() : stop();
             },{threshold:0.25});
             obs.observe(container);
+        })();
+
+        // ===== Catálogo interactivo =====
+        (function(){
+            var products=[
+                ['Polerón Oversize Beige','$24.990','12'],
+                ['Jeans Mom Tiro Alto','$29.990','8'],
+                ['Cartera Cuero Negra','$34.990','5'],
+                ['Zapatillas Urbanas','$39.990','21'],
+                ['Aros Plata 925','$12.990','40']
+            ];
+            var steps=[
+                {label:'Leyendo archivo...', pct:20, delay:0},
+                {label:'Detectando columnas...', pct:45, delay:600},
+                {label:'Validando productos...', pct:72, delay:1100},
+                {label:'Importando al catálogo...', pct:90, delay:1600},
+                {label:'¡Listo!', pct:100, delay:2000}
+            ];
+            var btn=document.getElementById('inv-upload-btn');
+            var reset=document.getElementById('inv-reset');
+            if(!btn)return;
+
+            function showState(id){
+                ['inv-initial','inv-loading','inv-result'].forEach(function(s){
+                    document.getElementById(s).style.display=s===id?'block':'none';
+                });
+            }
+
+            function runImport(){
+                showState('inv-loading');
+                var bar=document.getElementById('inv-progress-bar');
+                var label=document.getElementById('inv-progress-label');
+                steps.forEach(function(s){
+                    setTimeout(function(){
+                        bar.style.width=s.pct+'%';
+                        label.textContent=s.label;
+                        if(s.pct===100){
+                            setTimeout(showResult, 400);
+                        }
+                    }, s.delay);
+                });
+            }
+
+            function showResult(){
+                showState('inv-result');
+                var tbody=document.querySelector('#inv-table tbody');
+                tbody.innerHTML='';
+                products.forEach(function(p,i){
+                    var tr=document.createElement('tr');
+                    tr.innerHTML='<td>'+p[0]+'</td><td>'+p[1]+'</td><td>'+p[2]+'</td>';
+                    tbody.appendChild(tr);
+                    setTimeout(function(){tr.classList.add('visible')}, i*120+50);
+                });
+                var benefits=document.getElementById('inv-benefits');
+                setTimeout(function(){
+                    benefits.style.transition='opacity .5s';
+                    benefits.style.opacity='1';
+                }, products.length*120+300);
+            }
+
+            btn.addEventListener('click', runImport);
+            reset.addEventListener('click', function(){
+                document.getElementById('inv-progress-bar').style.width='0%';
+                document.getElementById('inv-benefits').style.opacity='0';
+                showState('inv-initial');
+            });
         })();
     })();
     </script>
