@@ -404,6 +404,11 @@
             .metrics{flex-direction:column}
             .sec{padding:60px 0}
         }
+        .ycloud-badge{display:flex;align-items:center;gap:14px;margin-top:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;max-width:420px}
+        .meta-badge-img{height:48px;width:auto;border-radius:6px;flex-shrink:0}
+        .ycloud-text{display:flex;flex-direction:column;gap:3px}
+        .ycloud-name{font-size:13px;font-weight:600;color:var(--ink)}
+        .ycloud-desc{font-size:12px;color:var(--faint)}
     </style>
 </head>
 <body>
@@ -552,7 +557,17 @@
                 <h2>De tu WhatsApp actual a uno que trabaja solo</h2>
             </div>
             <div class="steps">
-                <div class="step"><div class="num">01</div><div><h4>Te registras</h4><p>Creas tu cuenta con los datos de tu negocio y nos compartes el acceso a tu WhatsApp Business. Nosotros terminamos de configurar y activar todo contigo — no necesitas saber nada técnico.</p></div></div>
+                <div class="step"><div class="num">01</div><div>
+                    <h4>Te registras</h4>
+                    <p>Creas tu cuenta en Velionix y conectas tu número de WhatsApp Business a través de <a href="https://ycloud.com" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">YCloud.com</a> — partner oficial de Meta. Nosotros te guiamos en cada paso, no necesitas saber nada técnico.</p>
+                    <div class="ycloud-badge">
+                        <img src="https://velionix.cl/meta-business-partner.png" alt="Meta Business Partner" class="meta-badge-img">
+                        <div class="ycloud-text">
+                            <span class="ycloud-name">YCloud · Partner oficial de Meta</span>
+                            <span class="ycloud-desc">Tu número protegido · API oficial · Cero riesgo de bloqueo</span>
+                        </div>
+                    </div>
+                </div></div>
                 <div class="step"><div class="num">02</div><div><h4>Configuras tu negocio</h4><p>Subes tu catálogo desde Excel, defines tus horarios y, si trabajas con citas, creas la agenda de cada profesional.</p></div></div>
                 <div class="step"><div class="num">03</div><div><h4>Tu WhatsApp empieza a trabajar</h4><p>Activas el bot y desde ese momento responde, vende y agenda solo. Tú recibes el aviso cuando hay una venta o una cita lista.</p></div></div>
             </div>
