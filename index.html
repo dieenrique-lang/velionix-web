@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Velionix — Tu WhatsApp vende, agenda y responde solo</title>
 
     <!-- ===== SEO ===== -->
@@ -159,7 +159,7 @@
         }
         .navbar .container{display:flex;align-items:center;justify-content:space-between}
         .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-        .brand img{height:30px;width:auto}
+        .brand img{height:42px;width:auto}
         .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
         .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
         .nav-links a:hover{color:var(--cyan)}
@@ -335,6 +335,9 @@
         .chat-bubble:hover{transform:scale(1.08)}
         .chat-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:#ff4d6d;border:2px solid var(--bg);border-radius:50%}
         .chat-box{position:absolute;bottom:74px;right:0;width:340px;max-width:calc(100vw - 32px);background:#0e1018;border:1px solid rgba(0,229,255,0.22);border-radius:18px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,0.5);display:none;flex-direction:column}
+        @media (max-width:480px){.chat-box{position:fixed;bottom:0;right:0;left:0;width:100%;border-radius:18px 18px 0 0;max-height:75vh}}
+        @media (max-width:480px){.chat-widget{bottom:0;right:0}}
+        @media (max-width:480px){.chat-bubble{position:fixed;bottom:16px;right:16px}}
         .chat-box.open{display:flex;animation:chatIn .25s ease}
         @keyframes chatIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
         .chat-box-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--grad)}
@@ -349,7 +352,8 @@
         .chat-quick button{background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.22);color:var(--ink);font-family:inherit;font-size:12px;padding:7px 12px;border-radius:20px;cursor:pointer;transition:.2s}
         .chat-quick button:hover{background:rgba(0,229,255,0.18);border-color:var(--cyan)}
         .chat-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
-        .chat-input-row input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:24px;padding:10px 14px;color:var(--ink);font-family:inherit;font-size:13px;outline:none}
+        .chat-input-row input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:24px;padding:10px 14px;color:var(--ink);font-family:inherit;font-size:16px;outline:none}
+        @media (min-width:561px){.chat-input-row input{font-size:13px}}
         .chat-input-row input:focus{border-color:var(--cyan)}
         .chat-input-row button{background:var(--grad);border:none;color:#fff;width:40px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0}
 
@@ -384,7 +388,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container">
-            <a href="#hero" class="brand"><img src="https://velionix.cl/logovelionix1.png" alt="Velionix">Velionix</a>
+            <a href="#hero" class="brand"><img src="https://velionix.cl/logovelionix1.png" alt="Velionix"></a>
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#features">Cómo funciona</a></li>
