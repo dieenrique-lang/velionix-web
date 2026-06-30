@@ -1,667 +1,860 @@
 <!DOCTYPE html>
-<html lang="es-CL">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velionix — Tu WhatsApp vende, agenda y responde solo</title>
-<meta name="description" content="Velionix automatiza el WhatsApp de tu negocio: responde 24/7, vende desde tu catálogo y agenda citas por profesional. Ideal para tiendas, clínicas, dentales y centros de estética.">
-<link rel="canonical" href="https://velionix.cl/">
-<meta property="og:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
-<meta property="og:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende desde tu catálogo y agenda citas por profesional. API oficial de Meta, sin riesgo de bloqueo.">
-<meta property="og:image" content="https://velionix.cl/og-image.png">
-<meta property="og:url" content="https://velionix.cl">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_CL">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
-<meta name="twitter:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende y agenda citas.">
-<meta name="twitter:image" content="https://velionix.cl/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --midnight:#130E2A;
-    --midnight-2:#1B1440;
-    --violet:#271C57;
-    --line:rgba(245,239,230,0.10);
-    --amber:#F5B544;
-    --amber-soft:#FFD68A;
-    --cream:#F4EFE6;
-    --muted:#A39CC0;
-    --whatsapp:#25D366;
-    --bubble-in:#241B4E;
-    --bubble-out:#14512B;
-    --maxw:1180px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--midnight);
-    color:var(--cream);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;line-height:1.05;letter-spacing:-0.02em}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velionix — Tu WhatsApp vende, agenda y responde solo</title>
 
-  .glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.5;pointer-events:none;z-index:0}
+    <!-- ===== SEO ===== -->
+    <meta name="description" content="Velionix automatiza el WhatsApp de tu negocio: responde 24/7, vende desde tu catálogo y agenda citas por profesional. Ideal para clínicas, dentales, estética y tiendas en Chile. API oficial de Meta, sin riesgo de bloqueo.">
+    <meta name="keywords" content="automatización WhatsApp Chile, bot WhatsApp para clínicas, agenda WhatsApp, chatbot ventas WhatsApp, WhatsApp Business API Chile">
+    <meta name="author" content="Velionix">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://velionix.cl/">
 
-  /* ============ NAV ============ */
-  nav{position:sticky;top:0;z-index:50;background:rgba(19,14,42,0.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.03em;display:flex;align-items:center;gap:9px}
-  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 16px var(--amber)}
-  .nav-actions{display:flex;align-items:center;gap:22px;font-size:15px}
-  .nav-actions a.ghost{color:var(--muted);transition:color .15s}
-  .nav-actions a.ghost:hover{color:var(--cream)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:11px;padding:12px 22px;font-size:15px;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;border:none;font-family:'Inter',sans-serif}
-  .btn-primary{background:var(--amber);color:#2A1A00;box-shadow:0 8px 30px rgba(245,181,68,0.28)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(245,181,68,0.45)}
-  .btn-ghost{background:transparent;color:var(--cream);border:1px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--amber-soft);color:var(--amber-soft)}
-  .btn-lg{padding:16px 30px;font-size:16.5px;border-radius:13px}
-  .nav-cta{padding:9px 18px;font-size:14px}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
+    <meta property="og:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende y agenda citas por profesional. API oficial de Meta, sin riesgo de bloqueo.">
+    <meta property="og:image" content="https://velionix.cl/og-image.png">
+    <meta property="og:url" content="https://velionix.cl">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Velionix">
 
-  /* ============ HERO ============ */
-  header{position:relative;padding:78px 0 100px;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;position:relative;z-index:2}
-  .eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
-  .eyebrow::before{content:"";width:26px;height:1px;background:var(--amber)}
-  h1{font-size:clamp(40px,5.4vw,64px);font-weight:700}
-  h1 .hl{color:var(--amber)}
-  .lede{font-size:19px;color:var(--muted);margin:24px 0 34px;max-width:520px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .trust-strip{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:var(--muted)}
-  .trust-strip span{display:flex;align-items:center;gap:7px}
-  .trust-strip .ok{color:var(--amber)}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
+    <meta name="twitter:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende y agenda citas.">
+    <meta name="twitter:image" content="https://velionix.cl/og-image.png">
 
-  /* phone (chat tienda) */
-  .phone{position:relative;width:330px;max-width:100%;background:var(--midnight-2);border:1px solid var(--line);border-radius:26px;padding:14px;box-shadow:0 40px 90px rgba(0,0,0,0.5);z-index:2}
-  .phone-top{display:flex;align-items:center;gap:11px;padding:6px 8px 14px;border-bottom:1px solid var(--line)}
-  .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#E0892B);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;color:#2A1A00;font-size:17px;flex:none}
-  .phone-top .name{font-weight:600;font-size:15px}
-  .phone-top .status{font-size:12px;color:var(--whatsapp);display:flex;align-items:center;gap:5px}
-  .phone-top .status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--whatsapp);box-shadow:0 0 8px var(--whatsapp)}
-  .chat{padding:16px 6px 6px;display:flex;flex-direction:column;gap:10px;min-height:380px}
-  .bubble{max-width:84%;padding:10px 13px;border-radius:14px;font-size:14.5px;line-height:1.45;opacity:0;animation:pop .5s ease forwards}
-  .bubble.them{align-self:flex-start;background:var(--bubble-in);border-bottom-left-radius:4px}
-  .bubble.me{align-self:flex-end;background:var(--bubble-out);border-bottom-right-radius:4px}
-  .bubble .t{font-size:10.5px;color:var(--muted);display:block;margin-top:5px;text-align:right;font-family:'Space Mono',monospace}
-  .bubble.me .t{color:rgba(244,239,230,0.55)}
-  .prod{margin-top:8px;background:rgba(0,0,0,0.22);border-radius:10px;padding:9px;display:flex;gap:10px;align-items:center}
-  .prod .thumb{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#3A2E6E,#5B3FA8);flex:none}
-  .prod .pname{font-weight:600;font-size:13px}
-  .prod .pprice{font-family:'Space Mono',monospace;color:var(--amber-soft);font-size:13px}
-  .b1{animation-delay:.2s}.b2{animation-delay:1.0s}.b3{animation-delay:1.9s}.b4{animation-delay:2.9s}.b5{animation-delay:3.8s}
-  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  .phone-wrap{position:relative;justify-self:center}
-  .floating-tag{position:absolute;font-family:'Space Mono',monospace;font-size:11.5px;background:var(--midnight-2);border:1px solid var(--line);border-radius:8px;padding:8px 13px;z-index:6;display:flex;align-items:center;gap:7px;box-shadow:0 10px 30px rgba(0,0,0,0.5);white-space:nowrap}
-  .floating-tag .pip{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none}
-  .tag-a{bottom:calc(100% + 14px);left:50%;transform:translateX(-40%)}
-  .tag-b{top:calc(100% + 14px);left:50%;transform:translateX(-60%)}
+    <link rel="icon" href="https://velionix.cl/logovelionix1.png" type="image/png">
+    <link rel="preload" as="image" href="https://velionix.cl/logovelionix1.png">
 
-  /* ============ BENEFIT BAND ============ */
-  .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(27,20,64,0.35);position:relative;z-index:2}
-  .band-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-  .band-item{padding:30px 28px;display:flex;flex-direction:column;gap:4px}
-  .band-item + .band-item{border-left:1px solid var(--line)}
-  .band-item b{font-family:'Bricolage Grotesque';font-size:21px;font-weight:700;color:var(--amber-soft)}
-  .band-item span{font-size:14px;color:var(--muted)}
+    <!-- Fonts con font-display:swap para no bloquear render -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  /* ============ SECTION SHELLS ============ */
-  section{position:relative;z-index:2}
-  .sec-head{max-width:680px;margin:0 auto 56px;text-align:center}
-  .sec-head .eyebrow{margin-bottom:16px}
-  .sec-head h2{font-size:clamp(30px,3.8vw,44px);font-weight:700}
-  .sec-head p{color:var(--muted);font-size:17px;margin-top:14px}
+    <!-- ===== Schema JSON-LD ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Velionix",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, WhatsApp",
+          "description": "Automatización de WhatsApp con IA para negocios: responde 24/7, vende desde el catálogo y agenda citas por profesional.",
+          "url": "https://velionix.cl",
+          "image": "https://velionix.cl/og-image.png",
+          "offers": {
+            "@type": "Offer",
+            "price": "14990",
+            "priceCurrency": "CLP",
+            "description": "Precio lanzamiento: $14.990/mes los primeros 3 meses. Luego $29.990/mes. Prueba 7 días gratis sin tarjeta.",
+            "availability": "https://schema.org/InStock"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Velionix",
+            "url": "https://velionix.cl",
+            "email": "contacto@velionix.cl",
+            "logo": "https://velionix.cl/logovelionix1.png",
+            "areaServed": "CL"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué pasa con los datos de mis pacientes o clientes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El bot solo gestiona la agenda: nombre, teléfono, servicio y hora. No accede ni almacena fichas clínicas, historial médico ni ningún dato de salud sensible."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Necesito saber de tecnología para usarlo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Tú creas tu cuenta y nosotros te ayudamos a activar tu número de WhatsApp Business. El panel está pensado para que cualquier persona lo use sin conocimientos técnicos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué pasa si no me gusta o no me sirve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cancelas cuando quieras, sin permanencia ni penalización. Los primeros 7 días son gratis para que lo pruebes sin compromiso."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Corro riesgo de que bloqueen mi WhatsApp?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Usamos la API oficial de Meta (WhatsApp Business Platform), no un bot no oficial. Tu número está protegido y cumple con las políticas de WhatsApp."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
-  /* ============ CAPABILITIES ============ */
-  .caps{padding:100px 0}
-  .cap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-  .cap{background:linear-gradient(180deg,var(--midnight-2),rgba(27,20,64,0.4));border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:border-color .2s ease,transform .2s ease}
-  .cap:hover{border-color:rgba(245,181,68,0.4);transform:translateY(-4px)}
-  .cap .icn{width:42px;height:42px;border-radius:11px;background:rgba(245,181,68,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px}
-  .cap h3{font-size:18px;font-weight:600;margin-bottom:8px}
-  .cap p{color:var(--muted);font-size:14.5px}
+    <style>
+        :root{
+            --bg:#0a0a0f;
+            --ink:#e6f0fb;
+            --muted:rgba(230,240,251,0.62);
+            --faint:rgba(230,240,251,0.42);
+            --cyan:#00e5ff;
+            --violet:#a855f7;
+            --green:#25d366;
+            --card:rgba(14,16,28,0.72);
+            --line:rgba(255,255,255,0.08);
+            --grad:linear-gradient(135deg,#00c8ff,#a855f7);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Space Grotesk',-apple-system,sans-serif;
+            background:var(--bg);color:var(--ink);
+            overflow-x:hidden;line-height:1.6;
+            -webkit-font-smoothing:antialiased;
+        }
+        /* Fondo ambiental SOLO CSS (sin canvas, costo ~0 en CPU) */
+        .bg-ambient{
+            position:fixed;inset:0;z-index:0;pointer-events:none;
+            background:
+                radial-gradient(circle at 18% 30%, rgba(0,180,255,0.10) 0%, transparent 42%),
+                radial-gradient(circle at 82% 18%, rgba(168,85,247,0.10) 0%, transparent 42%),
+                radial-gradient(circle at 50% 88%, rgba(37,211,102,0.06) 0%, transparent 45%);
+        }
+        .orb{
+            position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none;
+            opacity:0.5;will-change:transform;
+        }
+        .orb-1{width:340px;height:340px;background:rgba(0,180,255,0.25);top:-80px;left:-60px;animation:float1 18s ease-in-out infinite}
+        .orb-2{width:300px;height:300px;background:rgba(168,85,247,0.22);top:40%;right:-80px;animation:float2 22s ease-in-out infinite}
+        @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,60px)}}
+        @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-40px)}}
+        #net{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.55}
+        @media (prefers-reduced-motion: reduce){.orb{animation:none}#net{display:none}}
 
-  /* ============ DENTAL DEMO (signature) ============ */
-  .dental{padding:100px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
-  .dental-stage{display:grid;grid-template-columns:0.95fr 1.05fr;gap:34px;align-items:stretch;position:relative}
-  .link-line{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:var(--amber);color:#2A1A00;font-size:21px;box-shadow:0 0 0 8px rgba(245,181,68,0.15),0 12px 32px rgba(245,181,68,0.4);opacity:0;animation:pop .5s ease 5.2s forwards}
+        .container{max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:10}
+        section{position:relative;z-index:10}
 
-  /* dental chat */
-  .dphone{background:var(--midnight-2);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 30px 70px rgba(0,0,0,0.45);display:flex;flex-direction:column}
-  .dphone .avatar{background:linear-gradient(135deg,#6FD3F2,#2D9CDB);color:#06283D}
-  .dchat{padding:16px 6px 6px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .slot-pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
-  .slot-pill{font-family:'Space Mono',monospace;font-size:12.5px;border:1px solid rgba(244,239,230,0.25);border-radius:18px;padding:5px 11px}
-  .slot-pill.sel{background:var(--amber);color:#2A1A00;border-color:var(--amber);font-weight:700}
-  .confirm-card{margin-top:9px;background:rgba(0,0,0,0.25);border:1px solid rgba(245,181,68,0.4);border-radius:11px;padding:11px 13px}
-  .confirm-card .cc-top{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;color:var(--amber-soft);margin-bottom:6px}
-  .confirm-card .cc-row{font-size:13px;color:var(--cream);display:flex;justify-content:space-between;gap:14px}
-  .confirm-card .cc-row span:first-child{color:var(--muted)}
-  .d1{animation-delay:.3s}.d2{animation-delay:1.2s}.d3{animation-delay:2.2s}.d4{animation-delay:3.2s}.d5{animation-delay:4.4s}
+        a{text-decoration:none;color:inherit}
+        h1,h2,h3,h4{line-height:1.15;font-weight:700}
 
-  /* agenda card */
-  .agenda{background:var(--midnight-2);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.45);display:flex;flex-direction:column}
-  .agenda-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
-  .agenda-bar .ttl{font-family:'Bricolage Grotesque';font-weight:600;font-size:15.5px}
-  .agenda-bar .day{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted)}
-  .agenda-tabs{display:flex;gap:6px;padding:14px 20px 4px;flex-wrap:wrap}
-  .agenda-tab{font-size:12.5px;padding:6px 12px;border-radius:20px;border:1px solid var(--line);color:var(--muted);display:flex;align-items:center;gap:7px}
-  .agenda-tab.active{border-color:var(--amber);color:var(--cream);background:rgba(245,181,68,0.08)}
-  .agenda-tab .pa{width:18px;height:18px;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center;color:#2A1A00;font-family:'Bricolage Grotesque';font-weight:700}
-  .slots{padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;flex:1;align-content:start}
-  .slot{font-family:'Space Mono',monospace;font-size:13px;text-align:center;padding:11px 6px;border-radius:9px;border:1px solid var(--line);color:var(--muted)}
-  .slot.free{color:var(--cream);border-color:rgba(245,181,68,0.35)}
-  .slot.taken{background:rgba(255,255,255,0.03);color:rgba(163,156,192,0.45);text-decoration:line-through}
-  .slot.incoming{position:relative;color:var(--cream);border-color:rgba(245,181,68,0.35);animation:claim .6s ease 5.2s forwards}
-  @keyframes claim{
-    0%{background:transparent;color:var(--cream)}
-    100%{background:rgba(245,181,68,0.18);color:var(--amber-soft);border-color:var(--amber);box-shadow:0 0 18px rgba(245,181,68,0.25)}
-  }
-  .agenda-foot{border-top:1px solid var(--line);padding:14px 20px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px;opacity:0;animation:pop .5s ease 5.6s forwards}
-  .agenda-foot .pip{width:8px;height:8px;border-radius:50%;background:var(--whatsapp);box-shadow:0 0 8px var(--whatsapp);flex:none}
-  .dental-points{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
-  .dp{border:1px solid var(--line);border-radius:13px;padding:18px 20px;font-size:14.5px;color:var(--muted);background:rgba(27,20,64,0.3)}
-  .dp b{display:block;color:var(--cream);font-weight:600;margin-bottom:3px;font-size:15px}
+        /* ===== NAVBAR ===== */
+        .navbar{
+            position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0;
+            background:rgba(10,10,15,0.78);backdrop-filter:blur(22px);
+            border-bottom:1px solid var(--line);
+        }
+        .navbar .container{display:flex;align-items:center;justify-content:space-between}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+        .brand img{height:30px;width:auto}
+        .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+        .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
+        .nav-links a:hover{color:var(--cyan)}
+        .btn{
+            display:inline-block;border-radius:40px;font-weight:600;cursor:pointer;
+            transition:transform .2s,box-shadow .2s;text-align:center;
+        }
+        .btn-primary{background:var(--grad);color:#fff;padding:13px 26px;box-shadow:0 6px 24px rgba(0,180,255,0.28)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(0,180,255,0.45)}
+        .btn-ghost{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.18);color:var(--ink);padding:13px 24px}
+        .btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:var(--cyan)}
+        .btn-sm{padding:9px 20px;font-size:14px}
+        .menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+        .menu-toggle span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 
-  /* ============ HOW ============ */
-  .how{padding:100px 0;border-top:1px solid var(--line)}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
-  .step{position:relative;padding:28px 26px;border:1px solid var(--line);border-radius:16px;background:rgba(27,20,64,0.3)}
-  .step::before{counter-increment:step;content:"0" counter(step);font-family:'Bricolage Grotesque';font-weight:800;font-size:46px;color:var(--violet);display:block;line-height:1;margin-bottom:14px}
-  .step h3{font-size:19px;font-weight:600;margin-bottom:8px}
-  .step p{color:var(--muted);font-size:15px}
-  .how-cta{text-align:center;margin-top:44px}
+        /* ===== HERO ===== */
+        .hero{padding:140px 0 60px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center}
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
+            color:var(--cyan);background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);
+            padding:6px 14px;border-radius:30px;margin-bottom:22px;
+        }
+        .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+        .hero h1{font-size:50px;margin-bottom:18px}
+        .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p.lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:28px}
+        .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+        .hero-trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--faint)}
+        .hero-trust span{display:inline-flex;align-items:center;gap:6px}
+        .hero-trust span::before{content:'✓';color:var(--green);font-weight:700}
 
-  /* ============ CATALOG ============ */
-  .feat{padding:100px 0;border-top:1px solid var(--line)}
-  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .feat h2{font-size:clamp(28px,3.4vw,40px);font-weight:700;margin-bottom:18px}
-  .feat p{color:var(--muted);font-size:17px;margin-bottom:14px}
-  .feat ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:13px}
-  .feat li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
-  .ck{flex:none;width:22px;height:22px;border-radius:6px;background:rgba(245,181,68,0.14);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px}
-  .sheet{background:var(--midnight-2);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.4)}
-  .sheet-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line)}
-  .sheet-bar .pill{width:11px;height:11px;border-radius:50%;background:var(--violet)}
-  .sheet-bar .fname{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--muted);margin-left:8px}
-  table{width:100%;border-collapse:collapse;font-size:13.5px}
-  th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line)}
-  th{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);font-weight:400}
-  td .stk{color:var(--whatsapp);font-family:'Space Mono',monospace}
-  td .price{font-family:'Space Mono',monospace;color:var(--amber-soft)}
+        .metrics{display:flex;gap:14px;margin-top:30px}
+        .metric{
+            flex:1;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.18);
+            border-radius:14px;padding:14px 16px;text-align:center;
+        }
+        .metric .val{font-size:26px;font-weight:700;color:var(--cyan)}
+        .metric .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--faint);margin-top:2px}
 
-  /* ============ AUDIENCE ============ */
-  .aud{padding:100px 0;border-top:1px solid var(--line)}
-  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .aud-card{border:1px solid var(--line);border-radius:14px;padding:24px;background:rgba(27,20,64,0.35);transition:border-color .2s ease}
-  .aud-card:hover{border-color:rgba(245,181,68,0.35)}
-  .aud-card .tagchip{display:inline-block;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);background:rgba(245,181,68,0.1);border-radius:5px;padding:3px 8px;margin-bottom:12px}
-  .aud-card h3{font-size:17px;font-weight:600;margin-bottom:7px}
-  .aud-card p{color:var(--muted);font-size:14.5px}
+        /* ===== CHAT MOCKUP (hero) ===== */
+        .phone{
+            background:var(--card);border:1px solid rgba(0,229,255,0.25);border-radius:26px;
+            padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18);backdrop-filter:blur(10px);
+        }
+        .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
+        .chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+        .chat-name{font-weight:600;font-size:15px}
+        .chat-status{font-size:12px;color:var(--green)}
+        .bubble{max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45}
+        .bubble.in{background:rgba(255,255,255,0.06);border-bottom-left-radius:4px}
+        .bubble.out{background:rgba(37,211,102,0.14);border:1px solid rgba(37,211,102,0.25);margin-left:auto;border-bottom-right-radius:4px}
+        .bubble .time{display:block;font-size:10px;color:var(--faint);margin-top:4px}
+        .bubble .price{display:block;font-weight:600;color:var(--cyan);margin-top:4px}
 
-  /* ============ FINAL CTA ============ */
-  .cta{position:relative;padding:120px 0;border-top:1px solid var(--line);text-align:center;overflow:hidden}
-  .cta-card{position:relative;background:linear-gradient(180deg,var(--midnight-2),rgba(27,20,64,0.5));border:1px solid rgba(245,181,68,0.25);border-radius:24px;padding:70px 40px;max-width:880px;margin:0 auto;overflow:hidden}
-  .cta h2{font-size:clamp(30px,4.2vw,50px);font-weight:700;max-width:680px;margin:0 auto 18px}
-  .cta p{color:var(--muted);font-size:18px;max-width:540px;margin:0 auto 34px}
-  .cta .hero-cta{justify-content:center}
-  .cta .trust-strip{justify-content:center}
+        /* ===== SECTIONS ===== */
+        .sec{padding:80px 0}
+        .sec-head{text-align:center;max-width:680px;margin:0 auto 48px}
+        .sec-head .tag{font-size:13px;font-weight:500;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;display:block}
+        .sec-head h2{font-size:36px;margin-bottom:14px}
+        .sec-head p{font-size:17px;color:var(--muted)}
 
-  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
-  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  .foot-inner .brand{font-size:18px}
+        /* features */
+        .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .feature{
+            background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;
+            transition:transform .25s,border-color .25s;opacity:0;transform:translateY(20px);
+        }
+        .feature.visible{opacity:1;transform:translateY(0)}
+        .feature:hover{transform:translateY(-4px);border-color:rgba(0,229,255,0.3)}
+        .feature .icon{font-size:30px;margin-bottom:14px}
+        .feature h3{font-size:18px;margin-bottom:8px}
+        .feature p{font-size:14px;color:var(--muted)}
 
-  /* ============ RESPONSIVE ============ */
-  @media(max-width:1020px){
-    .cap-grid{grid-template-columns:repeat(3,1fr)}
-    .dental-points{grid-template-columns:repeat(2,1fr)}
-  }
-  @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:56px}
-    .feat-grid{grid-template-columns:1fr;gap:40px}
-    .dental-stage{grid-template-columns:1fr;gap:48px}
-    .link-line{display:none}
-    .steps{grid-template-columns:1fr;gap:18px}
-    .aud-grid{grid-template-columns:1fr}
-    .band-inner{grid-template-columns:1fr}
-    .band-item + .band-item{border-left:none;border-top:1px solid var(--line)}
-    .floating-tag{display:none}
-    header{padding:54px 0 72px}
-    .nav-actions a.ghost{display:none}
-  }
-  @media(max-width:560px){
-    .cap-grid{grid-template-columns:1fr}
-    .dental-points{grid-template-columns:1fr}
-    .cta-card{padding:50px 22px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .bubble{opacity:1;animation:none}
-    .slot.incoming{animation:none;background:rgba(245,181,68,0.18);color:var(--amber-soft);border-color:var(--amber)}
-    .agenda-foot,.link-line{opacity:1;animation:none}
-    html{scroll-behavior:auto}
-  }
-  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Velionix",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "url": "https://velionix.cl",
-  "offers": {"@type": "Offer", "price": "29990", "priceCurrency": "CLP"},
-  "description": "Automatización de WhatsApp para negocios: responde 24/7, vende desde catálogo y agenda citas por profesional. API oficial de Meta."
-}
-</script>
+        /* steps */
+        .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+        .step{display:flex;gap:22px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+        .step .num{font-size:34px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;min-width:54px}
+        .step h4{font-size:18px;margin-bottom:6px}
+        .step p{font-size:14px;color:var(--muted)}
+
+        /* inventory */
+        .inv{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}
+        .inv .file{display:inline-block;font-family:monospace;font-size:13px;color:var(--cyan);background:rgba(0,229,255,0.06);padding:5px 12px;border-radius:8px;margin-bottom:16px}
+        table{width:100%;border-collapse:collapse;margin-bottom:22px}
+        th,td{text-align:left;padding:11px 12px;font-size:14px;border-bottom:1px solid var(--line)}
+        th{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--faint)}
+        .inv-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .inv-benefits div{font-size:14px;color:var(--muted);display:flex;gap:8px}
+        .inv-benefits div::before{content:'✓';color:var(--green);font-weight:700}
+
+        /* use cases */
+        .grid-3-uc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .uc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .25s}
+        .uc:hover{border-color:rgba(168,85,247,0.35)}
+        .uc .badge{font-size:11px;font-weight:600;color:var(--violet);background:rgba(168,85,247,0.12);padding:3px 10px;border-radius:6px;letter-spacing:.5px}
+        .uc .uc-icon{font-size:28px;margin:14px 0 10px}
+        .uc h3{font-size:17px;margin-bottom:8px}
+        .uc p{font-size:14px;color:var(--muted)}
+
+        /* booking simulator */
+        .sim{max-width:620px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.2);border-radius:22px;padding:32px}
+        .sim-steps{display:flex;justify-content:space-between;margin-bottom:30px;position:relative}
+        .sim-steps::before{content:'';position:absolute;top:18px;left:10%;right:10%;height:2px;background:var(--line);z-index:0}
+        .sim-step{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--faint);position:relative;z-index:1}
+        .sim-step .circle{width:38px;height:38px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:600;transition:.3s}
+        .sim-step.active .circle{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 18px rgba(0,229,255,0.3)}
+        .sim-step.active{color:var(--cyan)}
+        .sim-step.done .circle{background:var(--green);border-color:var(--green);color:#fff}
+        .sim-panel{display:none;min-height:160px}
+        .sim-panel.active{display:block;animation:fade .4s}
+        @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .sim-panel .label{color:var(--muted);margin-bottom:18px;font-size:15px}
+        .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .opt{background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px;font-size:15px}
+        .opt:hover{border-color:rgba(0,229,255,0.4)}
+        .opt.sel{background:rgba(0,229,255,0.1);border-color:var(--cyan)}
+        .opt span{font-size:22px}
+        .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+        .time-grid .opt{justify-content:center}
+        .sim-nav{display:flex;justify-content:space-between;margin-top:26px}
+        .sim-btn{background:rgba(255,255,255,0.06);border:1px solid var(--line);color:var(--ink);padding:11px 22px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:14px;transition:.2s}
+        .sim-btn:hover:not(:disabled){border-color:var(--cyan)}
+        .sim-btn:disabled{opacity:.35;cursor:not-allowed}
+        .sim-btn.next{background:var(--grad);border:none;color:#fff}
+        .sim-done{text-align:center}
+        .sim-done .check{font-size:46px}
+        .sim-done h3{margin:10px 0;font-size:22px}
+        .sim-done p{color:var(--muted);margin-bottom:18px}
+
+        /* pricing */
+        .price-card{
+            max-width:460px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.25);
+            border-radius:24px;padding:38px 34px;text-align:center;position:relative;overflow:hidden;
+        }
+        .price-badge{display:inline-block;background:var(--grad);color:#fff;font-size:13px;font-weight:600;padding:6px 16px;border-radius:30px;margin-bottom:18px}
+        .price-old{color:var(--faint);text-decoration:line-through;font-size:18px}
+        .price-new{font-size:48px;font-weight:700;color:var(--ink);margin:4px 0}
+        .price-new small{font-size:18px;color:var(--muted);font-weight:400}
+        .price-sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+        .price-list{list-style:none;text-align:left;margin:0 auto 26px;max-width:320px}
+        .price-list li{padding:8px 0;font-size:14px;color:var(--muted);display:flex;gap:10px;border-bottom:1px solid var(--line)}
+        .price-list li::before{content:'✓';color:var(--green);font-weight:700}
+        .price-foot{font-size:12px;color:var(--faint);margin-top:16px}
+
+        /* faq */
+        .faq{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+        .faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+        .faq-q{width:100%;background:none;border:none;color:var(--ink);font-family:inherit;font-size:16px;font-weight:500;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:16px}
+        .faq-q .ic{color:var(--cyan);font-size:22px;transition:transform .3s;flex-shrink:0}
+        .faq-item.open .faq-q .ic{transform:rotate(45deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--muted);font-size:15px}
+        .faq-item.open .faq-a{max-height:260px}
+        .faq-a div{padding:0 22px 20px}
+
+        /* cta final */
+        .cta-final{text-align:center;background:linear-gradient(135deg,rgba(0,200,255,0.08),rgba(168,85,247,0.08));border:1px solid rgba(0,229,255,0.2);border-radius:28px;padding:56px 32px;max-width:820px;margin:0 auto}
+        .cta-final h2{font-size:34px;margin-bottom:14px}
+        .cta-final p{font-size:17px;color:var(--muted);margin-bottom:26px}
+        .cta-final .hero-cta{justify-content:center}
+        .cta-final .hero-trust{justify-content:center;margin-top:22px}
+
+        /* footer */
+        footer{border-top:1px solid var(--line);padding:40px 0;margin-top:60px;position:relative;z-index:10}
+        footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+        footer .f-left{font-size:14px;color:var(--muted)}
+        footer .f-left a{color:var(--cyan)}
+        footer .f-links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+        footer .f-links a:hover{color:var(--cyan)}
+
+        /* Chat widget flotante */
+        .chat-widget{position:fixed;bottom:24px;right:24px;z-index:900}
+        .chat-bubble{width:58px;height:58px;border-radius:50%;background:var(--green);border:none;cursor:pointer;font-size:28px;box-shadow:0 8px 28px rgba(37,211,102,0.45);transition:transform .2s;position:relative}
+        .chat-bubble:hover{transform:scale(1.08)}
+        .chat-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:#ff4d6d;border:2px solid var(--bg);border-radius:50%}
+        .chat-box{position:absolute;bottom:74px;right:0;width:340px;max-width:calc(100vw - 32px);background:#0e1018;border:1px solid rgba(0,229,255,0.22);border-radius:18px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,0.5);display:none;flex-direction:column}
+        .chat-box.open{display:flex;animation:chatIn .25s ease}
+        @keyframes chatIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .chat-box-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--grad)}
+        .chat-box-head .chat-name{color:#fff;font-weight:600;font-size:14px}
+        .chat-box-head .chat-status{color:rgba(255,255,255,0.85);font-size:11px}
+        .chat-body{padding:16px;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+        .msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.45}
+        .msg.bot{background:rgba(255,255,255,0.06);border-bottom-left-radius:4px;align-self:flex-start}
+        .msg.user{background:rgba(0,229,255,0.14);border:1px solid rgba(0,229,255,0.25);border-bottom-right-radius:4px;align-self:flex-end}
+        .msg a{color:var(--cyan);font-weight:600}
+        .chat-quick{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px}
+        .chat-quick button{background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.22);color:var(--ink);font-family:inherit;font-size:12px;padding:7px 12px;border-radius:20px;cursor:pointer;transition:.2s}
+        .chat-quick button:hover{background:rgba(0,229,255,0.18);border-color:var(--cyan)}
+        .chat-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line)}
+        .chat-input-row input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:24px;padding:10px 14px;color:var(--ink);font-family:inherit;font-size:13px;outline:none}
+        .chat-input-row input:focus{border-color:var(--cyan)}
+        .chat-input-row button{background:var(--grad);border:none;color:#fff;width:40px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0}
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width:920px){
+            .hero{grid-template-columns:1fr;gap:36px;padding:120px 0 40px}
+            .hero h1{font-size:38px}
+            .grid-3,.grid-3-uc{grid-template-columns:1fr 1fr}
+            .nav-links{
+                position:fixed;top:60px;right:0;width:240px;height:calc(100vh - 60px);
+                background:rgba(10,10,15,0.97);backdrop-filter:blur(20px);flex-direction:column;
+                align-items:flex-start;padding:30px 26px;gap:22px;transform:translateX(100%);transition:transform .3s;border-left:1px solid var(--line);
+            }
+            .nav-links.open{transform:translateX(0)}
+            .menu-toggle{display:flex}
+        }
+        @media (max-width:560px){
+            .hero h1{font-size:32px}
+            .sec-head h2{font-size:28px}
+            .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
+            .metrics{flex-direction:column}
+            .sec{padding:60px 0}
+        }
+    </style>
 </head>
 <body>
+    <div class="bg-ambient"></div>
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-<nav>
-  <div class="wrap nav-inner">
-    <a href="#" class="brand"><img src="logovelionix1.png" alt="Velionix" height="52"></a>
-    <div class="nav-actions">
-      <a href="#agenda" class="ghost">Agenda automática</a>
-      <a href="#como" class="ghost">Cómo funciona</a>
-      <a href="#catalogo" class="ghost">Catálogo</a>
-      <a href="https://app.velionix.cl/panel" class="ghost">Iniciar sesión</a>
-      <a href="https://app.velionix.cl/register" class="btn btn-primary nav-cta">Probar gratis</a>
-    </div>
-  </div>
-</nav>
-
-<header>
-  <div class="glow" style="width:520px;height:520px;background:#3A2A7A;top:-160px;right:-120px"></div>
-  <div class="glow" style="width:420px;height:420px;background:#6A4A12;bottom:-200px;left:-140px;opacity:0.35"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">WhatsApp que trabaja solo</span>
-      <h1>Tu negocio sigue <span class="hl">atendiendo</span> mientras tú duermes.</h1>
-      <p class="lede">Velionix conecta tu WhatsApp con tu catálogo y tu agenda. Responde al instante, vende tus productos y agenda citas por profesional — a cualquier hora, todos los días.</p>
-      <div class="hero-cta">
-        <a href="https://app.velionix.cl/register" class="btn btn-primary btn-lg">Probar 7 días gratis →</a>
-        <a href="#agenda" class="btn btn-ghost">Ver demo en vivo</a>
-      </div>
-      <div class="trust-strip">
-        <span><span class="ok">✓</span> Sin tarjeta para probar</span>
-        <span><span class="ok">✓</span> Activación asistida, lista en minutos</span>
-        <span><span class="ok">✓</span> Sin instalar nada</span>
-        <span><span class="ok">✓</span> API oficial de Meta · sin riesgo de bloqueo</span>
-      </div>
-    </div>
-
-    <div class="phone-wrap">
-      <div class="floating-tag tag-a"><span class="pip"></span> Responde en 2 segundos</div>
-      <div class="floating-tag tag-b"><span class="pip"></span> 3:40 AM · venta cerrada</div>
-      <div class="phone">
-        <div class="phone-top">
-          <div class="avatar">V</div>
-          <div>
-            <div class="name">Tienda Aurora</div>
-            <div class="status">en línea</div>
-          </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#hero" class="brand"><img src="https://velionix.cl/logovelionix1.png" alt="Velionix">Velionix</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Cómo funciona</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#precio">Precio</a></li>
+                <li><a href="https://app.velionix.cl/panel">Iniciar sesión</a></li>
+                <li><a href="https://app.velionix.cl/register" class="btn btn-primary btn-sm">Probar gratis</a></li>
+            </ul>
         </div>
-        <div class="chat">
-          <div class="bubble them b1">Hola! tienen el polerón oversize en talla M? 🙌<span class="t">03:38</span></div>
-          <div class="bubble me b2">¡Hola! Sí, tenemos disponible 👇
-            <div class="prod">
-              <div class="thumb"></div>
-              <div>
-                <div class="pname">Polerón Oversize Beige</div>
-                <div class="pprice">$24.990 · Talla M</div>
-              </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero container" id="hero">
+        <div>
+            <span class="eyebrow"><span class="dot"></span>WhatsApp que trabaja solo</span>
+            <h1>Tu negocio sigue atendiendo <span class="grad">mientras tú duermes</span>.</h1>
+            <p class="lead">Velionix conecta tu WhatsApp con tu catálogo y tu agenda. Responde al instante, vende tus productos y agenda citas por profesional — a cualquier hora, todos los días.</p>
+            <div class="hero-cta">
+                <a href="https://app.velionix.cl/register" class="btn btn-primary">Probar 7 días gratis →</a>
+                <a href="#agenda" class="btn btn-ghost">Ver demo en vivo</a>
             </div>
-            <span class="t">03:38 ✓✓</span>
-          </div>
-          <div class="bubble them b3">Perfecto, lo quiero. Hacen envío a Valdivia?<span class="t">03:39</span></div>
-          <div class="bubble me b4">Sí, despachamos a todo Chile 🚚 Te dejo agendado el envío. ¿Para qué día?<span class="t">03:39 ✓✓</span></div>
-          <div class="bubble them b5">Mañana porfa 🙏<span class="t">03:40</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<div class="band">
-  <div class="wrap band-inner">
-    <div class="band-item"><b>Respuesta inmediata</b><span>El cliente nunca queda en visto. El bot contesta en segundos, de día y de madrugada.</span></div>
-    <div class="band-item"><b>Agenda sin choques</b><span>Cada profesional con su calendario. Cero dobles reservas, cero coordinación por teléfono.</span></div>
-    <div class="band-item"><b>Ventas con datos reales</b><span>Precios y stock salen de tu catálogo, no inventados. Lo que ofrece, existe.</span></div>
-    <div class="band-item"><b>Sin riesgo de bloqueo</b><span>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</span></div>
-  </div>
-</div>
-
-<section class="caps">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Lo que hace por tu negocio</span>
-      <h2>Cuatro tareas que ya no harás a mano</h2>
-      <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
-    </div>
-    <div class="cap-grid">
-      <div class="cap">
-        <div class="icn">💬</div>
-        <h3>Responde 24/7</h3>
-        <p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p>
-      </div>
-      <div class="cap">
-        <div class="icn">📅</div>
-        <h3>Agenda y cancela citas</h3>
-        <p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p>
-      </div>
-      <div class="cap">
-        <div class="icn">🛍️</div>
-        <h3>Vende desde tu catálogo</h3>
-        <p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p>
-      </div>
-      <div class="cap">
-        <div class="icn">ℹ️</div>
-        <h3>Da la info de siempre</h3>
-        <p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p>
-      </div>
-      <div class="cap">
-        <div class="icn">📆</div>
-        <h3>Sincroniza con Google Calendar</h3>
-        <p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dental" id="agenda">
-  <div class="glow" style="width:480px;height:480px;background:#5B3FA8;top:-160px;right:-160px;opacity:0.28"></div>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Demo · centro dental</span>
-      <h2>Mira cómo agenda una hora, solo</h2>
-      <p>Un paciente escribe al WhatsApp del centro. El bot revisa la agenda de la profesional, ofrece las horas libres y confirma la cita — directo al calendario.</p>
-    </div>
-
-    <div class="dental-stage">
-      <div class="link-line">→</div>
-
-      <!-- WhatsApp dental -->
-      <div class="dphone">
-        <div class="phone-top">
-          <div class="avatar">CD</div>
-          <div>
-            <div class="name">Clínica Dental Norte</div>
-            <div class="status">en línea</div>
-          </div>
-        </div>
-        <div class="dchat">
-          <div class="bubble them d1">Hola, necesito hora con la Dra. García para una limpieza 🦷<span class="t">10:02</span></div>
-          <div class="bubble me d2">¡Hola! Claro. La Dra. García tiene estas horas disponibles para mañana miércoles:
-            <div class="slot-pills">
-              <span class="slot-pill">09:30</span>
-              <span class="slot-pill sel">11:00</span>
-              <span class="slot-pill">12:00</span>
+            <div class="hero-trust">
+                <span>Sin tarjeta para probar</span>
+                <span>Listo en minutos</span>
+                <span>API oficial de Meta · sin riesgo de bloqueo</span>
             </div>
-            <span class="t">10:02 ✓✓</span>
-          </div>
-          <div class="bubble them d3">La de las 11:00 porfa<span class="t">10:03</span></div>
-          <div class="bubble me d4">¡Listo! Tu hora quedó agendada ✅
-            <div class="confirm-card">
-              <div class="cc-top">📅 Cita confirmada</div>
-              <div class="cc-row"><span>Profesional</span><span>Dra. Daniela García</span></div>
-              <div class="cc-row"><span>Servicio</span><span>Limpieza dental</span></div>
-              <div class="cc-row"><span>Fecha</span><span>Mié 11 jun · 11:00</span></div>
+            <div class="metrics">
+                <div class="metric"><div class="val" id="m1">0</div><div class="lbl">Citas / hora</div></div>
+                <div class="metric"><div class="val" id="m2">0</div><div class="lbl">Ventas / día</div></div>
+                <div class="metric"><div class="val" id="m3">0%</div><div class="lbl">Uptime</div></div>
             </div>
-            <span class="t">10:03 ✓✓</span>
-          </div>
-          <div class="bubble them d5">Gracias! 🙌<span class="t">10:03</span></div>
         </div>
-      </div>
-
-      <!-- Agenda -->
-      <div class="agenda">
-        <div class="agenda-bar">
-          <span class="ttl">Agenda · Clínica Dental Norte</span>
-          <span class="day">Mié 11 jun</span>
+        <div class="phone">
+            <div class="chat-head">
+                <div class="chat-avatar">A</div>
+                <div><div class="chat-name">Tienda Aurora</div><div class="chat-status">en línea</div></div>
+            </div>
+            <div class="bubble in">Hola! tienen el polerón oversize en talla M? 🙌<span class="time">03:38</span></div>
+            <div class="bubble out">¡Hola! Sí, tenemos disponible 👇<span class="price">Polerón Oversize Beige · $24.990 · Talla M</span><span class="time">03:38 ✓✓</span></div>
+            <div class="bubble in">Perfecto, lo quiero. Hacen envío a Valdivia?<span class="time">03:39</span></div>
+            <div class="bubble out">Sí, despachamos a todo Chile 🚚 Te dejo agendado el envío. ¿Para qué día?<span class="time">03:39 ✓✓</span></div>
+            <div class="bubble in">Mañana porfa 🙏<span class="time">03:40</span></div>
         </div>
-        <div class="agenda-tabs">
-          <span class="agenda-tab active"><span class="pa" style="background:#F5B544">DG</span> Dra. García</span>
-          <span class="agenda-tab"><span class="pa" style="background:#7C5CD6;color:#fff">JM</span> Dr. Morales</span>
-          <span class="agenda-tab"><span class="pa" style="background:#4FB477;color:#fff">CS</span> C. Soto</span>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="sec" id="features">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Lo que hace por tu negocio</span>
+                <h2>Cuatro tareas que ya no harás a mano</h2>
+                <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
+            </div>
+            <div class="grid-3">
+                <div class="feature"><div class="icon">💬</div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
+                <div class="feature"><div class="icon">📅</div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
+                <div class="feature"><div class="icon">🛍️</div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
+                <div class="feature"><div class="icon">ℹ️</div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
+                <div class="feature"><div class="icon">📆</div><h3>Sincroniza con Google Calendar</h3><p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p></div>
+                <div class="feature"><div class="icon">🔒</div><h3>Sin riesgo de bloqueo</h3><p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p></div>
+            </div>
         </div>
-        <div class="slots">
-          <div class="slot taken">09:00</div>
-          <div class="slot free">09:30</div>
-          <div class="slot taken">10:00</div>
-          <div class="slot taken">10:30</div>
-          <div class="slot incoming">11:00</div>
-          <div class="slot free">12:00</div>
-          <div class="slot taken">12:30</div>
-          <div class="slot free">16:00</div>
-          <div class="slot free">16:30</div>
+    </section>
+
+    <!-- AGENDA / DEMO DENTAL -->
+    <section class="sec" id="agenda">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Demo · centro dental</span>
+                <h2>Mira cómo agenda una hora, solo</h2>
+                <p>Un paciente escribe al WhatsApp del centro. El bot revisa la agenda de la profesional, ofrece las horas libres y confirma la cita — directo al calendario.</p>
+            </div>
+            <div class="phone" style="max-width:440px;margin:0 auto">
+                <div class="chat-head">
+                    <div class="chat-avatar">CD</div>
+                    <div><div class="chat-name">Clínica Dental Norte</div><div class="chat-status">en línea</div></div>
+                </div>
+                <div class="bubble in">Hola, necesito hora con la Dra. García para una limpieza 🦷<span class="time">10:02</span></div>
+                <div class="bubble out">¡Hola! Claro. La Dra. García tiene estas horas para mañana miércoles: 09:30 · 11:00 · 12:00<span class="time">10:02 ✓✓</span></div>
+                <div class="bubble in">La de las 11:00 porfa<span class="time">10:03</span></div>
+                <div class="bubble out">¡Listo! Tu hora quedó agendada ✅<span class="price">Dra. García · Limpieza · Mié 11 jun 11:00</span><span class="time">10:03 ✓✓</span></div>
+                <div class="bubble in">Gracias! 🙌<span class="time">10:03</span></div>
+            </div>
         </div>
-        <div class="agenda-foot"><span class="pip"></span> 11:00 reservada por WhatsApp · paciente confirmado automáticamente</div>
-      </div>
+    </section>
+
+    <!-- SETUP -->
+    <section class="sec" id="setup">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Listo en una tarde</span>
+                <h2>De tu WhatsApp actual a uno que trabaja solo</h2>
+            </div>
+            <div class="steps">
+                <div class="step"><div class="num">01</div><div><h4>Te registras</h4><p>Creas tu cuenta con los datos de tu negocio y nos compartes el acceso a tu WhatsApp Business. Nosotros terminamos de configurar y activar todo contigo — no necesitas saber nada técnico.</p></div></div>
+                <div class="step"><div class="num">02</div><div><h4>Configuras tu negocio</h4><p>Subes tu catálogo desde Excel, defines tus horarios y, si trabajas con citas, creas la agenda de cada profesional.</p></div></div>
+                <div class="step"><div class="num">03</div><div><h4>Tu WhatsApp empieza a trabajar</h4><p>Activas el bot y desde ese momento responde, vende y agenda solo. Tú recibes el aviso cuando hay una venta o una cita lista.</p></div></div>
+            </div>
+            <div style="text-align:center;margin-top:34px">
+                <a href="https://app.velionix.cl/register" class="btn btn-primary">Crear mi cuenta gratis →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOGO / INVENTARIO -->
+    <section class="sec" id="catalogo">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Tu inventario, conectado</span>
+                <h2>Sube tu catálogo desde Excel y listo</h2>
+                <p>No tienes que escribir productos uno por uno ni aprender un sistema nuevo. Cargas la planilla que ya usas y Velionix la convierte en el catálogo que tu WhatsApp consulta para vender.</p>
+            </div>
+            <div class="inv">
+                <span class="file">📄 catalogo_tienda.xlsx</span>
+                <table>
+                    <thead><tr><th>Producto</th><th>Precio</th><th>Stock</th></tr></thead>
+                    <tbody>
+                        <tr><td>Polerón Oversize Beige</td><td>$24.990</td><td>12</td></tr>
+                        <tr><td>Jeans Mom Tiro Alto</td><td>$29.990</td><td>8</td></tr>
+                        <tr><td>Cartera Cuero Negra</td><td>$34.990</td><td>5</td></tr>
+                        <tr><td>Zapatillas Urbanas</td><td>$39.990</td><td>21</td></tr>
+                        <tr><td>Aros Plata 925</td><td>$12.990</td><td>40</td></tr>
+                    </tbody>
+                </table>
+                <div class="inv-benefits">
+                    <div>Importas tu planilla de productos en segundos</div>
+                    <div>El bot responde con precios y stock reales, no inventados</div>
+                    <div>Actualizas tu catálogo cuando quieras desde el panel</div>
+                    <div>Funciona para ropa, accesorios y cualquier producto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="sec" id="use-cases">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Hecho para atender mejor</span>
+                <h2>Si vendes o atiendes por WhatsApp, es para ti</h2>
+            </div>
+            <div class="grid-3-uc">
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">🦷</div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">💆</div><h3>Centros de estética</h3><p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">🧠</div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">👗</div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">💍</div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
+                <div class="uc"><span class="badge">24/7</span><div class="uc-icon">🏪</div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULADOR DE AGENDA -->
+    <section class="sec" id="simulador">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Pruébalo tú mismo</span>
+                <h2>Así agendan tus clientes en segundos</h2>
+                <p>Simula la experiencia de reservar una hora. Es exactamente lo que vivirá tu cliente por WhatsApp.</p>
+            </div>
+            <div class="sim">
+                <div class="sim-steps">
+                    <div class="sim-step active" data-step="1"><div class="circle">1</div>Servicio</div>
+                    <div class="sim-step" data-step="2"><div class="circle">2</div>Día</div>
+                    <div class="sim-step" data-step="3"><div class="circle">3</div>Hora</div>
+                    <div class="sim-step" data-step="4"><div class="circle">✓</div>Listo</div>
+                </div>
+                <div class="sim-panel active" id="p1">
+                    <p class="label">Elige un servicio:</p>
+                    <div class="opt-grid">
+                        <div class="opt" data-service="Corte de cabello"><span>💇</span>Corte</div>
+                        <div class="opt" data-service="Masaje relajante"><span>💆</span>Masaje</div>
+                        <div class="opt" data-service="Consulta médica"><span>🩺</span>Consulta</div>
+                        <div class="opt" data-service="Limpieza dental"><span>🦷</span>Limpieza</div>
+                    </div>
+                </div>
+                <div class="sim-panel" id="p2">
+                    <p class="label">Día disponible:</p>
+                    <div class="opt-grid" id="dayBox"></div>
+                </div>
+                <div class="sim-panel" id="p3">
+                    <p class="label">Horario:</p>
+                    <div class="time-grid">
+                        <div class="opt">09:00</div><div class="opt">10:00</div><div class="opt">11:00</div>
+                        <div class="opt">12:00</div><div class="opt">15:00</div><div class="opt">16:00</div>
+                    </div>
+                </div>
+                <div class="sim-panel" id="p4">
+                    <div class="sim-done">
+                        <div class="check">✅</div>
+                        <h3>¡Cita agendada!</h3>
+                        <p id="confirm"></p>
+                        <a href="https://wa.me/56920584589?text=Hola%2C%20quiero%20agendar%20una%20hora" class="btn btn-primary">Confirmar por WhatsApp →</a>
+                    </div>
+                </div>
+                <div class="sim-nav">
+                    <button class="sim-btn prev" id="prev" disabled>← Anterior</button>
+                    <button class="sim-btn next" id="next">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIO -->
+    <section class="sec" id="precio">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Precio único · sin sorpresas</span>
+                <h2>Todo incluido por $29.990/mes</h2>
+                <p>Prueba 7 días gratis, sin tarjeta.</p>
+            </div>
+            <div class="price-card">
+                <span class="price-badge">🚀 Precio lanzamiento</span>
+                <div class="price-old">$29.990/mes</div>
+                <div class="price-new">$14.990 <small>/mes</small></div>
+                <div class="price-sub">por mes · primeros 3 meses</div>
+                <ul class="price-list">
+                    <li>Bot WhatsApp activo 24/7</li>
+                    <li>Agenda por profesional (ilimitados)</li>
+                    <li>Catálogo de productos desde Excel</li>
+                    <li>Panel de administración completo</li>
+                    <li>Notificaciones de citas y leads</li>
+                    <li>Número WhatsApp Business incluido</li>
+                    <li>Sincronización con Google Calendar</li>
+                    <li>Soporte por WhatsApp</li>
+                </ul>
+                <a href="https://app.velionix.cl/register" class="btn btn-primary" style="width:100%">Probar 7 días gratis →</a>
+                <p class="price-foot">Sin permanencia. Cancelas cuando quieras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sec" id="faq">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Antes de que preguntes</span>
+                <h2>Preguntas frecuentes</h2>
+            </div>
+            <div class="faq">
+                <div class="faq-item"><button class="faq-q">¿Qué pasa con los datos de mis pacientes o clientes?<span class="ic">+</span></button><div class="faq-a"><div>El bot solo gestiona la agenda: nombre, teléfono, servicio y hora. No accede ni almacena fichas clínicas, historial médico ni ningún dato de salud sensible.</div></div></div>
+                <div class="faq-item"><button class="faq-q">¿Necesito saber de tecnología para usarlo?<span class="ic">+</span></button><div class="faq-a"><div>No. Tú creas tu cuenta y nosotros te ayudamos a activar tu número de WhatsApp Business. El panel está pensado para que cualquier persona lo use sin conocimientos técnicos.</div></div></div>
+                <div class="faq-item"><button class="faq-q">¿Qué pasa si no me gusta o no me sirve?<span class="ic">+</span></button><div class="faq-a"><div>Cancelas cuando quieras, sin permanencia ni penalización. Los primeros 7 días son gratis para que lo pruebes sin compromiso.</div></div></div>
+                <div class="faq-item"><button class="faq-q">¿Corro riesgo de que bloqueen mi WhatsApp?<span class="ic">+</span></button><div class="faq-a"><div>No. Usamos la API oficial de Meta (WhatsApp Business Platform), no un bot no oficial. Tu número está protegido y cumple con las políticas de WhatsApp.</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="sec">
+        <div class="container">
+            <div class="cta-final">
+                <span class="tag" style="color:var(--cyan);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:500;display:block;margin-bottom:12px">Empieza hoy</span>
+                <h2>Deja de perder clientes por no alcanzar a responder</h2>
+                <p>Conecta tu WhatsApp y deja que Velionix atienda, venda y agende mientras tú te dedicas al resto.</p>
+                <div class="hero-cta">
+                    <a href="https://app.velionix.cl/register" class="btn btn-primary">Probar 7 días gratis →</a>
+                    <a href="https://app.velionix.cl/panel" class="btn btn-ghost">Ya tengo cuenta</a>
+                </div>
+                <div class="hero-trust">
+                    <span>Sin tarjeta</span><span>Listo en minutos</span><span>Cancelas cuando quieras</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="f-left">© 2026 Velionix · Automatización de WhatsApp para tu negocio<br><a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></div>
+            <div class="f-links">
+                <a href="https://app.velionix.cl/panel">Iniciar sesión</a>
+                <a href="https://velionix.cl/privacidad">Política de privacidad</a>
+                <a href="https://wa.me/56920584589">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHAT INTERACTIVO (respuestas establecidas) -->
+    <div class="chat-widget">
+        <button class="chat-bubble" id="chatBubble" aria-label="Abrir chat">💬<span class="chat-dot"></span></button>
+        <div class="chat-box" id="chatBox" role="dialog" aria-label="Chat de Velionix">
+            <div class="chat-box-head">
+                <div class="chat-avatar" style="width:36px;height:36px;font-size:15px">V</div>
+                <div style="flex:1"><div class="chat-name">Velionix</div><div class="chat-status">Respondemos al instante</div></div>
+                <button id="chatClose" aria-label="Cerrar chat" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.7">✕</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="msg bot">¡Hola! 👋 Soy el asistente de Velionix. Elige una opción o escríbeme tu pregunta.</div>
+            </div>
+            <div class="chat-quick" id="chatQuick">
+                <button data-q="precio">💰 Precio</button>
+                <button data-q="funciona">⚙️ Cómo funciona</button>
+                <button data-q="seguro">🔒 ¿Es seguro?</button>
+                <button data-q="prueba">🎁 Probar gratis</button>
+            </div>
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
+                <button id="chatSend" aria-label="Enviar">➤</button>
+            </div>
+        </div>
     </div>
 
-    <div class="dental-points">
-      <div class="dp"><b>Una agenda por profesional</b>Cada dentista, kinesiólogo o especialista con su propio calendario y horarios.</div>
-      <div class="dp"><b>Solo horas reales</b>El bot ofrece únicamente los cupos libres. Imposible la doble reserva.</div>
-      <div class="dp"><b>Cancela y reagenda</b>Si el paciente no puede asistir, el bot verifica su cita y la cancela con confirmación.</div>
-      <div class="dp"><b>Sincroniza con Google Calendar</b>Cada cita agendada por WhatsApp aparece al instante en tu calendario. Cero doble agenda, cero trabajo manual.</div>
-    </div>
-  </div>
-</section>
+    <script>
+    (function(){
+        // ===== Menú móvil =====
+        var mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
+        mt.addEventListener('click',function(){nl.classList.toggle('open')});
+        nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
 
-<section class="how" id="como">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Listo en una tarde</span>
-      <h2>De tu WhatsApp actual a uno que trabaja solo</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <h3>Te registras</h3>
-        <p>Creas tu cuenta con los datos de tu negocio y nos compartes el acceso a tu WhatsApp Business. Nosotros terminamos de configurar y activar todo contigo — no necesitas saber nada técnico.</p>
-      </div>
-      <div class="step">
-        <h3>Configuras tu negocio</h3>
-        <p>Subes tu catálogo desde Excel, defines tus horarios y, si trabajas con citas, creas la agenda de cada profesional.</p>
-      </div>
-      <div class="step">
-        <h3>Tu WhatsApp empieza a trabajar</h3>
-        <p>Activas el bot y desde ese momento responde, vende y agenda solo. Tú recibes el aviso cuando hay una venta o una cita lista.</p>
-      </div>
-    </div>
-    <div class="how-cta">
-      <a href="https://app.velionix.cl/register" class="btn btn-primary btn-lg">Crear mi cuenta gratis →</a>
-    </div>
-  </div>
-</section>
+        // ===== Contadores hero (arrancan al entrar en viewport) =====
+        var counted=false;
+        function runCounters(){
+            if(counted)return;counted=true;
+            animate(document.getElementById('m1'),47,'');
+            animate(document.getElementById('m2'),128,'');
+            var p=0,pi=setInterval(function(){p+=2.4;if(p>=99.9){p=99.9;clearInterval(pi)}document.getElementById('m3').textContent=p.toFixed(1)+'%'},28);
+        }
+        function animate(el,target,suffix){
+            var s=0,step=Math.ceil(target/50),t=setInterval(function(){s+=step;if(s>=target){s=target;clearInterval(t)}el.textContent=s+suffix},28);
+        }
+        var heroObs=new IntersectionObserver(function(e){if(e[0].isIntersecting){runCounters();heroObs.disconnect()}},{threshold:0.4});
+        heroObs.observe(document.querySelector('.metrics'));
 
-<section class="feat" id="catalogo">
-  <div class="wrap feat-grid">
-    <div>
-      <span class="eyebrow">Tu inventario, conectado</span>
-      <h2>Sube tu catálogo desde Excel y listo</h2>
-      <p>No tienes que escribir productos uno por uno ni aprender un sistema nuevo. Cargas la planilla que ya usas y Velionix la convierte en el catálogo que tu WhatsApp consulta para vender.</p>
-      <ul>
-        <li><span class="ck">✓</span> Importas tu planilla de productos en segundos</li>
-        <li><span class="ck">✓</span> El bot responde con precios y stock reales, no inventados</li>
-        <li><span class="ck">✓</span> Actualizas tu catálogo cuando quieras desde el panel</li>
-        <li><span class="ck">✓</span> Funciona para ropa, accesorios y cualquier producto</li>
-      </ul>
-    </div>
-    <div class="sheet">
-      <div class="sheet-bar">
-        <span class="pill"></span><span class="pill"></span><span class="pill"></span>
-        <span class="fname">catalogo_tienda.xlsx</span>
-      </div>
-      <table>
-        <thead>
-          <tr><th>Producto</th><th>Precio</th><th>Stock</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Polerón Oversize Beige</td><td><span class="price">$24.990</span></td><td><span class="stk">12</span></td></tr>
-          <tr><td>Jeans Mom Tiro Alto</td><td><span class="price">$29.990</span></td><td><span class="stk">8</span></td></tr>
-          <tr><td>Cartera Cuero Negra</td><td><span class="price">$34.990</span></td><td><span class="stk">5</span></td></tr>
-          <tr><td>Zapatillas Urbanas</td><td><span class="price">$39.990</span></td><td><span class="stk">21</span></td></tr>
-          <tr><td>Aros Plata 925</td><td><span class="price">$12.990</span></td><td><span class="stk">40</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+        // ===== Reveal features =====
+        var fObs=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');fObs.unobserve(en.target)}})},{threshold:0.15});
+        document.querySelectorAll('.feature').forEach(function(f){fObs.observe(f)});
 
-<section class="aud">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Hecho para atender mejor</span>
-      <h2>Si vendes o atiendes por WhatsApp, es para ti</h2>
-    </div>
-    <div class="aud-grid">
-      <div class="aud-card">
-        <span class="tagchip">Agenda</span>
-        <h3>Clínicas y dentales</h3>
-        <p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p>
-      </div>
-      <div class="aud-card">
-        <span class="tagchip">Agenda</span>
-        <h3>Centros de estética</h3>
-        <p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p>
-      </div>
-      <div class="aud-card">
-        <span class="tagchip">Agenda</span>
-        <h3>Consultas y profesionales</h3>
-        <p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p>
-      </div>
-      <div class="aud-card">
-        <span class="tagchip">Catálogo</span>
-        <h3>Tiendas de ropa</h3>
-        <p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p>
-      </div>
-      <div class="aud-card">
-        <span class="tagchip">Catálogo</span>
-        <h3>Accesorios y joyería</h3>
-        <p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p>
-      </div>
-      <div class="aud-card">
-        <span class="tagchip">24/7</span>
-        <h3>Cualquier comercio</h3>
-        <p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        // ===== FAQ acordeón =====
+        document.querySelectorAll('.faq-q').forEach(function(btn){
+            btn.addEventListener('click',function(){
+                var item=btn.parentElement,open=item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
+                if(!open)item.classList.add('open');
+            });
+        });
 
-<section class="pricing" style="padding:100px 0;border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Precio único · sin sorpresas</span>
-      <h2>Todo incluido por $29.990/mes</h2>
-      <p>Prueba 7 días gratis, sin tarjeta.</p>
-    </div>
-    <div style="max-width:480px;margin:0 auto;background:var(--midnight-2);border:1px solid rgba(245,181,68,0.35);border-radius:20px;padding:40px 36px;position:relative">
-      <!-- Badge lanzamiento -->
-      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--amber);color:#2A1A00;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;white-space:nowrap;letter-spacing:0.06em">
-        🚀 PRECIO LANZAMIENTO
-      </div>
-      <!-- Precio -->
-      <div style="text-align:center;margin-bottom:28px;margin-top:8px">
-        <div style="font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">$29.990/mes</div>
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:52px;font-weight:800;color:var(--amber);line-height:1">$14.990</div>
-        <div style="font-size:14px;color:var(--muted);margin-top:4px">por mes · primeros 3 meses</div>
-      </div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px">
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Bot WhatsApp activo 24/7</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Agenda por profesional (ilimitados)</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Catálogo de productos desde Excel</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Panel de administración completo</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Notificaciones de citas y leads</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Número WhatsApp Business incluido</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Sincronización con Google Calendar</li>
-        <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px"><span class="ck">✓</span> Soporte por WhatsApp</li>
-      </ul>
-      <a href="https://app.velionix.cl/register" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Probar 7 días gratis →</a>
-      <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px">Sin permanencia. Cancelas cuando quieras.</p>
-    </div>
-  </div>
-</section>
+        // ===== Simulador de agenda =====
+        var step=1,svc='',day='',time='';
+        var panels=document.querySelectorAll('.sim-panel'),inds=document.querySelectorAll('.sim-step');
+        var prev=document.getElementById('prev'),next=document.getElementById('next');
+        function ui(){
+            panels.forEach(function(p,i){p.classList.toggle('active',i+1===step)});
+            inds.forEach(function(ind,i){
+                ind.classList.remove('active','done');
+                if(i+1<step)ind.classList.add('done');
+                else if(i+1===step)ind.classList.add('active');
+            });
+            prev.disabled=step===1;
+            next.textContent=step===4?'Reiniciar':'Siguiente →';
+            if(step===4)document.getElementById('confirm').textContent=svc+' · '+day+' · '+time;
+        }
+        document.querySelectorAll('#p1 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p1 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');svc=o.dataset.service})});
+        var days=['Lunes','Martes','Miércoles','Jueves','Viernes'],today=new Date(),html='';
+        for(var i=1;i<=5;i++){var d=new Date(today);d.setDate(d.getDate()+i);var dn=days[(d.getDay()+6)%7];var ds=d.toLocaleDateString('es-CL',{day:'numeric',month:'short'});html+='<div class="opt" data-day="'+dn+' '+ds+'">'+dn+' '+ds+'</div>'}
+        document.getElementById('dayBox').innerHTML=html;
+        document.querySelectorAll('#p2 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p2 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');day=o.dataset.day})});
+        document.querySelectorAll('#p3 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p3 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');time=o.textContent})});
+        next.addEventListener('click',function(){
+            if(step===1&&!svc){alert('Selecciona un servicio');return}
+            if(step===2&&!day){alert('Selecciona un día');return}
+            if(step===3&&!time){alert('Selecciona una hora');return}
+            if(step===4){step=1;svc=day=time='';document.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel')});ui();return}
+            step++;
+            ui();
+        });
+        prev.addEventListener('click',function(){if(step>1){step--;ui()}});
+        ui();
 
-<section class="faq" style="padding:100px 0;border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Antes de que preguntes</span>
-      <h2>Preguntas frecuentes</h2>
-    </div>
-    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
-      <div style="background:var(--midnight-2);border:1px solid var(--line);border-radius:16px;padding:24px 28px">
-        <h3 style="font-size:17px;margin-bottom:8px">¿Qué pasa con los datos de mis pacientes o clientes?</h3>
-        <p style="color:var(--muted);font-size:15px;line-height:1.6;margin:0">El bot solo gestiona la agenda: nombre, teléfono, servicio y hora. No accede ni almacena fichas clínicas, historial médico ni ningún dato de salud sensible.</p>
-      </div>
-      <div style="background:var(--midnight-2);border:1px solid var(--line);border-radius:16px;padding:24px 28px">
-        <h3 style="font-size:17px;margin-bottom:8px">¿Necesito saber de tecnología para usarlo?</h3>
-        <p style="color:var(--muted);font-size:15px;line-height:1.6;margin:0">No. Tú creas tu cuenta y nosotros te ayudamos a activar tu número de WhatsApp Business. El panel está pensado para que cualquier persona lo use sin conocimientos técnicos.</p>
-      </div>
-      <div style="background:var(--midnight-2);border:1px solid var(--line);border-radius:16px;padding:24px 28px">
-        <h3 style="font-size:17px;margin-bottom:8px">¿Qué pasa si no me gusta o no me sirve?</h3>
-        <p style="color:var(--muted);font-size:15px;line-height:1.6;margin:0">Cancelas cuando quieras, sin permanencia ni penalización. Los primeros 7 días son gratis para que lo pruebes sin compromiso.</p>
-      </div>
-      <div style="background:var(--midnight-2);border:1px solid var(--line);border-radius:16px;padding:24px 28px">
-        <h3 style="font-size:17px;margin-bottom:8px">¿Corro riesgo de que bloqueen mi WhatsApp?</h3>
-        <p style="color:var(--muted);font-size:15px;line-height:1.6;margin:0">No. Usamos la API oficial de Meta (WhatsApp Business Platform), no un bot no oficial. Tu número está protegido y cumple con las políticas de WhatsApp.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        // ===== Chat interactivo =====
+        var cb=document.getElementById('chatBubble'),bx=document.getElementById('chatBox'),cc=document.getElementById('chatClose');
+        var bd=document.getElementById('chatBody'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+        cb.addEventListener('click',function(){bx.classList.add('open');cb.style.display='none'});
+        cc.addEventListener('click',function(){bx.classList.remove('open');cb.style.display='block'});
 
-<section class="cta">
-  <div class="wrap">
-    <div class="cta-card">
-      <div class="glow" style="width:480px;height:480px;background:#5B3FA8;top:-240px;left:50%;transform:translateX(-50%);opacity:0.35"></div>
-      <span class="eyebrow" style="justify-content:center;display:inline-flex">Empieza hoy</span>
-      <h2>Deja de perder clientes por no alcanzar a responder</h2>
-      <p>Conecta tu WhatsApp y deja que Velionix atienda, venda y agende mientras tú te dedicas al resto.</p>
-      <div class="hero-cta">
-        <a href="https://app.velionix.cl/register" class="btn btn-primary btn-lg">Probar 7 días gratis →</a>
-        <a href="https://app.velionix.cl/panel" class="btn btn-ghost">Ya tengo cuenta</a>
-      </div>
-      <div class="trust-strip" style="margin-top:28px">
-        <span><span class="ok">✓</span> Sin tarjeta</span>
-        <span><span class="ok">✓</span> Listo en minutos</span>
-        <span><span class="ok">✓</span> Cancelas cuando quieras</span>
-      </div>
-    </div>
-  </div>
-</section>
+        var ans = {
+            'precio': 'El plan cuesta $14.990/mes los primeros 3 meses (luego $29.990). ¡Incluye todo! Puedes probar 7 días gratis sin tarjeta.',
+            'funciona': 'Conectamos tu WhatsApp a nuestro sistema. Tú subes tu catálogo o horarios, y el bot atiende a tus clientes 24/7, agendando o vendiendo.',
+            'seguro': 'Totalmente. Usamos la API oficial de Meta (WhatsApp Business Platform). Tu número está 100% seguro y no hay riesgo de bloqueo.',
+            'prueba': 'Puedes crear tu cuenta y usar la plataforma completa por 7 días gratis. No pedimos tarjeta para iniciar.'
+        };
 
-<footer>
-  <div class="wrap foot-inner">
-    <a href="#" class="brand"><img src="logovelionix1.png" alt="Velionix" height="52"></a>
-    <div style="text-align:center">
-      © 2026 Velionix · Automatización de WhatsApp para tu negocio<br>
-      <a href="mailto:contacto@velionix.cl" style="color:var(--muted);text-decoration:none;margin-top:4px;display:inline-block">contacto@velionix.cl</a>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-      <a href="https://app.velionix.cl/panel" style="color:var(--muted)">Iniciar sesión</a>
-      <a href="https://velionix.cl/privacidad" style="color:var(--muted);font-size:13px">Política de privacidad</a>
-    </div>
-  </div>
-</footer>
+        function addMsg(txt, sender) {
+            var m = document.createElement('div');
+            m.className = 'msg ' + sender;
+            m.innerHTML = txt;
+            bd.appendChild(m);
+            bd.scrollTop = bd.scrollHeight;
+        }
 
-<a href="https://wa.me/56920584589" target="_blank" rel="noopener"
-   style="position:fixed;bottom:28px;right:28px;z-index:100;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,0.45);transition:transform .15s ease"
-   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.535 5.874L.057 23.428a.75.75 0 0 0 .915.915l5.554-1.478A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.695 9.695 0 0 1-4.946-1.353l-.355-.211-3.664.975.984-3.595-.232-.369A9.694 9.694 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
-  </svg>
-</a>
+        document.querySelectorAll('#chatQuick button').forEach(function(btn){
+            btn.addEventListener('click', function(){
+                var q = btn.dataset.q;
+                addMsg(btn.textContent, 'user');
+                setTimeout(function(){
+                    addMsg(ans[q], 'bot');
+                    if(q==='prueba' || q==='precio'){
+                        setTimeout(function(){
+                            addMsg('<a href="https://app.velionix.cl/register">Crear cuenta gratis →</a>', 'bot');
+                        }, 600);
+                    }
+                }, 500);
+            });
+        });
+
+        function handleSend() {
+            var t = ci.value.trim();
+            if(!t) return;
+            ci.value = '';
+            addMsg(t, 'user');
+            setTimeout(function(){
+                addMsg('Para darte una respuesta más precisa o hablar con un humano, escríbenos a nuestro WhatsApp oficial 👇', 'bot');
+                setTimeout(function(){
+                    addMsg('<a href="https://wa.me/56920584589" target="_blank" style="display:inline-block;background:var(--green);color:#fff;padding:8px 12px;border-radius:14px;text-decoration:none;margin-top:6px;font-weight:600">Escríbenos por WhatsApp</a>', 'bot');
+                }, 600);
+            }, 600);
+        }
+        cs.addEventListener('click', handleSend);
+        ci.addEventListener('keypress', function(e){ if(e.key==='Enter') handleSend(); });
+
+        // ===== Canvas red neuronal (liviano) =====
+        var canvas = document.getElementById('net');
+        if(canvas) {
+            var ctx = canvas.getContext('2d');
+            var w, h, dots = [];
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+            for(var i=0; i<45; i++) {
+                dots.push({
+                    x: Math.random()*w, y: Math.random()*h,
+                    vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+                    r: Math.random()*1.5 + 0.5
+                });
+            }
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+                ctx.strokeStyle = 'rgba(0, 229, 255, 0.08)';
+                ctx.lineWidth = 1;
+                for(var i=0; i<dots.length; i++) {
+                    var d = dots[i];
+                    d.x += d.vx; d.y += d.vy;
+                    if(d.x < 0 || d.x > w) d.vx *= -1;
+                    if(d.y < 0 || d.y > h) d.vy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+                    ctx.fill();
+                    for(var j=i+1; j<dots.length; j++) {
+                        var d2 = dots[j];
+                        var dist = Math.hypot(d.x-d2.x, d.y-d2.y);
+                        if(dist < 150) {
+                            ctx.globalAlpha = 1 - (dist/150);
+                            ctx.beginPath();
+                            ctx.moveTo(d.x, d.y);
+                            ctx.lineTo(d2.x, d2.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+    })();
+    </script>
 </body>
 </html>
