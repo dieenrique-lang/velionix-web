@@ -204,6 +204,7 @@
             background:var(--card);border:1px solid rgba(0,229,255,0.25);border-radius:26px;
             padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18);backdrop-filter:blur(10px);
         }
+        #auroraChat{height:220px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;}
         .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
         .chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
         .chat-name{font-weight:600;font-size:15px}
@@ -977,41 +978,68 @@
                 {dir:'out', text:'Sí, despachamos a todo Chile 🚚 ¿Para qué día quieres el envío?', time:'03:39 ✓✓'},
                 {dir:'in', text:'Mañana porfa 🙏', time:'03:40'}
             ];
-            var delays=[0, 1400, 2800, 4200, 5600];
-            var LOOP=9000;
+            var delays=[0,1600,3400,5200,6800];
+            var LOOP=10000;
+            var timers=[];
+            var loopTimer=null;
+            var active=false;
+
+            function clearAllTimers(){
+                timers.forEach(function(t){clearTimeout(t)});
+                timers=[];
+            }
             function showTyping(cb){
-                var t=document.createElement('div');t.className='typing';
+                var t=document.createElement('div');
+                t.className='typing';
                 t.innerHTML='<span></span><span></span><span></span>';
-                container.appendChild(t);container.scrollTop=container.scrollHeight;
-                setTimeout(function(){t.remove();cb()},700);
+                container.appendChild(t);
+                var tid=setTimeout(function(){t.remove();cb();},750);
+                timers.push(tid);
             }
             function addBubble(msg){
-                var d=document.createElement('div');d.className='bubble '+msg.dir;
-                d.innerHTML=msg.text+(msg.price?'<span class="price">'+msg.price+'</span>':'')+'<span class="time">'+msg.time+'</span>';
-                d.style.opacity='0';d.style.transform='translateY(8px)';d.style.transition='opacity .3s,transform .3s';
-                container.appendChild(d);container.scrollTop=container.scrollHeight;
+                var d=document.createElement('div');
+                d.className='bubble '+msg.dir;
+                d.innerHTML=msg.text+(msg.price?'<span class="price">'+msg.price+'</span>':'')+' <span class="time">'+msg.time+'</span>';
+                d.style.cssText='opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s';
+                container.appendChild(d);
                 requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='translateY(0)'});
             }
             function runSequence(){
-                container.innerHTML='';status.textContent='en línea';
+                clearAllTimers();
+                container.innerHTML='';
+                status.textContent='en línea';
                 msgs.forEach(function(msg,i){
-                    setTimeout(function(){
-                        if(msg.dir==='out'){status.textContent='escribiendo...';showTyping(function(){status.textContent='en línea';addBubble(msg)})}
-                        else{addBubble(msg)}
+                    var tid=setTimeout(function(){
+                        if(!active)return;
+                        if(msg.dir==='out'){
+                            status.textContent='escribiendo...';
+                            showTyping(function(){
+                                if(!active)return;
+                                status.textContent='en línea';
+                                addBubble(msg);
+                            });
+                        } else {
+                            addBubble(msg);
+                        }
                     },delays[i]);
+                    timers.push(tid);
                 });
             }
-            var auroraRunning=false;
-            var auroraInterval=null;
-            var auroraObs=new IntersectionObserver(function(entries){
-                if(entries[0].isIntersecting){
-                    if(!auroraRunning){auroraRunning=true;runSequence();auroraInterval=setInterval(runSequence,LOOP);}
-                } else {
-                    auroraRunning=false;
-                    if(auroraInterval){clearInterval(auroraInterval);auroraInterval=null;}
-                }
-            },{threshold:0.2});
-            auroraObs.observe(container);
+            function start(){
+                if(active)return;
+                active=true;
+                runSequence();
+                loopTimer=setInterval(runSequence,LOOP);
+            }
+            function stop(){
+                active=false;
+                clearAllTimers();
+                if(loopTimer){clearInterval(loopTimer);loopTimer=null;}
+            }
+            var obs=new IntersectionObserver(function(entries){
+                entries[0].isIntersecting?start():stop();
+            },{threshold:0.3});
+            obs.observe(container);
         })();
     })();
     </script>
