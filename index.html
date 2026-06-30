@@ -499,7 +499,7 @@
             </div>
             <div id="auroraChat"></div>
             <div class="phone-input-bar">
-                <div class="phone-input-fake">Escribe un mensaje...</div>
+                <div class="phone-input-fake" id="auroraInputFake">Escribe un mensaje...</div>
                 <span class="phone-input-mic">🎤</span>
             </div>
         </div>
@@ -1130,31 +1130,67 @@
                 if(bubbles.length>6)bubbles[0].remove();
             }
 
+            function typeInInput(text, cb){
+                var fake=document.getElementById('auroraInputFake');
+                if(!fake){cb();return;}
+                fake.textContent='';
+                fake.style.color='var(--ink)';
+                var i=0;
+                var perChar=Math.min(60, Math.floor(typingDuration['in']/text.length));
+                function next(){
+                    if(!active)return;
+                    if(i<text.length){
+                        fake.textContent+=text[i];
+                        i++;
+                        var tid=setTimeout(next, perChar);
+                        push(tid);
+                    } else {
+                        // pausa breve antes de "enviar"
+                        var tid=setTimeout(function(){
+                            fake.textContent='Escribe un mensaje...';
+                            fake.style.color='';
+                            cb();
+                        }, 300);
+                        push(tid);
+                    }
+                }
+                next();
+            }
+
             function runSequence(){
                 clearAll();
                 container.innerHTML='';
                 status.textContent='en línea';
+                var fake=document.getElementById('auroraInputFake');
+                if(fake){fake.textContent='Escribe un mensaje...';fake.style.color='';}
                 active=true;
 
-                var cursor=0; // tiempo acumulado en ms
+                var cursor=0;
 
                 msgs.forEach(function(msg){
                     var startAt=cursor;
-                    // Mostrar indicador de escritura
                     var t1=setTimeout(function(){
                         if(!active)return;
-                        status.textContent= msg.dir==='out' ? 'escribiendo...' : 'el cliente escribe...';
-                        showTyping(msg.dir, function(){
-                            if(!active)return;
-                            status.textContent='en línea';
-                            addBubble(msg);
-                        });
+                        if(msg.dir==='in'){
+                            // Escribir letra a letra en el input decorativo, luego enviar
+                            typeInInput(msg.text, function(){
+                                if(!active)return;
+                                addBubble(msg);
+                            });
+                        } else {
+                            // Bot: indicador "escribiendo..." en el status
+                            status.textContent='escribiendo...';
+                            showTyping('out', function(){
+                                if(!active)return;
+                                status.textContent='en línea';
+                                addBubble(msg);
+                            });
+                        }
                     }, startAt);
                     push(t1);
                     cursor += typingDuration[msg.dir] + pauseBetween;
                 });
 
-                // Reiniciar después de que termine la secuencia + pausa
                 loopTimer=setTimeout(function(){
                     if(!active)return;
                     runSequence();
