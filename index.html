@@ -876,31 +876,60 @@
             }
 
             var demoState = 0;
+            var selectedProf = null;
+            var profMap = {
+                'DG': {name: 'Dra. García', label: 'Dra. Daniela García'},
+                'JM': {name: 'Dr. Morales', label: 'Dr. Juan Morales'},
+                'CS': {name: 'C. Soto',     label: 'Carol Soto'}
+            };
+
+            function detectProf(text) {
+                var t = text.toLowerCase();
+                if(t.indexOf('garcía') > -1 || t.indexOf('garcia') > -1 || t.indexOf('dra') > -1) return 'DG';
+                if(t.indexOf('morales') > -1 || t.indexOf('dr. m') > -1 || t.indexOf('dr m') > -1) return 'JM';
+                if(t.indexOf('soto') > -1 || t.indexOf('carol') > -1) return 'CS';
+                return null;
+            }
+
+            function getAvailable(profKey) {
+                return hours.filter(function(h) { return taken[profKey].indexOf(h) === -1; }).slice(0, 3);
+            }
+
             function processDemo(text) {
                 addDMsg(text, 'o');
                 setTimeout(function() {
                     if(demoState === 0) {
-                        addDMsg('¡Perfecto! La Dra. García tiene estas horas disponibles para mañana ' + optDay + ':<br><button class="hora-btn" data-h="09:00">09:00</button><button class="hora-btn" data-h="11:00">11:00</button><button class="hora-btn" data-h="12:00">12:00</button>', 'i');
+                        var prof = detectProf(text);
+                        if(!prof) {
+                            addDMsg('¿Con qué profesional quieres agendar?<br>• Dra. García<br>• Dr. Morales<br>• C. Soto', 'i');
+                            return;
+                        }
+                        selectedProf = prof;
+                        var available = getAvailable(prof);
+                        var btns = available.map(function(h) {
+                            return '<button class="hora-btn" data-h="'+h+'">'+h+'</button>';
+                        }).join('');
+                        addDMsg('¡Perfecto! '+profMap[prof].label+' tiene estas horas disponibles para mañana:<br>'+btns, 'i');
                         demoState = 1;
                         bindHoraBtns();
                     } else if(demoState === 1) {
-                        addDMsg('Por favor, selecciona una de las horas de arriba haciendo clic en el botón.', 'i');
+                        addDMsg('Por favor selecciona una hora haciendo clic en uno de los botones de arriba.', 'i');
                     } else if(demoState === 2) {
-                        addDMsg('Tu cita ya fue agendada. ¡Te esperamos mañana!', 'i');
+                        addDMsg('Tu cita ya fue agendada. ¡Te esperamos! Si necesitas cancelar o reagendar escríbenos aquí.', 'i');
                     }
                 }, 600);
             }
 
             function bindHoraBtns() {
-                document.querySelectorAll('.hora-btn').forEach(function(btn) {
+                dmMsgs.querySelectorAll('.hora-btn').forEach(function(btn) {
                     btn.addEventListener('click', function() {
-                        if(demoState !== 1) return;
+                        if(demoState !== 1 || !selectedProf) return;
                         var h = btn.dataset.h;
                         addDMsg('La de las ' + h + ' por favor.', 'o');
                         setTimeout(function() {
-                            addDMsg('¡Listo! Tu hora quedó agendada ✅<br><span class="hl">Dra. García · ' + optDay + ' ' + h + '</span>', 'i');
+                            addDMsg('¡Listo! Tu hora quedó agendada ✅<br><span class="hl">'+profMap[selectedProf].label+' · '+optDay+' · '+h+'</span>', 'i');
                             demoState = 2;
-                            var cell = dSlots.querySelector('.slot-cell[data-prof="DG"][data-time="'+h+'"]');
+                            var cell = dSlots.querySelector('.slot-cell[data-prof="'+selectedProf+'"][data-time="'+h+'"]');
                             if(cell) {
                                 cell.classList.add('pre-taken');
                                 cell.innerHTML = '<div class="appt new">WhatsApp</div>';
