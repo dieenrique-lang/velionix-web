@@ -204,7 +204,8 @@
             background:var(--card);border:1px solid rgba(0,229,255,0.25);border-radius:26px;
             padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18);backdrop-filter:blur(10px);
         }
-        #auroraChat{height:220px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;}
+        #auroraChat{height:230px;overflow:hidden;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;padding:4px 0;}
+        #auroraChat .bubble{margin:0;flex-shrink:0;}
         .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
         .chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
         .chat-name{font-weight:600;font-size:15px}
@@ -419,6 +420,8 @@
         .typing span:nth-child(2){animation-delay:.2s}
         .typing span:nth-child(3){animation-delay:.4s}
         @keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+        .typing.out{align-self:flex-end;}
+        .typing.in{align-self:flex-start;}
     </style>
 </head>
 <body>
@@ -469,7 +472,7 @@
                 <div class="chat-avatar">A</div>
                 <div><div class="chat-name">Tienda Aurora</div><div class="chat-status" id="auroraStatus">en línea</div></div>
             </div>
-            <div id="auroraChat" style="min-height:200px"></div>
+            <div id="auroraChat"></div>
         </div>
     </header>
 
@@ -971,74 +974,105 @@
             var container=document.getElementById('auroraChat');
             var status=document.getElementById('auroraStatus');
             if(!container)return;
+
+            // Conversación completa con indicador de quién escribe antes de cada mensaje
             var msgs=[
-                {dir:'in', text:'Hola! tienen el polerón oversize en talla M? 🙌', time:'03:38'},
+                {dir:'in',  text:'Hola! tienen el polerón oversize en talla M? 🙌', time:'03:38'},
                 {dir:'out', text:'¡Hola! Sí, tenemos disponible 👇', price:'Polerón Oversize Beige · $24.990 · Talla M', time:'03:38 ✓✓'},
-                {dir:'in', text:'Perfecto, lo quiero. Hacen envío a Valdivia?', time:'03:39'},
+                {dir:'in',  text:'Perfecto, lo quiero. Hacen envío a Valdivia?', time:'03:39'},
                 {dir:'out', text:'Sí, despachamos a todo Chile 🚚 ¿Para qué día quieres el envío?', time:'03:39 ✓✓'},
-                {dir:'in', text:'Mañana porfa 🙏', time:'03:40'}
+                {dir:'in',  text:'Mañana porfa 🙏', time:'03:40'},
+                {dir:'out', text:'¡Listo! Envío agendado para mañana ✅ Te avisamos cuando salga.', time:'03:40 ✓✓'}
             ];
-            var delays=[0,1600,3400,5200,6800];
-            var LOOP=10000;
+
+            // Tiempo de "escritura" antes de mostrar cada burbuja (ms)
+            var typingDuration={in:900, out:1100};
+            // Pausa entre que termina un mensaje y empieza el siguiente a escribir
+            var pauseBetween=600;
+            var LOOP_PAUSE=3500; // pausa al final antes de reiniciar
             var timers=[];
             var loopTimer=null;
             var active=false;
 
-            function clearAllTimers(){
-                timers.forEach(function(t){clearTimeout(t)});
+            function clearAll(){
+                timers.forEach(clearTimeout);
                 timers=[];
+                if(loopTimer){clearTimeout(loopTimer);loopTimer=null;}
             }
-            function showTyping(cb){
+
+            function push(tid){timers.push(tid);}
+
+            function showTyping(dir, cb){
+                // Elimina typing anterior si existe
+                var old=container.querySelector('.typing');
+                if(old)old.remove();
                 var t=document.createElement('div');
-                t.className='typing';
+                t.className='typing '+dir; // dir para alinear igual que bubbles
                 t.innerHTML='<span></span><span></span><span></span>';
                 container.appendChild(t);
-                var tid=setTimeout(function(){t.remove();cb();},750);
-                timers.push(tid);
+                var tid=setTimeout(function(){
+                    if(t.parentNode)t.remove();
+                    cb();
+                }, typingDuration[dir]);
+                push(tid);
             }
+
             function addBubble(msg){
+                var old=container.querySelector('.typing');
+                if(old)old.remove();
                 var d=document.createElement('div');
                 d.className='bubble '+msg.dir;
-                d.innerHTML=msg.text+(msg.price?'<span class="price">'+msg.price+'</span>':'')+' <span class="time">'+msg.time+'</span>';
-                d.style.cssText='opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s';
+                d.innerHTML=msg.text
+                    +(msg.price?'<span class="price">'+msg.price+'</span>':'')
+                    +'<span class="time">'+msg.time+'</span>';
+                d.style.cssText='opacity:0;transform:translateY(5px);transition:opacity .25s,transform .25s;flex-shrink:0;';
                 container.appendChild(d);
-                requestAnimationFrame(function(){d.style.opacity='1';d.style.transform='translateY(0)'});
+                requestAnimationFrame(function(){
+                    d.style.opacity='1';
+                    d.style.transform='translateY(0)';
+                });
+                // Mantener solo últimas 6 burbujas para no crecer el contenedor
+                var bubbles=container.querySelectorAll('.bubble');
+                if(bubbles.length>6)bubbles[0].remove();
             }
+
             function runSequence(){
-                clearAllTimers();
+                clearAll();
                 container.innerHTML='';
                 status.textContent='en línea';
-                msgs.forEach(function(msg,i){
-                    var tid=setTimeout(function(){
-                        if(!active)return;
-                        if(msg.dir==='out'){
-                            status.textContent='escribiendo...';
-                            showTyping(function(){
-                                if(!active)return;
-                                status.textContent='en línea';
-                                addBubble(msg);
-                            });
-                        } else {
-                            addBubble(msg);
-                        }
-                    },delays[i]);
-                    timers.push(tid);
-                });
-            }
-            function start(){
-                if(active)return;
                 active=true;
-                runSequence();
-                loopTimer=setInterval(runSequence,LOOP);
+
+                var cursor=0; // tiempo acumulado en ms
+
+                msgs.forEach(function(msg){
+                    var startAt=cursor;
+                    // Mostrar indicador de escritura
+                    var t1=setTimeout(function(){
+                        if(!active)return;
+                        status.textContent= msg.dir==='out' ? 'escribiendo...' : 'el cliente escribe...';
+                        showTyping(msg.dir, function(){
+                            if(!active)return;
+                            status.textContent='en línea';
+                            addBubble(msg);
+                        });
+                    }, startAt);
+                    push(t1);
+                    cursor += typingDuration[msg.dir] + pauseBetween;
+                });
+
+                // Reiniciar después de que termine la secuencia + pausa
+                loopTimer=setTimeout(function(){
+                    if(!active)return;
+                    runSequence();
+                }, cursor + LOOP_PAUSE);
             }
-            function stop(){
-                active=false;
-                clearAllTimers();
-                if(loopTimer){clearInterval(loopTimer);loopTimer=null;}
-            }
+
+            function start(){if(active)return; runSequence();}
+            function stop(){active=false; clearAll(); container.innerHTML=''; status.textContent='en línea';}
+
             var obs=new IntersectionObserver(function(entries){
-                entries[0].isIntersecting?start():stop();
-            },{threshold:0.3});
+                entries[0].isIntersecting ? start() : stop();
+            },{threshold:0.25});
             obs.observe(container);
         })();
     })();
