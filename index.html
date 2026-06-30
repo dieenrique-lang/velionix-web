@@ -159,7 +159,7 @@
         }
         .navbar .container{display:flex;align-items:center;justify-content:space-between}
         .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-        .brand img{height:42px;width:auto}
+        .brand img{height:30px;width:auto}
         .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
         .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
         .nav-links a:hover{color:var(--cyan)}
@@ -259,35 +259,62 @@
         .uc h3{font-size:17px;margin-bottom:8px}
         .uc p{font-size:14px;color:var(--muted)}
 
-        /* booking simulator */
-        .sim{max-width:620px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.2);border-radius:22px;padding:32px}
-        .sim-steps{display:flex;justify-content:space-between;margin-bottom:30px;position:relative}
-        .sim-steps::before{content:'';position:absolute;top:18px;left:10%;right:10%;height:2px;background:var(--line);z-index:0}
-        .sim-step{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--faint);position:relative;z-index:1}
-        .sim-step .circle{width:38px;height:38px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:600;transition:.3s}
-        .sim-step.active .circle{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 18px rgba(0,229,255,0.3)}
-        .sim-step.active{color:var(--cyan)}
-        .sim-step.done .circle{background:var(--green);border-color:var(--green);color:#fff}
-        .sim-panel{display:none;min-height:160px}
-        .sim-panel.active{display:block;animation:fade .4s}
+        /* ===== DEMO INTERACTIVA FUSIONADA ===== */
+        .demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+
+        /* --- Chat demo izquierda --- */
+        .demo-phone{background:var(--card);border:1px solid rgba(0,229,255,0.22);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-height:540px}
+        .demo-phone-head{background:linear-gradient(135deg,#00c8ff,#a855f7);padding:14px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+        .demo-phone-head .av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;flex-shrink:0}
+        .demo-phone-head .nm{font-weight:600;color:#fff;font-size:14px}
+        .demo-phone-head .st{font-size:11px;color:rgba(255,255,255,0.85)}
+        .demo-msgs{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;max-height:390px}
+        .dm{max-width:85%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-break:break-word}
+        .dm.i{background:rgba(255,255,255,0.07);border-bottom-left-radius:4px;align-self:flex-start}
+        .dm.o{background:rgba(37,211,102,0.14);border:1px solid rgba(37,211,102,0.28);border-bottom-right-radius:4px;align-self:flex-end}
+        .dm .t{display:block;font-size:10px;color:var(--faint);margin-top:4px}
+        .dm .hl{display:block;font-weight:600;color:var(--cyan);margin-top:4px;font-size:13px}
+        .dm .hora-btn{display:inline-block;background:rgba(0,229,255,0.15);border:1px solid rgba(0,229,255,0.35);border-radius:8px;padding:5px 12px;margin:3px 4px 0 0;font-size:13px;font-weight:600;color:var(--cyan);cursor:pointer;transition:.2s}
+        .dm .hora-btn:hover{background:rgba(0,229,255,0.28)}
+        .demo-input-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);flex-shrink:0}
+        .demo-input-row input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:24px;padding:10px 14px;color:var(--ink);font-family:inherit;font-size:16px;outline:none}
+        @media (min-width:561px){.demo-input-row input{font-size:13px}}
+        .demo-input-row input:focus{border-color:var(--cyan)}
+        .demo-input-row button{background:linear-gradient(135deg,#00c8ff,#a855f7);border:none;color:#fff;width:40px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0}
+        .demo-hints{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px;flex-shrink:0}
+        .demo-hints button{background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.2);color:var(--muted);font-family:inherit;font-size:11px;padding:5px 10px;border-radius:16px;cursor:pointer;transition:.2s}
+        .demo-hints button:hover{border-color:var(--cyan);color:var(--cyan)}
+
+        /* --- Dashboard derecha --- */
+        .demo-dash{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-height:540px}
+        .dash-head{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+        .dash-head .title{font-size:14px;font-weight:600}
+        .dash-head .date{font-size:12px;color:var(--muted)}
+        .dash-profs{display:flex;border-bottom:1px solid var(--line);flex-shrink:0}
+        .dash-prof{flex:1;padding:10px 6px;text-align:center;font-size:11px;font-weight:600;border-right:1px solid var(--line)}
+        .dash-prof:last-child{border-right:none}
+        .dash-prof .init{width:28px;height:28px;border-radius:50%;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+        .init-dg{background:linear-gradient(135deg,#00c8ff,#a855f7)}
+        .init-jm{background:linear-gradient(135deg,#a855f7,#ec4899)}
+        .init-cs{background:linear-gradient(135deg,#10b981,#3b82f6)}
+        .dash-grid{flex:1;overflow-y:auto;position:relative}
+        .dash-slots{display:grid;grid-template-columns:56px 1fr 1fr 1fr}
+        .slot-time{font-size:11px;color:var(--faint);padding:0 8px;height:44px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04);flex-shrink:0}
+        .slot-cell{height:44px;border-left:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);position:relative}
+        .slot-cell.taken{background:rgba(0,229,255,0.06)}
+        .slot-cell.pre-taken{background:rgba(168,85,247,0.08)}
+        .appt{position:absolute;inset:3px;border-radius:6px;padding:3px 7px;font-size:10px;font-weight:600;line-height:1.3;overflow:hidden}
+        .appt.existing{background:rgba(0,229,255,0.18);border:1px solid rgba(0,229,255,0.4);color:var(--cyan)}
+        .appt.new{background:linear-gradient(135deg,rgba(0,200,255,0.3),rgba(168,85,247,0.3));border:1px solid rgba(0,229,255,0.6);color:#fff;animation:apptIn .5s ease}
+        @keyframes apptIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+        .appt.new::before{content:'⚡ ';font-size:9px}
+        .dash-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--faint);font-size:13px;padding:40px}
+        .dash-legend{padding:10px 16px;border-top:1px solid var(--line);display:flex;gap:16px;font-size:11px;color:var(--faint);flex-shrink:0}
+        .dash-legend span{display:flex;align-items:center;gap:5px}
+        .dot-cyan{width:8px;height:8px;border-radius:2px;background:rgba(0,229,255,0.5)}
+        .dot-new{width:8px;height:8px;border-radius:2px;background:linear-gradient(135deg,rgba(0,200,255,0.7),rgba(168,85,247,0.7))}
+        @media (max-width:860px){.demo-wrap{grid-template-columns:1fr}}
         @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-        .sim-panel .label{color:var(--muted);margin-bottom:18px;font-size:15px}
-        .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .opt{background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px;font-size:15px}
-        .opt:hover{border-color:rgba(0,229,255,0.4)}
-        .opt.sel{background:rgba(0,229,255,0.1);border-color:var(--cyan)}
-        .opt span{font-size:22px}
-        .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-        .time-grid .opt{justify-content:center}
-        .sim-nav{display:flex;justify-content:space-between;margin-top:26px}
-        .sim-btn{background:rgba(255,255,255,0.06);border:1px solid var(--line);color:var(--ink);padding:11px 22px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:14px;transition:.2s}
-        .sim-btn:hover:not(:disabled){border-color:var(--cyan)}
-        .sim-btn:disabled{opacity:.35;cursor:not-allowed}
-        .sim-btn.next{background:var(--grad);border:none;color:#fff}
-        .sim-done{text-align:center}
-        .sim-done .check{font-size:46px}
-        .sim-done h3{margin:10px 0;font-size:22px}
-        .sim-done p{color:var(--muted);margin-bottom:18px}
 
         /* pricing */
         .price-card{
@@ -337,7 +364,7 @@
         .chat-box{position:absolute;bottom:74px;right:0;width:340px;max-width:calc(100vw - 32px);background:#0e1018;border:1px solid rgba(0,229,255,0.22);border-radius:18px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,0.5);display:none;flex-direction:column}
         @media (max-width:480px){.chat-box{position:fixed;bottom:0;right:0;left:0;width:100%;border-radius:18px 18px 0 0;max-height:75vh}}
         @media (max-width:480px){.chat-widget{bottom:0;right:0}}
-        @media (max-width:480px){.chat-bubble{position:fixed;bottom:16px;right:16px}}
+        @media (max-width:480px){.chat-bubble{margin:0 16px 16px 0;position:fixed;bottom:16px;right:16px}}
         .chat-box.open{display:flex;animation:chatIn .25s ease}
         @keyframes chatIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
         .chat-box-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--grad)}
@@ -454,24 +481,65 @@
         </div>
     </section>
 
-    <!-- AGENDA / DEMO DENTAL -->
+    <!-- DEMO INTERACTIVA: CHAT + DASHBOARD (sección fusionada) -->
     <section class="sec" id="agenda">
         <div class="container">
             <div class="sec-head">
-                <span class="tag">Demo · centro dental</span>
-                <h2>Mira cómo agenda una hora, solo</h2>
-                <p>Un paciente escribe al WhatsApp del centro. El bot revisa la agenda de la profesional, ofrece las horas libres y confirma la cita — directo al calendario.</p>
+                <span class="tag">Pruébalo tú mismo</span>
+                <h2>Escribe como si fuera tu paciente — mira cómo se agenda solo</h2>
+                <p>Interactúa con el chat de la Clínica Dental Norte. Cuando elijas una hora, aparecerá al instante en el dashboard de la derecha — igual que en la app real.</p>
             </div>
-            <div class="phone" style="max-width:440px;margin:0 auto">
-                <div class="chat-head">
-                    <div class="chat-avatar">CD</div>
-                    <div><div class="chat-name">Clínica Dental Norte</div><div class="chat-status">en línea</div></div>
+            <div class="demo-wrap">
+
+                <!-- IZQUIERDA: Chat WhatsApp interactivo -->
+                <div class="demo-phone">
+                    <div class="demo-phone-head">
+                        <div class="av">CD</div>
+                        <div><div class="nm">Clínica Dental Norte</div><div class="st">en línea · responde al instante</div></div>
+                    </div>
+                    <div class="demo-msgs" id="demoMsgs">
+                        <div class="dm i">¡Hola! 👋 Soy el asistente de la Clínica Dental Norte. ¿Con qué profesional quieres agendar?<span class="t">10:00</span></div>
+                    </div>
+                    <div class="demo-hints" id="demoHints">
+                        <button data-hint="Quiero hora con la Dra. García">Dra. García</button>
+                        <button data-hint="Necesito ver al Dr. Morales">Dr. Morales</button>
+                        <button data-hint="¿Qué servicios tienen?">Ver servicios</button>
+                        <button data-hint="Quiero una limpieza dental">Limpieza</button>
+                    </div>
+                    <div class="demo-input-row">
+                        <input type="text" id="demoInput" placeholder="Escribe aquí..." autocomplete="off">
+                        <button id="demoSend" aria-label="Enviar">➤</button>
+                    </div>
                 </div>
-                <div class="bubble in">Hola, necesito hora con la Dra. García para una limpieza 🦷<span class="time">10:02</span></div>
-                <div class="bubble out">¡Hola! Claro. La Dra. García tiene estas horas para mañana miércoles: 09:30 · 11:00 · 12:00<span class="time">10:02 ✓✓</span></div>
-                <div class="bubble in">La de las 11:00 porfa<span class="time">10:03</span></div>
-                <div class="bubble out">¡Listo! Tu hora quedó agendada ✅<span class="price">Dra. García · Limpieza · Mié 11 jun 11:00</span><span class="time">10:03 ✓✓</span></div>
-                <div class="bubble in">Gracias! 🙌<span class="time">10:03</span></div>
+
+                <!-- DERECHA: Dashboard de agenda -->
+                <div class="demo-dash">
+                    <div class="dash-head">
+                        <div class="title">Agenda · Clínica Dental Norte</div>
+                        <div class="date" id="dashDate">—</div>
+                    </div>
+                    <div class="dash-profs">
+                        <div class="dash-prof"><div class="init init-dg">DG</div>Dra. García</div>
+                        <div class="dash-prof"><div class="init init-jm">JM</div>Dr. Morales</div>
+                        <div class="dash-prof"><div class="init init-cs">CS</div>C. Soto</div>
+                    </div>
+                    <div class="dash-grid">
+                        <div class="dash-slots" id="dashSlots"></div>
+                    </div>
+                    <div class="dash-legend">
+                        <span><span class="dot-cyan"></span>Cita existente</span>
+                        <span><span class="dot-new"></span>Agendada por WhatsApp</span>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align:center;margin-top:32px">
+                <div style="display:inline-flex;flex-wrap:wrap;justify-content:center;gap:24px;font-size:14px;color:var(--muted)">
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Una agenda por profesional</span>
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Solo horas realmente libres</span>
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Cancela y reagenda por WhatsApp</span>
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Sincroniza con Google Calendar</span>
+                </div>
             </div>
         </div>
     </section>
@@ -538,57 +606,6 @@
                 <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">👗</div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
                 <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">💍</div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
                 <div class="uc"><span class="badge">24/7</span><div class="uc-icon">🏪</div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SIMULADOR DE AGENDA -->
-    <section class="sec" id="simulador">
-        <div class="container">
-            <div class="sec-head">
-                <span class="tag">Pruébalo tú mismo</span>
-                <h2>Así agendan tus clientes en segundos</h2>
-                <p>Simula la experiencia de reservar una hora. Es exactamente lo que vivirá tu cliente por WhatsApp.</p>
-            </div>
-            <div class="sim">
-                <div class="sim-steps">
-                    <div class="sim-step active" data-step="1"><div class="circle">1</div>Servicio</div>
-                    <div class="sim-step" data-step="2"><div class="circle">2</div>Día</div>
-                    <div class="sim-step" data-step="3"><div class="circle">3</div>Hora</div>
-                    <div class="sim-step" data-step="4"><div class="circle">✓</div>Listo</div>
-                </div>
-                <div class="sim-panel active" id="p1">
-                    <p class="label">Elige un servicio:</p>
-                    <div class="opt-grid">
-                        <div class="opt" data-service="Corte de cabello"><span>💇</span>Corte</div>
-                        <div class="opt" data-service="Masaje relajante"><span>💆</span>Masaje</div>
-                        <div class="opt" data-service="Consulta médica"><span>🩺</span>Consulta</div>
-                        <div class="opt" data-service="Limpieza dental"><span>🦷</span>Limpieza</div>
-                    </div>
-                </div>
-                <div class="sim-panel" id="p2">
-                    <p class="label">Día disponible:</p>
-                    <div class="opt-grid" id="dayBox"></div>
-                </div>
-                <div class="sim-panel" id="p3">
-                    <p class="label">Horario:</p>
-                    <div class="time-grid">
-                        <div class="opt">09:00</div><div class="opt">10:00</div><div class="opt">11:00</div>
-                        <div class="opt">12:00</div><div class="opt">15:00</div><div class="opt">16:00</div>
-                    </div>
-                </div>
-                <div class="sim-panel" id="p4">
-                    <div class="sim-done">
-                        <div class="check">✅</div>
-                        <h3>¡Cita agendada!</h3>
-                        <p id="confirm"></p>
-                        <a href="https://wa.me/56920584589?text=Hola%2C%20quiero%20agendar%20una%20hora" class="btn btn-primary">Confirmar por WhatsApp →</a>
-                    </div>
-                </div>
-                <div class="sim-nav">
-                    <button class="sim-btn prev" id="prev" disabled>← Anterior</button>
-                    <button class="sim-btn next" id="next">Siguiente →</button>
-                </div>
             </div>
         </div>
     </section>
@@ -726,39 +743,108 @@
             });
         });
 
-        // ===== Simulador de agenda =====
-        var step=1,svc='',day='',time='';
-        var panels=document.querySelectorAll('.sim-panel'),inds=document.querySelectorAll('.sim-step');
-        var prev=document.getElementById('prev'),next=document.getElementById('next');
-        function ui(){
-            panels.forEach(function(p,i){p.classList.toggle('active',i+1===step)});
-            inds.forEach(function(ind,i){
-                ind.classList.remove('active','done');
-                if(i+1<step)ind.classList.add('done');
-                else if(i+1===step)ind.classList.add('active');
-            });
-            prev.disabled=step===1;
-            next.textContent=step===4?'Reiniciar':'Siguiente →';
-            if(step===4)document.getElementById('confirm').textContent=svc+' · '+day+' · '+time;
-        }
-        document.querySelectorAll('#p1 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p1 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');svc=o.dataset.service})});
-        var days=['Lunes','Martes','Miércoles','Jueves','Viernes'],today=new Date(),html='';
-        for(var i=1;i<=5;i++){var d=new Date(today);d.setDate(d.getDate()+i);var dn=days[(d.getDay()+6)%7];var ds=d.toLocaleDateString('es-CL',{day:'numeric',month:'short'});html+='<div class="opt" data-day="'+dn+' '+ds+'">'+dn+' '+ds+'</div>'}
-        document.getElementById('dayBox').innerHTML=html;
-        document.querySelectorAll('#p2 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p2 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');day=o.dataset.day})});
-        document.querySelectorAll('#p3 .opt').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('#p3 .opt').forEach(function(x){x.classList.remove('sel')});o.classList.add('sel');time=o.textContent})});
-        next.addEventListener('click',function(){
-            if(step===1&&!svc){alert('Selecciona un servicio');return}
-            if(step===2&&!day){alert('Selecciona un día');return}
-            if(step===3&&!time){alert('Selecciona una hora');return}
-            if(step===4){step=1;svc=day=time='';document.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel')});ui();return}
-            step++;
-            ui();
-        });
-        prev.addEventListener('click',function(){if(step>1){step--;ui()}});
-        ui();
+        // ===== Demo Interactiva Fusionada =====
+        var dmMsgs = document.getElementById('demoMsgs');
+        var dmHints = document.getElementById('demoHints');
+        var dmInput = document.getElementById('demoInput');
+        var dmSend = document.getElementById('demoSend');
+        var dDashDate = document.getElementById('dashDate');
+        var dSlots = document.getElementById('dashSlots');
 
-        // ===== Chat interactivo =====
+        if(dmMsgs) {
+            var td = new Date();
+            var tomorrow = new Date(td);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            var optDay = tomorrow.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'short' });
+            if(dDashDate) dDashDate.textContent = optDay.charAt(0).toUpperCase() + optDay.slice(1);
+
+            var hours = ['09:00', '10:00', '11:00', '12:00', '15:00', '16:00', '17:00'];
+            var taken = {'DG': ['10:00', '15:00'], 'JM': ['09:00', '11:00', '16:00'], 'CS': ['12:00', '17:00']};
+            var profs = ['DG', 'JM', 'CS'];
+            var slotsHtml = '';
+            hours.forEach(function(h) {
+                slotsHtml += '<div class="slot-time">' + h + '</div>';
+                profs.forEach(function(p) {
+                    var isTaken = taken[p].indexOf(h) !== -1;
+                    if(isTaken) {
+                        slotsHtml += '<div class="slot-cell taken"><div class="appt existing">Ocupado</div></div>';
+                    } else {
+                        slotsHtml += '<div class="slot-cell" data-prof="'+p+'" data-time="'+h+'"></div>';
+                    }
+                });
+            });
+            dSlots.innerHTML = slotsHtml;
+
+            function addDMsg(txt, type) {
+                var d = document.createElement('div');
+                d.className = 'dm ' + type;
+                var now = new Date();
+                var timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+                d.innerHTML = txt + '<span class="t">' + timeStr + (type==='o'?' ✓✓':'') + '</span>';
+                dmMsgs.appendChild(d);
+                dmMsgs.scrollTop = dmMsgs.scrollHeight;
+            }
+
+            var demoState = 0;
+            function processDemo(text) {
+                addDMsg(text, 'o');
+                setTimeout(function() {
+                    if(demoState === 0) {
+                        addDMsg('¡Perfecto! La Dra. García tiene estas horas disponibles para mañana ' + optDay + ':<br><button class="hora-btn" data-h="09:00">09:00</button><button class="hora-btn" data-h="11:00">11:00</button><button class="hora-btn" data-h="12:00">12:00</button>', 'i');
+                        demoState = 1;
+                        bindHoraBtns();
+                    } else if(demoState === 1) {
+                        addDMsg('Por favor, selecciona una de las horas de arriba haciendo clic en el botón.', 'i');
+                    } else if(demoState === 2) {
+                        addDMsg('Tu cita ya fue agendada. ¡Te esperamos mañana!', 'i');
+                    }
+                }, 600);
+            }
+
+            function bindHoraBtns() {
+                document.querySelectorAll('.hora-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        if(demoState !== 1) return;
+                        var h = btn.dataset.h;
+                        addDMsg('La de las ' + h + ' por favor.', 'o');
+                        setTimeout(function() {
+                            addDMsg('¡Listo! Tu hora quedó agendada ✅<br><span class="hl">Dra. García · ' + optDay + ' ' + h + '</span>', 'i');
+                            demoState = 2;
+                            var cell = dSlots.querySelector('.slot-cell[data-prof="DG"][data-time="'+h+'"]');
+                            if(cell) {
+                                cell.classList.add('pre-taken');
+                                cell.innerHTML = '<div class="appt new">WhatsApp</div>';
+                            }
+                        }, 700);
+                    });
+                });
+            }
+
+            if(dmHints) {
+                dmHints.querySelectorAll('button').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var text = btn.dataset.hint;
+                        processDemo(text);
+                        dmHints.style.display = 'none';
+                    });
+                });
+            }
+
+            if(dmSend) {
+                dmSend.addEventListener('click', function() {
+                    var t = dmInput.value.trim();
+                    if(!t) return;
+                    dmInput.value = '';
+                    processDemo(t);
+                    if(dmHints) dmHints.style.display = 'none';
+                });
+                dmInput.addEventListener('keypress', function(e) {
+                    if(e.key === 'Enter') dmSend.click();
+                });
+            }
+        }
+
+        // ===== Chat interactivo (Bottom Sheet / Floating) =====
         var cb=document.getElementById('chatBubble'),bx=document.getElementById('chatBox'),cc=document.getElementById('chatClose');
         var bd=document.getElementById('chatBody'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
         cb.addEventListener('click',function(){bx.classList.add('open');cb.style.display='none'});
