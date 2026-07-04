@@ -234,7 +234,15 @@
         }
         .feature.visible{opacity:1;transform:translateY(0)}
         .feature:hover{transform:translateY(-4px);border-color:rgba(0,229,255,0.3)}
-        .feature .icon{font-size:30px;margin-bottom:14px}
+        .feature .icon{
+            width:52px;height:52px;border-radius:14px;
+            display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg, rgba(0,229,255,.14), rgba(168,85,247,.10));
+            border:1px solid rgba(0,229,255,.25);
+            margin-bottom:14px;
+            color:var(--cyan);
+        }
+        .feature .icon svg{width:24px;height:24px;stroke-width:1.8}
         .feature h3{font-size:18px;margin-bottom:8px}
         .feature p{font-size:14px;color:var(--muted)}
 
@@ -260,7 +268,15 @@
         .uc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .25s}
         .uc:hover{border-color:rgba(168,85,247,0.35)}
         .uc .badge{font-size:11px;font-weight:600;color:var(--violet);background:rgba(168,85,247,0.12);padding:3px 10px;border-radius:6px;letter-spacing:.5px}
-        .uc .uc-icon{font-size:28px;margin:14px 0 10px}
+        .uc .uc-icon{
+            width:48px;height:48px;border-radius:12px;
+            display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg, rgba(168,85,247,.14), rgba(0,229,255,.10));
+            border:1px solid rgba(168,85,247,.25);
+            margin:14px 0 10px;
+            color:var(--violet);
+        }
+        .uc .uc-icon svg{width:22px;height:22px;stroke-width:1.8}
         .uc h3{font-size:17px;margin-bottom:8px}
         .uc p{font-size:14px;color:var(--muted)}
 
@@ -537,12 +553,12 @@
                 <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
             </div>
             <div class="grid-3">
-                <div class="feature"><div class="icon">💬</div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
-                <div class="feature"><div class="icon">📅</div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
-                <div class="feature"><div class="icon">🛍️</div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
-                <div class="feature"><div class="icon">ℹ️</div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
-                <div class="feature"><div class="icon">📆</div><h3>Sincroniza con Google Calendar</h3><p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p></div>
-                <div class="feature"><div class="icon">🔒</div><h3>Sin riesgo de bloqueo</h3><p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="clock"></i></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="calendar-check"></i></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="shopping-bag"></i></div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="info"></i></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="refresh-cw"></i></div><h3>Sincroniza con Google Calendar</h3><p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p></div>
+                <div class="feature"><div class="icon"><i data-lucide="shield-check"></i></div><h3>Sin riesgo de bloqueo</h3><p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p></div>
             </div>
         </div>
     </section>
@@ -695,12 +711,12 @@
                 <h2>Si vendes o atiendes por WhatsApp, es para ti</h2>
             </div>
             <div class="grid-3-uc">
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">🦷</div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">💆</div><h3>Centros de estética</h3><p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p></div>
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon">🧠</div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">👗</div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">💍</div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
-                <div class="uc"><span class="badge">24/7</span><div class="uc-icon">🏪</div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="stethoscope"></i></div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="sparkles"></i></div><h3>Centros de estética</h3><p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="activity"></i></div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><i data-lucide="shirt"></i></div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><i data-lucide="gem"></i></div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
+                <div class="uc"><span class="badge">24/7</span><div class="uc-icon"><i data-lucide="store"></i></div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
             </div>
         </div>
     </section>
@@ -858,6 +874,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
     (function(){
         // ===== Menú móvil =====
@@ -1331,6 +1348,7 @@
             });
         })();
     })();
+        lucide.createIcons();
     </script>
 </body>
 </html>
