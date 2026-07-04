@@ -243,6 +243,7 @@
             color:var(--cyan);
         }
         .feature .icon svg{width:24px;height:24px;stroke-width:1.8}
+        .feature .icon svg, .uc .uc-icon svg{ display:block; }
         .feature h3{font-size:18px;margin-bottom:8px}
         .feature p{font-size:14px;color:var(--muted)}
 
@@ -553,12 +554,12 @@
                 <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
             </div>
             <div class="grid-3">
-                <div class="feature"><div class="icon"><i data-lucide="clock"></i></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
-                <div class="feature"><div class="icon"><i data-lucide="calendar-check"></i></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
-                <div class="feature"><div class="icon"><i data-lucide="shopping-bag"></i></div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
-                <div class="feature"><div class="icon"><i data-lucide="info"></i></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
-                <div class="feature"><div class="icon"><i data-lucide="refresh-cw"></i></div><h3>Sincroniza con Google Calendar</h3><p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p></div>
-                <div class="feature"><div class="icon"><i data-lucide="shield-check"></i></div><h3>Sin riesgo de bloqueo</h3><p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3>Sincroniza con Google Calendar</h3><p>Cada reserva agendada por WhatsApp aparece automáticamente en tu Google Calendar. Sin copiar, sin olvidar.</p></div>
+                <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Sin riesgo de bloqueo</h3><p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p></div>
             </div>
         </div>
     </section>
@@ -711,12 +712,12 @@
                 <h2>Si vendes o atiendes por WhatsApp, es para ti</h2>
             </div>
             <div class="grid-3-uc">
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="stethoscope"></i></div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="sparkles"></i></div><h3>Centros de estética</h3><p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p></div>
-                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><i data-lucide="activity"></i></div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><i data-lucide="shirt"></i></div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><i data-lucide="gem"></i></div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
-                <div class="uc"><span class="badge">24/7</span><div class="uc-icon"><i data-lucide="store"></i></div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 6.6C4.5 8 4 9.5 4 11c0 4 3 8 8 9 5-1 8-5 8-9 0-1.5-.5-3-1-4.4"/><path d="M8 6c0-1.5 1-3 4-3s4 1.5 4 3"/><path d="M12 11h.01"/></svg></div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.5 3-4 4-4 8a4 4 0 0 0 8 0c0-4-2.5-5-4-8Z"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><h3>Centros de estética</h3><p>Agenda tratamientos por especialista y responde consultas de servicios y precios a toda hora.</p></div>
+                <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 1 5H9a2 2 0 0 0-2 2v1c0 3 2 5 5 5s5-2 5-5v-1a2 2 0 0 0-2-2h0c0-2 1-3 1-5a4 4 0 0 0-4-4Z"/></svg></div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 5-9 13L3 7Z"/><path d="M3 7h18"/><path d="M9 2 8 7l4 13 4-13-1-5"/></svg></div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 5-9 13L3 8Z"/><path d="M3 8h18"/><path d="m9 3 3 5 3-5"/><path d="M12 8v13"/></svg></div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
+                <div class="uc"><span class="badge">24/7</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9v11h18V9"/><path d="M3 9 5 3h14l2 6"/><path d="M3 9h18"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg></div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
             </div>
         </div>
     </section>
@@ -874,7 +875,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+
     <script>
     (function(){
         // ===== Menú móvil =====
@@ -1348,13 +1349,7 @@
             });
         })();
     })();
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            } else {
-                console.error('Lucide no se cargó correctamente');
-            }
-        });
+
     </script>
 </body>
 </html>
