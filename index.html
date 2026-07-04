@@ -447,6 +447,28 @@
         .inv-reset-btn:hover{border-color:var(--cyan);color:var(--cyan)}
         #inv-table tbody tr{opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
         #inv-table tbody tr.visible{opacity:1;transform:translateX(0)}
+        /* portfolio & testimonios */
+        .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+        .port-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
+        .port-card:hover{transform:translateY(-4px);border-color:var(--cyan)}
+        .port-img{width:100%;height:200px;background:rgba(255,255,255,0.05);object-fit:cover}
+        .port-body{padding:24px;display:flex;flex-direction:column;flex:1}
+        .port-title{font-size:18px;margin-bottom:8px}
+        .port-desc{font-size:14px;color:var(--muted);margin-bottom:18px;flex:1}
+        .port-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px}
+        .port-badge{font-size:11px;font-weight:600;color:var(--violet);background:rgba(168,85,247,0.12);padding:4px 10px;border-radius:6px;letter-spacing:.5px}
+        .port-link{font-size:13px;font-weight:600;color:var(--cyan);text-decoration:none;display:flex;align-items:center;gap:4px}
+        .port-link:hover{text-decoration:underline}
+
+        .test-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+        .test-card.visible{opacity:1;transform:translateY(0)}
+        .test-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+        .test-avatar{width:48px;height:48px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0}
+        .test-name{font-size:15px;font-weight:600}
+        .test-role{font-size:12px;color:var(--faint)}
+        .test-stars{color:#facc15;font-size:14px;margin-bottom:12px;letter-spacing:2px}
+        .test-text{font-size:14px;color:var(--muted);font-style:italic;line-height:1.6}
+        .test-empty{text-align:center;padding:40px;background:var(--card);border:1px dashed var(--line);border-radius:18px;color:var(--muted);font-size:15px}
     </style>
 </head>
 <body>
@@ -679,6 +701,60 @@
                 <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon">💍</div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
                 <div class="uc"><span class="badge">24/7</span><div class="uc-icon">🏪</div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
             </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section class="sec" id="portafolio">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Nuestros trabajos</span>
+                <h2>Conoce lo que hemos construido</h2>
+                <p>Proyectos reales que ya están generando resultados para nuestros clientes.</p>
+            </div>
+            <div class="grid-2">
+                <div class="port-card feature">
+                    <div class="port-img" style="background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:32px">GD</div>
+                    <div class="port-body">
+                        <h3 class="port-title">Grúas Las Delicias</h3>
+                        <p class="port-desc">Landing page para servicio de grúa en Santiago. Diseño responsive, galería con lightbox, animación de partículas, integración WhatsApp y dominio personalizado.</p>
+                        <div class="port-footer">
+                            <span class="port-badge">HTML · CSS · JS</span>
+                            <a href="https://gruaslasdelicias.cl" target="_blank" rel="noopener" class="port-link">Ver sitio ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="sec" id="testimonios">
+        <div class="container">
+            <div class="sec-head">
+                <span class="tag">Lo que dicen nuestros clientes</span>
+                <h2>Historias de éxito con Velionix</h2>
+            </div>
+            <!-- Testimonios vacíos por ahora -->
+            <div class="test-empty feature">
+                ✨ Pronto compartiremos las opiniones de nuestros clientes ✨
+            </div>
+            <!-- Estructura de card para el futuro -->
+            <!--
+            <div class="grid-2">
+                <div class="test-card feature">
+                    <div class="test-head">
+                        <div class="test-avatar">JD</div>
+                        <div>
+                            <div class="test-name">Juan Pérez</div>
+                            <div class="test-role">Director · Clínica Dental XYZ</div>
+                        </div>
+                    </div>
+                    <div class="test-stars">★★★★★</div>
+                    <p class="test-text">"Desde que usamos Velionix, nuestra agenda se llena sola y no perdemos pacientes por no contestar a tiempo. ¡Recomendado 100%!"</p>
+                </div>
+            </div>
+            -->
         </div>
     </section>
 
