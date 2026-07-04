@@ -874,7 +874,7 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
     <script>
     (function(){
         // ===== Menú móvil =====
@@ -1348,7 +1348,13 @@
             });
         })();
     })();
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.error('Lucide no se cargó correctamente');
+            }
+        });
     </script>
 </body>
 </html>
