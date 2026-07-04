@@ -503,7 +503,7 @@
                 <p>Proyectos reales que ya están generando resultados para nuestros clientes.</p>
             </div>
             <div class="grid-2">
-                <div class="port-card feature">
+                <div class="port-card">
                     <div class="port-img" style="background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:32px">GD</div>
                     <div class="port-body">
                         <h3 class="port-title">Grúas Las Delicias</h3>
@@ -573,7 +573,7 @@
             var s=0,step=Math.ceil(target/50),t=setInterval(function(){s+=step;if(s>=target){s=target;clearInterval(t)}el.textContent=s+suffix},28);
         }
         var heroObs=new IntersectionObserver(function(e){if(e[0].isIntersecting){runCounters();heroObs.disconnect()}},{threshold:0.4});
-        heroObs.observe(document.querySelector('.metrics'));
+        var metricsEl=document.querySelector('.metrics'); if(metricsEl) heroObs.observe(metricsEl);
 
         // ===== Reveal features =====
         var fObs=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');fObs.unobserve(en.target)}})},{threshold:0.15});
