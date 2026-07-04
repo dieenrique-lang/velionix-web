@@ -266,6 +266,26 @@
 
         /* use cases */
         .grid-3-uc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .mobile-track{display:none;}
+        .mobile-track-fill{
+            position:absolute;top:0;left:0;width:100%;height:0%;
+            background:linear-gradient(180deg,var(--cyan),var(--violet));
+            border-radius:2px;
+            transition:height .1s linear;
+        }
+        @media(max-width:560px){
+            .grid-3, .grid-3-uc{ padding-left:22px; }
+            .mobile-track{
+                display:block;
+                position:absolute;
+                left:0;top:6px;bottom:6px;
+                width:3px;
+                background:rgba(255,255,255,0.08);
+                border-radius:2px;
+                overflow:hidden;
+            }
+            .feature, .uc{ position:relative; }
+        }
         .uc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .25s}
         .uc:hover{border-color:rgba(168,85,247,0.35)}
         .uc .badge{font-size:11px;font-weight:600;color:var(--violet);background:rgba(168,85,247,0.12);padding:3px 10px;border-radius:6px;letter-spacing:.5px}
@@ -558,7 +578,8 @@
                 <h2>Cuatro tareas que ya no harás a mano</h2>
                 <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
             </div>
-            <div class="grid-3">
+            <div class="grid-3" style="position:relative">
+                <div class="mobile-track"><div class="mobile-track-fill" id="featuresTrackFill"></div></div>
                 <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
                 <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional.</p></div>
                 <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
@@ -716,7 +737,8 @@
                 <span class="tag">Hecho para atender mejor</span>
                 <h2>Si vendes o atiendes por WhatsApp, es para ti</h2>
             </div>
-            <div class="grid-3-uc">
+            <div class="grid-3-uc" style="position:relative">
+                <div class="mobile-track"><div class="mobile-track-fill" id="ucTrackFill"></div></div>
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Talleres mecánicos</h3><p>Agenda revisiones y mantenciones, responde consultas sobre repuestos y servicios, y confirma horas sin llamadas.</p></div>
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
@@ -905,6 +927,33 @@
         // ===== Reveal features =====
         var fObs=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');fObs.unobserve(en.target)}})},{threshold:0.15});
         document.querySelectorAll('.feature').forEach(function(f){fObs.observe(f)});
+
+        // ===== Barra de progreso mobile (Features y Use Cases) =====
+        (function(){
+            function setupTrack(gridSelector, fillId){
+                var grid = document.querySelector(gridSelector);
+                var fill = document.getElementById(fillId);
+                if(!grid || !fill) return;
+                function update(){
+                    if(window.innerWidth > 560){ fill.style.height='0%'; return; }
+                    var rect = grid.getBoundingClientRect();
+                    var vh = window.innerHeight;
+                    var start = vh * 0.85;
+                    var end = vh * 0.25;
+                    var totalRange = rect.height + (start - end);
+                    var progress = (start - rect.top) / totalRange;
+                    progress = Math.max(0, Math.min(1, progress));
+                    fill.style.height = (progress * 100) + '%';
+                }
+                window.addEventListener('scroll', function(){
+                    requestAnimationFrame(update);
+                }, {passive:true});
+                window.addEventListener('resize', update);
+                update();
+            }
+            setupTrack('.grid-3', 'featuresTrackFill');
+            setupTrack('.grid-3-uc', 'ucTrackFill');
+        })();
 
         // ===== FAQ acordeón =====
         document.querySelectorAll('.faq-q').forEach(function(btn){
