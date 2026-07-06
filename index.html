@@ -778,8 +778,31 @@
                         </div>
                     </div>
                     <div class="test-stars">★★★★★</div>
-                    <p class="test-text">"Excelente experiencia, la atención super buena, rápida y eficaz. Totalmente recomendable."</p>
-                    <a href="https://gruaslasdelicias.cl" target="_blank" rel="noopener" style="font-size:12px;color:var(--cyan);text-decoration:none;display:inline-block;margin-top:12px;">gruaslasdelicias.cl ↗</a>
+                    <p class="test-text">
+                        <span class="test-summary">"Excelente experiencia, la atención super buena, rápida y eficaz. Totalmente recomendable."</span>
+                        <span class="test-full" style="display:none">"Excelente experiencia, la atención super buena, rápida y eficaz. Totalmente recomendable. El equipo resolvió todas nuestras dudas y el servicio cumplió todo lo prometido, facilitando nuestro trabajo diario."</span>
+                    </p>
+                    <a href="javascript:void(0)" onclick="toggleTestimonial(this)" style="font-size:14px;color:var(--cyan);text-decoration:none;display:inline-block;margin-top:4px;margin-bottom:12px;">Leer reseña completa ↓</a>
+                    <br>
+                    <a href="https://gruaslasdelicias.cl" target="_blank" rel="noopener" style="font-size:12px;color:var(--cyan);text-decoration:none;display:inline-block;">gruaslasdelicias.cl ↗</a>
+                </div>
+
+                <div class="test-card feature">
+                    <div class="test-head">
+                        <div class="test-avatar" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6)">CS</div>
+                        <div>
+                            <div class="test-name">Cristián Salinas Otaegui</div>
+                            <div class="test-role">Director de Consultoría, Comerciativa.cl</div>
+                        </div>
+                    </div>
+                    <div class="test-stars">★★★★★</div>
+                    <p class="test-text">
+                        <span class="test-summary">"Nuestra experiencia con Velionix ha sido transformadora para Comerciativa. La plataforma es robusta, intuitiva y nos ha permitido optimizar procesos clave de manera eficiente."</span>
+                        <span class="test-full" style="display:none">"Nuestra experiencia con Velionix ha sido transformadora para Comerciativa. La plataforma es robusta, intuitiva y nos ha permitido optimizar procesos clave de manera eficiente. Quiero destacar especialmente el apoyo de Diego y todo el equipo, quienes nos han brindado un soporte técnico excepcional. Definitivamente es una inversión que recomiendo a cualquier empresa que busque escalar."</span>
+                    </p>
+                    <a href="javascript:void(0)" onclick="toggleTestimonial(this)" style="font-size:14px;color:var(--cyan);text-decoration:none;display:inline-block;margin-top:4px;margin-bottom:12px;">Leer reseña completa ↓</a>
+                    <br>
+                    <a href="https://comerciativa.cl/" target="_blank" rel="noopener" style="font-size:12px;color:var(--cyan);text-decoration:none;display:inline-block;">comerciativa.cl ↗</a>
                 </div>
             </div>
         </div>
@@ -1404,6 +1427,20 @@
         })();
     })();
 
+    function toggleTestimonial(btn) {
+        var card = btn.parentElement;
+        var summary = card.querySelector('.test-summary');
+        var full = card.querySelector('.test-full');
+        if (full.style.display === 'none') {
+            full.style.display = 'inline';
+            summary.style.display = 'none';
+            btn.innerHTML = 'Ver menos ↑';
+        } else {
+            full.style.display = 'none';
+            summary.style.display = 'inline';
+            btn.innerHTML = 'Leer reseña completa ↓';
+        }
+    }
     </script>
 </body>
 </html>
