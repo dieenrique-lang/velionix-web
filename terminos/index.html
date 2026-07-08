@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos de Servicio — Velionix</title>
+  <link rel="canonical" href="https://velionix.cl/terminos">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #6366f1;
+      --accent-dim: rgba(99,102,241,0.12);
+      --text: #e8e8f0;
+      --text-muted: #6b6b80;
+      --text-dim: #9494a8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    .badge {
+      font-size: 0.72rem;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    .hero {
+      margin-bottom: 56px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+    .hero-meta span strong {
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    section { margin-bottom: 48px; }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    p {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+    p:last-child { margin-bottom: 0; }
+    ul { list-style: none; margin: 12px 0 14px; }
+    ul li {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(30,30,46,0.5);
+    }
+    ul li:last-child { border-bottom: none; }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+    .highlight {
+      background: var(--accent-dim);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight p {
+      color: var(--text-dim);
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-top: 16px;
+    }
+    .contact-card p { margin-bottom: 8px; }
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88rem;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">veli<span>onix</span></a>
+    <span class="badge">Términos de Servicio</span>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <div class="hero-label">Documento legal</div>
+    <h1>Términos de Servicio</h1>
+    <div class="hero-meta">
+      <span><strong>Empresa:</strong> Velionix</span>
+      <span><strong>Última actualización:</strong> Julio 2026</span>
+      <span><strong>Jurisdicción:</strong> Chile</span>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span> Aceptación de los Términos</h2>
+    <p>Estos Términos de Servicio ("Términos") regulan el acceso y uso de la plataforma Velionix ("el Servicio"), operada en Chile. Al registrarse o utilizar el Servicio, el negocio cliente ("Cliente") acepta estos Términos en su totalidad.</p>
+    <p>Si no estás de acuerdo con alguno de estos Términos, te pedimos que no uses nuestra plataforma.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Descripción del Servicio</h2>
+    <p>Velionix es una plataforma SaaS que permite a negocios automatizar la atención al cliente y la gestión de reservas a través de WhatsApp mediante inteligencia artificial. El Servicio incluye:</p>
+    <ul>
+      <li>Bot de atención automatizada por WhatsApp con IA</li>
+      <li>Sistema de gestión de reservas y agenda por profesional</li>
+      <li>Panel de control web para administrar conversaciones, clientes y configuraciones</li>
+      <li>Integración opcional con Google Calendar para sincronización de citas</li>
+      <li>Notificaciones por correo electrónico sobre reservas y actividad</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Registro y cuenta</h2>
+    <p>Para utilizar el Servicio, el Cliente debe registrarse con información veraz y actualizada. El Cliente es responsable de:</p>
+    <ul>
+      <li>Mantener la confidencialidad de sus credenciales de acceso</li>
+      <li>Todas las actividades que ocurran bajo su cuenta</li>
+      <li>Notificar a Velionix de inmediato ante cualquier uso no autorizado de su cuenta</li>
+    </ul>
+    <p>Velionix no será responsable por daños derivados del uso no autorizado de la cuenta del Cliente.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Uso aceptable</h2>
+    <p>El Cliente se compromete a utilizar el Servicio únicamente para fines lícitos. Queda expresamente prohibido:</p>
+    <ul>
+      <li>Usar el Servicio para enviar mensajes no solicitados (spam) o contenido ilegal</li>
+      <li>Suplantar identidades o engañar a los usuarios finales</li>
+      <li>Intentar acceder sin autorización a sistemas o cuentas de otros Clientes</li>
+      <li>Utilizar el Servicio en violación de las políticas de uso de WhatsApp Business API o Meta</li>
+      <li>Recopilar datos de usuarios finales con fines distintos a los declarados</li>
+      <li>Revender, sublicenciar o transferir el acceso al Servicio sin autorización previa de Velionix</li>
+    </ul>
+    <div class="highlight">
+      <p>Velionix se reserva el derecho de suspender o cancelar cuentas que violen estas condiciones, con o sin aviso previo según la gravedad de la infracción.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Responsabilidades del Cliente</h2>
+    <p>El Cliente es el único responsable de:</p>
+    <ul>
+      <li>El contenido de los mensajes enviados a sus usuarios finales a través de la plataforma</li>
+      <li>Obtener el consentimiento adecuado de sus usuarios finales para recibir comunicaciones por WhatsApp</li>
+      <li>Cumplir con la Ley N° 19.628 sobre Protección de la Vida Privada respecto a la información de sus propios clientes</li>
+      <li>Mantener activas y vigentes las integraciones de terceros requeridas (número de WhatsApp Business, cuenta de Meta, etc.)</li>
+      <li>La configuración correcta del bot, horarios, servicios y profesionales dentro de la plataforma</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Integraciones de terceros</h2>
+    <p>El Servicio se integra con plataformas de terceros como WhatsApp Business API (Meta) y Google Calendar. El uso de estas integraciones está sujeto a los términos y políticas de cada proveedor.</p>
+    <p>Velionix no garantiza la disponibilidad continua de estas integraciones y no será responsable por interrupciones, cambios o suspensiones causadas por dichos terceros.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> Disponibilidad del Servicio</h2>
+    <p>Velionix realizará sus mejores esfuerzos para mantener el Servicio disponible de forma continua. Sin embargo, no garantiza disponibilidad ininterrumpida. El Servicio puede estar sujeto a interrupciones por mantenimiento, actualizaciones o causas ajenas a nuestro control.</p>
+    <p>Velionix no será responsable por pérdidas derivadas de interrupciones del servicio.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Propiedad intelectual</h2>
+    <p>Velionix y todos sus componentes (software, diseño, marca, documentación) son propiedad exclusiva de Velionix. El uso del Servicio no otorga al Cliente ningún derecho de propiedad sobre la plataforma o sus componentes.</p>
+    <p>El Cliente conserva la propiedad de los datos e información que cargue en la plataforma.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span> Limitación de responsabilidad</h2>
+    <p>En la máxima medida permitida por la ley, Velionix no será responsable por:</p>
+    <ul>
+      <li>Daños indirectos, incidentales o consecuentes derivados del uso o imposibilidad de uso del Servicio</li>
+      <li>Pérdida de datos, ingresos o clientes del negocio Cliente</li>
+      <li>Errores, omisiones o inexactitudes en las respuestas generadas por el bot de inteligencia artificial</li>
+      <li>Incumplimientos derivados de causas de fuerza mayor</li>
+    </ul>
+    <p>La responsabilidad total de Velionix frente al Cliente no excederá el monto pagado por el Servicio en los últimos tres meses.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span> Tarifas y pagos</h2>
+    <p>El acceso al Servicio puede estar sujeto al pago de una tarifa según el plan contratado. Las tarifas vigentes serán informadas al Cliente al momento del registro o contratación.</p>
+    <p>Velionix se reserva el derecho de modificar sus tarifas con aviso previo de al menos 30 días. El no pago de las tarifas puede resultar en la suspensión del acceso al Servicio.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span> Cancelación y terminación</h2>
+    <p>El Cliente puede cancelar su cuenta en cualquier momento contactando a <a href="mailto:contacto@velionix.cl" style="color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.88rem;">contacto@velionix.cl</a>. Tras la cancelación, los datos del Cliente podrán ser eliminados en un plazo de 30 días.</p>
+    <p>Velionix puede suspender o terminar el acceso de un Cliente que viole estos Términos, con o sin aviso previo según la gravedad de la infracción.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">12</span> Modificaciones a los Términos</h2>
+    <p>Velionix puede modificar estos Términos en cualquier momento. Los cambios serán notificados con al menos 15 días de anticipación mediante correo electrónico o aviso en el panel de control.</p>
+    <p>El uso continuado del Servicio tras la notificación implica la aceptación de los nuevos Términos.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">13</span> Ley aplicable y jurisdicción</h2>
+    <p>Estos Términos se rigen por las leyes de la República de Chile. Cualquier controversia derivada de estos Términos será sometida a los tribunales competentes de la ciudad de Santiago, Chile.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">14</span> Contacto</h2>
+    <p>Para consultas relacionadas con estos Términos de Servicio:</p>
+    <div class="contact-card">
+      <p><strong style="color: var(--text)">Velionix</strong></p>
+      <p>Chile</p>
+      <p>Email: <a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></p>
+      <p>Web: <a href="https://velionix.cl">velionix.cl</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>© 2026 Velionix · Chile · <a href="mailto:contacto@velionix.cl" style="color: var(--text-muted); text-decoration: none;">contacto@velionix.cl</a></p>
+</footer>
+</body>
+</html>

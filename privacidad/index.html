@@ -17,9 +17,7 @@
       --text-muted: #6b6b80;
       --text-dim: #9494a8;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -27,8 +25,6 @@
       min-height: 100vh;
       line-height: 1.7;
     }
-
-    /* Header */
     header {
       border-bottom: 1px solid var(--border);
       padding: 20px 0;
@@ -38,7 +34,6 @@
       backdrop-filter: blur(12px);
       z-index: 10;
     }
-
     .header-inner {
       max-width: 760px;
       margin: 0 auto;
@@ -47,7 +42,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .logo {
       font-family: 'DM Mono', monospace;
       font-size: 1.1rem;
@@ -56,11 +50,7 @@
       text-decoration: none;
       letter-spacing: -0.5px;
     }
-
-    .logo span {
-      color: var(--accent);
-    }
-
+    .logo span { color: var(--accent); }
     .badge {
       font-size: 0.72rem;
       font-family: 'DM Mono', monospace;
@@ -69,21 +59,16 @@
       padding: 4px 10px;
       border-radius: 20px;
     }
-
-    /* Main */
     main {
       max-width: 760px;
       margin: 0 auto;
       padding: 60px 24px 100px;
     }
-
-    /* Hero */
     .hero {
       margin-bottom: 56px;
       padding-bottom: 48px;
       border-bottom: 1px solid var(--border);
     }
-
     .hero-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
@@ -92,7 +77,6 @@
       text-transform: uppercase;
       margin-bottom: 16px;
     }
-
     h1 {
       font-size: clamp(2rem, 5vw, 2.8rem);
       font-weight: 600;
@@ -100,29 +84,21 @@
       letter-spacing: -1px;
       margin-bottom: 20px;
     }
-
     .hero-meta {
       display: flex;
       gap: 24px;
       flex-wrap: wrap;
     }
-
     .hero-meta span {
       font-size: 0.82rem;
       color: var(--text-muted);
       font-family: 'DM Mono', monospace;
     }
-
     .hero-meta span strong {
       color: var(--text-dim);
       font-weight: 500;
     }
-
-    /* Sections */
-    section {
-      margin-bottom: 48px;
-    }
-
+    section { margin-bottom: 48px; }
     h2 {
       font-size: 1.1rem;
       font-weight: 600;
@@ -134,7 +110,6 @@
       align-items: center;
       gap: 10px;
     }
-
     h2 .num {
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
@@ -144,20 +119,13 @@
       border-radius: 4px;
       font-weight: 500;
     }
-
     p {
       font-size: 0.95rem;
       color: var(--text-dim);
       margin-bottom: 14px;
     }
-
     p:last-child { margin-bottom: 0; }
-
-    ul {
-      list-style: none;
-      margin: 12px 0 14px;
-    }
-
+    ul { list-style: none; margin: 12px 0 14px; }
     ul li {
       font-size: 0.95rem;
       color: var(--text-dim);
@@ -165,9 +133,7 @@
       position: relative;
       border-bottom: 1px solid rgba(30,30,46,0.5);
     }
-
     ul li:last-child { border-bottom: none; }
-
     ul li::before {
       content: '—';
       position: absolute;
@@ -175,8 +141,6 @@
       color: var(--accent);
       font-family: 'DM Mono', monospace;
     }
-
-    /* Highlight box */
     .highlight {
       background: var(--accent-dim);
       border: 1px solid rgba(99,102,241,0.2);
@@ -184,14 +148,11 @@
       padding: 20px 24px;
       margin: 20px 0;
     }
-
     .highlight p {
       color: var(--text-dim);
       margin: 0;
       font-size: 0.9rem;
     }
-
-    /* Contact card */
     .contact-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -199,29 +160,19 @@
       padding: 28px;
       margin-top: 16px;
     }
-
-    .contact-card p {
-      margin-bottom: 8px;
-    }
-
+    .contact-card p { margin-bottom: 8px; }
     .contact-card a {
       color: var(--accent);
       text-decoration: none;
       font-family: 'DM Mono', monospace;
       font-size: 0.88rem;
     }
-
-    .contact-card a:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
+    .contact-card a:hover { text-decoration: underline; }
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 24px;
       text-align: center;
     }
-
     footer p {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -231,93 +182,114 @@
   </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
     <a href="/" class="logo">veli<span>onix</span></a>
     <span class="badge">Política de Privacidad</span>
   </div>
 </header>
-
 <main>
   <div class="hero">
     <div class="hero-label">Documento legal</div>
     <h1>Política de Privacidad</h1>
     <div class="hero-meta">
       <span><strong>Empresa:</strong> Velionix</span>
-      <span><strong>Última actualización:</strong> Junio 2025</span>
+      <span><strong>Última actualización:</strong> Julio 2026</span>
       <span><strong>Jurisdicción:</strong> Chile</span>
     </div>
   </div>
 
   <section>
     <h2><span class="num">01</span> Introducción</h2>
-    <p>Velionix ("nosotros", "nuestro" o "la plataforma") opera como un servicio SaaS que permite a negocios automatizar su atención al cliente a través de WhatsApp Business API. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos la información personal de nuestros usuarios y clientes.</p>
-    <p>Al usar nuestros servicios, aceptas las prácticas descritas en este documento. Si no estás de acuerdo, te pedimos que no uses nuestra plataforma.</p>
+    <p>Velionix ("nosotros", "nuestro" o "la plataforma") es un servicio SaaS chileno que permite a negocios automatizar su atención al cliente y gestión de reservas a través de WhatsApp Business API, con integración opcional a Google Calendar. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos la información de quienes utilizan nuestros servicios.</p>
+    <p>Al registrarte o usar Velionix, aceptas las prácticas descritas en este documento. Si no estás de acuerdo, te pedimos que no uses nuestra plataforma.</p>
   </section>
 
   <section>
     <h2><span class="num">02</span> Información que recopilamos</h2>
-    <p>Recopilamos la siguiente información cuando te registras o usas Velionix:</p>
+    <p><strong style="color: var(--text-dim)">De los negocios clientes:</strong></p>
     <ul>
       <li>Nombre del negocio, rubro e industria</li>
-      <li>Correo electrónico y contraseña (almacenada de forma encriptada)</li>
+      <li>Correo electrónico y contraseña (almacenada cifrada con bcrypt)</li>
       <li>Número de teléfono de contacto</li>
       <li>Credenciales de WhatsApp Business API (Phone Number ID y Token de acceso)</li>
-      <li>Conversaciones y mensajes procesados a través de la plataforma</li>
-      <li>Datos de uso y logs de actividad del sistema</li>
+      <li>Configuración del servicio: horarios, catálogo, profesionales y modo de operación</li>
+      <li>Tokens de integración con Google Calendar (almacenados cifrados)</li>
+    </ul>
+    <p><strong style="color: var(--text-dim)">De los clientes finales de cada negocio:</strong></p>
+    <ul>
+      <li>Número de teléfono de WhatsApp</li>
+      <li>Nombre (cuando es proporcionado en la conversación)</li>
+      <li>Historial de mensajes intercambiados con el bot</li>
+      <li>Datos de reservas: fecha, hora, servicio y profesional asignado</li>
     </ul>
     <div class="highlight">
-      <p>Los tokens de acceso de WhatsApp Business API se almacenan cifrados con estándar AES-256 (Fernet). Nunca se exponen en texto plano ni se comparten con terceros.</p>
+      <p>No recopilamos datos de salud, información financiera ni documentos de identidad de los clientes finales. Los tokens de acceso se almacenan cifrados con estándar AES-256 (Fernet) y nunca se exponen en texto plano.</p>
     </div>
   </section>
 
   <section>
     <h2><span class="num">03</span> Uso de la información</h2>
-    <p>Utilizamos tu información exclusivamente para:</p>
+    <p>Utilizamos la información exclusivamente para:</p>
     <ul>
-      <li>Proveer y operar los servicios de automatización de WhatsApp</li>
-      <li>Autenticar tu acceso al panel de control</li>
+      <li>Proveer y operar los servicios de automatización de WhatsApp y gestión de reservas</li>
+      <li>Autenticar el acceso al panel de control</li>
       <li>Procesar y enrutar mensajes de WhatsApp Business</li>
-      <li>Enviarte notificaciones importantes sobre tu cuenta</li>
+      <li>Sincronizar citas con Google Calendar cuando el negocio lo configure</li>
+      <li>Enviar notificaciones por correo electrónico sobre reservas y actividad relevante</li>
       <li>Mejorar la plataforma y corregir errores técnicos</li>
       <li>Cumplir obligaciones legales aplicables en Chile</li>
     </ul>
-    <p>No utilizamos tu información para publicidad de terceros ni la vendemos bajo ninguna circunstancia.</p>
+    <p>No utilizamos la información para publicidad de terceros ni la vendemos bajo ninguna circunstancia.</p>
   </section>
 
   <section>
-    <h2><span class="num">04</span> Almacenamiento y seguridad</h2>
-    <p>Tus datos se almacenan en servidores seguros provistos por Supabase (infraestructura PostgreSQL con cifrado en reposo). El acceso está protegido mediante:</p>
+    <h2><span class="num">04</span> Acceso a Google Calendar</h2>
+    <p>Cuando un negocio cliente activa la integración con Google Calendar, Velionix solicita acceso al calendario para crear, modificar y eliminar eventos relacionados con las reservas gestionadas en la plataforma. Este acceso:</p>
+    <ul>
+      <li>Es solicitado mediante el flujo oficial de autorización OAuth 2.0 de Google</li>
+      <li>Se limita al alcance estrictamente necesario para la gestión de reservas (<strong style="color: var(--text-dim)">calendar.events</strong>)</li>
+      <li>No se utiliza para acceder a información personal del calendario más allá de los eventos creados por Velionix</li>
+      <li>Puede ser revocado en cualquier momento desde la configuración de la cuenta de Google del usuario</li>
+      <li>Los tokens de acceso a Google se almacenan cifrados y nunca se comparten con terceros</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Almacenamiento y seguridad</h2>
+    <p>Tus datos se almacenan en servidores seguros mediante Supabase (infraestructura PostgreSQL con cifrado en reposo). El acceso está protegido mediante:</p>
     <ul>
       <li>Autenticación JWT con cookies HttpOnly y atributo Secure</li>
       <li>Row-Level Security (RLS) que aísla los datos de cada negocio</li>
       <li>Contraseñas hasheadas con bcrypt</li>
-      <li>Tokens de WhatsApp encriptados con Fernet (AES-256)</li>
+      <li>Tokens de WhatsApp y Google encriptados con Fernet (AES-256)</li>
       <li>Validación HMAC-SHA256 en todos los webhooks entrantes</li>
+      <li>Comunicaciones cifradas mediante HTTPS en todos los endpoints</li>
     </ul>
   </section>
 
   <section>
-    <h2><span class="num">05</span> Compartición de datos con terceros</h2>
+    <h2><span class="num">06</span> Compartición de datos con terceros</h2>
     <p>Para operar el servicio trabajamos con los siguientes proveedores de confianza:</p>
     <ul>
-      <li><strong style="color: var(--text-dim)">Meta (Facebook)</strong> — para la entrega de mensajes vía WhatsApp Business API</li>
+      <li><strong style="color: var(--text-dim)">Meta (WhatsApp Business API)</strong> — para el envío y recepción de mensajes</li>
+      <li><strong style="color: var(--text-dim)">Google (Calendar API)</strong> — para la sincronización de citas, con autorización explícita del negocio cliente</li>
       <li><strong style="color: var(--text-dim)">Supabase</strong> — para el almacenamiento seguro de datos</li>
       <li><strong style="color: var(--text-dim)">Render</strong> — para el hospedaje del servidor</li>
-      <li><strong style="color: var(--text-dim)">Anthropic</strong> — para el procesamiento de lenguaje natural (IA)</li>
+      <li><strong style="color: var(--text-dim)">OpenRouter / modelos de lenguaje</strong> — para el procesamiento de mensajes mediante inteligencia artificial</li>
+      <li><strong style="color: var(--text-dim)">Resend</strong> — para el envío de notificaciones por correo electrónico</li>
     </ul>
     <p>Cada proveedor tiene sus propias políticas de privacidad y cumple con estándares internacionales de seguridad.</p>
   </section>
 
   <section>
-    <h2><span class="num">06</span> Retención de datos</h2>
+    <h2><span class="num">07</span> Retención de datos</h2>
     <p>Conservamos tu información mientras tu cuenta esté activa. Si decides cancelar tu cuenta, eliminaremos tus datos personales dentro de los 30 días siguientes a la solicitud, excepto aquellos que debamos conservar por obligación legal.</p>
-    <p>Los registros de conversaciones de WhatsApp se eliminan automáticamente según el límite de historial configurado en tu cuenta.</p>
+    <p>El historial de conversaciones de WhatsApp puede ser eliminado por el negocio cliente desde el panel de control en cualquier momento.</p>
   </section>
 
   <section>
-    <h2><span class="num">07</span> Tus derechos</h2>
+    <h2><span class="num">08</span> Tus derechos</h2>
     <p>De acuerdo con la Ley N° 19.628 sobre Protección de la Vida Privada de Chile, tienes derecho a:</p>
     <ul>
       <li>Acceder a los datos personales que tenemos sobre ti</li>
@@ -325,12 +297,13 @@
       <li>Solicitar la eliminación de tus datos</li>
       <li>Oponerte al tratamiento de tus datos en ciertos casos</li>
       <li>Solicitar la portabilidad de tu información</li>
+      <li>Revocar el acceso a integraciones de terceros (como Google Calendar) en cualquier momento</li>
     </ul>
-    <p>Para ejercer cualquiera de estos derechos, contáctanos al correo indicado en la sección de contacto.</p>
+    <p>Para ejercer cualquiera de estos derechos, contáctanos al correo indicado más abajo.</p>
   </section>
 
   <section>
-    <h2><span class="num">08</span> Cookies</h2>
+    <h2><span class="num">09</span> Cookies</h2>
     <p>Velionix utiliza únicamente cookies técnicas necesarias para el funcionamiento del servicio:</p>
     <ul>
       <li><strong style="color: var(--text-dim)">velionix_token</strong> — cookie de sesión HttpOnly para autenticación segura. Expira en 8 horas.</li>
@@ -339,24 +312,28 @@
   </section>
 
   <section>
-    <h2><span class="num">09</span> Cambios a esta política</h2>
+    <h2><span class="num">10</span> Menores de edad</h2>
+    <p>Velionix no está dirigido a menores de 18 años. No recopilamos intencionalmente información de menores de edad.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span> Cambios a esta política</h2>
     <p>Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos por correo electrónico o mediante un aviso en la plataforma. El uso continuado del servicio después de los cambios implica tu aceptación.</p>
   </section>
 
   <section>
-    <h2><span class="num">10</span> Contacto</h2>
+    <h2><span class="num">12</span> Contacto</h2>
     <p>Para consultas sobre privacidad, solicitudes de datos o cualquier inquietud:</p>
     <div class="contact-card">
       <p><strong style="color: var(--text)">Velionix</strong></p>
       <p>Chile</p>
       <p>Email: <a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></p>
+      <p>Web: <a href="https://velionix.cl">velionix.cl</a></p>
     </div>
   </section>
 </main>
-
 <footer>
-  <p>© 2025 Velionix · Chile · <a href="mailto:contacto@velionix.cl" style="color: var(--text-muted); text-decoration: none;">contacto@velionix.cl</a></p>
+  <p>© 2026 Velionix · Chile · <a href="mailto:contacto@velionix.cl" style="color: var(--text-muted); text-decoration: none;">contacto@velionix.cl</a></p>
 </footer>
-
 </body>
 </html>
