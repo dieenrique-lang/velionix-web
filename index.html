@@ -179,7 +179,7 @@
         .menu-toggle span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 
         /* ===== HERO ===== */
-        .hero{padding:140px 0 60px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center}
+        .hero{padding:140px 0 60px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:48px;align-items:center}
         .eyebrow{
             display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
             color:var(--cyan);background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);
@@ -208,6 +208,7 @@
         .phone{
             background:var(--card);border:1px solid rgba(0,229,255,0.25);border-radius:26px;
             padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18);backdrop-filter:blur(10px);
+            min-width:0;max-width:100%;
         }
         #auroraChat{height:230px;overflow:hidden;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;padding:4px 0;}
         #auroraChat .bubble{margin:0;flex-shrink:0;}
@@ -504,7 +505,7 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width:920px){
-            .hero{grid-template-columns:1fr;gap:36px;padding:120px 24px 40px}
+            .hero{grid-template-columns:minmax(0,1fr);gap:36px;padding:120px 24px 40px}
             .hero h1{font-size:38px}
             .grid-3,.grid-3-uc{grid-template-columns:1fr 1fr}
             .nav-links{
