@@ -261,7 +261,7 @@
         .features-viewport::-webkit-scrollbar{display:none}
         .features-viewport .feature{
             flex:0 0 calc((100% - 36px)/3);
-            scroll-snap-align:start;
+            scroll-snap-align:center;
         }
         .car-arrow{
             position:absolute;top:50%;transform:translateY(-50%);z-index:2;
@@ -274,20 +274,23 @@
         .car-arrow:hover{border-color:rgba(0,229,255,0.5);transform:translateY(-50%) scale(1.08)}
         .car-prev{left:-16px}
         .car-next{right:-16px}
-        .car-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
-        .car-dots button{
-            width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;
-            background:rgba(255,255,255,0.18);transition:background .2s,width .2s;
-            padding:0;
+        .car-progress{
+            width:180px;max-width:40%;height:3px;margin:14px auto 0;
+            background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;
         }
-        .car-dots button.on{background:var(--cyan);width:22px;border-radius:4px}
+        .car-progress-fill{
+            height:100%;width:0%;
+            background:linear-gradient(90deg,var(--cyan),var(--violet));
+            border-radius:2px;
+            transition:width .15s linear;
+        }
         @media (max-width:920px){
             .features-viewport .feature{flex:0 0 calc((100% - 18px)/2)}
         }
         @media (max-width:560px){
-            .features-viewport .feature{flex:0 0 84%}
+            .features-viewport .feature{flex:0 0 82%}
             .car-arrow{display:none}
-            .features-viewport{padding-left:8px}
+            .features-viewport{padding-left:9%;padding-right:9%}
         }
         
         .trust-strip{
@@ -662,7 +665,7 @@
                     <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
                 </div>
                 <button class="car-arrow car-next" id="featNext" aria-label="Siguiente">›</button>
-                <div class="car-dots" id="featDots"></div>
+                <div class="car-progress"><div class="car-progress-fill" id="featProgress"></div></div>
             </div>
         </div>
     </section>
@@ -1547,37 +1550,70 @@
             });
         })();
 
-        // ===== Carrusel de Features =====
+        // ===== Carrusel de Features (autoplay + progreso) =====
         (function(){
             var vp = document.getElementById('featViewport');
             if(!vp) return;
             var cards = vp.querySelectorAll('.feature');
-            var dotsBox = document.getElementById('featDots');
+            var fill = document.getElementById('featProgress');
             var prev = document.getElementById('featPrev');
             var next = document.getElementById('featNext');
-
-            cards.forEach(function(_, i){
-                var b = document.createElement('button');
-                b.setAttribute('aria-label','Ir a tarjeta ' + (i+1));
-                b.addEventListener('click', function(){
-                    vp.scrollTo({left: cards[i].offsetLeft - vp.offsetLeft, behavior:'smooth'});
-                });
-                dotsBox.appendChild(b);
-            });
-            var dots = dotsBox.querySelectorAll('button');
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             function step(){ return cards[0].offsetWidth + 18; }
-            prev.addEventListener('click', function(){ vp.scrollBy({left: -step(), behavior:'smooth'}); });
-            next.addEventListener('click', function(){ vp.scrollBy({left: step(), behavior:'smooth'}); });
+            function maxScroll(){ return vp.scrollWidth - vp.clientWidth; }
 
-            function updateDots(){
-                var idx = Math.round(vp.scrollLeft / step());
-                idx = Math.max(0, Math.min(cards.length - 1, idx));
-                dots.forEach(function(d, i){ d.classList.toggle('on', i === idx); });
+            function updateProgress(){
+                var max = maxScroll();
+                var p = max > 0 ? (vp.scrollLeft / max) : 1;
+                fill.style.width = (Math.max(0, Math.min(1, p)) * 100) + '%';
             }
-            vp.addEventListener('scroll', function(){ requestAnimationFrame(updateDots); }, {passive:true});
-            window.addEventListener('resize', updateDots);
-            updateDots();
+            vp.addEventListener('scroll', function(){ requestAnimationFrame(updateProgress); }, {passive:true});
+            window.addEventListener('resize', updateProgress);
+            updateProgress();
+
+            // --- Autoplay con pausa por interacción ---
+            var AUTO_MS = 4000;   // intervalo entre avances
+            var RESUME_MS = 6000; // espera tras interacción antes de reanudar
+            var autoTimer = null, resumeTimer = null;
+
+            function advance(){
+                if(vp.scrollLeft >= maxScroll() - 4){
+                    vp.scrollTo({left: 0, behavior:'smooth'});
+                } else {
+                    vp.scrollBy({left: step(), behavior:'smooth'});
+                }
+            }
+            function startAuto(){
+                if(reduceMotion || autoTimer) return;
+                autoTimer = setInterval(advance, AUTO_MS);
+            }
+            function stopAuto(){
+                if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+            }
+            function pauseThenResume(){
+                stopAuto();
+                clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(startAuto, RESUME_MS);
+            }
+
+            // Interacciones del usuario que pausan el autoplay
+            ['pointerdown','touchstart','wheel'].forEach(function(ev){
+                vp.addEventListener(ev, pauseThenResume, {passive:true});
+            });
+            vp.addEventListener('mouseenter', stopAuto);
+            vp.addEventListener('mouseleave', pauseThenResume);
+            prev.addEventListener('click', function(){ pauseThenResume(); vp.scrollBy({left: -step(), behavior:'smooth'}); });
+            next.addEventListener('click', function(){ pauseThenResume(); vp.scrollBy({left: step(), behavior:'smooth'}); });
+
+            // Pausar cuando la sección no está visible (ahorra trabajo y evita saltos raros)
+            if('IntersectionObserver' in window){
+                new IntersectionObserver(function(entries){
+                    entries[0].isIntersecting ? startAuto() : stopAuto();
+                }, {threshold: 0.3}).observe(vp);
+            } else {
+                startAuto();
+            }
         })();
     })();
 
