@@ -427,9 +427,9 @@
 
         /* pricing */
         .price-card{width:100%;max-width:none;margin:0;background:var(--card);border:1px solid rgba(0,229,255,0.35);border-radius:28px;padding:36px 32px;text-align:left;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-        .pc-badge{height:32px;margin-bottom:12px;display:flex;align-items:center;justify-content:flex-start;}
+        .pc-badge{height:32px;margin-bottom:12px;display:flex;align-items:center;justify-content:flex-start;white-space:nowrap;}
         .pc-eyebrow{height:20px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:600;}
-        .pc-strike{height:28px;display:flex;align-items:center;gap:10px;}
+        .pc-strike{height:28px;display:flex;align-items:center;gap:10px;white-space:nowrap;overflow:hidden;}
         .pc-price{height:64px;display:flex;align-items:center;white-space:nowrap;}
         .pc-sub{height:44px;display:flex;align-items:flex-start;font-size:14px;color:var(--muted);}
         .pc-note{font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:16px;}
@@ -982,11 +982,10 @@
 
                 <!-- Plan ANUAL -->
                 <div class="price-card">
-                    <div class="pc-badge"><div class="price-urgency" style="visibility:hidden; margin:0;" aria-hidden="true">Placeholder</div></div>
+                    <div class="pc-badge"><span class="price-saving-chip" style="margin:0;">Ahorras 2 meses</span></div>
                     <div class="pc-eyebrow">ANUAL</div>
                     <div class="pc-strike">
-                        <span class="price-old">Antes $359.880/año</span>
-                        <span class="price-saving-chip" style="margin:0;">Ahorras 2 meses</span>
+                        <span class="price-old">Antes $359.880</span>
                     </div>
                     <div class="pc-price"><div class="price-new" style="margin:0; font-size:44px;">$299.990 <small>/año</small></div></div>
                     <div class="pc-sub">2 meses gratis · equivale a $24.999/mes</div>
