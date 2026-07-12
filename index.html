@@ -426,7 +426,7 @@
         @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
         /* pricing */
-        .price-card{max-width:480px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.35);border-radius:28px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;}
+        .price-card{max-width:480px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.35);border-radius:28px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;display:flex;flex-direction:column;}
         .price-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(ellipse,rgba(0,200,255,0.18),transparent 70%);pointer-events:none;}
         .price-urgency{display:inline-block;background:rgba(255,100,0,0.12);border:1px solid rgba(255,100,0,0.3);color:#ff8040;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.3px;}
         .price-saving-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px;}
@@ -941,15 +941,15 @@
                 <h2>Empieza hoy por <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">menos de lo que cuesta un café al día</span></h2>
                 <p>Todo incluido. Sin costos ocultos. Cancelas cuando quieras.</p>
             </div>
-            <div class="grid-3">
+            <div class="grid-3" style="align-items: stretch;">
                 <!-- Plan PRUEBA -->
                 <div class="price-card">
                     <div class="price-new" style="font-size:32px">Prueba</div>
                     <div class="price-sub">Gratis por 14 días</div>
                     <ul class="price-list" style="margin-top:24px">
-                        <li>✓ Gratis</li>
-                        <li>✓ 14 días</li>
-                        <li>✓ Sin tarjeta de crédito</li>
+                        <li>Bot WhatsApp activo 24/7</li>
+                        <li>Agenda con sincronización a Google Calendar</li>
+                        <li>Sin tarjeta de crédito</li>
                     </ul>
                     <a href="https://app.velionix.cl/register" class="btn btn-ghost price-cta" style="margin-top:auto">Comenzar gratis</a>
                 </div>
@@ -964,12 +964,15 @@
                     <div class="price-new">$14.990 <small>/mes</small></div>
                     <div class="price-sub">el primer mes · luego $29.990/mes</div>
                     <ul class="price-list">
-                        <li>✅ Sin permanencia. Cancelas cuando quieras.</li>
-                        <li>Bot WhatsApp activo 24/7</li>
-                        <li>Agenda y Catálogo de productos</li>
-                        <li>Soporte por WhatsApp</li>
+                        <li>Sin permanencia. Cancelas cuando quieras.</li>
+                        <li>Bot WhatsApp con IA, activo 24/7</li>
+                        <li>Agenda por profesional (varios profesionales, cada uno con su horario)</li>
+                        <li>Sincronización con Google Calendar + enlaces de Google Meet automáticos</li>
+                        <li>Panel con agenda, clientes y conversaciones</li>
+                        <li>Notificaciones por correo electrónico</li>
+                        <li>API oficial de Meta — sin riesgo de bloqueo</li>
                     </ul>
-                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta">Probar 14 días gratis →</a>
+                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto">Probar 14 días gratis →</a>
                 </div>
 
                 <!-- Plan ANUAL -->
@@ -980,10 +983,13 @@
                     <div class="price-new">$299.990 <small>/año</small></div>
                     <div class="price-sub">2 meses gratis</div>
                     <ul class="price-list">
-                        <li>✅ Garantía de 30 días: si no te sirve, te devolvemos todo.</li>
-                        <li>✅ Configuración inicial incluida</li>
-                        <li>ℹ️ Después de 30 días, devolución proporcional al tiempo no utilizado.</li>
+                        <li>Todo lo del plan mensual incluido</li>
+                        <li>Garantía de 30 días: si no te sirve, te devolvemos todo</li>
+                        <li>Configuración inicial incluida</li>
                     </ul>
+                    <div style="font-size:13px;color:var(--muted);line-height:1.4;margin:0 auto 24px;max-width:340px;text-align:left;">
+                        Después de 30 días, devolución proporcional al tiempo no utilizado.
+                    </div>
                     <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto">Elegir plan anual</a>
                 </div>
             </div>
