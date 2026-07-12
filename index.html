@@ -214,15 +214,22 @@
         }
         #auroraChat{height:230px;overflow:hidden;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;padding:4px 0;}
         #auroraChat .bubble{margin:0;flex-shrink:0;}
-        .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}
-        .chat-avatar{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
-        .chat-name{font-weight:600;font-size:15px}
-        .chat-status{font-size:12px;color:var(--green)}
-        .bubble{max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45}
-        .bubble.in{background:rgba(255,255,255,0.06);border-bottom-left-radius:4px}
-        .bubble.out{background:rgba(37,211,102,0.14);border:1px solid rgba(37,211,102,0.25);margin-left:auto;border-bottom-right-radius:4px}
-        .bubble .time{display:block;font-size:10px;color:var(--faint);margin-top:4px}
-        .bubble .price{display:block;font-weight:600;color:var(--cyan);margin-top:4px}
+        .chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px;background:#26215C;margin:-18px -18px 14px -18px;padding:14px 18px;border-top-left-radius:26px;border-top-right-radius:26px;}
+        .chat-avatar{width:42px;height:42px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-weight:700;color:#EEEDFE;}
+        .chat-name{font-weight:600;font-size:15px;color:#F5F4FE;}
+        .chat-status{font-size:12px;color:#AFA9EC;display:flex;align-items:center;}
+        .chat-status::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#5DCAA5;margin-right:4px;}
+        #auroraChat{height:230px;overflow-y:scroll;display:flex;flex-direction:column;gap:8px;padding:4px 8px 4px 0;background:#0b0b10;border-radius:12px;}
+        #auroraChat::-webkit-scrollbar{width:4px;}
+        #auroraChat::-webkit-scrollbar-track{background:transparent;}
+        #auroraChat::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px;}
+        #auroraChat .bubble{margin:0;flex-shrink:0;}
+        .bubble-out{background:#534AB7;color:#F5F4FE;margin-left:auto;border-bottom-right-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
+        .bubble-in{background:#17171F;color:#E5E4F0;border:0.5px solid #2a2a38;border-bottom-left-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
+        .chat-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin-top:8px;min-height:125px;align-content:flex-start;}
+        .chat-quick-replies .chip{background:#1c1c24;border:0.5px solid #3a3a4a;color:#CECBF6;border-radius:16px;padding:8px 12px;font-size:12px;cursor:pointer;transition:filter .2s;}
+        .chat-quick-replies .chip:hover{filter:brightness(1.2);}
+        .phone-input-fake{flex:1;background:#1c1c24;color:#5f5f6b;border:1px solid var(--line);border-radius:24px;padding:9px 14px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
 
         /* ===== SECTIONS ===== */
         .sec{padding:80px 0}
@@ -655,12 +662,13 @@
         <div class="phone">
             <div class="chat-head">
                 <div class="chat-avatar">A</div>
-                <div><div class="chat-name">Taller Aurora</div><div class="chat-status" id="auroraStatus">en línea</div></div>
+                <div><div class="chat-name">Taller Aurora</div><div class="chat-status" id="auroraStatus">Bot activo</div></div>
             </div>
             <div id="auroraChat"></div>
+            <div id="auroraQuickReplies" class="chat-quick-replies"></div>
             <div class="phone-input-bar">
                 <div class="phone-input-fake" id="auroraInputFake">Escribe un mensaje...</div>
-                <span class="phone-input-mic">🎤</span>
+                <span class="phone-input-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></span>
             </div>
         </div>
     </header>
@@ -1478,175 +1486,127 @@
 
         // ===== Chat Aurora animado =====
         (function(){
-            var msgs=[
-                {dir:'in',  text:'Hola! tienen filtro de aceite para un Suzuki Swift 2018?', time:'03:38'},
-                {dir:'out', text:'¡Hola! Sí, tenemos disponible 👇', price:'Filtro de Aceite Suzuki Swift · $12.990', time:'03:38 ✓✓'},
-                {dir:'in',  text:'Genial. Aprovechando, cuánto cuesta un cambio de aceite completo?', time:'03:39'},
-                {dir:'out', text:'El servicio completo incluye mano de obra 🔧', price:'Cambio de Aceite + Filtro · $34.990', time:'03:39 ✓✓'},
-                {dir:'in',  text:'Perfecto, quiero agendar para el jueves', time:'03:40'},
-                {dir:'out', text:'¡Listo! Hora agendada para el jueves a las 10:00 ✅ Te esperamos en el taller.', time:'03:40 ✓✓'}
-            ];
-            var container=document.getElementById('auroraChat');
-            var status=document.getElementById('auroraStatus');
-            if(!container)return;
-            
-            // prefers-reduced-motion check
-            if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-                function renderAuroraStatic(){
-                    container.innerHTML='';
-                    var html = '';
-                    msgs.forEach(function(msg){
-                        html += '<div class="bubble '+msg.dir+'" style="opacity:1;transform:translateY(0);flex-shrink:0;">'
-                             + msg.text
-                             + (msg.price?'<span class="price">'+msg.price+'</span>':'')
-                             + '<span class="time">'+msg.time+'</span></div>';
-                    });
-                    container.innerHTML = html;
-                    var fake = document.getElementById('auroraInputFake');
-                    if(fake){ fake.textContent = 'Escribe un mensaje...'; fake.style.color = ''; }
-                    status.textContent = 'en línea';
+            // ===== Chat Aurora Interactivo =====
+        (function(){
+            var chat = document.getElementById('auroraChat');
+            var qrContainer = document.getElementById('auroraQuickReplies');
+            if(!chat || !qrContainer) return;
+
+            var tree = {
+                root: {
+                    bot: "¡Hola! Soy el asistente de Taller Aurora. ¿En qué te puedo ayudar?",
+                    options: [
+                        { label: "Ver horario de atención", next: "horario" },
+                        { label: "¿Hacen cambio de aceite y filtro?", next: "aceite" },
+                        { label: "Quiero agendar hora", next: "agendar_dia" }
+                    ]
+                },
+                horario: {
+                    bot: "Atendemos de Lunes a Viernes de 09:00 a 18:00, y Sábados de 09:00 a 14:00.",
+                    options: [
+                        { label: "Quiero agendar hora", next: "agendar_dia" },
+                        { label: "Volver al inicio", next: "root" }
+                    ]
+                },
+                aceite: {
+                    bot: "El cambio de aceite full sintético (incluye filtro y mano de obra) sale $34.990.",
+                    options: [
+                        { label: "Quiero agendar hora", next: "agendar_dia" },
+                        { label: "Volver al inicio", next: "root" }
+                    ]
+                },
+                agendar_dia: {
+                    bot: "Perfecto. ¿Qué día prefieres?",
+                    options: [
+                        { label: "Para este Jueves", next: "agendar_hora" },
+                        { label: "Para el Viernes", next: "agendar_hora" }
+                    ]
+                },
+                agendar_hora: {
+                    bot: "Tengo disponibilidad a las 10:00 o a las 15:30. ¿Cuál te acomoda?",
+                    options: [
+                        { label: "A las 10:00", next: "confirmado" },
+                        { label: "A las 15:30", next: "confirmado" }
+                    ]
+                },
+                confirmado: {
+                    bot: "¡Listo! Quedaste agendado. Te llegará un recordatorio por WhatsApp un día antes. ✅",
+                    options: [
+                        { label: "Volver al inicio", next: "root" }
+                    ]
                 }
-                renderAuroraStatic();
-                return;
-            }
+            };
 
-            var typingDuration={in:900, out:1100};
-            // Pausa entre que termina un mensaje y empieza el siguiente a escribir
-            var pauseBetween=600;
-            var LOOP_PAUSE=3500; // pausa al final antes de reiniciar
-            var timers=[];
-            var loopTimer=null;
-            var active=false;
-
-            function clearAll(){
-                timers.forEach(clearTimeout);
-                timers=[];
-                if(loopTimer){clearTimeout(loopTimer);loopTimer=null;}
-            }
-
-            function push(tid){timers.push(tid);}
-
-            function showTyping(dir, cb){
-                // Elimina typing anterior si existe
-                var old=container.querySelector('.typing');
-                if(old)old.remove();
-                var t=document.createElement('div');
-                t.className='typing '+dir; // dir para alinear igual que bubbles
-                t.innerHTML='<span></span><span></span><span></span>';
-                container.appendChild(t);
-                var tid=setTimeout(function(){
-                    if(t.parentNode)t.remove();
-                    cb();
-                }, typingDuration[dir]);
-                push(tid);
-            }
-
-            function addBubble(msg, cb){
-                var old=container.querySelector('.typing');
-                if(old)old.remove();
-                var d=document.createElement('div');
-                d.className='bubble '+msg.dir;
-                d.innerHTML=msg.text
-                    +(msg.price?'<span class="price">'+msg.price+'</span>':'')
-                    +'<span class="time">'+msg.time+'</span>';
-                d.style.cssText='opacity:0;transform:translateY(5px);transition:opacity .25s,transform .25s;flex-shrink:0;';
-                container.appendChild(d);
+            function addBubble(text, cls) {
+                var b = document.createElement('div');
+                b.className = cls;
+                b.innerHTML = text;
+                b.style.opacity = '0';
+                b.style.transform = 'translateY(5px)';
+                b.style.transition = 'opacity .25s, transform .25s';
+                chat.appendChild(b);
                 requestAnimationFrame(function(){
-                    d.style.opacity='1';
-                    d.style.transform='translateY(0)';
+                    b.style.opacity = '1';
+                    b.style.transform = 'translateY(0)';
+                    chat.scrollTop = chat.scrollHeight;
                 });
-                var bubbles=container.querySelectorAll('.bubble');
-                if(bubbles.length>6)bubbles[0].remove();
-                
-                if (cb) setTimeout(cb, 250);
             }
 
-            function typeInInput(text, cb){
-                var fake=document.getElementById('auroraInputFake');
-                if(!fake){cb();return;}
-                fake.textContent='';
-                fake.style.color='var(--ink)';
-                var i=0;
-                var perChar=Math.min(60, Math.floor(typingDuration['in']/text.length));
-                function next(){
-                    if(!active)return;
-                    if(i<text.length){
-                        fake.textContent+=text[i];
-                        i++;
-                        var tid=setTimeout(next, perChar);
-                        push(tid);
-                    } else {
-                        // pausa breve antes de "enviar"
-                        var tid=setTimeout(function(){
-                            fake.textContent='Escribe un mensaje...';
-                            fake.style.color='';
-                            cb();
-                        }, 300);
-                        push(tid);
-                    }
-                }
-                next();
-            }
-
-            function processMessage(msgIndex) {
-                if(!active) return;
-                if(msgIndex >= msgs.length) {
-                    loopTimer = setTimeout(function(){
-                        if(!active)return;
-                        runSequence();
-                    }, LOOP_PAUSE);
+            function addTyping(cb) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    cb();
                     return;
                 }
+                var b = document.createElement('div');
+                b.className = 'bubble-in typing';
+                b.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+                chat.appendChild(b);
+                chat.scrollTop = chat.scrollHeight;
+                setTimeout(function(){
+                    b.remove();
+                    cb();
+                }, 550);
+            }
+
+            function renderOptions(nodeKey) {
+                qrContainer.innerHTML = '';
+                var node = tree[nodeKey];
+                node.options.forEach(function(opt){
+                    var chip = document.createElement('div');
+                    chip.className = 'chip';
+                    chip.textContent = opt.label;
+                    chip.onclick = function(){
+                        selectOption(opt, nodeKey);
+                    };
+                    qrContainer.appendChild(chip);
+                });
+            }
+
+            function selectOption(opt, currentNodeKey) {
+                qrContainer.innerHTML = ''; // Limpiar opciones al instante
                 
-                var msg = msgs[msgIndex];
-                
-                function tryAcquire() {
-                    if(!active) return;
-                    if(!window.acquireHeroLock('chat', 2500)) {
-                        push(setTimeout(tryAcquire, 200));
-                        return;
-                    }
-                    
-                    if(msg.dir === 'in') {
-                        typeInInput(msg.text, function(){
-                            if(!active) return;
-                            addBubble(msg, function() {
-                                window.releaseHeroLock('chat');
-                                push(setTimeout(function(){ processMessage(msgIndex+1); }, pauseBetween));
-                            });
-                        });
-                    } else {
-                        status.textContent = 'escribiendo...';
-                        showTyping('out', function(){
-                            if(!active) return;
-                            status.textContent = 'en línea';
-                            addBubble(msg, function() {
-                                window.releaseHeroLock('chat');
-                                push(setTimeout(function(){ processMessage(msgIndex+1); }, pauseBetween));
-                            });
-                        });
-                    }
+                // Opción elegida por el usuario:
+                if(opt.next === 'root') {
+                    // Reset real del historial
+                    chat.innerHTML = '';
+                    addBubble(tree.root.bot, 'bubble-in');
+                    renderOptions('root');
+                    return;
                 }
-                tryAcquire();
+
+                addBubble(opt.label, 'bubble-out');
+                
+                addTyping(function(){
+                    var nextNode = tree[opt.next];
+                    addBubble(nextNode.bot, 'bubble-in');
+                    renderOptions(opt.next);
+                });
             }
 
-            function runSequence(){
-                clearAll();
-                container.innerHTML='';
-                status.textContent='en línea';
-                var fake=document.getElementById('auroraInputFake');
-                if(fake){fake.textContent='Escribe un mensaje...';fake.style.color='';}
-                active=true;
-                processMessage(0);
-            }
-
-            function start(){if(active)return; runSequence();}
-            function stop(){active=false; clearAll(); container.innerHTML=''; status.textContent='en línea';}
-
-            var obs=new IntersectionObserver(function(entries){
-                entries[0].isIntersecting ? start() : stop();
-            },{threshold:0.25});
-            obs.observe(container);
+            // Iniciar chat
+            chat.innerHTML = '';
+            addBubble(tree.root.bot, 'bubble-in');
+            renderOptions('root');
         })();
 
         // ===== Catálogo interactivo =====
