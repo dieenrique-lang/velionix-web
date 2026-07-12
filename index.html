@@ -217,14 +217,14 @@
         .chat-name{color:#F5F4FE;font-size:14px;font-weight:500;}
         .chat-status{color:#AFA9EC;font-size:11px;display:flex;align-items:center;}
         .chat-status::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#5DCAA5;margin-right:4px;}
-        #auroraChat{height:190px;overflow-y:scroll;display:flex;flex-direction:column;gap:8px;padding:4px 8px 4px 0;background-color:#0b0b10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%230e0e15' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(15,15) scale(0.8)'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/g%3E%3Cg transform='translate(65,65) scale(0.8)'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:50px 50px;background-repeat:repeat;margin-left:0;}
+        #auroraChat{height:190px;overflow-y:scroll;display:flex;flex-direction:column;gap:8px;padding:4px 8px 4px 8px;background-color:#0b0b10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23181824' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(15,15) scale(0.8)'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/g%3E%3Cg transform='translate(65,65) scale(0.8)'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:50px 50px;background-repeat:repeat;margin-left:0;}
         #auroraChat::-webkit-scrollbar{width:4px;}
         #auroraChat::-webkit-scrollbar-track{background:transparent;}
         #auroraChat::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px;}
         #auroraChat .bubble{margin:0;flex-shrink:0;}
         .bubble-out{background:#534AB7;color:#F5F4FE;margin-left:auto;border-bottom-right-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
         .bubble-in{background:#17171F;color:#E5E4F0;border:0.5px solid #2a2a38;border-bottom-left-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
-        .chat-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin-top:8px;min-height:123.5625px;align-content:flex-start;}
+        .chat-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin-top:8px;min-height:80.375px;align-content:flex-start;}
         .chat-quick-replies .chip{background:#1c1c24;border:0.5px solid #3a3a4a;color:#CECBF6;border-radius:16px;padding:8px 12px;font-size:12px;cursor:pointer;transition:filter .2s;}
         .chat-quick-replies .chip:hover{filter:brightness(1.2);}
         .phone-input-fake{flex:1;background:#1c1c24;color:#5f5f6b;border:1px solid var(--line);border-radius:24px;padding:9px 14px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
@@ -532,7 +532,7 @@
                 background:rgba(10,10,15,0.97);backdrop-filter:blur(20px);flex-direction:column;
                 align-items:flex-start;padding:30px 26px;gap:22px;transform:translateX(100%);transition:transform .3s;border-left:1px solid var(--line);
             }
-            .nav-links.open{transform:translateX(0)}
+            .nav-links.open{transform:translateX(0)}\n            .chat-quick-replies{min-height:37.1875px}
             .menu-toggle{display:flex}
         }
         @media (max-width:560px){
@@ -543,7 +543,7 @@
             .metrics{flex-direction:column}
             .sec{padding:60px 0}
             .phone{padding:14px;border-radius:18px}
-            #auroraChat .bubble{font-size:13px}
+            #auroraChat .bubble{font-size:13px}\n            .chat-quick-replies{min-height:123.5625px}
         }
         .ycloud-badge{display:flex;align-items:center;justify-content:center;margin:16px auto 0;width:fit-content;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;max-width:420px;flex-wrap:wrap}
         @media(max-width:560px){.ycloud-badge{flex-direction:column;align-items:center;justify-content:center;gap:10px}.meta-badge-img{height:36px}.step{padding:18px 16px;gap:14px}.step .num{font-size:26px;min-width:40px}}
@@ -1148,24 +1148,7 @@
         mt.addEventListener('click',function(){nl.classList.toggle('open')});
         nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
         
-        window.__heroMotionLock = null;
-        window.acquireHeroLock = function(owner, timeout) {
-            if (window.__heroMotionLock === null || window.__heroMotionLock === owner) {
-                window.__heroMotionLock = owner;
-                if (window.__heroMotionLockTimeout) clearTimeout(window.__heroMotionLockTimeout);
-                window.__heroMotionLockTimeout = setTimeout(function() {
-                    if (window.__heroMotionLock === owner) window.__heroMotionLock = null;
-                }, timeout);
-                return true;
-            }
-            return false;
-        };
-        window.releaseHeroLock = function(owner) {
-            if (window.__heroMotionLock === owner) {
-                window.__heroMotionLock = null;
-                if (window.__heroMotionLockTimeout) clearTimeout(window.__heroMotionLockTimeout);
-            }
-        };
+
 
         // ===== Typewriter Hero =====
         (function(){
