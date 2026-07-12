@@ -230,11 +230,17 @@
         .sec-head p{font-size:17px;color:var(--muted)}
 
         /* features */
-        .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+        .grid-3, .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
         .feature{
             background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;
             transition:transform .25s,border-color .25s;opacity:0;transform:translateY(20px);
+            display:flex;flex-direction:column;height:100%;
         }
+        .feature-list{list-style:none;text-align:left;margin-top:20px;flex:1;}
+        .feature-list li{padding:6px 0;font-size:14px;color:var(--muted);display:flex;gap:10px;}
+        .feature-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+        @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:560px){.features-grid{grid-template-columns:1fr}}
         .feature.visible{opacity:1;transform:translateY(0)}
         .feature:hover{transform:translateY(-4px);border-color:rgba(0,229,255,0.3)}
         .feature .icon{
@@ -661,37 +667,75 @@
     <section class="sec" id="features">
         <div class="container">
             <div class="sec-head">
-                <span class="tag">Lo que hace por tu negocio</span>
-                <h2>Cuatro tareas que ya no harás a mano</h2>
+                <span class="tag">QUÉ INCLUYE</span>
+                <h2>Todo lo que hace por tu negocio</h2>
                 <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
             </div>
-            <div class="features-carousel">
-                <button class="car-arrow car-prev" id="featPrev" aria-label="Anterior">‹</button>
-                <div class="features-viewport" id="featViewport">
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional. Cada reserva aparece automáticamente en tu Google Calendar, con su enlace de Google Meet ya creado.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Vende desde tu catálogo</h3><p>Cargas tu catálogo desde un Excel y el bot responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><h3>Todo en un solo panel</h3><p>Agenda, clientes y conversaciones en un mismo lugar. Recibes notificaciones por correo cada vez que hay una reserva o un cliente nuevo.</p></div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h3>Atiende 24/7, sin descanso</h3>
+                    <p>Responde consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p>
+                    <ul class="feature-list">
+                        <li>Responde en segundos</li>
+                        <li>No es un menú de opciones: entiende y resuelve</li>
+                        <li>Deriva a una persona cuando hace falta</li>
+                    </ul>
                 </div>
-                <button class="car-arrow car-next" id="featNext" aria-label="Siguiente">›</button>
-                <div class="car-progress"><div class="car-progress-fill" id="featProgress"></div></div>
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
+                    <h3>Agenda y cancela citas solo</h3>
+                    <p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Sin que tengas que intervenir.</p>
+                    <ul class="feature-list">
+                        <li>Agenda por profesional, cada uno con su horario</li>
+                        <li>Se sincroniza con tu Google Calendar</li>
+                        <li>Crea el enlace de Google Meet automáticamente</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+                    <h3>Vende desde tu catálogo</h3>
+                    <p>Cargas tu catálogo desde un Excel y el bot responde con nombre, precio y stock reales.</p>
+                    <ul class="feature-list">
+                        <li>Recomienda, cotiza y guía la compra</li>
+                        <li>Precios y stock siempre al día</li>
+                        <li>Sin cargar productos a mano</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+                    <h3>Todo en un solo panel</h3>
+                    <p>Agenda, clientes y conversaciones en un mismo lugar. Ves qué pasó sin abrir WhatsApp.</p>
+                    <ul class="feature-list">
+                        <li>Historial completo de cada cliente</li>
+                        <li>Notificaciones por correo en cada reserva</li>
+                        <li>Contador de mensajes en tiempo real</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+                    <h3>Responde lo de siempre</h3>
+                    <p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p>
+                    <ul class="feature-list">
+                        <li>Aprende la información de tu negocio</li>
+                        <li>Responde con tu tono, no como un robot</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>Sin riesgo de bloqueo</h3>
+                    <p>Usamos la API oficial de Meta. Tu número está protegido y cumple las políticas de WhatsApp.</p>
+                    <ul class="feature-list">
+                        <li>Cuenta oficial de WhatsApp Business</li>
+                        <li>Resuelve una reserva en 9 mensajes (un bot mal hecho usa 27)</li>
+                        <li>Menos mensajes = factura de Meta más baja</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TRUST STRIP -->
-    <section class="sec" style="padding:0 0 80px">
-        <div class="container">
-            <div class="trust-strip">
-                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                <div>
-                    <h3>Sin riesgo de bloqueo</h3>
-                    <p>Usamos la API oficial de Meta. Tu número está protegido y cumple con las políticas de WhatsApp.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- DEMO INTERACTIVA: CHAT + DASHBOARD (sección fusionada) -->
     <section class="sec" id="agenda">
@@ -1587,71 +1631,7 @@
             });
         })();
 
-        // ===== Carrusel de Features (autoplay + progreso) =====
-        (function(){
-            var vp = document.getElementById('featViewport');
-            if(!vp) return;
-            var cards = vp.querySelectorAll('.feature');
-            var fill = document.getElementById('featProgress');
-            var prev = document.getElementById('featPrev');
-            var next = document.getElementById('featNext');
-            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            function step(){ return cards[0].offsetWidth + 18; }
-            function maxScroll(){ return vp.scrollWidth - vp.clientWidth; }
-
-            function updateProgress(){
-                var max = maxScroll();
-                var p = max > 0 ? (vp.scrollLeft / max) : 1;
-                fill.style.width = (Math.max(0, Math.min(1, p)) * 100) + '%';
-            }
-            vp.addEventListener('scroll', function(){ requestAnimationFrame(updateProgress); }, {passive:true});
-            window.addEventListener('resize', updateProgress);
-            updateProgress();
-
-            // --- Autoplay con pausa por interacción ---
-            var AUTO_MS = 4000;   // intervalo entre avances
-            var RESUME_MS = 6000; // espera tras interacción antes de reanudar
-            var autoTimer = null, resumeTimer = null;
-
-            function advance(){
-                if(vp.scrollLeft >= maxScroll() - 4){
-                    vp.scrollTo({left: 0, behavior:'smooth'});
-                } else {
-                    vp.scrollBy({left: step(), behavior:'smooth'});
-                }
-            }
-            function startAuto(){
-                if(reduceMotion || autoTimer) return;
-                autoTimer = setInterval(advance, AUTO_MS);
-            }
-            function stopAuto(){
-                if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
-            }
-            function pauseThenResume(){
-                stopAuto();
-                clearTimeout(resumeTimer);
-                resumeTimer = setTimeout(startAuto, RESUME_MS);
-            }
-
-            // Interacciones del usuario que pausan el autoplay
-            ['pointerdown','touchstart','wheel'].forEach(function(ev){
-                vp.addEventListener(ev, pauseThenResume, {passive:true});
-            });
-            vp.addEventListener('mouseenter', stopAuto);
-            vp.addEventListener('mouseleave', pauseThenResume);
-            prev.addEventListener('click', function(){ pauseThenResume(); vp.scrollBy({left: -step(), behavior:'smooth'}); });
-            next.addEventListener('click', function(){ pauseThenResume(); vp.scrollBy({left: step(), behavior:'smooth'}); });
-
-            // Pausar cuando la sección no está visible (ahorra trabajo y evita saltos raros)
-            if('IntersectionObserver' in window){
-                new IntersectionObserver(function(entries){
-                    entries[0].isIntersecting ? startAuto() : stopAuto();
-                }, {threshold: 0.3}).observe(vp);
-            } else {
-                startAuto();
-            }
-        })();
     })();
 
     function toggleTestimonial(btn) {
