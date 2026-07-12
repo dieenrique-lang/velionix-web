@@ -1141,6 +1141,26 @@
         var mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
         mt.addEventListener('click',function(){nl.classList.toggle('open')});
         nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
+        
+        window.__heroMotionLock = null;
+        window.acquireHeroLock = function(owner, timeout) {
+            if (window.__heroMotionLock === null || window.__heroMotionLock === owner) {
+                window.__heroMotionLock = owner;
+                if (window.__heroMotionLockTimeout) clearTimeout(window.__heroMotionLockTimeout);
+                window.__heroMotionLockTimeout = setTimeout(function() {
+                    if (window.__heroMotionLock === owner) window.__heroMotionLock = null;
+                }, timeout);
+                return true;
+            }
+            return false;
+        };
+        window.releaseHeroLock = function(owner) {
+            if (window.__heroMotionLock === owner) {
+                window.__heroMotionLock = null;
+                if (window.__heroMotionLockTimeout) clearTimeout(window.__heroMotionLockTimeout);
+            }
+        };
+
         // ===== Typewriter Hero =====
         (function(){
             if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1458,11 +1478,6 @@
 
         // ===== Chat Aurora animado =====
         (function(){
-            var container=document.getElementById('auroraChat');
-            var status=document.getElementById('auroraStatus');
-            if(!container)return;
-
-            // Conversación completa con indicador de quién escribe antes de cada mensaje
             var msgs=[
                 {dir:'in',  text:'Hola! tienen filtro de aceite para un Suzuki Swift 2018?', time:'03:38'},
                 {dir:'out', text:'¡Hola! Sí, tenemos disponible 👇', price:'Filtro de Aceite Suzuki Swift · $12.990', time:'03:38 ✓✓'},
@@ -1471,8 +1486,30 @@
                 {dir:'in',  text:'Perfecto, quiero agendar para el jueves', time:'03:40'},
                 {dir:'out', text:'¡Listo! Hora agendada para el jueves a las 10:00 ✅ Te esperamos en el taller.', time:'03:40 ✓✓'}
             ];
+            var container=document.getElementById('auroraChat');
+            var status=document.getElementById('auroraStatus');
+            if(!container)return;
+            
+            // prefers-reduced-motion check
+            if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+                function renderAuroraStatic(){
+                    container.innerHTML='';
+                    var html = '';
+                    msgs.forEach(function(msg){
+                        html += '<div class="bubble '+msg.dir+'" style="opacity:1;transform:translateY(0);flex-shrink:0;">'
+                             + msg.text
+                             + (msg.price?'<span class="price">'+msg.price+'</span>':'')
+                             + '<span class="time">'+msg.time+'</span></div>';
+                    });
+                    container.innerHTML = html;
+                    var fake = document.getElementById('auroraInputFake');
+                    if(fake){ fake.textContent = 'Escribe un mensaje...'; fake.style.color = ''; }
+                    status.textContent = 'en línea';
+                }
+                renderAuroraStatic();
+                return;
+            }
 
-            // Tiempo de "escritura" antes de mostrar cada burbuja (ms)
             var typingDuration={in:900, out:1100};
             // Pausa entre que termina un mensaje y empieza el siguiente a escribir
             var pauseBetween=600;
@@ -1504,7 +1541,7 @@
                 push(tid);
             }
 
-            function addBubble(msg){
+            function addBubble(msg, cb){
                 var old=container.querySelector('.typing');
                 if(old)old.remove();
                 var d=document.createElement('div');
@@ -1518,9 +1555,10 @@
                     d.style.opacity='1';
                     d.style.transform='translateY(0)';
                 });
-                // Mantener solo últimas 6 burbujas para no crecer el contenedor
                 var bubbles=container.querySelectorAll('.bubble');
                 if(bubbles.length>6)bubbles[0].remove();
+                
+                if (cb) setTimeout(cb, 250);
             }
 
             function typeInInput(text, cb){
@@ -1550,6 +1588,48 @@
                 next();
             }
 
+            function processMessage(msgIndex) {
+                if(!active) return;
+                if(msgIndex >= msgs.length) {
+                    loopTimer = setTimeout(function(){
+                        if(!active)return;
+                        runSequence();
+                    }, LOOP_PAUSE);
+                    return;
+                }
+                
+                var msg = msgs[msgIndex];
+                
+                function tryAcquire() {
+                    if(!active) return;
+                    if(!window.acquireHeroLock('chat', 2500)) {
+                        push(setTimeout(tryAcquire, 200));
+                        return;
+                    }
+                    
+                    if(msg.dir === 'in') {
+                        typeInInput(msg.text, function(){
+                            if(!active) return;
+                            addBubble(msg, function() {
+                                window.releaseHeroLock('chat');
+                                push(setTimeout(function(){ processMessage(msgIndex+1); }, pauseBetween));
+                            });
+                        });
+                    } else {
+                        status.textContent = 'escribiendo...';
+                        showTyping('out', function(){
+                            if(!active) return;
+                            status.textContent = 'en línea';
+                            addBubble(msg, function() {
+                                window.releaseHeroLock('chat');
+                                push(setTimeout(function(){ processMessage(msgIndex+1); }, pauseBetween));
+                            });
+                        });
+                    }
+                }
+                tryAcquire();
+            }
+
             function runSequence(){
                 clearAll();
                 container.innerHTML='';
@@ -1557,37 +1637,7 @@
                 var fake=document.getElementById('auroraInputFake');
                 if(fake){fake.textContent='Escribe un mensaje...';fake.style.color='';}
                 active=true;
-
-                var cursor=0;
-
-                msgs.forEach(function(msg){
-                    var startAt=cursor;
-                    var t1=setTimeout(function(){
-                        if(!active)return;
-                        if(msg.dir==='in'){
-                            // Escribir letra a letra en el input decorativo, luego enviar
-                            typeInInput(msg.text, function(){
-                                if(!active)return;
-                                addBubble(msg);
-                            });
-                        } else {
-                            // Bot: indicador "escribiendo..." en el status
-                            status.textContent='escribiendo...';
-                            showTyping('out', function(){
-                                if(!active)return;
-                                status.textContent='en línea';
-                                addBubble(msg);
-                            });
-                        }
-                    }, startAt);
-                    push(t1);
-                    cursor += typingDuration[msg.dir] + pauseBetween;
-                });
-
-                loopTimer=setTimeout(function(){
-                    if(!active)return;
-                    runSequence();
-                }, cursor + LOOP_PAUSE);
+                processMessage(0);
             }
 
             function start(){if(active)return; runSequence();}
