@@ -347,7 +347,7 @@
             transition:height .1s linear;
         }
         @media(max-width:560px){
-            .grid-3, .grid-3-uc{ padding-left:22px; }
+            .grid-3, .grid-3-uc, .features-grid{ padding-left:22px; }
             .mobile-track{
                 display:block;
                 position:absolute;
@@ -671,7 +671,8 @@
                 <h2>Todo lo que hace por tu negocio</h2>
                 <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
             </div>
-            <div class="features-grid">
+            <div class="features-grid" style="position:relative">
+                <div class="mobile-track"><div class="mobile-track-fill" id="featTrackFill"></div></div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                     <h3>Atiende 24/7, sin descanso</h3>
@@ -1181,6 +1182,7 @@
                 update();
             }
             setupTrack('.grid-3-uc', 'ucTrackFill');
+            setupTrack('.features-grid', 'featTrackFill');
         })();
 
         // ===== FAQ acordeón =====
