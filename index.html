@@ -427,12 +427,16 @@
 
         /* pricing */
         .price-card{max-width:480px;margin:0 auto;background:var(--card);border:1px solid rgba(0,229,255,0.35);border-radius:28px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+        .pc-badge{height:32px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;}
+        .pc-strike{height:24px;display:flex;align-items:center;justify-content:center;}
+        .pc-price{height:72px;display:flex;align-items:center;justify-content:center;white-space:nowrap;}
+        .pc-sub{height:48px;display:flex;align-items:flex-start;justify-content:center;text-align:center;}
         .price-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(ellipse,rgba(0,200,255,0.18),transparent 70%);pointer-events:none;}
         .price-urgency{display:inline-block;background:rgba(255,100,0,0.12);border:1px solid rgba(255,100,0,0.3);color:#ff8040;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.3px;}
         .price-saving-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px;}
         .price-saving-chip{background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.35);color:var(--green);font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;}
         .price-old{color:var(--faint);text-decoration:line-through;font-size:16px;}
-        .price-new{font-size:52px;font-weight:700;color:var(--ink);margin:4px 0;line-height:1;}
+        .price-new{font-size:52px;font-weight:700;color:var(--ink);margin:4px 0;line-height:1;white-space:nowrap;}
         .price-new small{font-size:20px;color:var(--muted);font-weight:400;}
         .price-sub{font-size:13px;color:var(--muted);margin-bottom:8px;}
         .price-daily{font-size:13px;color:var(--cyan);font-weight:500;margin-bottom:24px;background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.15);border-radius:20px;padding:5px 14px;display:inline-block;}
@@ -945,50 +949,40 @@
             <div class="grid-3" style="align-items: stretch;">
                 <!-- Plan PRUEBA -->
                 <div class="price-card">
-                    <div style="min-height:32px;margin-bottom:20px;visibility:hidden;" class="price-urgency" aria-hidden="true">Placeholder</div>
-                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
-                        <div class="price-saving-row" style="visibility:hidden;" aria-hidden="true"><span class="price-old">Placeholder</span></div>
-                        <div class="price-new" style="font-size:32px">Prueba</div>
-                        <div class="price-sub">Gratis por 14 días</div>
-                    </div>
-                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                    <div class="pc-badge"><div class="price-urgency" style="visibility:hidden; margin:0;" aria-hidden="true">Placeholder</div></div>
+                    <div class="pc-strike"><div class="price-saving-row" style="visibility:hidden; margin:0;" aria-hidden="true"><span class="price-old">Placeholder</span></div></div>
+                    <div class="pc-price"><div class="price-new" style="margin:0; font-size:32px;">Prueba</div></div>
+                    <div class="pc-sub"><div class="price-sub" style="margin:0;">Gratis por 14 días</div></div>
+                    <ul class="price-list" style="margin-top:24px; flex:1;">
                         <li>Todas las funciones incluidas</li>
                         <li>14 días completos</li>
                         <li>Sin tarjeta de crédito</li>
                     </ul>
-                    <a href="https://app.velionix.cl/register" class="btn btn-ghost price-cta" style="margin-top:auto">Comenzar gratis</a>
+                    <a href="https://app.velionix.cl/register" class="btn btn-ghost price-cta" style="margin-top:auto;">Comenzar gratis</a>
                 </div>
 
                 <!-- Plan MENSUAL -->
                 <div class="price-card" style="position:relative">
                     <div class="price-glow"></div>
-                    <div style="min-height:32px;margin-bottom:20px;" class="price-urgency">🔥 Oferta primer mes</div>
-                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
-                        <div class="price-saving-row">
-                            <span class="price-old">$29.990/mes</span>
-                        </div>
-                        <div class="price-new">$14.990 <small>/mes</small></div>
-                        <div class="price-sub">el primer mes · luego $29.990/mes</div>
-                    </div>
-                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                    <div class="pc-badge"><div class="price-urgency" style="margin:0;">🔥 Oferta primer mes</div></div>
+                    <div class="pc-strike"><div class="price-saving-row" style="margin:0;"><span class="price-old">$29.990/mes</span></div></div>
+                    <div class="pc-price"><div class="price-new" style="margin:0;">$14.990 <small>/mes</small></div></div>
+                    <div class="pc-sub"><div class="price-sub" style="margin:0;">el primer mes · luego $29.990/mes</div></div>
+                    <ul class="price-list" style="margin-top:24px; flex:1;">
                         <li>Todas las funciones incluidas</li>
                         <li>Sin permanencia. Cancelas cuando quieras.</li>
                         <li>Soporte por WhatsApp</li>
                     </ul>
-                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto">Probar 14 días gratis →</a>
+                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto;">Probar 14 días gratis →</a>
                 </div>
 
                 <!-- Plan ANUAL -->
                 <div class="price-card">
-                    <div style="min-height:32px;margin-bottom:20px;visibility:hidden;" class="price-urgency" aria-hidden="true">Placeholder</div>
-                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
-                        <div class="price-saving-row">
-                            <span class="price-saving-chip" style="margin:0">Ahorras 2 meses</span>
-                        </div>
-                        <div class="price-new">$299.990 <small>/año</small></div>
-                        <div class="price-sub">2 meses gratis</div>
-                    </div>
-                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                    <div class="pc-badge"><div class="price-urgency" style="visibility:hidden; margin:0;" aria-hidden="true">Placeholder</div></div>
+                    <div class="pc-strike"><div class="price-saving-row" style="margin:0;"><span class="price-saving-chip" style="margin:0">Ahorras 2 meses</span></div></div>
+                    <div class="pc-price"><div class="price-new" style="margin:0; font-size:44px;">$299.990 <small>/año</small></div></div>
+                    <div class="pc-sub"><div class="price-sub" style="margin:0;">2 meses gratis</div></div>
+                    <ul class="price-list" style="margin-top:24px; flex:1;">
                         <li>Todo lo del plan mensual</li>
                         <li>Garantía de 30 días: si no te sirve, te devolvemos todo</li>
                         <li>Configuración inicial incluida</li>
@@ -996,7 +990,7 @@
                     <div style="font-size:13px;color:var(--muted);line-height:1.4;margin:0 auto 24px;max-width:340px;text-align:left;">
                         Después de 30 días, devolución proporcional al tiempo no utilizado.
                     </div>
-                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto">Elegir plan anual</a>
+                    <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto;">Elegir plan anual</a>
                 </div>
             </div>
         </div>
