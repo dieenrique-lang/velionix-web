@@ -663,9 +663,10 @@
                 <button class="car-arrow car-prev" id="featPrev" aria-label="Anterior">‹</button>
                 <div class="features-viewport" id="featViewport">
                     <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Responde 24/7</h3><p>Contesta consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional. Cada reserva aparece automáticamente en tu Google Calendar.</p></div>
-                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Vende desde tu catálogo</h3><p>Consulta tu catálogo y responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
+                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div><h3>Agenda y cancela citas</h3><p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Por agenda general o por profesional. Cada reserva aparece automáticamente en tu Google Calendar, con su enlace de Google Meet ya creado.</p></div>
+                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Vende desde tu catálogo</h3><p>Cargas tu catálogo desde un Excel y el bot responde con nombre, precio y stock reales. Recomienda, cotiza y guía la compra.</p></div>
                     <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><h3>Da la info de siempre</h3><p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p></div>
+                    <div class="feature"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><h3>Todo en un solo panel</h3><p>Agenda, clientes y conversaciones en un mismo lugar. Recibes notificaciones por correo cada vez que hay una reserva o un cliente nuevo.</p></div>
                 </div>
                 <button class="car-arrow car-next" id="featNext" aria-label="Siguiente">›</button>
                 <div class="car-progress"><div class="car-progress-fill" id="featProgress"></div></div>
@@ -944,11 +945,15 @@
             <div class="grid-3" style="align-items: stretch;">
                 <!-- Plan PRUEBA -->
                 <div class="price-card">
-                    <div class="price-new" style="font-size:32px">Prueba</div>
-                    <div class="price-sub">Gratis por 14 días</div>
-                    <ul class="price-list" style="margin-top:24px">
-                        <li>Bot WhatsApp activo 24/7</li>
-                        <li>Agenda con sincronización a Google Calendar</li>
+                    <div style="min-height:32px;margin-bottom:20px;visibility:hidden;" class="price-urgency" aria-hidden="true">Placeholder</div>
+                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
+                        <div class="price-saving-row" style="visibility:hidden;" aria-hidden="true"><span class="price-old">Placeholder</span></div>
+                        <div class="price-new" style="font-size:32px">Prueba</div>
+                        <div class="price-sub">Gratis por 14 días</div>
+                    </div>
+                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                        <li>Todas las funciones incluidas</li>
+                        <li>14 días completos</li>
                         <li>Sin tarjeta de crédito</li>
                     </ul>
                     <a href="https://app.velionix.cl/register" class="btn btn-ghost price-cta" style="margin-top:auto">Comenzar gratis</a>
@@ -957,33 +962,34 @@
                 <!-- Plan MENSUAL -->
                 <div class="price-card" style="position:relative">
                     <div class="price-glow"></div>
-                    <div class="price-urgency">🔥 Oferta primer mes</div>
-                    <div class="price-saving-row">
-                        <span class="price-old">$29.990/mes</span>
+                    <div style="min-height:32px;margin-bottom:20px;" class="price-urgency">🔥 Oferta primer mes</div>
+                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
+                        <div class="price-saving-row">
+                            <span class="price-old">$29.990/mes</span>
+                        </div>
+                        <div class="price-new">$14.990 <small>/mes</small></div>
+                        <div class="price-sub">el primer mes · luego $29.990/mes</div>
                     </div>
-                    <div class="price-new">$14.990 <small>/mes</small></div>
-                    <div class="price-sub">el primer mes · luego $29.990/mes</div>
-                    <ul class="price-list">
+                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                        <li>Todas las funciones incluidas</li>
                         <li>Sin permanencia. Cancelas cuando quieras.</li>
-                        <li>Bot WhatsApp con IA, activo 24/7</li>
-                        <li>Agenda por profesional (varios profesionales, cada uno con su horario)</li>
-                        <li>Sincronización con Google Calendar + enlaces de Google Meet automáticos</li>
-                        <li>Panel con agenda, clientes y conversaciones</li>
-                        <li>Notificaciones por correo electrónico</li>
-                        <li>API oficial de Meta — sin riesgo de bloqueo</li>
+                        <li>Soporte por WhatsApp</li>
                     </ul>
                     <a href="https://app.velionix.cl/register" class="btn btn-primary price-cta" style="margin-top:auto">Probar 14 días gratis →</a>
                 </div>
 
                 <!-- Plan ANUAL -->
                 <div class="price-card">
-                    <div class="price-saving-row">
-                        <span class="price-saving-chip" style="margin:0">Ahorras 2 meses</span>
+                    <div style="min-height:32px;margin-bottom:20px;visibility:hidden;" class="price-urgency" aria-hidden="true">Placeholder</div>
+                    <div style="min-height:110px;display:flex;flex-direction:column;justify-content:center;">
+                        <div class="price-saving-row">
+                            <span class="price-saving-chip" style="margin:0">Ahorras 2 meses</span>
+                        </div>
+                        <div class="price-new">$299.990 <small>/año</small></div>
+                        <div class="price-sub">2 meses gratis</div>
                     </div>
-                    <div class="price-new">$299.990 <small>/año</small></div>
-                    <div class="price-sub">2 meses gratis</div>
-                    <ul class="price-list">
-                        <li>Todo lo del plan mensual incluido</li>
+                    <ul class="price-list" style="margin-top:24px;flex:1;">
+                        <li>Todo lo del plan mensual</li>
                         <li>Garantía de 30 días: si no te sirve, te devolvemos todo</li>
                         <li>Configuración inicial incluida</li>
                     </ul>
