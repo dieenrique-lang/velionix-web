@@ -179,14 +179,14 @@
         .menu-toggle span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 
         /* ===== HERO ===== */
-        .hero{padding:140px 0 60px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:48px;align-items:center}
+        .hero{padding:140px 0 60px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:48px;align-items:start}
         .eyebrow{
             display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
             color:var(--cyan);background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);
             padding:6px 14px;border-radius:30px;margin-bottom:22px;
         }
         .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-        .hero h1{font-size:50px;margin-bottom:18px;min-height:120px}
+        .hero h1{font-size:50px;margin-bottom:18px;min-height:234px}
         .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .typewriter-cursor{font-weight:300;color:var(--cyan);animation:blink 1s step-end infinite}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -520,7 +520,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width:920px){
             .hero{grid-template-columns:minmax(0,1fr);gap:36px;padding:120px 24px 40px}
-            .hero h1{font-size:38px;min-height:140px}
+            .hero h1{font-size:38px;min-height:144px}
             .grid-3,.grid-3-uc{grid-template-columns:1fr 1fr}
             .nav-links{
                 position:fixed;top:60px;right:0;width:240px;height:calc(100vh - 60px);
@@ -531,7 +531,7 @@
             .menu-toggle{display:flex}
         }
         @media (max-width:560px){
-            .hero h1{font-size:32px;min-height:150px}
+            .hero h1{font-size:32px;min-height:154px}
             .hero{padding:110px 20px 36px}
             .sec-head h2{font-size:28px}
             .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
@@ -1146,7 +1146,7 @@
             if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             var target = document.getElementById('typewriterTarget');
             if(!target) return;
-            var phrases = ["duermes.", "atiendes a otro cliente.", "cierras el local.", "te tomas el fin de semana."];
+            var phrases = ["duermes.", "atiendes a un paciente.", "cierras la consulta.", "descansas el domingo."];
             var i = 0, charIndex = phrases[0].length, isDeleting = true, isVisible = true, timeoutId = null;
             
             var observer = new IntersectionObserver(function(entries){
