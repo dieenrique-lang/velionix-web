@@ -1161,7 +1161,7 @@
             if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             var target = document.getElementById('typewriterTarget');
             if(!target) return;
-            var phrases = ["duermes.", "atiendes a un paciente.", "cierras la consulta.", "descansas el domingo."];
+            var phrases = ["duermes.", "cierras la consulta.", "descansas el domingo."];
             var i = 0, charIndex = phrases[0].length, isDeleting = true, isVisible = true, timeoutId = null;
             
             var observer = new IntersectionObserver(function(entries){
