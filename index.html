@@ -477,7 +477,7 @@
         .faq-q .ic{color:var(--cyan);font-size:22px;transition:transform .3s;flex-shrink:0}
         .faq-item.open .faq-q .ic{transform:rotate(45deg)}
         .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--muted);font-size:15px}
-        .faq-item.open .faq-a{max-height:260px}
+        .faq-item.open .faq-a{max-height:var(--faq-h, 260px)}
         .faq-a div{padding:0 22px 20px}
 
         /* cta final */
@@ -1236,8 +1236,15 @@
         document.querySelectorAll('.faq-q').forEach(function(btn){
             btn.addEventListener('click',function(){
                 var item=btn.parentElement,open=item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
-                if(!open)item.classList.add('open');
+                document.querySelectorAll('.faq-item').forEach(function(i){
+                    i.classList.remove('open');
+                    i.querySelector('.faq-a').style.removeProperty('--faq-h');
+                });
+                if(!open){
+                    item.classList.add('open');
+                    var answer = item.querySelector('.faq-a');
+                    answer.style.setProperty('--faq-h', answer.scrollHeight + 'px');
+                }
             });
         });
 
