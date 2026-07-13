@@ -224,7 +224,7 @@
       <li>Datos de reservas: fecha, hora, servicio y profesional asignado</li>
     </ul>
     <div class="highlight">
-      <p>No recopilamos datos de salud, información financiera ni documentos de identidad de los clientes finales. Los tokens de acceso se almacenan cifrados con estándar AES-256 (Fernet) y nunca se exponen en texto plano.</p>
+      <p>No recopilamos historiales clínicos, diagnósticos, información financiera ni documentos de identidad de los clientes finales. En el caso de negocios del rubro salud, los datos de reserva (servicio y profesional asignado) pueden estar asociados de forma indirecta a información de salud; Velionix los trata con el mismo estándar de seguridad y confidencialidad descrito en la sección 05, y no los utiliza para ningún fin distinto a la operación del servicio contratado por el negocio cliente. Los tokens de acceso se almacenan cifrados con estándar AES-256 (Fernet) y nunca se exponen en texto plano.</p>
     </div>
   </section>
 
@@ -257,6 +257,7 @@
 
   <section>
     <h2><span class="num">05</span> Almacenamiento y seguridad</h2>
+    <p><strong style="color: var(--text-dim)">Rol de Velionix frente a los datos de los clientes finales:</strong> el negocio cliente es el responsable de los datos personales de sus propios clientes finales y determina la finalidad de su tratamiento. Velionix actúa como encargado de tratamiento: almacena y procesa dichos datos en su infraestructura, siguiendo exclusivamente las instrucciones del negocio cliente y para operar el servicio contratado. Velionix no utiliza los datos de los clientes finales para fines propios, no los cede a terceros distintos de los proveedores listados en la sección 06, y los elimina conforme a la sección 07.</p>
     <p>Tus datos se almacenan en servidores seguros mediante Supabase (infraestructura PostgreSQL con cifrado en reposo). El acceso está protegido mediante:</p>
     <ul>
       <li>Autenticación JWT con cookies HttpOnly y atributo Secure</li>
@@ -272,7 +273,8 @@
     <h2><span class="num">06</span> Compartición de datos con terceros</h2>
     <p>Para operar el servicio trabajamos con los siguientes proveedores de confianza:</p>
     <ul>
-      <li><strong style="color: var(--text-dim)">Meta (WhatsApp Business API)</strong> — para el envío y recepción de mensajes</li>
+      <li><strong style="color: var(--text-dim)">YCloud</strong> — proveedor de mensajería que opera la conexión con la API oficial de WhatsApp Business, para el envío y recepción de mensajes</li>
+      <li><strong style="color: var(--text-dim)">Meta (WhatsApp Business API)</strong> — plataforma sobre la que se envían y reciben los mensajes de WhatsApp</li>
       <li><strong style="color: var(--text-dim)">Google (Calendar API)</strong> — para la sincronización de citas, con autorización explícita del negocio cliente</li>
       <li><strong style="color: var(--text-dim)">Supabase</strong> — para el almacenamiento seguro de datos</li>
       <li><strong style="color: var(--text-dim)">Render</strong> — para el hospedaje del servidor</li>
