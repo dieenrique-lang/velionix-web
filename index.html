@@ -208,11 +208,11 @@
         html{overflow-anchor:none;}
         .phone, #auroraChat{overflow-anchor:none;}
         .phone{
-            background:var(--card);border:1px solid rgba(0,229,255,0.25);border-radius:26px;
-            padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18);backdrop-filter:blur(10px);
-            min-width:0;max-width:100%;
+            background:var(--card);border:12px solid #050505;border-radius:36px;
+            padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18), inset 0 0 0 1px rgba(255,255,255,0.05);backdrop-filter:blur(10px);
+            min-width:0;max-width:100%;overflow:hidden;
         }
-        .chat-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#26215C;margin:-18px -18px 14px -18px;border-top-left-radius:26px;border-top-right-radius:26px;border-bottom:1px solid var(--line);}
+        .chat-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#26215C;margin:-18px -18px 14px -18px;border-bottom:1px solid var(--line);}
         .chat-avatar{width:36px;height:36px;border-radius:50%;background:#534AB7;color:#EEEDFE;display:flex;align-items:center;justify-content:center;font-weight:700;}
         .chat-name{color:#F5F4FE;font-size:14px;font-weight:500;}
         .chat-status{color:#AFA9EC;font-size:11px;display:flex;align-items:center;}
@@ -542,8 +542,10 @@
             .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
             .metrics{flex-direction:column}
             .sec{padding:60px 0}
-            .phone{padding:14px;border-radius:18px}
-            #auroraChat .bubble{font-size:13px}\n            .chat-quick-replies{min-height:123.5625px}
+            .phone{padding:14px;border:10px solid #050505;border-radius:30px}
+            .chat-head{margin:-14px -14px 14px -14px}
+            #auroraChat .bubble{font-size:13px}
+            .chat-quick-replies{min-height:123.5625px}
         }
         .ycloud-badge{display:flex;align-items:center;justify-content:center;margin:16px auto 0;width:fit-content;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;max-width:420px;flex-wrap:wrap}
         @media(max-width:560px){.ycloud-badge{flex-direction:column;align-items:center;justify-content:center;gap:10px}.meta-badge-img{height:36px}.step{padding:18px 16px;gap:14px}.step .num{font-size:26px;min-width:40px}}
