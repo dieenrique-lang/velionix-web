@@ -208,23 +208,30 @@
         html{overflow-anchor:none;}
         .phone, #auroraChat{overflow-anchor:none;}
         .phone{
+            width:340px;height:680px;margin:0 auto;display:flex;flex-direction:column;
             background:var(--card);border:12px solid #050505;border-radius:36px;
-            padding:18px;box-shadow:0 30px 80px rgba(0,120,200,0.18), inset 0 0 0 1px rgba(255,255,255,0.05);backdrop-filter:blur(10px);
-            min-width:0;max-width:100%;overflow:hidden;
+            padding:0;box-shadow:0 30px 80px rgba(0,120,200,0.18), inset 0 0 0 1px rgba(255,255,255,0.05);backdrop-filter:blur(10px);
+            max-width:100%;overflow:hidden;
         }
-        .chat-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#26215C;margin:-18px -18px 14px -18px;border-bottom:1px solid var(--line);}
+        .chat-head{display:flex;align-items:center;gap:12px;padding:16px;background:#26215C;border-bottom:1px solid var(--line);flex-shrink:0;}
+        .chat-head-back{color:#AFA9EC;display:flex;align-items:center;cursor:pointer;}
+        .chat-head-info{flex:1;}
+        .chat-head-actions{display:flex;gap:16px;color:#fff;align-items:center;}
+        .chat-bottom{display:flex;align-items:flex-end;gap:10px;padding:12px 16px;background:#0b0b10;flex-shrink:0;}
+        .chat-mic-btn{width:40px;height:40px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
+
         .chat-avatar{width:36px;height:36px;border-radius:50%;background:#534AB7;color:#EEEDFE;display:flex;align-items:center;justify-content:center;font-weight:700;}
         .chat-name{color:#F5F4FE;font-size:14px;font-weight:500;}
         .chat-status{color:#AFA9EC;font-size:11px;display:flex;align-items:center;}
         .chat-status::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#5DCAA5;margin-right:4px;}
-        #auroraChat{height:190px;overflow-y:scroll;display:flex;flex-direction:column;gap:8px;padding:4px 8px 4px 8px;background-color:#0b0b10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23181824' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(15,15) scale(0.8)'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/g%3E%3Cg transform='translate(65,65) scale(0.8)'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:50px 50px;background-repeat:repeat;margin-left:0;}
+        #auroraChat{flex:1;overflow-y:scroll;display:flex;flex-direction:column;gap:8px;padding:16px 18px 4px 18px;background-color:#0b0b10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23181824' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(15,15) scale(0.8)'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/g%3E%3Cg transform='translate(65,65) scale(0.8)'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:50px 50px;background-repeat:repeat;margin-left:0;}
         #auroraChat::-webkit-scrollbar{width:4px;}
         #auroraChat::-webkit-scrollbar-track{background:transparent;}
         #auroraChat::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px;}
         #auroraChat .bubble{margin:0;flex-shrink:0;}
         .bubble-out{background:#534AB7;color:#F5F4FE;margin-left:auto;border-bottom-right-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
         .bubble-in{background:#17171F;color:#E5E4F0;border:0.5px solid #2a2a38;border-bottom-left-radius:4px;max-width:80%;padding:10px 14px;border-radius:16px;margin-bottom:10px;font-size:14px;line-height:1.45;}
-        .chat-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin-top:8px;min-height:80.375px;align-content:flex-start;}
+        .chat-quick-replies{flex:1;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin-top:0;align-content:flex-start;}
         .chat-quick-replies .chip{background:#1c1c24;border:0.5px solid #3a3a4a;color:#CECBF6;border-radius:16px;padding:8px 12px;font-size:12px;cursor:pointer;transition:filter .2s;}
         .chat-quick-replies .chip:hover{filter:brightness(1.2);}
         .phone-input-fake{flex:1;background:#1c1c24;color:#5f5f6b;border:1px solid var(--line);border-radius:24px;padding:9px 14px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
@@ -542,8 +549,7 @@
             .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
             .metrics{flex-direction:column}
             .sec{padding:60px 0}
-            .phone{padding:14px;border:10px solid #050505;border-radius:30px}
-            .chat-head{margin:-14px -14px 14px -14px}
+            .phone{border:10px solid #050505;border-radius:30px}
             #auroraChat .bubble{font-size:13px}
             .chat-quick-replies{min-height:123.5625px}
         }
@@ -661,11 +667,24 @@
         </div>
         <div class="phone">
             <div class="chat-head">
-                <div class="chat-avatar">A</div>
-                <div><div class="chat-name">Taller Aurora</div><div class="chat-status" id="auroraStatus">Bot activo</div></div>
+                <div class="chat-head-back">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </div>
+                <div class="chat-avatar">E</div>
+                <div class="chat-head-info"><div class="chat-name">Estética Bella</div><div class="chat-status" id="auroraStatus">en línea</div></div>
+                <div class="chat-head-actions">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="19" r="2"></circle></svg>
+                </div>
             </div>
             <div id="auroraChat"></div>
-            <div id="auroraQuickReplies" class="chat-quick-replies"></div>
+            <div class="chat-bottom">
+                <div id="auroraQuickReplies" class="chat-quick-replies"></div>
+                <div class="chat-mic-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                </div>
+            </div>
             
         </div>
     </header>
