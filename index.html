@@ -670,9 +670,9 @@
                 <span>API oficial de Meta · Tu número protegido</span>
             </div>
             <div class="metrics">
-                <div class="metric"><div class="val" id="m1">0</div><div class="lbl">Citas / hora</div></div>
-                <div class="metric"><div class="val" id="m2">0</div><div class="lbl">Ventas / día</div></div>
-                <div class="metric"><div class="val" id="m3">0%</div><div class="lbl">Uptime</div></div>
+                <div class="metric"><div class="val" id="m1">47</div><div class="lbl">Citas / hora</div></div>
+                <div class="metric"><div class="val" id="m2">128</div><div class="lbl">Ventas / día</div></div>
+                <div class="metric"><div class="val" id="m3">99.9%</div><div class="lbl">Uptime</div></div>
             </div>
         </div>
         <div class="phone">
@@ -1212,9 +1212,12 @@
             if(counted)return;counted=true;
             animate(document.getElementById('m1'),47,'');
             animate(document.getElementById('m2'),128,'');
-            var p=0,pi=setInterval(function(){p+=2.4;if(p>=99.9){p=99.9;clearInterval(pi)}document.getElementById('m3').textContent=p.toFixed(1)+'%'},28);
+            var m3=document.getElementById('m3');
+            m3.textContent='0.0%';
+            var p=0,pi=setInterval(function(){p+=2.4;if(p>=99.9){p=99.9;clearInterval(pi)}m3.textContent=p.toFixed(1)+'%'},28);
         }
         function animate(el,target,suffix){
+            el.textContent='0'+suffix;
             var s=0,step=Math.ceil(target/50),t=setInterval(function(){s+=step;if(s>=target){s=target;clearInterval(t)}el.textContent=s+suffix},28);
         }
         var heroObs=new IntersectionObserver(function(e){if(e[0].isIntersecting){runCounters();heroObs.disconnect()}},{threshold:0.4});
