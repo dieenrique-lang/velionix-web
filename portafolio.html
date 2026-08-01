@@ -459,7 +459,14 @@
             </div>
             <div style="max-width: 600px; margin: 0 auto;">
                 <div class="port-card">
-                    <img src="assets/portafolio/comerciativa.png" alt="Comerciativa.cl" class="port-img">
+                    <picture>
+                      <source srcset="assets/portafolio/comerciativa.webp" type="image/webp">
+                      <img src="assets/portafolio/comerciativa.png"
+                           alt="Comerciativa.cl"
+                           class="port-img"
+                           width="1200" height="675"
+                           loading="lazy" decoding="async">
+                    </picture>
                     <div class="port-body">
                         <h3 class="port-title">Comerciativa.cl</h3>
                         <p class="port-desc">Automatización de WhatsApp con asistente virtual de IA conversacional para gestión de citas y reservas, integrado a su operación de consultoría en comercio electrónico.</p>
