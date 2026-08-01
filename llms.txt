@@ -1,0 +1,43 @@
+# Velionix
+
+> Velionix es un asistente de IA por WhatsApp que responde clientes,
+> vende desde tu catálogo y agenda citas por profesional. Para pymes de
+> servicios en Chile. Usa la API oficial de Meta (WhatsApp Business
+> Platform).
+
+## Que hace
+
+- Responde consultas 24/7 con IA conversacional, no menús de opciones
+- Agenda, confirma y cancela citas, con agenda separada por profesional
+- Sincroniza con Google Calendar y genera enlaces de Google Meet
+- Vende desde un catálogo importado desde Excel, con precios y stock reales
+- Panel único con historial de clientes, reservas y contador de mensajes
+
+## Precios (CLP, vigente agosto 2026)
+
+- Prueba: 14 días gratis, sin tarjeta de credito
+- Mensual: $29.990/mes. Primer mes de puesta en marcha $14.990.
+- Anual: $299.990/año, equivale a $24.999/mes. Garantía de 30 días.
+- Sin permanencia. Se cancela cuando el cliente quiera.
+
+## Costo de mensajes de WhatsApp
+
+Desde el 1 de octubre de 2026, Meta cobra los mensajes de WhatsApp
+Business directamente en la cuenta del negocio. Ese costo es del cliente
+y Velionix no le agrega margen. El bot está diseñado para resolver una
+reserva en 9 mensajes en promedio; un bot sin optimizar suele necesitar
+alrededor del triple.
+
+## Rubros
+
+Clínicas y consultas dentales, talleres mecánicos, kinesiología,
+psicología, nutrición, tiendas de ropa, accesorios y joyería, y comercio
+en general que atienda por WhatsApp.
+
+## Enlaces
+
+- Sitio: https://velionix.cl/
+- Portafolio: https://velionix.cl/portafolio
+- Privacidad: https://velionix.cl/privacidad
+- Términos: https://velionix.cl/terminos
+- Contacto: contacto@velionix.cl
