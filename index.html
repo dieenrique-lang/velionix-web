@@ -680,8 +680,8 @@
                 <div class="chat-head-back">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </div>
-                <div class="chat-avatar">A</div>
-                <div class="chat-head-info"><div class="chat-name">Taller Aurora</div><div class="chat-status" id="auroraStatus">en línea</div></div>
+                <div class="chat-avatar">L</div>
+                <div class="chat-head-info"><div class="chat-name">Estética Lumina</div><div class="chat-status" id="auroraStatus">en línea</div></div>
                 <div class="chat-head-actions">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -1500,7 +1500,7 @@
             draw();
         }
 
-        // ===== Chat Aurora Interactivo =====
+        // ===== Chat interactivo del hero (Estética Lumina) =====
         (function(){
             var chat = document.getElementById('auroraChat');
             var qrContainer = document.getElementById('auroraQuickReplies');
@@ -1508,22 +1508,22 @@
 
             var tree = {
                 root: {
-                    bot: "¡Hola! Soy el asistente de Taller Aurora. ¿En qué te puedo ayudar?",
+                    bot: "¡Hola! Soy el asistente de Estética Lumina. ¿En qué te puedo ayudar?",
                     options: [
                         { label: "Ver horario de atención", next: "horario" },
-                        { label: "¿Hacen cambio de aceite y filtro?", next: "aceite" },
+                        { label: "¿Cuánto sale la depilación láser?", next: "laser" },
                         { label: "Quiero agendar hora", next: "agendar_dia" }
                     ]
                 },
                 horario: {
-                    bot: "Atendemos de Lunes a Viernes de 09:00 a 18:00, y Sábados de 09:00 a 14:00.",
+                    bot: "Atendemos de Lunes a Viernes de 10:00 a 20:00, y Sábados de 10:00 a 15:00.",
                     options: [
                         { label: "Quiero agendar hora", next: "agendar_dia" },
                         { label: "Volver al inicio", next: "root" }
                     ]
                 },
-                aceite: {
-                    bot: "El cambio de aceite full sintético (incluye filtro y mano de obra) sale $34.990.",
+                laser: {
+                    bot: "La sesión de axilas sale $19.990 y piernas completas $49.990. El pack de 6 sesiones tiene 20% de descuento.",
                     options: [
                         { label: "Quiero agendar hora", next: "agendar_dia" },
                         { label: "Volver al inicio", next: "root" }
@@ -1537,14 +1537,14 @@
                     ]
                 },
                 agendar_hora: {
-                    bot: "Tengo disponibilidad a las 10:00 o a las 15:30. ¿Cuál te acomoda?",
+                    bot: "Tengo disponibilidad con Camila a las 11:00 o con Fernanda a las 16:30. ¿Cuál te acomoda?",
                     options: [
-                        { label: "A las 10:00", next: "confirmado" },
-                        { label: "A las 15:30", next: "confirmado" }
+                        { label: "Con Camila 11:00", next: "confirmado" },
+                        { label: "Con Fernanda 16:30", next: "confirmado" }
                     ]
                 },
                 confirmado: {
-                    bot: "¡Listo! Quedaste agendado. Que tengas un excelente día!",
+                    bot: "¡Listo! Quedaste agendada. Te llegará un recordatorio el día anterior.",
                     options: [
                         { label: "Volver al inicio", next: "root" }
                     ]
