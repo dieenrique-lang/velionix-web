@@ -210,7 +210,8 @@
         .cred-bar{
             display:flex;align-items:center;gap:24px;
             background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-            padding:20px 0;
+            padding:22px 28px;
+            border-radius:16px;
             opacity:0;transform:translateY(16px);
             transition:opacity .5s,transform .5s;
         }
@@ -228,6 +229,7 @@
             .cred-stats{width:100%;justify-content:space-between;gap:12px}
         }
         @media (max-width:560px){
+            .cred-bar{padding:18px 18px}
             .cred-badge img{height:36px}
             .cred-title{font-size:14px}
             .cred-sub{font-size:12px}
