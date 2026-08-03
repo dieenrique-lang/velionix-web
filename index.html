@@ -206,13 +206,34 @@
         .hero-trust span{display:inline-flex;align-items:center;gap:6px}
         .hero-trust span::before{content:'✓';color:var(--green);font-weight:700}
 
-        .metrics{display:flex;gap:14px;margin-top:30px}
-        .metric{
-            flex:1;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.18);
-            border-radius:14px;padding:14px 16px;text-align:center;
+        /* ===== Barra de credibilidad ===== */
+        .cred-bar{
+            display:flex;align-items:center;gap:24px;
+            background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+            padding:20px 0;
+            opacity:0;transform:translateY(16px);
+            transition:opacity .5s,transform .5s;
         }
-        .metric .val{font-size:26px;font-weight:700;color:var(--cyan)}
-        .metric .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--faint);margin-top:2px}
+        .cred-bar.visible{opacity:1;transform:translateY(0)}
+        .cred-left{display:flex;align-items:center;gap:16px;flex:1;min-width:0}
+        .cred-badge img{height:44px;width:auto;border-radius:6px;flex-shrink:0;display:block}
+        .cred-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
+        .cred-sub{font-size:13px;color:var(--muted);line-height:1.45}
+        .cred-stats{display:flex;gap:32px;flex-shrink:0}
+        .cred-stat{text-align:center}
+        .cred-stat .n{font-size:28px;font-weight:700;color:var(--green);line-height:1.1}
+        .cred-stat .l{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--faint);margin-top:4px}
+        @media (max-width:820px){
+            .cred-bar{flex-direction:column;align-items:flex-start;gap:20px}
+            .cred-stats{width:100%;justify-content:space-between;gap:12px}
+        }
+        @media (max-width:560px){
+            .cred-badge img{height:36px}
+            .cred-title{font-size:14px}
+            .cred-sub{font-size:12px}
+            .cred-stat .n{font-size:22px}
+            .cred-stat .l{font-size:9px;letter-spacing:1px}
+        }
 
         /* ===== CHAT MOCKUP (hero) ===== */
         html{overflow-anchor:none;}
@@ -558,7 +579,6 @@
             .hero{padding:110px 20px 36px}
             .sec-head h2{font-size:28px}
             .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
-            .metrics{flex-direction:column}
             .sec{padding:60px 0}
             .phone{border:10px solid #050505;border-radius:30px}
             #auroraChat .bubble{font-size:13px}
@@ -665,12 +685,6 @@
             <div class="hero-trust">
                 <span>Sin tarjeta para probar</span>
                 <span>Listo en minutos</span>
-                <span>API oficial de Meta · Tu número protegido</span>
-            </div>
-            <div class="metrics">
-                <div class="metric"><div class="val" id="m1">47</div><div class="lbl">Citas / hora</div></div>
-                <div class="metric"><div class="val" id="m2">128</div><div class="lbl">Ventas / día</div></div>
-                <div class="metric"><div class="val" id="m3">99.9%</div><div class="lbl">Uptime</div></div>
             </div>
         </div>
         <div class="phone">
@@ -696,9 +710,35 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </header>
+
+    <section class="cred-wrap">
+        <div class="container">
+            <div class="cred-bar" id="credBar">
+                <div class="cred-left">
+                    <div class="cred-badge">
+                        <picture>
+                          <source srcset="https://velionix.cl/meta-business-partner.webp" type="image/webp">
+                          <img src="https://velionix.cl/meta-business-partner.png"
+                               alt="Meta Business Partner"
+                               width="400" height="229"
+                               decoding="async">
+                        </picture>
+                    </div>
+                    <div>
+                        <div class="cred-title">API oficial de WhatsApp Business</div>
+                        <div class="cred-sub">Vía YCloud, partner oficial de Meta. Sin números “grises”, sin riesgo de baneo.</div>
+                    </div>
+                </div>
+                <div class="cred-stats">
+                    <div class="cred-stat"><div class="n">9</div><div class="l">Mensajes por reserva</div></div>
+                    <div class="cred-stat"><div class="n">1</div><div class="l">Tarde de setup</div></div>
+                    <div class="cred-stat"><div class="n">24/7</div><div class="l">Atención</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FEATURES -->
     <section class="sec" id="features">
@@ -851,14 +891,6 @@
                     <p>Creas tu cuenta en Velionix y conectas tu número de WhatsApp Business a través de <a href="https://www.ycloud.com/console/#/entry/register?" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">YCloud</a> — partner oficial de Meta. Es gratis y no pide tarjeta. Te guiamos paso a paso, no necesitas saber nada técnico.</p>
                     <p style="font-size:12px;color:var(--faint);margin-top:8px">⚠️ El uso de la API oficial de Meta requiere cumplir las políticas de WhatsApp Business. Velionix opera dentro de estas normas para proteger la salud de tu número.</p>
                     <div class="ycloud-badge">
-                        <picture>
-                          <source srcset="https://velionix.cl/meta-business-partner.webp" type="image/webp">
-                          <img src="https://velionix.cl/meta-business-partner.png"
-                               alt="Meta Business Partner"
-                               class="meta-badge-img"
-                               width="400" height="229"
-                               loading="lazy" decoding="async">
-                        </picture>
                         <div class="ycloud-text">
                             <span class="ycloud-name">YCloud · Partner oficial de Meta</span>
                             <span class="ycloud-desc">API oficial de Meta · Tu número protegido</span>
@@ -1207,26 +1239,10 @@
             timeoutId = setTimeout(tick, 2500); // Primera pausa antes de borrar
         })();
 
-        // ===== Contadores hero (arrancan al entrar en viewport) =====
-        var counted=false;
-        function runCounters(){
-            if(counted)return;counted=true;
-            animate(document.getElementById('m1'),47,'');
-            animate(document.getElementById('m2'),128,'');
-            var m3=document.getElementById('m3');
-            m3.textContent='0.0%';
-            var p=0,pi=setInterval(function(){p+=2.4;if(p>=99.9){p=99.9;clearInterval(pi)}m3.textContent=p.toFixed(1)+'%'},28);
-        }
-        function animate(el,target,suffix){
-            el.textContent='0'+suffix;
-            var s=0,step=Math.ceil(target/50),t=setInterval(function(){s+=step;if(s>=target){s=target;clearInterval(t)}el.textContent=s+suffix},28);
-        }
-        var heroObs=new IntersectionObserver(function(e){if(e[0].isIntersecting){runCounters();heroObs.disconnect()}},{threshold:0.4});
-        heroObs.observe(document.querySelector('.metrics'));
-
         // ===== Reveal features =====
         var fObs=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');fObs.unobserve(en.target)}})},{threshold:0.15});
         document.querySelectorAll('.feature').forEach(function(f){fObs.observe(f)});
+        var credBar=document.getElementById('credBar'); if(credBar) fObs.observe(credBar);
 
         // ===== Barra de progreso mobile (Features y Use Cases) =====
         (function(){
