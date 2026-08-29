@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Velionix — Tu WhatsApp vende, agenda y responde solo</title>
+    <title>Velionix — Responde, orienta y agenda por WhatsApp</title>
 
     <!-- ===== SEO ===== -->
-    <meta name="description" content="Velionix automatiza el WhatsApp de tu negocio: responde 24/7, vende desde tu catálogo y agenda citas por profesional. Desde $14.990/mes. Ideal para clínicas, dentales, estética y tiendas en Chile. API oficial de Meta.">
+    <meta name="description" content="Velionix ayuda a negocios en Chile a responder oportunidades por WhatsApp, consultar su catálogo y agendar por profesional, incluso fuera de horario.">
     <meta name="author" content="Velionix">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://velionix.cl/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
-    <meta property="og:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende y agenda citas por profesional. Desde $14.990/mes · 14 días gratis · API oficial de Meta.">
+    <meta property="og:title" content="Velionix — Responde, orienta y agenda por WhatsApp">
+    <meta property="og:description" content="Responde oportunidades por WhatsApp, consulta tu catálogo y agenda por profesional, incluso fuera de horario.">
     <meta property="og:image" content="https://velionix.cl/og-image.png">
     <meta property="og:url" content="https://velionix.cl">
     <meta property="og:locale" content="es_CL">
@@ -22,8 +22,8 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Velionix — Tu WhatsApp vende, agenda y responde solo">
-    <meta name="twitter:description" content="Automatiza el WhatsApp de tu negocio: responde 24/7, vende y agenda citas. Desde $14.990/mes · 14 días gratis.">
+    <meta name="twitter:title" content="Velionix — Responde, orienta y agenda por WhatsApp">
+    <meta name="twitter:description" content="Responde oportunidades por WhatsApp, consulta tu catálogo y agenda por profesional, incluso fuera de horario.">
     <meta name="twitter:image" content="https://velionix.cl/og-image.png">
 
     <link rel="icon" type="image/x-icon" href="https://velionix.cl/favicon.ico">
@@ -47,14 +47,14 @@
           "name": "Velionix",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web, WhatsApp",
-          "description": "Automatización de WhatsApp con IA para negocios: responde 24/7, vende desde el catálogo y agenda citas por profesional.",
+          "description": "Automatización de WhatsApp con IA para negocios: responde consultas, orienta con el catálogo y agenda citas por profesional.",
           "url": "https://velionix.cl",
           "image": "https://velionix.cl/og-image.png",
           "offers": {
             "@type": "Offer",
             "price": "29990",
             "priceCurrency": "CLP",
-            "description": "Plan mensual $29.990/mes. Primer mes de puesta en marcha $14.990. Plan anual $299.990 (equivale a $24.999/mes). Prueba 14 días gratis sin tarjeta.",
+              "description": "Plan mensual $29.990/mes. Primer mes de puesta en marcha $14.990. Plan anual $299.990. Prueba de 14 días después de activar WhatsApp.",
             "availability": "https://schema.org/InStock"
           },
           "provider": {
@@ -65,7 +65,7 @@
             "email": "contacto@velionix.cl",
             "logo": "https://velionix.cl/logovelionix1.png",
             "areaServed": { "@type": "Country", "name": "Chile" },
-            "description": "Velionix es un asistente de IA por WhatsApp que responde clientes, vende desde el catálogo y agenda citas por profesional, para pymes de servicios en Chile.",
+            "description": "Velionix es un asistente de IA por WhatsApp que responde clientes, orienta con el catálogo y agenda citas por profesional, para pymes de servicios en Chile.",
             "sameAs": ["https://wa.me/56920584589"]
           }
         },
@@ -109,7 +109,7 @@
               "name": "¿Corro riesgo de que bloqueen mi WhatsApp?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. Usamos la API oficial de Meta (WhatsApp Business Platform), no un bot no oficial. Tu número está protegido y cumple con las políticas de WhatsApp."
+                "text": "La conexión se realiza mediante WhatsApp Business, YCloud y la API oficial de Meta. La elegibilidad depende de las condiciones de Meta/YCloud."
               }
             }
           ]
@@ -201,6 +201,8 @@
         .typewriter-cursor{font-weight:300;color:var(--cyan);animation:blink 1s step-end infinite}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
         .hero p.lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:28px}
+        .hero-note{font-size:14px;line-height:1.55;color:var(--faint);max-width:560px;margin:18px 0 0;padding-left:16px;border-left:2px solid var(--cyan)}
+        :focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
         .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
         .hero-trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--faint)}
         .hero-trust span{display:inline-flex;align-items:center;gap:6px}
@@ -566,18 +568,19 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width:920px){
             .hero{grid-template-columns:minmax(0,1fr);gap:36px;padding:120px 24px 40px}
-            .hero h1{font-size:38px;min-height:144px}
+            .hero h1{font-size:38px;min-height:0}
             .grid-3,.grid-3-uc{grid-template-columns:1fr 1fr}
             .nav-links{
                 position:fixed;top:60px;right:0;width:240px;height:calc(100vh - 60px);
                 background:rgba(10,10,15,0.97);backdrop-filter:blur(20px);flex-direction:column;
                 align-items:flex-start;padding:30px 26px;gap:22px;transform:translateX(100%);transition:transform .3s;border-left:1px solid var(--line);
             }
-            .nav-links.open{transform:translateX(0)}\n            .chat-quick-replies{min-height:37.1875px}
+            .nav-links.open{transform:translateX(0)}
+            .chat-quick-replies{min-height:37.1875px}
             .menu-toggle{display:flex}
         }
         @media (max-width:560px){
-            .hero h1{font-size:32px;min-height:154px}
+            .hero h1{font-size:32px;min-height:0}
             .hero{padding:110px 20px 36px}
             .sec-head h2{font-size:28px}
             .grid-3,.grid-3-uc,.inv-benefits,.opt-grid{grid-template-columns:1fr}
@@ -657,37 +660,39 @@
     <div class="orb orb-2"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navegación principal">
         <div class="container">
             <a href="#hero" class="brand"><img src="https://velionix.cl/logovelionix1.png" alt="Velionix"></a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#features">Cómo funciona</a></li>
-                <li><a href="#agenda">Agenda</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#use-cases">Casos de uso</a></li>
+                <li><a href="#catalogo">Qué hace</a></li>
+                <li><a href="#testimonios">Confianza</a></li>
                 <li><a href="#precio">Precio</a></li>
                 <li><a href="/portafolio">Portafolio</a></li>
                 <li><a href="https://app.velionix.cl/panel">Iniciar sesión</a></li>
-                <li><a href="https://app.velionix.cl/register" class="btn btn-primary btn-sm">Probar gratis</a></li>
+                <li><a href="https://app.velionix.cl/register" class="btn btn-primary btn-sm">Probar 14 días gratis</a></li>
             </ul>
         </div>
     </nav>
 
+    <main>
     <!-- HERO -->
     <header class="hero container" id="hero">
         <div>
-            <span class="eyebrow"><span class="dot"></span>WhatsApp que trabaja solo</span>
-            <h1>Tu negocio sigue atendiendo mientras tú <span class="grad" id="typewriterTarget" aria-live="off">duermes.</span><span class="typewriter-cursor" aria-hidden="true">|</span></h1>
-            <p class="lead">Velionix conecta tu WhatsApp con tu catálogo y tu agenda. Responde al instante, vende tus productos y agenda citas por profesional — a cualquier hora, todos los días.</p>
+            <span class="eyebrow"><span class="dot"></span>Para negocios que atienden y venden por WhatsApp</span>
+            <h1>No pierdas oportunidades por responder tarde en <span class="grad">WhatsApp.</span></h1>
+            <p class="lead">Velionix responde automáticamente, atiende consultas, ayuda a vender y agenda incluso cuando tu equipo no está disponible.</p>
             <div class="hero-cta">
                 <a href="https://app.velionix.cl/register" class="btn btn-primary">Probar 14 días gratis →</a>
-                <a href="#agenda" class="btn btn-ghost">Ver demo en vivo</a>
+                <a href="#agenda" class="btn btn-ghost">Ver cómo funciona</a>
             </div>
             <div class="hero-trust">
-                <span>Sin tarjeta para probar</span>
-                <span>Listo en minutos</span>
+                <span>Activación guiada</span>
+                <span>Puedes cancelar cuando quieras</span>
             </div>
+            <p class="hero-note">En números elegibles, puedes conectar tu WhatsApp Business actual y seguir usándolo junto con Velionix.</p>
         </div>
         <div class="phone">
             <div class="chat-head">
@@ -729,86 +734,85 @@
                         </picture>
                     </div>
                     <div>
-                        <div class="cred-title">API oficial de WhatsApp Business</div>
-                        <div class="cred-sub">Vía YCloud, partner oficial de Meta. Sin números “grises”, sin riesgo de baneo.</div>
+                        <div class="cred-title">WhatsApp Business mediante API oficial de Meta</div>
+                        <div class="cred-sub">Conexión mediante YCloud. La disponibilidad depende de las condiciones de Meta/YCloud.</div>
                     </div>
                 </div>
                 <div class="cred-stats">
-                    <div class="cred-stat"><div class="n">9</div><div class="l">Mensajes por reserva</div></div>
-                    <div class="cred-stat"><div class="n">1</div><div class="l">Tarde de setup</div></div>
+                    <div class="cred-stat"><div class="n">14</div><div class="l">Días de prueba</div></div>
+                    <div class="cred-stat"><div class="n">1</div><div class="l">Panel para tu operación</div></div>
                     <div class="cred-stat"><div class="n">24/7</div><div class="l">Atención</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FEATURES -->
+    <!-- RESULTADOS -->
     <section class="sec" id="features">
         <div class="container">
             <div class="sec-head">
-                <span class="tag">QUÉ INCLUYE</span>
-                <h2>Todo lo que hace por tu negocio</h2>
-                <p>No es un chatbot que repite frases armadas. Entiende lo que el cliente pregunta y lo resuelve.</p>
+                <span class="tag">QUÉ HACE</span>
+                <h2>Menos oportunidades enfriándose en tu WhatsApp</h2>
+                <p>Responde usando la información y reglas que configuras para tu negocio.</p>
             </div>
             <div class="features-grid" style="position:relative">
                 <div class="mobile-track"><div class="mobile-track-fill" id="featTrackFill"></div></div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                    <h3>Atiende 24/7, sin descanso</h3>
-                    <p>Responde consultas a cualquier hora, incluso de madrugada y fines de semana. Dejas de perder clientes por no alcanzar a responder.</p>
+                    <h3>Responde</h3>
+                    <p>Responde consultas usando la información y reglas configuradas de tu negocio.</p>
                     <ul class="feature-list">
-                        <li>Responde en segundos</li>
+                        <li>Atiende incluso fuera de horario</li>
                         <li>No es un menú de opciones: entiende y resuelve</li>
                         <li>Deriva a una persona cuando hace falta</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg></div>
-                    <h3>Agenda y cancela citas solo</h3>
-                    <p>Ofrece solo horas realmente libres, reserva, confirma y cancela. Sin que tengas que intervenir.</p>
+                    <h3>Agenda</h3>
+                    <p>Gestiona disponibilidad y reservas por profesional, evitando horarios solapados.</p>
                     <ul class="feature-list">
                         <li>Agenda por profesional, cada uno con su horario</li>
-                        <li>Se sincroniza con tu Google Calendar</li>
-                        <li>Crea el enlace de Google Meet automáticamente</li>
+                        <li>Consulta disponibilidad y crea eventos con Google Calendar</li>
+                        <li>Puede crear Google Meet cuando corresponde</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-                    <h3>Vende desde tu catálogo</h3>
-                    <p>Cargas tu catálogo desde un Excel y el bot responde con nombre, precio y stock reales.</p>
+                    <h3>Ayuda a vender</h3>
+                    <p>Presenta tus productos o servicios, consulta precios y stock registrado y orienta al cliente.</p>
                     <ul class="feature-list">
-                        <li>Recomienda, cotiza y guía la compra</li>
-                        <li>Precios y stock siempre al día</li>
+                        <li>Importa tu catálogo desde Excel</li>
+                        <li>Responde con los datos que tienes registrados</li>
                         <li>Sin cargar productos a mano</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-                    <h3>Todo en un solo panel</h3>
-                    <p>Agenda, clientes y conversaciones en un mismo lugar. Ves qué pasó sin abrir WhatsApp.</p>
+                    <h3>Deriva</h3>
+                    <p>Cuando una conversación necesita atención humana, puedes derivarla y tu equipo puede tomar el control.</p>
                     <ul class="feature-list">
                         <li>Historial completo de cada cliente</li>
                         <li>Notificaciones por correo en cada reserva</li>
-                        <li>Contador de mensajes en tiempo real</li>
+                        <li>El agente puede seguir ayudando hasta la toma de control</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-                    <h3>Responde lo de siempre</h3>
-                    <p>Dirección, horarios, formas de pago, despacho. Las preguntas que respondes cien veces al día, contestadas solas.</p>
+                    <h3>Se adapta a tu negocio</h3>
+                    <p>Configuras servicios, horarios, reglas y la forma en que quieres atender.</p>
                     <ul class="feature-list">
-                        <li>Aprende la información de tu negocio</li>
+                        <li>Usa tu información y tu tono</li>
                         <li>Responde con tu tono, no como un robot</li>
                     </ul>
                 </div>
                 <div class="feature">
                     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                    <h3>Tu número protegido</h3>
-                    <p>Usamos la API oficial de Meta. Tu número está protegido y cumple las políticas de WhatsApp.</p>
+                    <h3>Trabaja con tu número elegible</h3>
+                    <p>En modo coexistencia, puedes seguir usando WhatsApp Business junto con Velionix.</p>
                     <ul class="feature-list">
-                        <li>Cuenta oficial de WhatsApp Business</li>
-                        <li>Resuelve una reserva en 9 mensajes (un bot mal hecho usa 27)</li>
-                        <li>Menos mensajes = factura de Meta más baja</li>
+                        <li>Conexión mediante API oficial de Meta y YCloud</li>
+                        <li>La disponibilidad depende de Meta/YCloud</li>
                     </ul>
                 </div>
             </div>
@@ -823,7 +827,7 @@
             <div class="sec-head">
                 <span class="tag">Pruébalo tú mismo</span>
                 <h2>Escribe como si fuera tu paciente — mira cómo se agenda solo</h2>
-                <p>Interactúa con el chat de la Clínica Dental Norte. Cuando elijas una hora, aparecerá al instante en el dashboard de la derecha — igual que en la app real.</p>
+                <p>Interactúa con el chat de la Clínica Dental Norte. Cuando elijas una hora, aparecerá en el dashboard de la derecha — igual que en la app real.</p>
             </div>
             <div class="demo-wrap">
 
@@ -831,7 +835,7 @@
                 <div class="demo-phone">
                     <div class="demo-phone-head">
                         <div class="av">CD</div>
-                        <div><div class="nm">Clínica Dental Norte</div><div class="st">en línea · responde al instante</div></div>
+                        <div><div class="nm">Clínica Dental Norte</div><div class="st">en línea · asistente de agenda</div></div>
                     </div>
                     <div class="demo-msgs" id="demoMsgs">
                         <div class="dm i">¡Hola! 👋 Soy el asistente de la Clínica Dental Norte. ¿Con qué profesional quieres agendar?<span class="t">10:00</span></div>
@@ -873,8 +877,8 @@
                 <div style="display:inline-flex;flex-wrap:wrap;justify-content:center;gap:24px;font-size:14px;color:var(--muted)">
                     <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Una agenda por profesional</span>
                     <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Solo horas realmente libres</span>
-                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Cancela y reagenda por WhatsApp</span>
-                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Sincroniza con Google Calendar</span>
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Cancela por WhatsApp</span>
+                    <span style="display:flex;align-items:center;gap:7px"><span style="color:var(--green);font-weight:700">✓</span>Conecta Google Calendar</span>
                 </div>
             </div>
         </div>
@@ -884,28 +888,29 @@
     <section class="sec" id="setup">
         <div class="container">
             <div class="sec-head">
-                <span class="tag">Listo en una tarde</span>
+                <span class="tag">ACTIVACIÓN GUIADA</span>
                 <h2>De tu WhatsApp actual a uno que trabaja solo</h2>
             </div>
             <div class="steps">
                 <div class="step"><div class="num">01</div><div>
                     <h4>Te registras</h4>
-                    <p>Creas tu cuenta en Velionix y conectas tu número de WhatsApp Business a través de <a href="https://www.ycloud.com/console/#/entry/register?" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">YCloud</a> — partner oficial de Meta. Es gratis y no pide tarjeta. Te guiamos paso a paso, no necesitas saber nada técnico.</p>
-                    <p style="font-size:12px;color:var(--faint);margin-top:8px">⚠️ El uso de la API oficial de Meta requiere cumplir las políticas de WhatsApp Business. Velionix opera dentro de estas normas para proteger la salud de tu número.</p>
+                    <p>Conecta un número elegible mediante WhatsApp Business y <a href="https://www.ycloud.com/console/#/entry/register?" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">YCloud</a>. Te guiamos paso a paso.</p>
+                    <p style="font-size:12px;color:var(--faint);margin-top:8px">⚠️ La disponibilidad depende de las condiciones de Meta/YCloud y de la elegibilidad del número.</p>
                     <div class="ycloud-badge">
                         <div class="ycloud-text">
-                            <span class="ycloud-name">YCloud · Partner oficial de Meta</span>
-                            <span class="ycloud-desc">API oficial de Meta · Tu número protegido</span>
+                            <span class="ycloud-name">YCloud · conexión de WhatsApp Business</span>
+                            <span class="ycloud-desc">API oficial de Meta · configuración guiada</span>
                         </div>
                     </div>
                 </div></div>
                 <div class="step"><div class="num">02</div><div><h4>Configuras tu negocio</h4><p>Subes tu catálogo desde Excel, defines tus horarios y, si trabajas con citas, creas la agenda de cada profesional.</p></div></div>
-                <div class="step"><div class="num">03</div><div><h4>Tu asistente aprende tu negocio</h4><p>Respondes unas preguntas simples sobre tu negocio —qué ofreces, cómo hablas con tus clientes, qué no debe responder el bot— y Velionix genera las instrucciones de tu asistente automáticamente. Puedes revisarlas y editarlas antes de activarlas.</p></div></div>
-                <div class="step"><div class="num">04</div><div><h4>Tu WhatsApp empieza a trabajar</h4><p>Desde ese momento responde, vende y agenda solo. Tú recibes el aviso cuando hay una venta o una cita lista.</p></div></div>
+                <div class="step"><div class="num">03</div><div><h4>Configura tu negocio</h4><p>Agrega horarios, servicios, reglas, catálogo y profesionales. Velionix usa esa información para atender.</p></div></div>
+                <div class="step"><div class="num">04</div><div><h4>Activa tu asistente</h4><p>Velionix comienza a responder, orientar y agendar. Tu equipo puede intervenir cuando una conversación lo necesite.</p></div></div>
             </div>
             <div style="text-align:center;margin-top:34px">
-                <a href="https://app.velionix.cl/register" class="btn btn-primary">Crear mi cuenta gratis →</a>
+                <a href="https://app.velionix.cl/register" class="btn btn-primary">Probar 14 días gratis →</a>
             </div>
+            <p style="text-align:center;color:var(--faint);font-size:13px;margin-top:14px">En casos simples, puede quedar funcionando en una tarde, según Meta/YCloud y la elegibilidad del número.</p>
         </div>
     </section>
 
@@ -915,7 +920,7 @@
             <div class="sec-head">
                 <span class="tag">Tu inventario, conectado</span>
                 <h2>Sube tu catálogo desde Excel y listo</h2>
-                <p>No tienes que escribir productos uno por uno ni aprender un sistema nuevo. Cargas la planilla que ya usas y Velionix la convierte en el catálogo que tu WhatsApp consulta para vender.</p>
+                <p>Carga la planilla que ya usas y Velionix la convierte en un catálogo que tu WhatsApp puede consultar.</p>
             </div>
             <div class="inv">
                 <!-- Estado inicial: botón -->
@@ -981,7 +986,7 @@
                         <tbody></tbody>
                     </table>
                     <div class="inv-benefits" id="inv-benefits" style="opacity:0">
-                        <div>Importas tu planilla de productos en segundos</div>
+                        <div>Importas tu planilla de productos con pocos pasos</div>
                         <div>El bot responde con precios y stock reales, no inventados</div>
                         <div>Actualizas tu catálogo cuando quieras desde el panel</div>
                         <div>Funciona para ropa, accesorios y cualquier producto</div>
@@ -1003,8 +1008,8 @@
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><h3>Clínicas y dentales</h3><p>Cada profesional con su agenda. El bot reserva, confirma y cancela horas sin saturar tu recepción.</p></div>
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Talleres mecánicos</h3><p>Agenda revisiones y mantenciones, responde consultas sobre repuestos y servicios, y confirma horas sin llamadas.</p></div>
                 <div class="uc"><span class="badge">Agenda</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></div><h3>Consultas y profesionales</h3><p>Kinesiólogos, psicólogos, nutricionistas: cada uno con su agenda, sin coordinar por teléfono.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6a2 2 0 0 0-1.4-.6H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4Z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock al instante, y cierra la venta antes de que el cliente se enfríe.</p></div>
-                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 5-9 13L3 8Z"/><path d="M3 8h18"/><path d="m9 3 3 5 3-5"/><path d="M12 8v13"/></svg></div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, recomienda combinaciones y toma pedidos a cualquier hora.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6a2 2 0 0 0-1.4-.6H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4Z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></div><h3>Tiendas de ropa</h3><p>Responde tallas, colores y stock registrado, y orienta al cliente antes de que la oportunidad se enfríe.</p></div>
+                <div class="uc"><span class="badge">Catálogo</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 5-9 13L3 8Z"/><path d="M3 8h18"/><path d="m9 3 3 5 3-5"/><path d="M12 8v13"/></svg></div><h3>Accesorios y joyería</h3><p>Muestra tu catálogo con precios, orienta al cliente y recibe consultas a cualquier hora.</p></div>
                 <div class="uc"><span class="badge">24/7</span><div class="uc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9v11h18V9"/><path d="M3 9 5 3h14l2 6"/><path d="M3 9h18"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg></div><h3>Cualquier comercio</h3><p>Si tus clientes te escriben las mismas preguntas todos los días, Velionix se encarga de contestarlas.</p></div>
             </div>
         </div>
@@ -1044,7 +1049,7 @@
                         <span class="test-summary">"Mi experiencia con el software y con el equipo de Velionix ha sido excepcional. La plataforma permite contar con un asistente virtual con inteligencia artificial, no basada en preguntas y respuestas programadas, lo que hace que la atención sea mucho más natural, flexible y útil para los clientes."</span>
                         <span class="test-full" style="display:none">"Mi experiencia con el software y con el equipo de Velionix ha sido excepcional. Tomé el servicio principalmente para la gestión de citas y reservas a través de WhatsApp, y ha funcionado muy bien para mi emprendimiento. La plataforma permite contar con un asistente virtual con inteligencia artificial, no basada en preguntas y respuestas programadas, lo que hace que la atención sea mucho más natural, flexible y útil para los clientes. Quiero destacar especialmente el apoyo de Diego, quien siempre respondió a nuestras solicitudes con muy buena disposición. Incluso hicimos algunos requerimientos especiales para adaptar el sistema a nuestra operación, y Diego no solo los tomó sin problema, sino que también propuso mejores soluciones y las implementó de forma efectiva. Muy recomendable para quienes buscan ordenar su atención por WhatsApp, gestionar citas o mejorar la comunicación con sus clientes mediante un asistente virtual con IA."</span>
                     </p>
-                    <a href="javascript:void(0)" onclick="toggleTestimonial(this)" style="font-size:14px;color:var(--cyan);text-decoration:none;display:inline-block;margin-top:4px;margin-bottom:12px;">Leer reseña completa ↓</a>
+                    <button type="button" onclick="toggleTestimonial(this)" style="font:inherit;font-size:14px;color:var(--cyan);background:none;border:0;padding:0;cursor:pointer;text-decoration:none;display:inline-block;margin-top:4px;margin-bottom:12px;">Leer reseña completa ↓</button>
                     <br>
                     <a href="https://comerciativa.cl/" target="_blank" rel="noopener" style="font-size:12px;color:var(--cyan);text-decoration:none;display:inline-block;">comerciativa.cl ↗</a>
                 </div>
@@ -1058,20 +1063,20 @@
             <div class="sec-head">
                 <span class="tag">Precio único · sin sorpresas</span>
                 <h2>Empieza hoy por <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">menos de lo que cuesta un café al día</span></h2>
-                <p>Todo incluido. Sin costos ocultos. Cancelas cuando quieras.</p>
+                <p>Prueba el producto durante 14 días después de activar tu conexión de WhatsApp. Puedes cancelar cuando quieras.</p>
             </div>
             <div class="grid-3">
                 <!-- Plan PRUEBA -->
                 <div class="price-card">
-                    <div class="pc-badge"><span class="price-saving-chip" style="margin:0; background:rgba(0, 229, 255, 0.1); border-color:rgba(0, 229, 255, 0.3); color:var(--cyan);">RIESGO CERO</span></div>
+                    <div class="pc-badge"><span class="price-saving-chip" style="margin:0; background:rgba(0, 229, 255, 0.1); border-color:rgba(0, 229, 255, 0.3); color:var(--cyan);">PRUEBA</span></div>
                     <div class="pc-eyebrow">PRUEBA DE 14 DÍAS</div>
                     <div class="pc-strike"><span style="color:var(--faint); font-size:14px; font-weight:500;">Sin contratos, sin amarres</span></div>
                     <div class="pc-price"><div class="price-new" style="margin:0; font-size:32px;">Gratis</div></div>
-                    <div class="pc-sub">14 días · sin tarjeta de crédito</div>
+                    <div class="pc-sub">14 días después de activar WhatsApp</div>
                     <ul class="price-list">
                         <li>Todas las funciones incluidas</li>
                         <li>14 días completos</li>
-                        <li>Sin tarjeta de crédito</li>
+                        <li>Activación guiada</li>
                     </ul>
                     <a href="https://app.velionix.cl/register" class="btn btn-ghost price-cta">Comenzar gratis</a>
                 </div>
@@ -1120,8 +1125,7 @@
                 <h2>💡 Sobre el costo de WhatsApp</h2>
             </div>
             <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;font-size:16px;line-height:1.6;color:var(--ink-light);max-width:800px;margin:0 auto">
-                <p>Desde el 1 de octubre de 2026, Meta empieza a cobrar los mensajes de WhatsApp Business directamente en tu cuenta de YCloud. Ese costo es tuyo, tú lo controlas, y nosotros no le agregamos ningún margen.</p>
-                <p style="margin-top:16px">Por eso diseñamos el bot para resolver una reserva en 9 mensajes en promedio. La mayoría de los bots mal optimizados necesitan el triple. Menos mensajes significa una factura más baja — y la ves en tiempo real desde tu panel, mensaje por mensaje.</p>
+                <p>El plan Velionix no incluye los cargos de mensajería que Meta pueda aplicar a través de tu conexión con YCloud. Esos cargos dependen de Meta y de tu uso.</p>
             </div>
         </div>
     </section>
@@ -1134,11 +1138,11 @@
                 <h2>Preguntas frecuentes</h2>
             </div>
             <div class="faq">
-                <div class="faq-item"><button class="faq-q">¿Qué pasa con los datos de mis pacientes o clientes?<span class="ic">+</span></button><div class="faq-a"><div>Velionix no accede a tu ficha clínica ni a ningún sistema médico: no tenemos conexión con ellos. El bot guarda el número de teléfono y el nombre del cliente, los datos de la reserva (fecha, hora, servicio y profesional) y el historial de la conversación de WhatsApp, que es necesario para que el asistente mantenga el contexto. Toda esa información se almacena cifrada y aislada por negocio. Puedes revisar el detalle completo en nuestra <a href="https://velionix.cl/privacidad">Política de Privacidad</a>.</div></div></div>
-                <div class="faq-item"><button class="faq-q">¿Necesito saber de tecnología para usarlo?<span class="ic">+</span></button><div class="faq-a"><div>No. Tú creas tu cuenta y nosotros te ayudamos a activar tu número de WhatsApp Business. El panel está pensado para que cualquier persona lo use sin conocimientos técnicos.</div></div></div>
-<div class="faq-item"><button class="faq-q">¿Qué pasa si cancelo el plan mensual?<span class="ic">+</span></button><div class="faq-a"><div>Puedes cancelar cuando quieras, sin trámites. Como ya pagaste el mes completo, mantienes acceso a todas las funciones hasta el último día de ese período. No te cobramos el mes siguiente. El corte del servicio se procesa dentro de los 5 días siguientes al vencimiento del período pagado. No hay devolución de dinero por el mes en curso.</div></div></div>
-<div class="faq-item"><button class="faq-q">¿Puedo cancelar el plan anual?<span class="ic">+</span></button><div class="faq-a"><div>Sí, siempre puedes cancelar.<br><br>• Primeros 30 días: te devolvemos el 100%, sin preguntas.<br>• Después del día 30: te devolvemos la parte no utilizada, calculada al precio mensual de lista ($29.990/mes) — no al precio anual con descuento.<br><br>Ejemplo: si pagaste $299.990 y cancelas terminando el mes 6, ya 'usaste' 6 × $29.990 = $179.940, así que te devolvemos $120.050.<br><br>El reembolso se procesa a través de nuestra pasarela de pago (Flow) y no tiene costo adicional para ti — Velionix cubre los costos de procesamiento.</div></div></div>
-                <div class="faq-item"><button class="faq-q">¿Corro riesgo de que bloqueen mi WhatsApp?<span class="ic">+</span></button><div class="faq-a"><div>No. Usamos la API oficial de Meta (WhatsApp Business Platform), no un bot no oficial. Tu número está protegido y cumple con las políticas de WhatsApp.</div></div></div>
+                <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-data">¿Qué pasa con los datos de mis pacientes o clientes?<span class="ic">+</span></button><div class="faq-a" id="faq-data"><div>Velionix no accede a tu ficha clínica ni a ningún sistema médico: no tenemos conexión con ellos. El bot guarda el número de teléfono y el nombre del cliente, los datos de la reserva y el historial necesario para mantener el contexto. Puedes revisar el detalle completo en nuestra <a href="https://velionix.cl/privacidad">Política de Privacidad</a>.</div></div></div>
+                <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-tech">¿Necesito saber de tecnología para usarlo?<span class="ic">+</span></button><div class="faq-a" id="faq-tech"><div>La activación es guiada, pero requiere completar la conexión de WhatsApp Business/YCloud y configurar la información de tu negocio.</div></div></div>
+<div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-monthly">¿Qué pasa si cancelo el plan mensual?<span class="ic">+</span></button><div class="faq-a" id="faq-monthly"><div>Puedes cancelar cuando quieras, sin trámites. Como ya pagaste el mes completo, mantienes acceso a todas las funciones hasta el último día de ese período. No te cobramos el mes siguiente. El corte del servicio se procesa dentro de los 5 días siguientes al vencimiento del período pagado. No hay devolución de dinero por el mes en curso.</div></div></div>
+<div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-annual">¿Puedo cancelar el plan anual?<span class="ic">+</span></button><div class="faq-a" id="faq-annual"><div>Sí, siempre puedes cancelar.<br><br>• Primeros 30 días: te devolvemos el 100%, sin preguntas.<br>• Después del día 30: te devolvemos la parte no utilizada, calculada al precio mensual de lista ($29.990/mes) — no al precio anual con descuento.<br><br>Ejemplo: si pagaste $299.990 y cancelas terminando el mes 6, ya 'usaste' 6 × $29.990 = $179.940, así que te devolvemos $120.050.<br><br>El reembolso se procesa a través de nuestra pasarela de pago (Flow) y no tiene costo adicional para ti — Velionix cubre los costos de procesamiento.</div></div></div>
+                <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq-meta">¿Cómo se conecta WhatsApp?<span class="ic">+</span></button><div class="faq-a" id="faq-meta"><div>La conexión se realiza mediante WhatsApp Business, YCloud y la API oficial de Meta. La elegibilidad y disponibilidad dependen de las condiciones de Meta/YCloud.</div></div></div>
             </div>
         </div>
     </section>
@@ -1149,18 +1153,19 @@
             <div class="cta-final">
                 <span class="tag" style="color:var(--cyan);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:500;display:block;margin-bottom:12px">Empieza hoy</span>
                 <h2>Deja de perder clientes por no alcanzar a responder</h2>
-                <p>Conecta tu WhatsApp y deja que Velionix atienda, venda y agende mientras tú te dedicas al resto.</p>
+                <p>Conecta tu WhatsApp y deja que Velionix responda, oriente y agende mientras tú te dedicas al resto.</p>
                 <div class="hero-cta">
                     <a href="https://app.velionix.cl/register" class="btn btn-primary">Probar 14 días gratis →</a>
                     <a href="https://app.velionix.cl/panel" class="btn btn-ghost">Ya tengo cuenta</a>
                 </div>
                 <div class="hero-trust">
-                    <span>Sin tarjeta</span><span>Listo en minutos</span><span>Cancelas cuando quieras</span>
+                    <span>Activación guiada</span><span>14 días de prueba</span><span>Cancelas cuando quieras</span>
                 </div>
             </div>
         </div>
     </section>
 
+    </main>
     <footer>
         <div class="container">
             <div class="f-left">© 2026 Velionix · Automatización de WhatsApp para tu negocio<br><a href="mailto:contacto@velionix.cl">contacto@velionix.cl</a></div>
@@ -1181,7 +1186,7 @@
         <div class="chat-box" id="chatBox" role="dialog" aria-label="Chat de Velionix">
             <div class="chat-box-head">
                 <div class="chat-avatar" style="width:36px;height:36px;font-size:15px">V</div>
-                <div style="flex:1"><div class="chat-name">Velionix</div><div class="chat-status">Respondemos al instante</div></div>
+                <div style="flex:1"><div class="chat-name">Velionix</div><div class="chat-status">Asistente de atención</div></div>
                 <button id="chatClose" aria-label="Cerrar chat" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.7">✕</button>
             </div>
             <div class="chat-body" id="chatBody">
@@ -1205,7 +1210,7 @@
     (function(){
         // ===== Menú móvil =====
         var mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
-        mt.addEventListener('click',function(){nl.classList.toggle('open')});
+        mt.addEventListener('click',function(){var open=nl.classList.toggle('open');mt.setAttribute('aria-expanded',String(open));mt.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});
         nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
         
 
@@ -1279,10 +1284,12 @@
                 var item=btn.parentElement,open=item.classList.contains('open');
                 document.querySelectorAll('.faq-item').forEach(function(i){
                     i.classList.remove('open');
+                    var q=i.querySelector('.faq-q'); if(q) q.setAttribute('aria-expanded','false');
                     i.querySelector('.faq-a').style.removeProperty('--faq-h');
                 });
                 if(!open){
                     item.classList.add('open');
+                    btn.setAttribute('aria-expanded','true');
                     var answer = item.querySelector('.faq-a');
                     answer.style.setProperty('--faq-h', answer.scrollHeight + 'px');
                 }
@@ -1371,7 +1378,7 @@
                     } else if(demoState === 1) {
                         addDMsg('Por favor selecciona una hora haciendo clic en uno de los botones de arriba.', 'i');
                     } else if(demoState === 2) {
-                        addDMsg('Tu cita ya fue agendada. ¡Te esperamos! Si necesitas cancelar o reagendar escríbenos aquí.', 'i');
+                        addDMsg('Tu cita ya fue agendada. ¡Te esperamos! Si necesitas cancelar escríbenos aquí.', 'i');
                     }
                 }, 600);
             }
@@ -1426,10 +1433,10 @@
         cc.addEventListener('click',function(){bx.classList.remove('open');cb.style.display='block'});
 
         var ans = {
-            'precio': 'El primer mes cuesta $14.990 (puesta en marcha), luego $29.990/mes. ¡Incluye todo! Puedes probar 14 días gratis sin tarjeta.',
-            'funciona': 'Velionix conecta tu WhatsApp a una IA que responde dudas, vende y agenda citas 24/7. Tú solo atiendes a los que ya compraron o están listos.',
-            'seguro': 'Sí. Usamos la API Oficial de Meta (WhatsApp Cloud). Tu número está protegido porque es la conexión oficial y permitida.',
-            'prueba': 'Puedes crear tu cuenta y usar la plataforma completa por 14 días gratis. No pedimos tarjeta para iniciar.'
+            'precio': 'El primer mes cuesta $14.990 (puesta en marcha), luego $29.990/mes. Puedes probar durante 14 días después de activar WhatsApp.',
+            'funciona': 'Velionix conecta tu WhatsApp a un asistente que responde dudas, orienta y agenda citas, incluso fuera de horario.',
+            'seguro': 'Usamos la API oficial de Meta mediante YCloud. La disponibilidad depende de las condiciones de Meta/YCloud.',
+            'prueba': 'Puedes crear tu cuenta y usar la plataforma durante 14 días después de activar WhatsApp.'
         };
 
         function addMsg(txt, sender) {
