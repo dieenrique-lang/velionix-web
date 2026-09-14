@@ -190,6 +190,7 @@
 
         /* ===== HERO ===== */
         .hero{padding:140px 0 60px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:48px;align-items:start}
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100vw; height: 100%; z-index: -1; background-image: linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px); background-size: 80px 80px; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse at top, black 50%, transparent 100%); mask-image: radial-gradient(ellipse at top, black 50%, transparent 100%); }
         .eyebrow{
             display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
             color:var(--cyan);background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);
