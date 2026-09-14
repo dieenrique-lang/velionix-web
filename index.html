@@ -1734,5 +1734,128 @@
         }
     }
     </script>
+<style>
+/* Nav links underline */
+.nav-links a:not(.btn) {
+    position: relative;
+}
+.nav-links a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--cyan);
+}
+.nav-links a:not(.btn):hover::after {
+    width: 100%;
+}
+
+/* Star Trail */
+#star-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+}
+@media (max-width: 920px) {
+    #star-trail { display: none; }
+}
+</style>
+<canvas id="star-trail"></canvas>
+<script>
+(function(){
+    const canvas = document.getElementById('star-trail');
+    const ctx = canvas.getContext('2d');
+    let trail = [];
+    let pointer = {x: 0, y: 0, isMoving: false};
+    let hoverState = false;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let timeout;
+    document.addEventListener('mousemove', e => {
+        // If distance from last point is too big, clear trail to prevent jumping lines
+        if (trail.length > 0) {
+            let last = trail[trail.length - 1];
+            let dist = Math.hypot(last.x - e.clientX, last.y - e.clientY);
+            if (dist > 100) trail = [];
+        }
+
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+        pointer.isMoving = true;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => { pointer.isMoving = false; }, 100);
+    });
+
+    const hoverables = document.querySelectorAll('a, button');
+    hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => hoverState = true);
+        el.addEventListener('mouseleave', () => hoverState = false);
+    });
+
+    function animateTrail() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        if (pointer.isMoving) {
+            trail.push({x: pointer.x, y: pointer.y, life: 1});
+        }
+
+        for(let i=0; i<trail.length; i++) {
+            trail[i].life -= 0.05;
+            if(trail[i].life <= 0) {
+                trail.splice(i, 1);
+                i--;
+            }
+        }
+
+        if (trail.length > 1) {
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            for(let i=1; i<trail.length; i++) {
+                const p1 = trail[i-1];
+                const p2 = trail[i];
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.lineWidth = (hoverState ? 10 : 5) * p2.life;
+                ctx.strokeStyle = hoverState ? 'rgba(168, 85, 247, ' + p2.life + ')' : 'rgba(0, 229, 255, ' + p2.life + ')';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = hoverState ? '#a855f7' : '#00e5ff';
+                ctx.stroke();
+            }
+        }
+        
+        if (trail.length > 0 && pointer.isMoving) {
+            let head = trail[trail.length - 1];
+            ctx.beginPath();
+            ctx.arc(head.x, head.y, hoverState ? 3.5 : 2, 0, Math.PI*2);
+            ctx.fillStyle = '#fff';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = hoverState ? '#a855f7' : '#00e5ff';
+            ctx.fill();
+        }
+
+        requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+})();
+</script>
 </body>
 </html>
+
