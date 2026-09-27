@@ -1,4 +1,4 @@
-import * as React from 'react';
+import MagicBento from './components/MagicBento.jsx';import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import LightRays from './components/LightRays.jsx';
 import SpecularButton from './components/SpecularButton.jsx';
@@ -44,3 +44,29 @@ if (contactBtnRoot) {
     )
   );
 }
+
+const renderBentoGrid = (selector, cardSelector, glowColor) => {
+  const grid = document.querySelector(selector);
+  if (!grid) return;
+  const cardsData = [];
+  grid.querySelectorAll(cardSelector).forEach(card => {
+    cardsData.push({ content: card.innerHTML, color: 'var(--card)', className: Array.from(card.classList).join(' ') });
+  });
+  grid.innerHTML = '';
+  const root = createRoot(grid);
+  root.render(React.createElement(MagicBento, {
+    cards: cardsData,
+    glowColor: glowColor,
+    enableStars: true,
+    enableSpotlight: true,
+    enableBorderGlow: true,
+    enableTilt: true,
+    enableMagnetism: true,
+    clickEffect: true,
+    textAutoHide: false
+  }));
+};
+
+renderBentoGrid('.features-grid', '.feature', '0, 229, 255');
+renderBentoGrid('.grid-3-uc', '.uc', '168, 85, 247');
+
