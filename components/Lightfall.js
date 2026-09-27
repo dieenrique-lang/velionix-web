@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './Lightfall.css';
+import * as React from 'https://esm.sh/react@18.2.0';
+const { useEffect, useRef } = React;
+import { Renderer, Program, Mesh, Triangle } from 'https://esm.sh/ogl@1.0.11';
 
 const MAX_COLORS = 8;
 
@@ -364,15 +364,11 @@ const Lightfall = ({
     lightMode
   ]);
 
-  return (
-    <div
-      ref={containerRef}
-      className={`lightfall-container ${className ?? ''}`}
-      style={{
-        ...(mixBlendMode && { mixBlendMode })
-      }}
-    />
-  );
+  return React.createElement('div', {
+    ref: containerRef,
+    className: `lightfall-container ${className ?? ''}`,
+    style: mixBlendMode ? { mixBlendMode } : undefined
+  });
 };
 
 export default Lightfall;
