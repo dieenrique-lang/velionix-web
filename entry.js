@@ -1,3 +1,4 @@
+import LogoLoop from './components/LogoLoop.jsx';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import LightRays from './components/LightRays.jsx';
@@ -156,3 +157,29 @@ const attachBentoAnimations = (gridSelector, cardSelector, glowColor) => {
 
 attachBentoAnimations('.features-grid', '.feature', '0, 229, 255');
 attachBentoAnimations('.grid-3-uc', '.uc', '168, 85, 247');
+
+const logoLoopRoot = document.getElementById('logo-loop-root');
+if (logoLoopRoot) {
+  const imageLogos = [
+    { src: './static/meta-business-partner.png', alt: 'Meta Business Partner' },
+    { src: './static/logo%20whatsapp.jpg', alt: 'WhatsApp' },
+    { src: './static/ycloud2.png', alt: 'YCloud' },
+    { src: './static/velionixlogo.png', alt: 'Velionix' }
+  ];
+  const root = createRoot(logoLoopRoot);
+  root.render(
+    React.createElement('div', { style: { height: '100px', position: 'relative', overflow: 'hidden'} },
+      React.createElement(LogoLoop, {
+        logos: imageLogos,
+        speed: 60,
+        direction: 'left',
+        logoHeight: 60,
+        gap: 60,
+        hoverSpeed: 0,
+        scaleOnHover: true,
+        fadeOut: true,
+        fadeOutColor: '#0b0b0b'
+      })
+    )
+  );
+}
