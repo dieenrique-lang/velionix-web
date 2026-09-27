@@ -161,10 +161,10 @@ attachBentoAnimations('.grid-3-uc', '.uc', '168, 85, 247');
 const logoLoopRoot = document.getElementById('logo-loop-root');
 if (logoLoopRoot) {
   const imageLogos = [
-    { src: './static/meta-business-partner.png', alt: 'Meta Business Partner' },
-    { src: './static/logo%20whatsapp.jpg', alt: 'WhatsApp' },
-    { src: './static/ycloud2.png', alt: 'YCloud' },
-    { src: './static/velionixlogo.png', alt: 'Velionix' }
+    { src: './static/chatgpt_1.png', alt: 'ChatGPT 1' },
+    { src: './static/chatgpt_2.png', alt: 'ChatGPT 2' },
+    { src: './static/chatgpt_3.png', alt: 'ChatGPT 3' },
+    { src: './static/ycloud2.png', alt: 'YCloud' }
   ];
   const root = createRoot(logoLoopRoot);
   root.render(
@@ -183,3 +183,4 @@ if (logoLoopRoot) {
     )
   );
 }
+
