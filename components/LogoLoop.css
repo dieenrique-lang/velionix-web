@@ -8,7 +8,7 @@
 .logoloop-css-track {
   display: flex;
   width: max-content;
-  animation: slideLeft 20s linear infinite;
+  animation: slideLeft 80s linear infinite;
 }
 
 .logoloop-css-track:hover {
