@@ -1,6 +1,6 @@
-import * as React from 'https://esm.sh/react@18.2.0';
+import * as React from 'react';
 const { useEffect, useRef } = React;
-import { Renderer, Program, Mesh, Triangle } from 'https://esm.sh/ogl@1.0.11';
+import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
 const MAX_COLORS = 8;
 
