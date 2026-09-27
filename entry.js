@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import GhostFibers from './components/GhostFibers.js';
+import LightRays from './components/LightRays.jsx';
+import SpecularButton from './components/SpecularButton.jsx';
 
-const ResponsiveGhostFibers = () => {
+const ResponsiveLightRays = () => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
 
   React.useEffect(() => {
@@ -11,41 +12,29 @@ const ResponsiveGhostFibers = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return React.createElement(GhostFibers, {
-    lineColor: "#140E35",
-    glowColor: isMobile ? "#181a50" : "#3437A0", // Darker glow on mobile
-    speed: 0.2,
-    scale: 2,
-    rotation: 0,
-    rotationSpeed: 0.25,
-    layers: 4,
-    waveAmplitude: 0.015,
-    waveFrequency: 3,
-    waveSpeed: 0.15,
-    layerSpeed: 0.08,
-    twist: 0.1,
-    twistFrequency: 5,
-    twistSpeed: 1.2,
-    lineFrequency: 5,
-    lineSpacing: 2,
-    lineSharpness: 16,
-    glowFalloff: 10,
-    glowIntensity: isMobile ? 0.7 : 1.6, // Less intense on mobile
-    brightness: isMobile ? 1.0 : 2.0, // Lower brightness on mobile
-    blueBoost: 1.25,
-    vignette: 0.8,
-    grain: 0.05,
-    dpr: 1
+  return React.createElement(LightRays, {
+    raysOrigin: 'top',
+    raysColor: '#3437A0', 
+    raysSpeed: 0.8,
+    lightSpread: isMobile ? 1.0 : 1.5,
+    rayLength: 1.5,
+    pulsating: true,
+    fadeDistance: 0.8,
+    saturation: isMobile ? 0.6 : 1,
+    followMouse: !isMobile,
+    mouseInfluence: isMobile ? 0.0 : 0.5,
+    noiseAmount: 0.05,
+    distortion: 0.1,
+    lightMode: false
   });
 };
 
 const rootEl = document.getElementById('lightfall-root');
 if (rootEl) {
   const root = createRoot(rootEl);
-  root.render(React.createElement(ResponsiveGhostFibers));
+  root.render(React.createElement(ResponsiveLightRays));
 }
 
-import SpecularButton from './components/SpecularButton.jsx';
 const contactBtnRoot = document.getElementById('contact-btn-root');
 if (contactBtnRoot) {
   const root = createRoot(contactBtnRoot);
