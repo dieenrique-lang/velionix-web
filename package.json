@@ -1,5 +1,5 @@
 {
-  "dependencies": {
+  "scripts": { "build": "esbuild entry.js --bundle --outfile=lightfall-bundle.js --minify --loader:.js=jsx --jsx=automatic" }, "dependencies": {
     "esbuild": "^0.28.2",
     "ogl": "^1.0.11",
     "react": "^19.3.0",
