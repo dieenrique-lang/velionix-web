@@ -44,3 +44,14 @@ if (rootEl) {
   const root = createRoot(rootEl);
   root.render(React.createElement(ResponsiveGhostFibers));
 }
+
+import SpecularButton from './components/SpecularButton.jsx';
+const contactBtnRoot = document.getElementById('contact-btn-root');
+if (contactBtnRoot) {
+  const root = createRoot(contactBtnRoot);
+  root.render(
+    React.createElement('a', { href: 'https://wa.me/56920584589?text=Hola%20Velionix!%20Necesito%20mas%20informaci%C3%B3n%20para%20automatizar%20el%20Whatsapp%20de%20mi%20negocio.', target: '_blank', rel: 'noopener', style: {textDecoration: 'none'} }, 
+      React.createElement(SpecularButton, null, 'Contáctanos')
+    )
+  );
+}
