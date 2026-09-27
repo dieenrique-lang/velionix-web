@@ -15,7 +15,7 @@ const ResponsiveLightRays = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return React.createElement(LightRays, {
+  if (isMobile) return null; return React.createElement(LightRays, {
     raysOrigin: 'top',
     raysColor: isMobile ? '#5227FF' : '#00e5ff', 
     raysSpeed: 0.8,
@@ -142,17 +142,19 @@ const attachBentoAnimations = (gridSelector, cardSelector, glowColor) => {
     }
   });
 
-  const spotlightRoot = document.createElement('div');
-  document.body.appendChild(spotlightRoot);
-  createRoot(spotlightRoot).render(
-    React.createElement(GlobalSpotlight, { 
-      gridRef: { current: grid }, 
-      glowColor: glowColor, 
-      disableAnimations: window.innerWidth < 768, 
-      enabled: true, 
-      spotlightRadius: 300 
-    })
-  );
+  if (window.innerWidth >= 768) {
+    const spotlightRoot = document.createElement('div');
+    document.body.appendChild(spotlightRoot);
+    createRoot(spotlightRoot).render(
+      React.createElement(GlobalSpotlight, { 
+        gridRef: { current: grid }, 
+        glowColor: glowColor, 
+        disableAnimations: false, 
+        enabled: true, 
+        spotlightRadius: 300 
+      })
+    );
+  }
 };
 
 attachBentoAnimations('.features-grid', '.feature', '0, 229, 255');
@@ -183,4 +185,8 @@ if (logoLoopRoot) {
     )
   );
 }
+
+
+
+
 
