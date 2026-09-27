@@ -14,7 +14,7 @@ const ResponsiveLightRays = () => {
 
   return React.createElement(LightRays, {
     raysOrigin: 'top',
-    raysColor: '#3437A0', 
+    raysColor: '#00e5ff', 
     raysSpeed: 0.8,
     lightSpread: isMobile ? 1.0 : 1.5,
     rayLength: 1.5,
