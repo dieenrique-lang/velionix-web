@@ -9,10 +9,13 @@
   display: flex;
   width: max-content;
   animation: slideLeft 80s linear infinite;
+  will-change: transform;
 }
 
-.logoloop-css-track:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .logoloop-css-track:hover {
+    animation-play-state: paused;
+  }
 }
 
 .logoloop-css-list {
@@ -21,6 +24,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .logoloop-css-item {
@@ -29,6 +33,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logoloop-css-item:hover {

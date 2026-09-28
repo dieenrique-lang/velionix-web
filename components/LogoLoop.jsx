@@ -13,7 +13,7 @@ export const LogoLoop = ({ logos, logoHeight = 40, gap = 40, fadeOut = true }) =
           <ul key={listIndex} className="logoloop-css-list" aria-hidden={listIndex > 0 ? "true" : undefined}>
             {logos.map((logo, i) => (
               <li key={`${listIndex}-${i}`} className="logoloop-css-item">
-                <img src={logo.src} alt={logo.alt || ''} loading="lazy" width="200" height="60" style={{ height: 'var(--height)', width: 'auto', objectFit: 'contain' }} />
+                <img src={logo.src} alt={logo.alt || ''} loading="eager" width="200" height="60" style={{ height: 'var(--height)', width: 'auto', objectFit: 'contain' }} />
               </li>
             ))}
           </ul>
