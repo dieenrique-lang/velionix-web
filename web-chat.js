@@ -44,7 +44,7 @@
     else unavailableContact.querySelector('a').focus();
   }
   function close() {
-    box.classList.remove('open'); box.hidden = true; bubble.style.display = 'block';
+    box.classList.remove('open'); box.hidden = true; bubble.style.display = 'flex';
     bubble.setAttribute('aria-expanded', 'false'); bubble.focus();
   }
   function greeting() {
