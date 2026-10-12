@@ -71,7 +71,7 @@
     bubble.setAttribute('aria-expanded', 'false'); bubble.focus();
   }
   function greeting() {
-    message('¡Hola! Soy el asistente comercial de Velionix. ¿Qué te gustaría conocer?', 'bot');
+    message('¡Hola! 👋 Soy Veli, la asistente de IA de Velionix. ¿En qué te puedo ayudar hoy 😊?', 'bot');
   }
   function reset() {
     generation++; if (controller) controller.abort(); controller = null;
