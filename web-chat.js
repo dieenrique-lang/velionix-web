@@ -1,9 +1,10 @@
 /* Commercial widget only. No provider key, storage, HTML execution or model URLs. */
 (function () {
   'use strict';
-  // Public access is deliberately disabled until separately authorized.
-  var PUBLIC_CHAT_ENABLED = false;
+  // Public UI is enabled only after the Worker pilot admission is live.
+  var PUBLIC_CHAT_ENABLED = true;
   var endpoint = 'https://chat.velionix.cl/v1/chat';
+  var sessionEndpoint = 'https://chat.velionix.cl/v1/session/start';
   var bubble = document.getElementById('chatBubble'), box = document.getElementById('chatBox');
   var body = document.getElementById('chatBody'), input = document.getElementById('chatInput');
   var send = document.getElementById('chatSend'), quick = document.getElementById('chatQuick');
@@ -82,12 +83,23 @@
   }
   async function request(payload, display) {
     if (!PUBLIC_CHAT_ENABLED || busy) return;
-    var current = generation; setBusy(true); retry.hidden = true; lastRequest = payload;
+    var current = generation, sessionReady = false; setBusy(true); retry.hidden = true; lastRequest = payload;
     if (display) message(payload.message, 'user');
     var active = new AbortController(); controller = active;
     var timer = setTimeout(function () { active.abort(); }, 45000);
     try {
       var headers = { 'Content-Type': 'application/json' };
+      var sessionResponse = await fetch(sessionEndpoint, { method: 'POST', mode: 'cors', credentials: 'omit',
+        cache: 'no-store', headers: headers, body: '{}', signal: active.signal });
+      var sessionData = await sessionResponse.json();
+      if (!sessionResponse.ok || typeof sessionData.sessionToken !== 'string' || sessionData.error) {
+        if (generation === current) {
+          message('El asistente no está disponible ahora. Escríbenos por WhatsApp.', 'bot');
+          retry.hidden = true; lastRequest = null;
+        }
+        return;
+      }
+      sessionToken = sessionData.sessionToken; payload.sessionToken = sessionToken; sessionReady = true;
       var response = await fetch(endpoint, { method: 'POST', mode: 'cors', credentials: 'omit',
         cache: 'no-store', headers: headers, body: JSON.stringify(payload), signal: active.signal });
       var data = await response.json();
@@ -119,8 +131,13 @@
       lastRequest = null;
     } catch (_) {
       if (generation !== current) return;
-      message('No pude confirmar el resultado. El reintento conserva el mismo identificador para evitar una segunda llamada de IA.', 'bot');
-      retry.hidden = false;
+      if (!sessionReady) {
+        message('El asistente no está disponible ahora. Escríbenos por WhatsApp.', 'bot');
+        retry.hidden = true; lastRequest = null;
+      } else {
+        message('No pude confirmar el resultado. El reintento conserva el mismo identificador para evitar una segunda llamada de IA.', 'bot');
+        retry.hidden = false;
+      }
     } finally {
       clearTimeout(timer);
       if (generation === current) { controller = null; setBusy(false); }
