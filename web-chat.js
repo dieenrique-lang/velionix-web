@@ -37,18 +37,41 @@
     status.textContent = value ? 'Velionix está escribiendo…' :
       (PUBLIC_CHAT_ENABLED ? '' : 'El asistente estará disponible próximamente.');
   }
+  // En iOS el teclado reduce visualViewport, pero un fixed con dvh puede quedar detrás.
+  // Recalcular el alto y la posición del panel según el área realmente visible.
+  function fitMobileViewport() {
+    if (box.hidden || window.innerWidth > 480) {
+      box.classList.remove('mobile-viewport');
+      box.style.removeProperty('--chat-vv-top');
+      box.style.removeProperty('--chat-vv-height');
+      return;
+    }
+    var viewport = window.visualViewport;
+    var visibleHeight = viewport ? viewport.height : window.innerHeight;
+    var visibleTop = viewport ? viewport.offsetTop : 0;
+    var keyboardOpen = document.activeElement === input && viewport && viewport.height < window.innerHeight - 100;
+    var height = Math.max(160, Math.min(680, visibleHeight - 12, keyboardOpen ? visibleHeight - 12 : visibleHeight * 0.82));
+    var top = visibleTop + Math.max(0, visibleHeight - height);
+    box.style.setProperty('--chat-vv-top', Math.round(top) + 'px');
+    box.style.setProperty('--chat-vv-height', Math.round(height) + 'px');
+    box.classList.add('mobile-viewport');
+  }
   function open() {
     box.hidden = false; box.classList.add('open'); bubble.style.display = 'none';
     bubble.setAttribute('aria-expanded', 'true');
-    if (PUBLIC_CHAT_ENABLED) input.focus();
-    else unavailableContact.querySelector('a').focus();
+    fitMobileViewport();
+    // No abrir el teclado automáticamente al mostrar el chat en móvil.
+    if (PUBLIC_CHAT_ENABLED && window.innerWidth > 480) input.focus();
+    else if (!PUBLIC_CHAT_ENABLED) unavailableContact.querySelector('a').focus();
   }
   function close() {
+    if (document.activeElement === input) input.blur();
     box.classList.remove('open'); box.hidden = true; bubble.style.display = 'flex';
+    fitMobileViewport();
     bubble.setAttribute('aria-expanded', 'false'); bubble.focus();
   }
   function greeting() {
-    message('¡Hola! Soy el asistente comercial de Velionix. ¿Qué te gustaría conocer? Evita compartir datos sensibles.', 'bot');
+    message('¡Hola! Soy el asistente comercial de Velionix. ¿Qué te gustaría conocer?', 'bot');
   }
   function reset() {
     generation++; if (controller) controller.abort(); controller = null;
@@ -147,6 +170,13 @@
     input.value = '';
     request({ requestId: crypto.randomUUID(), sessionToken: sessionToken, message: text, history: boundedHistory(text) }, true);
   }
+  // Escuchar cambios de teclado y orientación sin modificar el backend ni las solicitudes.
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitMobileViewport);
+    window.visualViewport.addEventListener('scroll', fitMobileViewport);
+  }
+  window.addEventListener('resize', fitMobileViewport);
+  input.addEventListener('focus', fitMobileViewport);
   bubble.addEventListener('click', open);
   document.getElementById('chatClose').addEventListener('click', close);
   send.addEventListener('click', function () { submit(input.value); });
