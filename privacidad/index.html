@@ -194,7 +194,7 @@
     <h1>Política de Privacidad</h1>
     <div class="hero-meta">
       <span><strong>Empresa:</strong> Velionix</span>
-      <span><strong>Última actualización:</strong> 13 de julio de 2026</span>
+      <span><strong>Última actualización:</strong> 12 de octubre de 2026</span>
       <span><strong>Jurisdicción:</strong> Chile</span>
     </div>
   </div>
@@ -290,6 +290,14 @@
     <h2><span class="num">07</span> Retención de datos</h2>
     <p>Conservamos tu información mientras tu cuenta esté activa. Si decides cancelar tu cuenta, eliminaremos tus datos personales dentro de los 30 días siguientes a la solicitud, excepto aquellos que debamos conservar por obligación legal.</p>
     <p>El historial de conversaciones de WhatsApp puede ser eliminado por el negocio cliente desde el panel de control en cualquier momento.</p>
+  </section>
+
+  <section>
+    <h2>Asistente comercial del sitio web (cuando esté habilitado)</h2>
+    <p>Cuando el asistente esté habilitado, el envío de un mensaje utilizará inteligencia artificial: el texto y el historial temporal necesario se procesarán en el Worker de Velionix alojado en Cloudflare. La solicitud se enruta mediante OpenRouter al modelo Mistral Small, con DeepInfra como proveedor de inferencia configurado. No introduzcas datos sensibles, contraseñas ni información privada de terceros.</p>
+    <p>El widget mantiene el historial en la memoria de la página abierta y lo envía para dar continuidad a la conversación. El Worker conserva recibos e identificadores técnicos para admisión, contabilidad y diagnóstico; estos recibos no incluyen el texto del mensaje ni la respuesta. «Nueva conversación» limpia el historial del widget; al abandonar o recargar la página, el código descarta la continuidad de la sesión. La configuración consultada no demuestra que todos los servicios de la cadena eliminen inmediatamente el contenido recibido.</p>
+    <p>El código del Worker establece una retención de hasta 24 horas para recibos técnicos individuales y ventanas de presupuesto diario y mensual con limpieza de registros antiguos; los agregados de consumo pueden mantenerse hasta 90 días. La limpieza depende de la ejecución de tareas de mantenimiento. La dirección de tráfico no se guarda en texto claro: se transforma en un hash utilizado para control de límites.</p>
+    <p>El Worker está configurado para enrutar la inferencia únicamente a DeepInfra y solicitar los controles ZDR y de rechazo de recopilación de datos en OpenRouter. Estos controles dependen de la configuración y elegibilidad informada por los proveedores; no demuestran que todos los servicios de la cadena eliminen inmediatamente el contenido ni constituyen una garantía absoluta de retención cero. Consulta las políticas de <a href="https://openrouter.ai/privacy" target="_blank" rel="noopener noreferrer">OpenRouter</a>, <a href="https://deepinfra.com/privacy" target="_blank" rel="noopener noreferrer">DeepInfra</a>, <a href="https://mistral.ai/terms/#privacy-policy" target="_blank" rel="noopener noreferrer">Mistral</a> y <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a>. El widget no solicita credenciales de operador. Mientras la página permanece abierta, conserva en memoria el token de sesión emitido por el Worker y lo envía en las solicitudes siguientes para mantener la continuidad; el código no lo guarda en almacenamiento persistente del navegador. Para consultas o solicitudes de privacidad, escribe a contacto@velionix.cl.</p>
   </section>
 
   <section>

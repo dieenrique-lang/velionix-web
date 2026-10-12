@@ -557,6 +557,13 @@
         .msg.bot{background:rgba(255,255,255,0.06);border-bottom-left-radius:4px;align-self:flex-start}
         .msg.user{background:rgba(0,229,255,0.14);border:1px solid rgba(0,229,255,0.25);border-bottom-right-radius:4px;align-self:flex-end}
         .msg a{color:var(--cyan);font-weight:600}
+        .chat-box[hidden],.chat-box [hidden]{display:none!important}
+        .chat-box .msg{white-space:pre-wrap;overflow-wrap:anywhere}
+        .web-chat-actions{display:flex;flex-wrap:wrap;gap:8px;padding:8px 16px;font-size:12px}
+        .web-chat-actions a{color:var(--cyan);text-decoration:none}
+        .web-chat-notice{padding:0 16px 8px;font-size:11px;color:var(--faint)}
+        #webChatStatus{padding:0 16px;font-size:12px;min-height:18px;color:var(--cyan)}
+        .chat-box .chat-status.is-unavailable::before{background:#9a98ab}
         .chat-quick{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px}
         .chat-quick button{background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.22);color:var(--ink);font-family:inherit;font-size:12px;padding:7px 12px;border-radius:20px;cursor:pointer;transition:.2s}
         .chat-quick button:hover{background:rgba(0,229,255,0.18);border-color:var(--cyan)}
@@ -1177,28 +1184,34 @@
         </div>
     </footer>
 
-    <!-- CHAT INTERACTIVO (respuestas establecidas) -->
+    <!-- Asistente comercial: backend independiente, sin credenciales del proveedor -->
     <div class="chat-widget">
         <span class="chat-ring"></span>
         <span class="chat-ring chat-ring-delay"></span>
-        <button class="chat-bubble" id="chatBubble" aria-label="Abrir chat">💬<span class="chat-dot"></span></button>
-        <div class="chat-box" id="chatBox" role="dialog" aria-label="Chat de Velionix">
+        <button class="chat-bubble" id="chatBubble" aria-label="Ver disponibilidad del asistente" aria-controls="chatBox" aria-expanded="false">💬<span class="chat-dot"></span></button>
+        <div class="chat-box" id="chatBox" role="dialog" aria-label="Chat de Velionix" hidden>
             <div class="chat-box-head">
                 <div class="chat-avatar" style="width:36px;height:36px;font-size:15px">V</div>
-                <div style="flex:1"><div class="chat-name">Velionix</div><div class="chat-status">Asistente de atención</div></div>
+                <div style="flex:1"><div class="chat-name">Velionix</div><div class="chat-status is-unavailable" id="chatAvailability">Disponible próximamente</div></div>
                 <button id="chatClose" aria-label="Cerrar chat" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.7">✕</button>
             </div>
-            <div class="chat-body" id="chatBody">
-                <div class="msg bot">¡Hola! 👋 Soy el asistente de Velionix. Elige una opción o escríbeme tu pregunta.</div>
+            <div class="chat-body" id="chatBody" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <div class="chat-quick" id="chatQuick" hidden>
+                <button data-question="¿Cuánto cuesta Velionix?">💰 Precio</button>
+                <button data-question="¿Cómo funciona Velionix?">⚙️ Cómo funciona</button>
+                <button data-question="¿Cómo conecto WhatsApp a Velionix?">🔒 WhatsApp</button>
+                <button data-question="¿Cómo puedo probar el servicio?">🎁 Prueba</button>
             </div>
-            <div class="chat-quick" id="chatQuick">
-                <button data-q="precio">💰 Precio</button>
-                <button data-q="funciona">⚙️ Cómo funciona</button>
-                <button data-q="seguro">🔒 ¿Es seguro?</button>
-                <button data-q="prueba">🎁 Probar gratis</button>
+            <div id="webChatStatus" role="status" aria-live="polite">El asistente estará disponible próximamente.</div>
+            <p id="chatUnavailableContact" class="web-chat-notice">Mientras tanto, <a href="https://wa.me/56920584589?text=Hola%2C%20quisiera%20conocer%20Velionix." target="_blank" rel="noopener noreferrer">escríbenos por WhatsApp</a>.</p>
+            <div class="web-chat-actions">
+                <button id="chatReset" type="button" hidden>Nueva conversación</button>
+                <button id="chatRetry" type="button" hidden>Recuperar resultado</button>
             </div>
-            <div class="chat-input-row">
-                <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off">
+            <div id="chatContacts" class="web-chat-actions" hidden></div>
+            <p class="web-chat-notice">Tus mensajes se procesan mediante proveedores de IA. No compartas datos sensibles. <a href="/privacidad/">Privacidad</a></p>
+            <div class="chat-input-row" id="chatComposer" hidden>
+                <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." aria-label="Mensaje al asistente" maxlength="1200" autocomplete="off">
                 <button id="chatSend" aria-label="Enviar">➤</button>
             </div>
         </div>
@@ -1425,56 +1438,7 @@
             }
         }
 
-        // ===== Chat interactivo (Bottom Sheet / Floating) =====
-        var cb=document.getElementById('chatBubble'),bx=document.getElementById('chatBox'),cc=document.getElementById('chatClose');
-        var bd=document.getElementById('chatBody'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
-        cb.addEventListener('click',function(){bx.classList.add('open');cb.style.display='none'});
-        cc.addEventListener('click',function(){bx.classList.remove('open');cb.style.display='block'});
-
-        var ans = {
-            'precio': 'El primer mes cuesta $14.990 (puesta en marcha), luego $29.990/mes. Puedes probar durante 14 días después de activar WhatsApp.',
-            'funciona': 'Velionix conecta tu WhatsApp a un asistente que responde dudas, orienta y agenda citas, incluso fuera de horario.',
-            'seguro': 'Usamos la API oficial de Meta mediante YCloud. La disponibilidad depende de las condiciones de Meta/YCloud.',
-            'prueba': 'Puedes crear tu cuenta y usar la plataforma durante 14 días después de activar WhatsApp.'
-        };
-
-        function addMsg(txt, sender) {
-            var m = document.createElement('div');
-            m.className = 'msg ' + sender;
-            m.innerHTML = txt;
-            bd.appendChild(m);
-            bd.scrollTop = bd.scrollHeight;
-        }
-
-        document.querySelectorAll('#chatQuick button').forEach(function(btn){
-            btn.addEventListener('click', function(){
-                var q = btn.dataset.q;
-                addMsg(btn.textContent, 'user');
-                setTimeout(function(){
-                    addMsg(ans[q], 'bot');
-                    if(q==='prueba' || q==='precio'){
-                        setTimeout(function(){
-                            addMsg('<a href="https://app.velionix.cl/register">Crear cuenta gratis →</a>', 'bot');
-                        }, 600);
-                    }
-                }, 500);
-            });
-        });
-
-        function handleSend() {
-            var t = ci.value.trim();
-            if(!t) return;
-            ci.value = '';
-            addMsg(t, 'user');
-            setTimeout(function(){
-                addMsg('Para darte una respuesta más precisa o hablar con un humano, escríbenos a nuestro WhatsApp oficial 👇', 'bot');
-                setTimeout(function(){
-                    addMsg('<a href="https://wa.me/56920584589" target="_blank" style="display:inline-block;background:var(--green);color:#fff;padding:8px 12px;border-radius:14px;text-decoration:none;margin-top:6px;font-weight:600">Escríbenos por WhatsApp</a>', 'bot');
-                }, 600);
-            }, 600);
-        }
-        cs.addEventListener('click', handleSend);
-        ci.addEventListener('keypress', function(e){ if(e.key==='Enter') handleSend(); });
+        // Commercial widget lives in web-chat.js; demonstration chats stay local.
 
         // ===== Canvas red neuronal (liviano) =====
         var canvas = document.getElementById('net');
@@ -1855,6 +1819,7 @@
 })();
 </script>
 <script src="lightfall-bundle.js"></script>
+<script src="web-chat.js" defer></script>
 </body>
 </html>
 
