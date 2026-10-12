@@ -7,12 +7,11 @@
   var sessionEndpoint = 'https://chat.velionix.cl/v1/session/start';
   var bubble = document.getElementById('chatBubble'), box = document.getElementById('chatBox');
   var body = document.getElementById('chatBody'), input = document.getElementById('chatInput');
-  var send = document.getElementById('chatSend'), quick = document.getElementById('chatQuick');
+  var send = document.getElementById('chatSend');
   var status = document.getElementById('webChatStatus'), retry = document.getElementById('chatRetry');
-  var composer = document.getElementById('chatComposer'), contacts = document.getElementById('chatContacts');
+  var composer = document.getElementById('chatComposer');
   var unavailableContact = document.getElementById('chatUnavailableContact');
   var availability = document.getElementById('chatAvailability');
-  var resetButton = document.getElementById('chatReset');
   var history = [], sessionToken = null, lastRequest = null, controller = null;
   var generation = 0, busy = false;
   var actions = {
@@ -34,7 +33,6 @@
   }
   function setBusy(value) {
     busy = value; send.disabled = value; input.disabled = value;
-    quick.querySelectorAll('button').forEach(function (button) { button.disabled = value; });
     retry.disabled = value; body.setAttribute('aria-busy', String(value));
     status.textContent = value ? 'Velionix está escribiendo…' :
       (PUBLIC_CHAT_ENABLED ? '' : 'El asistente estará disponible próximamente.');
@@ -46,7 +44,7 @@
     else unavailableContact.querySelector('a').focus();
   }
   function close() {
-    box.classList.remove('open'); box.hidden = true; bubble.style.display = 'block';
+    box.classList.remove('open'); box.hidden = true; bubble.style.display = 'flex';
     bubble.setAttribute('aria-expanded', 'false'); bubble.focus();
   }
   function greeting() {
@@ -63,16 +61,16 @@
     availability.textContent = 'Disponible próximamente';
     availability.classList.add('is-unavailable');
     bubble.setAttribute('aria-label', 'Ver disponibilidad del asistente');
-    quick.hidden = true; composer.hidden = true; contacts.hidden = true;
-    unavailableContact.hidden = false; resetButton.hidden = true; retry.hidden = true;
+    composer.hidden = true;
+    unavailableContact.hidden = false; retry.hidden = true;
     status.textContent = 'El asistente estará disponible próximamente.';
   }
   function setPublicView() {
     availability.textContent = 'Asistente de atención';
     availability.classList.remove('is-unavailable');
     bubble.setAttribute('aria-label', 'Abrir chat');
-    quick.hidden = false; composer.hidden = false; contacts.hidden = false;
-    unavailableContact.hidden = true; resetButton.hidden = false;
+    composer.hidden = false;
+    unavailableContact.hidden = true;
     status.textContent = '';
   }
   function boundedHistory(text) {
@@ -151,13 +149,10 @@
   }
   bubble.addEventListener('click', open);
   document.getElementById('chatClose').addEventListener('click', close);
-  document.getElementById('chatReset').addEventListener('click', reset);
   send.addEventListener('click', function () { submit(input.value); });
   input.addEventListener('keydown', function (event) { if (event.key === 'Enter' && !event.isComposing) { event.preventDefault(); submit(input.value); } });
   box.addEventListener('keydown', function (event) { if (event.key === 'Escape') close(); });
-  quick.querySelectorAll('button').forEach(function (button) { button.addEventListener('click', function () { submit(button.dataset.question); }); });
   retry.addEventListener('click', function () { if (lastRequest) request(lastRequest, false); });
-  contacts.replaceChildren(link('demo'), link('meeting'), link('human'));
   window.addEventListener('pagehide', function () {
     generation++; sessionToken = null; history = []; lastRequest = null;
     if (controller) controller.abort(); controller = null;
