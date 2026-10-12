@@ -49,7 +49,8 @@
     var viewport = window.visualViewport;
     var visibleHeight = viewport ? viewport.height : window.innerHeight;
     var visibleTop = viewport ? viewport.offsetTop : 0;
-    var height = Math.max(160, Math.min(680, visibleHeight - 12));
+    var keyboardOpen = document.activeElement === input && viewport && viewport.height < window.innerHeight - 100;
+    var height = Math.max(160, Math.min(680, visibleHeight - 12, keyboardOpen ? visibleHeight - 12 : visibleHeight * 0.82));
     var top = visibleTop + Math.max(0, visibleHeight - height);
     box.style.setProperty('--chat-vv-top', Math.round(top) + 'px');
     box.style.setProperty('--chat-vv-height', Math.round(height) + 'px');
