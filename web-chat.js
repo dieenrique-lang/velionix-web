@@ -12,7 +12,8 @@
   var composer = document.getElementById('chatComposer');
   var unavailableContact = document.getElementById('chatUnavailableContact');
   var availability = document.getElementById('chatAvailability');
-  var history = [], sessionToken = null, lastRequest = null, controller = null;
+  var history = [], sessionToken = null, sessionExpiresAt = 0, lastRequest = null, controller = null;
+  var cooldownUntil = 0, cooldownTimer = null;
   var generation = 0, busy = false;
   var actions = {
     demo: ['Probar agente', 'Hola, vengo desde la web de Velionix y quiero probar cómo funciona el agente de IA.'],
@@ -32,10 +33,23 @@
     element.textContent = text; body.appendChild(element); body.scrollTop = body.scrollHeight; return element;
   }
   function setBusy(value) {
-    busy = value; send.disabled = value; input.disabled = value;
-    retry.disabled = value; body.setAttribute('aria-busy', String(value));
+    busy = value; send.disabled = value || Date.now() < cooldownUntil; input.disabled = value;
+    retry.disabled = send.disabled; body.setAttribute('aria-busy', String(value));
     status.textContent = value ? 'Velionix está escribiendo…' :
-      (PUBLIC_CHAT_ENABLED ? '' : 'El asistente estará disponible próximamente.');
+      (Date.now() < cooldownUntil ? 'Puedes volver a enviar en ' + Math.ceil((cooldownUntil - Date.now()) / 1000) + ' s.' :
+      (PUBLIC_CHAT_ENABLED ? '' : 'El asistente estará disponible próximamente.'));
+  }
+  function waitForLimit(response, fallbackSeconds) {
+    var seconds = Number(response.headers.get('Retry-After'));
+    if (!Number.isFinite(seconds) || seconds <= 0) seconds = fallbackSeconds;
+    seconds = Math.max(1, Math.min(300, Math.ceil(seconds)));
+    cooldownUntil = Math.max(cooldownUntil, Date.now() + seconds * 1000);
+    clearInterval(cooldownTimer);
+    cooldownTimer = setInterval(function () {
+      if (!busy) setBusy(false);
+      if (Date.now() >= cooldownUntil) { clearInterval(cooldownTimer); cooldownTimer = null; }
+    }, 1000);
+    return seconds;
   }
   // En iOS el teclado reduce visualViewport, pero un fixed con dvh puede quedar detrás.
   // Recalcular el alto y la posición del panel según el área realmente visible.
@@ -75,7 +89,7 @@
   }
   function reset() {
     generation++; if (controller) controller.abort(); controller = null;
-    history = []; sessionToken = null; lastRequest = null; retry.hidden = true;
+    history = []; sessionToken = null; sessionExpiresAt = 0; lastRequest = null; retry.hidden = true;
     body.replaceChildren(); setBusy(false);
     if (PUBLIC_CHAT_ENABLED) { greeting(); input.focus(); }
     else setUnavailableView();
@@ -103,24 +117,29 @@
     return selected;
   }
   async function request(payload, display) {
-    if (!PUBLIC_CHAT_ENABLED || busy) return;
+    if (!PUBLIC_CHAT_ENABLED || busy || Date.now() < cooldownUntil) return;
     var current = generation, sessionReady = false; setBusy(true); retry.hidden = true; lastRequest = payload;
     if (display) message(payload.message, 'user');
     var active = new AbortController(); controller = active;
     var timer = setTimeout(function () { active.abort(); }, 45000);
     try {
       var headers = { 'Content-Type': 'application/json' };
-      var sessionResponse = await fetch(sessionEndpoint, { method: 'POST', mode: 'cors', credentials: 'omit',
-        cache: 'no-store', headers: headers, body: '{}', signal: active.signal });
-      var sessionData = await sessionResponse.json();
-      if (!sessionResponse.ok || typeof sessionData.sessionToken !== 'string' || sessionData.error) {
-        if (generation === current) {
-          message('El asistente no está disponible ahora. Escríbenos por WhatsApp.', 'bot');
-          retry.hidden = true; lastRequest = null;
+      if (!sessionToken || sessionExpiresAt <= Date.now() + 5000) {
+        var sessionResponse = await fetch(sessionEndpoint, { method: 'POST', mode: 'cors', credentials: 'omit',
+          cache: 'no-store', headers: headers, body: '{}', signal: active.signal });
+        var sessionData = await sessionResponse.json();
+        if (generation !== current) return;
+        if (!sessionResponse.ok || typeof sessionData.sessionToken !== 'string' || sessionData.error) {
+          if (sessionResponse.status === 429) {
+            var sessionWait = waitForLimit(sessionResponse, 60);
+            message('Se alcanzó el límite temporal. Puedes volver a enviar en ' + sessionWait + ' segundos.', 'bot');
+          } else message('El asistente no está disponible ahora. Escríbenos por WhatsApp.', 'bot');
+          retry.hidden = true; lastRequest = null; return;
         }
-        return;
+        sessionToken = sessionData.sessionToken;
+        sessionExpiresAt = Number.isFinite(sessionData.expiresAt) ? sessionData.expiresAt : 0;
       }
-      sessionToken = sessionData.sessionToken; payload.sessionToken = sessionToken; sessionReady = true;
+      payload.sessionToken = sessionToken; sessionReady = true;
       var response = await fetch(endpoint, { method: 'POST', mode: 'cors', credentials: 'omit',
         cache: 'no-store', headers: headers, body: JSON.stringify(payload), signal: active.signal });
       var data = await response.json();
@@ -131,13 +150,23 @@
         if (code === 'DUPLICATE_REQUEST') {
           message('Esta solicitud ya fue procesada o sigue en curso. No la reenviaré automáticamente. Puedes iniciar un nuevo turno.', 'bot');
           lastRequest = null;
+        } else if (code === 'SESSION_BUSY' || code === 'CONCURRENCY_LIMIT' || code === 'GRANT_CONCURRENCY_LIMIT' ||
+            code === 'RATE_LIMIT' || code === 'PROVIDER_RATE_LIMITED' || response.status === 429) {
+          var wait = waitForLimit(response, code === 'PROVIDER_RATE_LIMITED' ? 30 : 45);
+          message(code === 'PROVIDER_RATE_LIMITED' ?
+            'El proveedor de IA está ocupado. Puedes volver a enviar en ' + wait + ' segundos o escribirnos por WhatsApp.' :
+            code === 'SESSION_BUSY' ? 'Hay una solicitud en curso. Puedes volver a enviar en ' + wait + ' segundos.' :
+            'Se alcanzó un límite temporal. Puedes volver a enviar en ' + wait + ' segundos.', 'bot');
+          lastRequest = null; retry.hidden = true;
         } else {
+          if (code === 'INVALID_SESSION') { sessionToken = null; sessionExpiresAt = 0; }
           var serviceUnavailable = [401, 403, 503].indexOf(response.status) !== -1;
           message(code === 'INPUT_LIMIT' ? 'El contexto es demasiado largo. Acorta el mensaje o inicia una nueva conversación.' :
             code === 'INVALID_SESSION' ? 'La sesión venció. Inicia una nueva conversación.' :
             serviceUnavailable ? 'El asistente no está disponible ahora. Escríbenos por WhatsApp.' :
             'No pude confirmar el resultado. Puedes recuperar esta solicitud o escribirnos por WhatsApp.', 'bot');
           retry.hidden = serviceUnavailable || ['INPUT_LIMIT', 'INVALID_SESSION', 'INVALID_MESSAGE', 'INVALID_HISTORY'].indexOf(code) !== -1;
+          if (retry.hidden) lastRequest = null;
         }
         return;
       }
@@ -165,7 +194,7 @@
     }
   }
   function submit(text) {
-    if (!PUBLIC_CHAT_ENABLED || busy) return; text = text.trim(); if (!text) return;
+    if (!PUBLIC_CHAT_ENABLED || busy || Date.now() < cooldownUntil) return; text = text.trim(); if (!text) return;
     if (Array.from(text).length > 1200) { status.textContent = 'Máximo 1.200 caracteres.'; return; }
     input.value = '';
     request({ requestId: crypto.randomUUID(), sessionToken: sessionToken, message: text, history: boundedHistory(text) }, true);
@@ -184,7 +213,7 @@
   box.addEventListener('keydown', function (event) { if (event.key === 'Escape') close(); });
   retry.addEventListener('click', function () { if (lastRequest) request(lastRequest, false); });
   window.addEventListener('pagehide', function () {
-    generation++; sessionToken = null; history = []; lastRequest = null;
+    generation++; sessionToken = null; sessionExpiresAt = 0; history = []; lastRequest = null;
     if (controller) controller.abort(); controller = null;
   });
   window.addEventListener('pageshow', function (event) { if (event.persisted) reset(); });
@@ -192,3 +221,4 @@
   if (PUBLIC_CHAT_ENABLED) { setPublicView(); greeting(); }
   else setUnavailableView();
 })();
+
